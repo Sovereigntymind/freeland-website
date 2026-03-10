@@ -3,291 +3,628 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Freeland Marketing & Entertainment — Marketing that works while you work. Social media, paid ads, AI automation, CRM, SEO, and website builds for Florida businesses." />
-  <title>Freeland Marketing & Entertainment</title>
+
+  <!-- ===== SEO META ===== -->
+  <title>Freeland Marketing & Entertainment | Social Media, AI Automation & Paid Ads | Palm Coast, FL</title>
+  <meta name="description" content="Freeland Marketing & Entertainment helps Florida businesses grow with social media management, Meta/Google Ads, AI automation (Freeland Automation), CRM, SEO, and website builds. Real results. No contracts." />
+  <meta name="keywords" content="marketing agency Palm Coast FL, social media management Florida, AI automation marketing, Google Ads Florida, CRM automation, Freeland Automation, Meta ads Florida, SEO Florida, website builds Palm Coast" />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/" />
+
+  <!-- ===== OPEN GRAPH ===== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/" />
+  <meta property="og:title" content="Freeland Marketing & Entertainment | Marketing That Works While You Work" />
+  <meta property="og:description" content="Florida's growth agency. Social media, paid ads, AI automation, CRM, SEO & website builds. Clients see 10x growth. Book a free consultation today." />
+  <meta property="og:image" content="https://freelandme.com/og-image.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing & Entertainment" />
+
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Freeland Marketing & Entertainment" />
+  <meta name="twitter:description" content="Marketing that works while you work. Social media, AI automation & paid ads for Florida businesses." />
+
+  <!-- ===== SCHEMA: LOCAL BUSINESS ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MarketingAgency",
+    "name": "Freeland Marketing & Entertainment",
+    "url": "https://freelandme.com",
+    "email": "kevin@freelandme.com",
+    "description": "Florida marketing agency specializing in social media management, paid ads, AI automation, CRM, SEO, and website builds.",
+    "founder": { "@type": "Person", "name": "Kevin Freeland" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" },
+    "areaServed": "Florida",
+    "sameAs": ["https://facebook.com/freelandme", "https://instagram.com/freelandme"]
+  }
+  </script>
+
+  <!-- ===== SCHEMA: FAQ ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What types of businesses do you work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We work with local businesses, restaurants, retail shops, service providers, e-commerce brands, and entrepreneurs across Florida. If you have a business and want to grow it, we can help." }
+      },
+      {
+        "@type": "Question",
+        "name": "How soon will I see results?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Many clients see results within the first 30 days. Our client Tokyo Japanese Steakhouse saw same-day bookings from their first video campaign. Timelines vary by service, but we move fast and focus on measurable ROI from day one." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Freeland Automation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Freeland Automation is our AI-powered service suite that automates your business operations — CRM follow-ups, email sequences, social scheduling, call-center booking, lead nurturing, and more. It makes your business run 24/7 without extra staff." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you require long-term contracts?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No long-term contracts required. We earn your business every month through results. We're confident enough in what we deliver that we don't need to lock you in." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much do your services cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pricing is tailored to your business goals and the services you need. We offer flexible packages and have worked with businesses at all stages — from startups to established brands. Book a free consultation and we'll build a plan that fits your budget." }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes Freeland Marketing different from other agencies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We're not a faceless agency. Kevin personally visits clients, films content, and stays hands-on throughout. We combine creator energy, community roots, and an ROI mindset that most agencies lack. Our clients' success stories speak for themselves." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with businesses outside of Florida?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. While we're based in Palm Coast, FL and have deep roots in the local community, our digital and automation services work for businesses anywhere in the US." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you handle both my marketing AND automation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely — that's our specialty. We offer full-service packages that combine social media management, paid ads, and Freeland Automation so everything works together as one growth engine." }
+      }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-inner">
-      <div class="logo">FME</div>
-      <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#automation">Automation</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#contact" class="btn-nav">Free Consultation</a></li>
+  <!-- ===== STICKY CTA BAR ===== -->
+  <div class="sticky-bar" id="stickyBar">
+    <p>Limited spots available this month — <strong>book your free strategy call now</strong></p>
+    <a href="#contact" class="btn-sticky">Claim Your Spot</a>
+    <button class="sticky-close" onclick="document.getElementById('stickyBar').style.display='none'">&times;</button>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <header>
+    <nav aria-label="Main navigation">
+      <div class="nav-inner">
+        <a href="#" class="logo" aria-label="Freeland Marketing & Entertainment Home">FME</a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#automation">Automation</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact" class="btn-nav">Free Consultation</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">&#9776;</button>
+      </div>
+      <ul class="mobile-nav" id="mobileNav">
+        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+        <li><a href="#automation" onclick="toggleMenu()">Automation</a></li>
+        <li><a href="#results" onclick="toggleMenu()">Results</a></li>
+        <li><a href="#faq" onclick="toggleMenu()">FAQ</a></li>
+        <li><a href="#contact" onclick="toggleMenu()" class="btn-nav">Free Consultation</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="badge">Florida's Growth Agency</span>
-      <h1>Marketing That Works<br /><span class="gold">While You Work</span></h1>
-      <p>Freeland Marketing & Entertainment helps local businesses grow through social media, paid ads, AI automation, and strategy that turns attention into revenue.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Get a Free Consultation</a>
-        <a href="#services" class="btn-secondary">See What We Do</a>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="stats-inner">
-      <div class="stat">
-        <h2>10x</h2>
-        <p>Client business growth in under a year</p>
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <span class="badge">Florida's #1 Growth Agency</span>
+        <h1>Stop Leaving Money<br /><span class="gold">On The Table</span></h1>
+        <p>Your competitors are running ads, automating their follow-ups, and dominating social media right now. Freeland Marketing & Entertainment helps Florida businesses grow faster — with strategy, content, and AI automation that turns attention into revenue.</p>
+        <div class="trust-row">
+          <span>✓ No Long-Term Contracts</span>
+          <span>✓ Results in 30 Days</span>
+          <span>✓ Hands-On Team</span>
+        </div>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary btn-large">Get My Free Strategy Call</a>
+          <a href="#results" class="btn-secondary">See Client Results</a>
+        </div>
+        <p class="hero-footnote">Trusted by local businesses across Palm Coast &amp; Florida</p>
       </div>
-      <div class="stat">
-        <h2>100K+</h2>
-        <p>People reached across Florida</p>
-      </div>
-      <div class="stat">
-        <h2>3+</h2>
-        <p>Years serving local businesses</p>
-      </div>
-      <div class="stat">
-        <h2>100%</h2>
-        <p>Focused on your ROI</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title">Core Marketing Services</h2>
-      <p class="section-sub">Everything your business needs to grow its brand, reach more customers, and convert attention into revenue.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon">📱</div>
-          <h3>Social Media Management</h3>
-          <p>Content creation, scheduling, and community management across Facebook, Instagram, and more.</p>
+    <!-- ===== STATS ===== -->
+    <section class="stats" aria-label="Key stats">
+      <div class="stats-inner">
+        <div class="stat">
+          <strong>10x</strong>
+          <p>Client business growth in under a year</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h3>Paid Ads (Meta/Instagram)</h3>
-          <p>Targeted ad campaigns that reach the right people at the right time — driving real bookings and sales.</p>
+        <div class="stat">
+          <strong>100K+</strong>
+          <p>Florida customers reached monthly</p>
         </div>
-        <div class="card">
-          <div class="card-icon">📈</div>
-          <h3>Marketing Consulting</h3>
-          <p>Strategic guidance on brand positioning, pricing, business structure, and growth planning.</p>
+        <div class="stat">
+          <strong>3+</strong>
+          <p>Years growing Florida businesses</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🎨</div>
-          <h3>Creative & Graphic Design</h3>
-          <p>Thumbnails, graphics, and visual content that stops the scroll and builds your brand identity.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🛒</div>
-          <h3>E-commerce & Affiliate Marketing</h3>
-          <p>Build and grow your online store with affiliate programs that generate passive revenue.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🤝</div>
-          <h3>Influencer & Affiliate Programs</h3>
-          <p>Connect with creators and partners who amplify your brand to new audiences.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Website Builds</h3>
-          <p>Professional, fast, and conversion-focused websites built to represent your brand online.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">🔍</div>
-          <h3>SEO Automation</h3>
-          <p>Get found on Google. We optimize your site and content so customers find you first.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon">💰</div>
-          <h3>Google Ads Management</h3>
-          <p>High-intent search ads that put your business in front of customers ready to buy.</p>
+        <div class="stat">
+          <strong>0</strong>
+          <p>Long-term contracts required</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FREELAND AUTOMATION -->
-  <section class="section dark" id="automation">
-    <div class="container">
-      <span class="section-label light">Freeland Automation</span>
-      <h2 class="section-title light">AI-Powered Automation Services</h2>
-      <p class="section-sub light">We automate the repetitive so your business runs smarter, faster, and around the clock — without you lifting a finger.</p>
-      <div class="cards">
-        <div class="card dark-card">
-          <div class="card-icon">🤖</div>
-          <h3>CRM Automation</h3>
-          <p>Automate your customer relationship management — follow-ups, tagging, pipelines, and more.</p>
+    <!-- ===== PAIN / VALUE PROP ===== -->
+    <section class="section pain-section">
+      <div class="container pain-inner">
+        <div class="pain-text">
+          <span class="section-label">The Problem</span>
+          <h2 class="section-title">Most Businesses Are Invisible Online — And Paying for It</h2>
+          <ul class="pain-list">
+            <li>Your social media posts get no reach and fewer customers</li>
+            <li>You're spending hours on tasks that could be automated</li>
+            <li>Leads fall through the cracks because follow-up is inconsistent</li>
+            <li>Competitors with smaller budgets outrank you on Google</li>
+            <li>You have no idea what's actually working in your marketing</li>
+          </ul>
+          <p class="pain-solution">We fix all of this. Freeland Marketing & Entertainment is your full-stack growth partner — handling everything from content and ads to AI automation and CRM so you can focus on running your business.</p>
+          <a href="#contact" class="btn-primary">Fix My Marketing</a>
         </div>
-        <div class="card dark-card">
-          <div class="card-icon">📞</div>
-          <h3>Call-Center Booking Automation</h3>
-          <p>AI-powered booking systems that handle appointments 24/7 without a human on the phone.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">✉️</div>
-          <h3>Email Marketing Automation</h3>
-          <p>Smart sequences, segmentation, and customer journeys that nurture leads on autopilot.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">📅</div>
-          <h3>Social Media Scheduling</h3>
-          <p>Automated content workflows that keep your social presence active without daily effort.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">🔗</div>
-          <h3>Affiliate & Referral Automation</h3>
-          <p>Set up and automate your referral programs so your network grows while you sleep.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">💡</div>
-          <h3>Lead Nurturing Sequences</h3>
-          <p>Automated follow-up flows that turn cold leads into paying customers over time.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">✍️</div>
-          <h3>AI Content Creation Workflows</h3>
-          <p>AI-driven pipelines that produce high-quality content at scale for your brand.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">🖼️</div>
-          <h3>Thumbnail & Graphic Generation</h3>
-          <p>Automated visual content creation using Canva, Nano Banana, and Flux LoRA tools.</p>
-        </div>
-        <div class="card dark-card">
-          <div class="card-icon">📊</div>
-          <h3>Automated Reporting & Tracking</h3>
-          <p>Real-time performance dashboards and automated reports so you always know what's working.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section" id="results">
-    <div class="container">
-      <span class="section-label">Real Results</span>
-      <h2 class="section-title">What Our Clients Say</h2>
-      <p class="section-sub">We don't just run ads — we become partners in your growth.</p>
-      <div class="testimonials">
-
-        <div class="testimonial featured">
-          <div class="stars">★★★★★</div>
-          <p>"When I first began working with Freeland Marketing, my wood carving business was operating as a small hobby out of my garage. Today, I run a fully operational wood shop. Over the past year alone, my business has grown <strong>tenfold</strong>. Kevin has personally visited my workshop to photograph and film my artwork. They have gone far beyond traditional marketing services. From my experience, Freeland Marketing has no interest other than supporting your business and helping you grow."</p>
-          <div class="client">
-            <div class="client-info">
-              <strong>Joe Miller</strong>
-              <span>Owner — Joe Tiki Custom Wood Carving, Palm Coast FL</span>
+        <div class="pain-visual">
+          <div class="value-box">
+            <div class="value-item">
+              <span class="v-icon">🚀</span>
+              <div>
+                <strong>Immediate Impact</strong>
+                <p>Campaigns go live within days, not months</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="v-icon">🎯</span>
+              <div>
+                <strong>Precision Targeting</strong>
+                <p>Reach the exact customers most likely to buy</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="v-icon">🤖</span>
+              <div>
+                <strong>24/7 Automation</strong>
+                <p>Your business works even when you don't</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="v-icon">📊</span>
+              <div>
+                <strong>Transparent Reporting</strong>
+                <p>Know exactly what your money is doing</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="v-icon">🤝</span>
+              <div>
+                <strong>Hands-On Partnership</strong>
+                <p>We show up — not just on calls, but in person</p>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>"The steakhouse videos turned into same-day bookings. The results were immediate and real."</p>
-          <div class="client">
-            <div class="client-info">
-              <strong>Tokyo Japanese Steakhouse</strong>
-              <span>Restaurant Client</span>
+    <!-- ===== SERVICES ===== -->
+    <section class="section light-section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title" id="services-heading">Core Marketing Services</h2>
+        <p class="section-sub">Everything your business needs to grow its brand, reach more customers, and convert attention into revenue.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📱</div>
+            <h3>Social Media Management</h3>
+            <p>Content creation, scheduling, and community management across Facebook and Instagram. We make your brand impossible to ignore.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎯</div>
+            <h3>Paid Ads (Meta &amp; Instagram)</h3>
+            <p>Targeted campaigns that reach the exact people most likely to buy — driving real bookings, calls, and sales, not just clicks.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💰</div>
+            <h3>Google Ads Management</h3>
+            <p>High-intent search ads that put your business in front of customers actively looking for what you sell — right now.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🔍</div>
+            <h3>SEO Automation</h3>
+            <p>Get found on Google without paying for every click. We optimize your site and content so customers find you organically.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🌐</div>
+            <h3>Website Builds</h3>
+            <p>Professional, fast, and conversion-focused websites built to turn visitors into paying customers — not just look pretty.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🎨</div>
+            <h3>Creative &amp; Graphic Design</h3>
+            <p>Scroll-stopping thumbnails, graphics, and visual content built using professional tools including Canva and Flux LoRA.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📈</div>
+            <h3>Marketing Consulting</h3>
+            <p>Strategic guidance on brand positioning, pricing, business structure, and growth planning from someone who's done it.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🛒</div>
+            <h3>E-commerce &amp; Affiliate Marketing</h3>
+            <p>Build and grow your online store with affiliate programs that generate passive, recurring revenue around the clock.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>Influencer &amp; Affiliate Programs</h3>
+            <p>Connect with creators and brand partners who amplify your message to audiences that are already primed to buy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MID-PAGE CTA ===== -->
+    <section class="mid-cta" aria-label="Mid-page call to action">
+      <div class="mid-cta-inner">
+        <div>
+          <h2>Not Sure Where to Start?</h2>
+          <p>Book a free 30-minute strategy call. We'll audit your current marketing and show you exactly what's holding your business back.</p>
+        </div>
+        <a href="#contact" class="btn-primary btn-large">Book My Free Call →</a>
+      </div>
+    </section>
+
+    <!-- ===== FREELAND AUTOMATION ===== -->
+    <section class="section dark" id="automation" aria-labelledby="automation-heading">
+      <div class="container">
+        <span class="section-label light">Freeland Automation</span>
+        <h2 class="section-title light" id="automation-heading">Your Business, Running 24/7 on Autopilot</h2>
+        <p class="section-sub light">Stop doing manually what a machine can do better. Freeland Automation handles your follow-ups, bookings, emails, and reporting — so you focus on what only you can do.</p>
+        <div class="cards">
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">🤖</div>
+            <h3>CRM Automation</h3>
+            <p>Automate follow-ups, lead tagging, pipeline stages, and customer tracking so no opportunity ever falls through the cracks.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">📞</div>
+            <h3>Call-Center Booking Automation</h3>
+            <p>AI-powered booking systems that handle appointments and inquiries 24/7 — no staff needed, no leads missed.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">✉️</div>
+            <h3>Email Marketing Automation</h3>
+            <p>Smart sequences, segmentation, and customer journeys via tools like Mailmodo that nurture leads into paying customers on autopilot.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">📅</div>
+            <h3>Social Media Scheduling &amp; Workflows</h3>
+            <p>Automated content calendars and posting workflows that keep your brand active and consistent — without the daily grind.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">🔗</div>
+            <h3>Affiliate &amp; Referral Automation</h3>
+            <p>Set up and automate your entire referral program so your network grows and generates revenue while you sleep.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3>Lead Nurturing Sequences</h3>
+            <p>Multi-step automated follow-up flows that warm cold leads and convert them into customers over time — without manual effort.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">✍️</div>
+            <h3>AI Content Creation Workflows</h3>
+            <p>AI-driven pipelines that produce high-quality, on-brand content at scale — captions, blogs, ads, and more.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">🖼️</div>
+            <h3>Thumbnail &amp; Graphic Generation</h3>
+            <p>Automated visual content pipelines using Canva, Nano Banana, and Flux LoRA for scroll-stopping graphics at scale.</p>
+          </article>
+          <article class="card dark-card">
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3>Automated Reporting &amp; Performance Tracking</h3>
+            <p>Real-time dashboards and scheduled reports so you always know what's working, what's not, and where to invest next.</p>
+          </article>
+        </div>
+        <div class="automation-cta">
+          <p>Ready to run your business on autopilot?</p>
+          <a href="#contact" class="btn-primary btn-large">Build My Automation System →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="section" id="results" aria-labelledby="results-heading">
+      <div class="container">
+        <span class="section-label">Real Results</span>
+        <h2 class="section-title" id="results-heading">Businesses That Trusted Us — And Won</h2>
+        <p class="section-sub">We don't just run ads. We become partners in your growth. Here's what happens when businesses work with FME.</p>
+        <div class="testimonials">
+
+          <article class="testimonial featured" itemscope itemtype="https://schema.org/Review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote itemprop="reviewBody">
+              "When I first began working with Freeland Marketing, my wood carving business was operating as a <strong>small hobby out of my garage</strong>. Today, I run a fully operational wood shop creating custom hand-carved pieces. Over the past year alone, my business has grown <strong>tenfold</strong>. Kevin personally visited my workshop to photograph and film my artwork. They went far beyond traditional marketing — helping with scheduling systems, business structure, tax resources, and warehouse opportunities. From my experience, Freeland Marketing has no interest other than <strong>supporting your business and helping you grow</strong>. I highly recommend them to any business owner looking to elevate their brand."
+            </blockquote>
+            <div class="client">
+              <div class="client-avatar">JM</div>
+              <div class="client-info" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <strong itemprop="name">Joe Miller</strong>
+                <span>Owner — Joe Tiki Custom Wood Carving, Palm Coast FL</span>
+                <span class="result-badge">10x Business Growth</span>
+              </div>
             </div>
+          </article>
+
+          <article class="testimonial" itemscope itemtype="https://schema.org/Review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote itemprop="reviewBody">"The steakhouse videos turned into <strong>same-day bookings</strong>. The results were immediate and real. Freeland knows exactly how to create content that makes people act."</blockquote>
+            <div class="client">
+              <div class="client-avatar">TJ</div>
+              <div class="client-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                <strong itemprop="name">Tokyo Japanese Steakhouse</strong>
+                <span>Restaurant — Palm Coast, FL</span>
+                <span class="result-badge">Same-Day Bookings</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial" itemscope itemtype="https://schema.org/Review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote itemprop="reviewBody">"We saw <strong>weekend traffic surge</strong> after the market reels. Freeland knows how to get people through the door. Our vendors noticed it immediately."</blockquote>
+            <div class="client">
+              <div class="client-avatar">PC</div>
+              <div class="client-info" itemprop="author" itemscope itemtype="https://schema.org/Organization">
+                <strong itemprop="name">Palm Coast Farmers Market</strong>
+                <span>Community Market — Palm Coast, FL</span>
+                <span class="result-badge">Weekend Traffic Surge</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section about-section" aria-labelledby="about-heading">
+      <div class="container about-inner">
+        <div class="about-text">
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title" id="about-heading">Creator Energy. Community Roots. ROI Mindset.</h2>
+          <p>Freeland Marketing & Entertainment was founded by Kevin Freeland — a creator who transitioned from tie-dye artist to full-service agency operator. We're built differently from the start.</p>
+          <p>We're not a faceless agency sending you monthly PDFs. Kevin personally shows up, films your products, strategizes with you, and connects you with the resources you need to grow — from marketing to business structure to trusted local partners.</p>
+          <p>Our team combines creative talent with data-driven strategy and cutting-edge AI automation to give your business a real, unfair advantage.</p>
+          <div class="about-trust">
+            <div class="trust-item"><span>✓</span> No contracts. Cancel anytime.</div>
+            <div class="trust-item"><span>✓</span> Transparent pricing. No surprises.</div>
+            <div class="trust-item"><span>✓</span> Hands-on. We show up in person.</div>
+            <div class="trust-item"><span>✓</span> Results-focused from day one.</div>
+          </div>
+          <a href="#contact" class="btn-primary">Work With Our Team</a>
+        </div>
+        <div class="team">
+          <div class="team-member">
+            <div class="avatar">KF</div>
+            <strong>Kevin Freeland</strong>
+            <span>CEO &amp; Founder</span>
+          </div>
+          <div class="team-member">
+            <div class="avatar">JA</div>
+            <strong>Joshua Archer</strong>
+            <span>Creative Design</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>"We saw weekend traffic surge after the market reels. Freeland knows how to get people through the door."</p>
-          <div class="client">
-            <div class="client-info">
-              <strong>Palm Coast Farmers Market</strong>
-              <span>Community Market Client</span>
+    <!-- ===== FAQ ===== -->
+    <section class="section dark" id="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <span class="section-label light">FAQ</span>
+        <h2 class="section-title light" id="faq-heading">Frequently Asked Questions</h2>
+        <p class="section-sub light">Everything you need to know before working with us. Don't see your question? Ask us directly.</p>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>What types of businesses do you work with?</summary>
+            <p>We work with local businesses, restaurants, retail shops, service providers, e-commerce brands, and entrepreneurs across Florida. If you have a business and want to grow it — we can help. We've worked with wood carvers, steakhouses, farmers markets, and everything in between.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How soon will I see results?</summary>
+            <p>Many clients see results within the first 30 days. Our client Tokyo Japanese Steakhouse saw <strong>same-day bookings</strong> from their first video campaign. Joe Miller at Joe Tiki grew his business 10x within a year. Timelines vary by service, but we move fast and focus on measurable ROI from day one.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is Freeland Automation and do I need it?</summary>
+            <p>Freeland Automation is our AI-powered service suite that automates your business operations — CRM follow-ups, email sequences, social scheduling, call-center booking, lead nurturing, and more. If you're manually following up with leads, answering the same questions repeatedly, or losing customers because you're too busy to respond fast enough — you need it.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you require long-term contracts?</summary>
+            <p>No long-term contracts. We earn your business every month through results. We're confident enough in what we deliver that we don't need to lock you in. You stay because it's working — not because you're trapped.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How much do your services cost?</summary>
+            <p>Pricing is tailored to your business goals and the services you need. We've worked with businesses at all stages — from garage startups to established brands — and we have flexible packages to match. The best way to get accurate pricing is to book a free consultation so we can understand your goals and build a plan that fits your budget.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What makes Freeland Marketing different from other agencies?</summary>
+            <p>Most agencies put you in a queue and send automated reports. We show up. Kevin personally visits clients, films content on-location, and stays hands-on throughout the entire partnership. We also combine marketing services with AI automation — meaning we don't just drive traffic, we help convert and retain it too. Our client results speak louder than any pitch we could make.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can you handle both my marketing AND automation?</summary>
+            <p>Yes — that's our specialty. We offer full-service packages that combine social media management, paid ads, SEO, and Freeland Automation so everything works together as one unified growth engine. No juggling multiple vendors.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you work with businesses outside of Florida?</summary>
+            <p>Yes. While we're based in Palm Coast, FL and have deep community roots here, our digital services and automation buildouts work for businesses anywhere in the United States. Reach out and let's talk.</p>
+          </details>
+
+        </div>
+        <div class="faq-cta">
+          <p>Still have questions?</p>
+          <a href="mailto:kevin@freelandme.com" class="btn-secondary-outline">Email Us Directly</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA / CONTACT ===== -->
+    <section class="section cta-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container cta-inner">
+        <span class="section-label light">Let's Talk</span>
+        <h2 id="contact-heading">Your Competitors Aren't Waiting.<br /><span class="gold">Neither Should You.</span></h2>
+        <p class="cta-sub">Book a free 30-minute strategy call. We'll review your current marketing, identify what's costing you customers, and map out a plan to fix it — on us, no strings attached.</p>
+        <div class="cta-guarantees">
+          <span>✓ 100% Free. No obligation.</span>
+          <span>✓ No contracts required.</span>
+          <span>✓ Results within 30 days.</span>
+        </div>
+
+        <!-- Formspree form — sign up at formspree.io with kevin@freelandme.com and replace YOUR_FORM_ID -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
+          <input type="hidden" name="_subject" value="New FME Website Lead" />
+          <input type="hidden" name="_replyto" value="kevin@freelandme.com" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="business">Business Name *</label>
+              <input type="text" id="business" name="business" placeholder="Smith's Restaurant" required />
             </div>
           </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(386) 555-0100" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">What are you interested in?</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service...</option>
+              <option>Social Media Management</option>
+              <option>Paid Ads (Meta / Google)</option>
+              <option>Freeland Automation</option>
+              <option>SEO</option>
+              <option>Website Build</option>
+              <option>Full Service Package</option>
+              <option>Other / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business and goals</label>
+            <textarea id="message" name="message" placeholder="e.g. I run a restaurant in Palm Coast and want more reservations..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-large btn-full">Send My Free Strategy Request →</button>
+          <p class="form-note">We typically respond within 2 business hours. Your info is never shared or sold.</p>
+        </form>
+
+        <div class="contact-alt">
+          <p>Prefer to reach out directly?</p>
+          <a href="mailto:kevin@freelandme.com" class="contact-email">kevin@freelandme.com</a>
         </div>
 
+        <div class="social-links">
+          <a href="https://facebook.com/freelandme" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com/freelandme" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ABOUT -->
-  <section class="section about-section">
-    <div class="container about-inner">
-      <div class="about-text">
-        <span class="section-label">Who We Are</span>
-        <h2 class="section-title">Creator Energy. Community Roots. ROI Mindset.</h2>
-        <p>Freeland Marketing & Entertainment was founded by Kevin Freeland — a creator who transitioned from tie-dye artist to agency operator. We bring the passion of a creator with the discipline of a strategist.</p>
-        <p>We're not a faceless agency. We show up, we film, we strategize, and we grow alongside you. Our team of specialists handles everything from ads and content to full AI automation buildouts.</p>
-        <a href="#contact" class="btn-primary">Work With Us</a>
-      </div>
-      <div class="team">
-        <div class="team-member">
-          <div class="avatar">KF</div>
-          <strong>Kevin Freeland</strong>
-          <span>CEO & Founder</span>
-        </div>
-        <div class="team-member">
-          <div class="avatar">JA</div>
-          <strong>Joshua Archer</strong>
-          <span>Creative Design</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  </main>
 
-  <!-- CTA / CONTACT -->
-  <section class="section cta-section" id="contact">
-    <div class="container cta-inner">
-      <h2>Ready to Grow Your Business?</h2>
-      <p>Book a free consultation and let's map out a strategy built around your goals.</p>
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <input type="text" placeholder="Your Name" required />
-          <input type="text" placeholder="Business Name" required />
-        </div>
-        <div class="form-row">
-          <input type="email" placeholder="Email Address" required />
-          <input type="tel" placeholder="Phone Number" />
-        </div>
-        <select>
-          <option value="" disabled selected>What are you interested in?</option>
-          <option>Social Media Management</option>
-          <option>Paid Ads (Meta/Google)</option>
-          <option>Freeland Automation</option>
-          <option>Website Build</option>
-          <option>Full Service Package</option>
-          <option>Other</option>
-        </select>
-        <textarea placeholder="Tell us about your business and goals..." rows="4"></textarea>
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
-      <div class="social-links">
-        <a href="https://facebook.com" target="_blank">Facebook</a>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-inner">
       <div class="logo">FME</div>
-      <p>Freeland Marketing & Entertainment — Palm Coast, FL</p>
-      <p class="copyright">Copyright 2024–2026 Freeland Marketing & Entertainment. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#services">Services</a>
+        <a href="#automation">Automation</a>
+        <a href="#results">Results</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p>Freeland Marketing &amp; Entertainment — Palm Coast, FL</p>
+      <p>📧 <a href="mailto:kevin@freelandme.com">kevin@freelandme.com</a></p>
+      <p class="copyright">Copyright 2024–2026 Freeland Marketing &amp; Entertainment. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- ===== FLOATING CTA ===== -->
+  <a href="#contact" class="float-cta" aria-label="Book free consultation">Book Free Call</a>
+
   <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      alert("Thanks! We'll be in touch shortly.");
-      e.target.reset();
+    // Mobile menu
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('open');
     }
+
+    // FAQ accordion keyboard support
+    document.querySelectorAll('.faq-item summary').forEach(s => {
+      s.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          s.parentElement.toggleAttribute('open');
+        }
+      });
+    });
+
+    // Form submission — falls back to mailto if Formspree not configured
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      const action = this.action;
+      if (action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const business = document.getElementById('business').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        const body = `Name: ${name}%0ABusiness: ${business}%0AEmail: ${email}%0APhone: ${phone}%0AService: ${service}%0A%0AMessage:%0A${message}`;
+        window.location.href = `mailto:kevin@freelandme.com?subject=New Website Lead - ${business}&body=${body}`;
+      }
+    });
+
+    // Scroll-based float CTA visibility
+    const floatBtn = document.querySelector('.float-cta');
+    window.addEventListener('scroll', () => {
+      floatBtn.classList.toggle('visible', window.scrollY > 400);
+    });
   </script>
 
 </body>
