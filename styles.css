@@ -656,9 +656,25 @@ blockquote {
   flex-shrink: 0;
   border: 2px solid rgba(0,51,160,0.3);
   box-shadow: 0 0 0 3px rgba(0,51,160,0.1);
+  background: var(--navy2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.client-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.client-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.client-initials {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--blue), var(--blue-light));
+}
 
 .client-info { display: flex; flex-direction: column; gap: 3px; }
 .client-info strong { font-weight: 700; color: var(--text); font-size: 0.95rem; }
