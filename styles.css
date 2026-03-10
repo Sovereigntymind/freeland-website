@@ -75,57 +75,79 @@ body {
 
 /* ===== NAV ===== */
 header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1100px;
   z-index: 100;
+  background: rgba(5, 9, 26, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+header.scrolled {
   background: rgba(5,9,26,0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.5);
 }
 
 .nav-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 70px;
+  padding: 0 28px;
+  height: 62px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo img { height: 42px; width: auto; display: block; }
+.logo img { height: 38px; width: auto; display: block; }
 .logo { text-decoration: none; }
 
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .nav-links a {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.6);
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 500;
   transition: color 0.2s;
+  position: relative;
 }
 
-.nav-links a:hover { color: var(--white); }
+.nav-links a:not(.btn-nav)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.nav-links a:not(.btn-nav):hover { color: var(--white); }
+.nav-links a:not(.btn-nav):hover::after { transform: scaleX(1); }
 
 .btn-nav {
-  background: var(--red) !important;
+  background: linear-gradient(135deg, var(--red), #8b0022) !important;
   color: var(--white) !important;
   padding: 9px 22px;
   border-radius: 100px !important;
   font-weight: 700 !important;
+  font-size: 0.85rem !important;
   box-shadow: 0 4px 20px var(--red-glow);
   transition: transform 0.2s, box-shadow 0.2s !important;
 }
 
 .btn-nav:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1px) !important;
   box-shadow: 0 8px 28px var(--red-glow) !important;
 }
 
@@ -134,7 +156,7 @@ header {
   background: none;
   border: none;
   color: var(--white);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -147,6 +169,7 @@ header {
   border-top: 1px solid var(--glass-border);
   gap: 18px;
   backdrop-filter: blur(20px);
+  border-radius: 0 0 28px 28px;
 }
 
 .mobile-nav.open { display: flex; }
