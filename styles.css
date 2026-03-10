@@ -75,12 +75,11 @@ body {
 
 /* ===== NAV ===== */
 header {
-  position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: sticky;
+  top: 12px;
   width: calc(100% - 48px);
   max-width: 1100px;
+  margin: 12px auto 0;
   z-index: 100;
   background: rgba(5, 9, 26, 0.7);
   backdrop-filter: blur(24px);
