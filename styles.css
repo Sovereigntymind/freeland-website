@@ -676,6 +676,17 @@ blockquote {
   background: linear-gradient(135deg, var(--blue), var(--blue-light));
 }
 
+.client-logo {
+  background: #fff;
+  padding: 6px;
+}
+
+.client-logo img {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .client-info { display: flex; flex-direction: column; gap: 3px; }
 .client-info strong { font-weight: 700; color: var(--text); font-size: 0.95rem; }
 .client-info span { font-size: 0.8rem; color: #889; }
