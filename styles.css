@@ -155,9 +155,9 @@ header {
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
-  background: radial-gradient(ellipse at 30% 50%, rgba(0,51,160,0.3) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 20%, rgba(191,10,48,0.2) 0%, transparent 50%),
-              linear-gradient(160deg, #05091a 0%, #08122e 100%);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(5,9,26,0.55) 0%, rgba(5,9,26,0.82) 60%, rgba(5,9,26,0.97) 100%),
+    url('https://i0.wp.com/freelandme.com/wp-content/uploads/2026/02/background_home_85.jpg?w=1920&ssl=1') center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,6 +188,14 @@ header {
 }
 
 .hero-content { position: relative; max-width: 880px; }
+
+.hero-logo {
+  width: min(520px, 80vw);
+  height: auto;
+  margin: 0 auto 32px;
+  display: block;
+  filter: drop-shadow(0 4px 32px rgba(0,0,0,0.6));
+}
 
 .badge {
   display: inline-flex;
