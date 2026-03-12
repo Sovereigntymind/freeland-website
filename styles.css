@@ -1161,6 +1161,10 @@ footer::before {
 .blog-card-img.bg-blue { background: linear-gradient(135deg, #001f6b 0%, var(--blue) 100%); }
 .blog-card-img.bg-red { background: linear-gradient(135deg, #5a0015 0%, var(--red) 100%); }
 .blog-card-img.bg-navy { background: linear-gradient(135deg, var(--navy) 0%, #0d2255 100%); }
+.blog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.post-featured-img { max-width: 860px; margin: -32px auto 0; padding: 0 24px; }
+.post-featured-img img { width: 100%; height: 400px; object-fit: cover; border-radius: 20px; display: block; box-shadow: 0 32px 80px rgba(0,0,0,0.4); }
+@media (max-width: 768px) { .post-featured-img img { height: 220px; } }
 .blog-card-body { padding: 28px; display: flex; flex-direction: column; flex: 1; }
 .blog-category {
   color: var(--red);
