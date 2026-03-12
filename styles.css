@@ -74,7 +74,7 @@ body {
 }
 
 /* ===== NAV ===== */
-header {
+body > header {
   position: fixed;
   top: 16px;
   left: 50%;
@@ -90,7 +90,7 @@ header {
   transition: background 0.3s, box-shadow 0.3s;
 }
 
-header.scrolled {
+body > header.scrolled {
   background: rgba(5,9,26,0.92);
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
 }
