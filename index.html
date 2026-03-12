@@ -578,9 +578,10 @@
           <span>✓ Results within 30 days.</span>
         </div>
 
-        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
-          <input type="hidden" name="form-name" value="contact" />
-          <input type="hidden" name="bot-field" style="display:none" />
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+          <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
+          <input type="hidden" name="subject" value="New FME Website Lead" />
+          <input type="hidden" name="redirect" value="false" />
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name *</label>
