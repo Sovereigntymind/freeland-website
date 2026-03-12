@@ -81,7 +81,7 @@ header {
   transform: translateX(-50%);
   width: calc(100% - 48px);
   max-width: 1100px;
-  z-index: 100;
+  z-index: 200;
   background: rgba(5, 9, 26, 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
