@@ -578,10 +578,9 @@
           <span>✓ Results within 30 days.</span>
         </div>
 
-        <!-- Formspree form — sign up at formspree.io with kevin@freelandme.com and replace YOUR_FORM_ID -->
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
-          <input type="hidden" name="_subject" value="New FME Website Lead" />
-          <input type="hidden" name="_replyto" value="kevin@freelandme.com" />
+        <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" style="display:none" />
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your Name *</label>
@@ -680,21 +679,6 @@
       });
     });
 
-    // Form submission — falls back to mailto if Formspree not configured
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-      const action = this.action;
-      if (action.includes('YOUR_FORM_ID')) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const business = document.getElementById('business').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const service = document.getElementById('service').value;
-        const message = document.getElementById('message').value;
-        const body = `Name: ${name}%0ABusiness: ${business}%0AEmail: ${email}%0APhone: ${phone}%0AService: ${service}%0A%0AMessage:%0A${message}`;
-        window.location.href = `mailto:kevin@freelandme.com?subject=New Website Lead - ${business}&body=${body}`;
-      }
-    });
 
     // Scroll-based float CTA visibility
     const floatBtn = document.querySelector('.float-cta');
