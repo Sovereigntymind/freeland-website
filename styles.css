@@ -180,7 +180,7 @@ body > header.scrolled {
   min-height: 100vh;
   background:
     radial-gradient(ellipse at 50% 50%, rgba(5,9,26,0.55) 0%, rgba(5,9,26,0.82) 60%, rgba(5,9,26,0.97) 100%),
-    url('https://i0.wp.com/freelandme.com/wp-content/uploads/2026/02/background_home_85.jpg?w=1920&ssl=1') center center / cover no-repeat;
+    url('images/hero-bg.jpg') center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
