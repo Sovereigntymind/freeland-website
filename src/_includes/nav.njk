@@ -1,0 +1,28 @@
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<header>
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="Freeland Marketing & Entertainment Home">
+        <img src="/images/logo.webp" alt="Freeland Marketing & Entertainment" width="195" height="60" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#automation">Automation</a></li>
+        <li><a href="/#results">Results</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/blog/"{% if page.url == "/blog/" %} style="color:#fff;"{% endif %}>Blog</a></li>
+        <li><a href="/#contact" class="btn-nav">Free Consultation</a></li>
+      </ul>
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">&#9776;</button>
+    </div>
+    <ul class="mobile-nav" id="mobileNav">
+      <li><a href="/#services" onclick="toggleMenu()">Services</a></li>
+      <li><a href="/#automation" onclick="toggleMenu()">Automation</a></li>
+      <li><a href="/#results" onclick="toggleMenu()">Results</a></li>
+      <li><a href="/#faq" onclick="toggleMenu()">FAQ</a></li>
+      <li><a href="/blog/" onclick="toggleMenu()">Blog</a></li>
+      <li><a href="/#contact" onclick="toggleMenu()" class="btn-nav">Free Consultation</a></li>
+    </ul>
+  </nav>
+</header>
