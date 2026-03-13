@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://api.web3forms.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://i0.wp.com https://joetikicustoms.com https://palmcoastfarmersmarket.com data:; connect-src 'self' https://api.web3forms.com; form-action https://api.web3forms.com; frame-ancestors 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
