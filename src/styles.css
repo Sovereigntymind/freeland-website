@@ -204,6 +204,9 @@ body > header.scrolled {
   background:
     radial-gradient(ellipse at 50% 50%, rgba(5,9,26,0.55) 0%, rgba(5,9,26,0.82) 60%, rgba(5,9,26,0.97) 100%),
     url('images/hero-bg.jpg') center center / cover no-repeat;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(5,9,26,0.55) 0%, rgba(5,9,26,0.82) 60%, rgba(5,9,26,0.97) 100%),
+    image-set(url('images/hero-bg.webp') type('image/webp'), url('images/hero-bg.jpg') type('image/jpeg')) center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
