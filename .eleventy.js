@@ -2,6 +2,7 @@ const Image = require("@11ty/eleventy-img");
 const fs = require("fs");
 const CleanCSS = require("clean-css");
 const path = require("path");
+const sharp = require("sharp");
 
 module.exports = function(eleventyConfig) {
   // Pass through static files as-is
@@ -11,6 +12,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/_headers");
+  eleventyConfig.addPassthroughCopy("src/site.webmanifest");
 
   // After build: generate WebP images + minify CSS
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
@@ -60,6 +62,36 @@ module.exports = function(eleventyConfig) {
         filenameFormat: () => `${name}.webp`,
         sharpWebpOptions: { quality: 82 },
       });
+    }
+
+    // --- Generate favicons from logo ---
+    const logoSrc = "./src/images/logo.webp";
+    if (fs.existsSync(logoSrc)) {
+      const faviconSizes = [
+        { size: 512, name: "android-chrome-512x512" },
+        { size: 192, name: "android-chrome-192x192" },
+        { size: 180, name: "apple-touch-icon" },
+        { size: 32,  name: "favicon-32x32" },
+        { size: 16,  name: "favicon-16x16" },
+      ];
+      for (const { size, name } of faviconSizes) {
+        const padding = Math.round(size * 0.08);
+        const logoSize = size - padding * 2;
+        const logoBuffer = await sharp(logoSrc)
+          .resize(logoSize, logoSize, { fit: "inside", background: { r: 255, g: 255, b: 255, alpha: 255 } })
+          .png()
+          .toBuffer();
+        const meta = await sharp(logoBuffer).metadata();
+        const left = Math.floor((size - meta.width) / 2);
+        const top  = Math.floor((size - meta.height) / 2);
+        await sharp({
+          create: { width: size, height: size, channels: 4, background: { r: 255, g: 255, b: 255, alpha: 255 } },
+        })
+          .composite([{ input: logoBuffer, left, top }])
+          .png()
+          .toFile(path.join(out, `${name}.png`));
+      }
+      console.log("[11ty] Favicons generated from logo");
     }
 
     // --- Minify CSS ---
