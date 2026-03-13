@@ -6,7 +6,9 @@
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 40);
   });
   const floatBtn = document.querySelector('.float-cta');
-  window.addEventListener('scroll', () => {
-    floatBtn.classList.toggle('visible', window.scrollY > 400);
-  });
+  if (floatBtn) {
+    window.addEventListener('scroll', () => {
+      floatBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+  }
 </script>

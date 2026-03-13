@@ -1130,6 +1130,86 @@ footer::before {
   .cards { grid-template-columns: 1fr; }
 }
 
+/* ===== HOW IT WORKS ===== */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+  position: relative;
+}
+
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: calc(16.67% + 16px);
+  right: calc(16.67% + 16px);
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--red));
+  opacity: 0.15;
+}
+
+.process-step { text-align: center; padding: 0 16px; position: relative; }
+
+.step-num {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), #001f6b);
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 8px 32px var(--blue-glow);
+  position: relative;
+  z-index: 1;
+}
+
+.process-step h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.process-step p { font-size: 0.9rem; color: #778; line-height: 1.7; }
+
+/* ===== SERVICE AREAS ===== */
+.areas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 32px 0 40px;
+}
+
+.area-pill {
+  background: var(--white);
+  border: 1px solid rgba(0,30,100,0.1);
+  color: #445;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.area-pill:hover {
+  background: rgba(0,51,160,0.06);
+  border-color: rgba(0,51,160,0.2);
+  color: var(--blue);
+}
+
+.area-pill.home {
+  background: linear-gradient(135deg, var(--blue), #001f6b);
+  border-color: transparent;
+  color: var(--white);
+  box-shadow: 0 4px 16px var(--blue-glow);
+}
+
+@media (max-width: 768px) {
+  .process-steps { grid-template-columns: 1fr; gap: 40px; }
+  .process-steps::before { display: none; }
+}
+
 /* ===== BLOG INDEX ===== */
 .blog-hero {
   background: var(--navy);
