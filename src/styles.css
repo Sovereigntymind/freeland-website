@@ -1291,6 +1291,10 @@ footer::before {
   display: block;
 }
 .blog-card:hover .blog-card-title { color: var(--blue); }
+.blog-card--hidden { display: none; }
+.load-more-wrap { text-align: center; margin-top: 48px; }
+.load-more-btn { display: inline-block; background: transparent; border: 2px solid var(--blue); color: var(--blue); font-size: 1rem; font-weight: 700; padding: 14px 36px; border-radius: 50px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.load-more-btn:hover { background: var(--blue); color: #fff; }
 .blog-card-excerpt {
   font-size: 0.88rem;
   color: #778;
