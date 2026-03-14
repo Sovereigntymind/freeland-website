@@ -571,8 +571,9 @@ body > header.scrolled {
 .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
 .card p { font-size: 0.88rem; color: #778; line-height: 1.7; }
 
-.card.dark-card h3 { color: var(--white) !important; }
+.card.dark-card h3 { color: #ffffff !important; }
 .card.dark-card p { color: rgba(255,255,255,0.65) !important; }
+#automation .card h3 { color: #ffffff !important; }
 
 .automation-cta {
   text-align: center;
