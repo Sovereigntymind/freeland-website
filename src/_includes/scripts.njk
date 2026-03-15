@@ -1,6 +1,7 @@
 <script>
   function toggleMenu() {
     document.getElementById('mobileNav').classList.toggle('open');
+    document.querySelector('body > header').classList.toggle('menu-open');
   }
   window.addEventListener('scroll', () => {
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 40);
