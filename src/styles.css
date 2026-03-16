@@ -179,8 +179,9 @@ body > header.scrolled {
   background: none;
   border: none;
   color: var(--white);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   cursor: pointer;
+  padding: 8px;
 }
 
 .mobile-nav {
@@ -188,16 +189,33 @@ body > header.scrolled {
   list-style: none;
   flex-direction: column;
   background: rgba(5,9,26,0.98);
-  padding: 16px 28px 28px;
+  padding: 8px 20px 20px;
   border-top: 1px solid var(--glass-border);
-  gap: 18px;
+  gap: 0;
   backdrop-filter: blur(20px);
   border-radius: 0 0 28px 28px;
 }
 
 .mobile-nav.open { display: flex; }
 body > header.menu-open { border-radius: 28px; }
-.mobile-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 1rem; font-weight: 500; }
+.mobile-nav li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+.mobile-nav li:last-child { border-bottom: none; padding-top: 8px; }
+.mobile-nav a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: block;
+  padding: 14px 12px;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 12px;
+}
+.mobile-nav a:hover, .mobile-nav a:active { color: var(--white); background: rgba(255,255,255,0.05); }
+.mobile-nav .btn-nav {
+  display: block;
+  text-align: center;
+  margin-top: 4px;
+}
 
 /* ===== HERO ===== */
 .hero {
