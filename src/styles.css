@@ -105,20 +105,30 @@ body > header {
   width: calc(100% - 48px);
   max-width: 1100px;
   z-index: 9999;
-  background: rgba(5, 9, 26, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: transparent;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 100px;
   transition: background 0.3s, box-shadow 0.3s, border-radius 0.3s;
   overflow: hidden;
-  isolation: isolate;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+body > header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 9, 26, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: -1;
+  border-radius: inherit;
 }
 
 body > header.scrolled {
-  background: rgba(5,9,26,0.92);
   box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+}
+
+body > header.scrolled::before {
+  background: rgba(5,9,26,0.92);
 }
 
 .nav-inner {
@@ -198,7 +208,8 @@ body > header.scrolled {
 }
 
 .mobile-nav.open { display: flex; }
-body > header.menu-open { border-radius: 24px; background: rgba(5,9,26,0.98); }
+body > header.menu-open { border-radius: 24px; }
+body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .mobile-nav li { border-bottom: 1px solid rgba(255,255,255,0.06); }
 .mobile-nav li:last-child { border-bottom: none; padding-top: 8px; }
 .mobile-nav a {
