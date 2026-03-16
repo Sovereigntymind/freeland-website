@@ -5,6 +5,29 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Force trailing slashes to prevent Google "Redirect error" indexing issues
+# These only fire when no file exists at the from path (force defaults to false)
+[[redirects]]
+  from = "/blog"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/services/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/:splat/"
+  status = 301
+
+[[redirects]]
+  from = "/services/*"
+  to = "/services/:splat/"
+  status = 301
+
+# Fallback 404
 [[redirects]]
   from = "/*"
   to = "/404.html"
