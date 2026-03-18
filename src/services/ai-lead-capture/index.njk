@@ -1,0 +1,448 @@
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>24/7 AI Lead Capture &amp; Missed Call Recovery | Freeland Marketing</title>
+  <meta name="description" content="Stop losing leads after hours. AI-powered chatbots, voice agents, and SMS follow-up that capture, qualify, and book appointments 24/7. Businesses recover 20-40% more leads in month one." />
+  <meta name="keywords" content="AI lead capture, AI chatbot for small business, missed call recovery, after hours lead capture, AI answering service, AI receptionist small business, 24/7 lead capture, AI appointment booking" />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/services/ai-lead-capture/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/services/ai-lead-capture/" />
+  <meta property="og:title" content="24/7 AI Lead Capture &amp; Missed Call Recovery | Freeland Marketing" />
+  <meta property="og:description" content="Your business is losing leads every night, weekend, and lunch break. Our AI system answers calls, chats with visitors, and books appointments while you sleep." />
+  <meta property="og:image" content="https://freelandme.com/blog/images/service-ai-automation.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="624" />
+  <meta property="og:image:alt" content="AI Lead Capture and Missed Call Recovery for Small Businesses" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="24/7 AI Lead Capture &amp; Missed Call Recovery | Freeland Marketing" />
+  <meta name="twitter:description" content="Your business is losing leads after hours. Our AI answers calls, chats with visitors, and books appointments 24/7." />
+  <meta name="twitter:image" content="https://freelandme.com/blog/images/service-ai-automation.jpg" />
+  <meta name="twitter:image:alt" content="AI Lead Capture and Missed Call Recovery for Small Businesses" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "24/7 AI Lead Capture & Missed Call Recovery",
+    "provider": {
+      "@type": "MarketingAgency",
+      "name": "Freeland Marketing & Entertainment",
+      "url": "https://freelandme.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" }
+    },
+    "areaServed": "United States",
+    "description": "AI-powered lead capture system that answers calls, chats with website visitors, and books appointments 24/7 so small businesses never lose another lead after hours.",
+    "url": "https://freelandme.com/services/ai-lead-capture/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "AI Lead Capture", "item": "https://freelandme.com/services/ai-lead-capture/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many leads is my business losing after hours?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Studies show that small businesses miss 20-40% of potential leads outside business hours. For a business generating $50,000 per month in revenue, that can translate to $10,000-$20,000 in lost monthly income from inquiries that go unanswered after 5pm, on weekends, or during busy periods." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does AI lead capture work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We install an AI-powered system on your website and phone line that responds to every inquiry instantly — day or night. It answers questions about your services, qualifies leads by asking the right questions, and books appointments directly into your calendar. You get a daily summary of every lead captured." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will customers know they are talking to AI?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The AI is trained on your specific business information so it answers accurately and naturally. Most customers appreciate getting an instant response rather than leaving a voicemail and hoping someone calls back. The system can also hand off to a human team member during business hours if needed." }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can you set this up?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses are fully set up within 5-7 business days. We handle all the technical configuration, train the AI on your business details, test it thoroughly, and go live once you approve. Many clients start seeing recovered leads within the first week." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the ROI on AI lead capture?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Businesses using AI lead capture see an average 148-200% return on investment in the first year. Most clients pay back the setup cost within 3-6 months just from leads they were previously losing. The system typically costs less than one-tenth of hiring an additional staff member." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
+      border: 1px solid rgba(0, 123, 255, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-card .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .stat-label {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .pricing-card.featured {
+      border-color: var(--blue);
+      background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
+      position: relative;
+    }
+    .pricing-card.featured::before {
+      content: "Most Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blue);
+      color: #fff;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pricing-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-card .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin: 0.75rem 0 0.25rem;
+    }
+    .pricing-card .price-sub {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    .pricing-card .setup {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .pricing-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      text-align: left;
+    }
+    .pricing-card li {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .pricing-card li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .pain-list {
+      list-style: none;
+      padding: 0;
+    }
+    .pain-list li {
+      padding: 0.6rem 0 0.6rem 2rem;
+      position: relative;
+      font-size: 1.05rem;
+    }
+    .pain-list li::before {
+      content: "\2717";
+      position: absolute;
+      left: 0;
+      color: #e74c3c;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .industry-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .industry-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #fff;
+    }
+    .industry-item span {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/services/" class="post-breadcrumb">&larr; All Services</a>
+        <span class="blog-category">Service</span>
+        <h1>Your Business Is Losing Leads Right Now. We Fix That.</h1>
+        <div class="post-meta">
+          <span>By <strong>Freeland Marketing &amp; Entertainment</strong></span>
+          <span>Palm Coast, FL</span>
+          <span>Serving Businesses Nationwide</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-featured-img">
+      <picture>
+        <img src="/blog/images/service-ai-automation.jpg" alt="24/7 AI lead capture system for small businesses — never miss another lead" width="860" height="480" />
+      </picture>
+    </div>
+
+    <div class="post-body">
+
+      <p style="font-size:1.15rem;line-height:1.7;">A customer visits your website at 9pm. Nobody is there to answer. They leave. A homeowner calls your business on Saturday morning. It goes to voicemail. They call the next company on Google. A lead fills out your contact form on Sunday. By Monday when you respond, they have already hired someone else.</p>
+
+      <p><strong>This is happening to your business every single week.</strong> And every missed inquiry is revenue going straight to your competitor.</p>
+
+      <h2>The Problem No One Talks About</h2>
+
+      <ul class="pain-list">
+        <li>62% of calls to small businesses go unanswered during busy hours and after 5pm</li>
+        <li>Leads that wait more than 5 minutes for a response are 21x less likely to convert</li>
+        <li>A business doing $50K/month is losing an estimated $10,000-$20,000 in revenue from missed after-hours inquiries</li>
+        <li>Hiring a receptionist costs $35,000-$45,000/year — and they still only work 40 hours a week</li>
+        <li>Your website gets traffic at night and on weekends when nobody is there to convert it</li>
+      </ul>
+
+      <p>You are already paying for the marketing that drives these leads to you — ads, SEO, social media, word of mouth. But if no one is there to catch them when they arrive, that marketing spend is wasted.</p>
+
+      <h2>What Our AI Lead Capture System Does</h2>
+
+      <p>We install an AI-powered system that works across your website, phone line, and SMS — answering every inquiry instantly, qualifying leads automatically, and booking appointments directly into your calendar. It works 24 hours a day, 7 days a week, 365 days a year.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">20-40%</div>
+          <div class="stat-label">More leads captured in the first month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">200%</div>
+          <div class="stat-label">Increase in after-hours appointment bookings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10x</div>
+          <div class="stat-label">Less expensive than hiring additional staff</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3-6 mo</div>
+          <div class="stat-label">Average payback period from recovered revenue</div>
+        </div>
+      </div>
+
+      <h2>How It Works</h2>
+
+      <ol>
+        <li><strong>Website AI chatbot</strong> — a trained assistant on your website that greets visitors, answers questions about your services and pricing, captures contact information, and books appointments — all in a natural conversation</li>
+        <li><strong>AI phone answering</strong> — missed calls are answered by an AI voice agent that sounds natural, answers common questions, captures caller details, and can transfer to you when available</li>
+        <li><strong>SMS lead follow-up</strong> — every lead that comes in gets an instant text confirmation and follow-up sequence so they stay engaged until you can connect personally</li>
+        <li><strong>Automatic appointment booking</strong> — the AI checks your real-time calendar availability and books appointments without any back-and-forth</li>
+        <li><strong>Daily lead summary</strong> — every morning you get a report of every lead captured overnight, every conversation that happened, and every appointment booked</li>
+      </ol>
+
+      <p>Your AI assistant is trained specifically on your business — your services, your pricing, your hours, your FAQs. It does not give generic answers. It represents your business the way you would.</p>
+
+      <div class="post-callout">
+        <p>"We set up an AI assistant for a bed and breakfast with 7 rooms. Phone calls dropped dramatically because the AI handled booking inquiries, room questions, and availability checks instantly — at a fraction of the cost of front desk staff."</p>
+      </div>
+
+      <h2>Industries We Serve</h2>
+
+      <div class="industry-grid">
+        <div class="industry-item">
+          <strong>Contractors &amp; Home Services</strong>
+          <span>Capture calls while you are on the job site. Book estimates automatically.</span>
+        </div>
+        <div class="industry-item">
+          <strong>Dental &amp; Medical Practices</strong>
+          <span>200%+ increase in after-hours appointment bookings.</span>
+        </div>
+        <div class="industry-item">
+          <strong>Real Estate</strong>
+          <span>35% more qualified leads, 25% lower cost per lead.</span>
+        </div>
+        <div class="industry-item">
+          <strong>Restaurants &amp; Hospitality</strong>
+          <span>Handle reservation inquiries and event bookings 24/7.</span>
+        </div>
+        <div class="industry-item">
+          <strong>Law Firms</strong>
+          <span>Qualify potential clients and book consultations after hours.</span>
+        </div>
+        <div class="industry-item">
+          <strong>Salons &amp; Spas</strong>
+          <span>Fill appointment slots around the clock without phone tag.</span>
+        </div>
+      </div>
+
+      <h2>Pricing</h2>
+
+      <p>Transparent pricing. No long-term contracts. Cancel anytime.</p>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <p style="font-size:0.9rem;color:#aaa;margin-bottom:0;">Website lead capture</p>
+          <div class="price">$199<span style="font-size:0.9rem;font-weight:400;">/mo</span></div>
+          <div class="price-sub">billed monthly</div>
+          <div class="setup">$500 one-time setup</div>
+          <ul>
+            <li>AI chatbot on your website</li>
+            <li>Lead qualification questions</li>
+            <li>Contact info capture</li>
+            <li>Email notifications for new leads</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <a href="/#contact" class="btn-primary" style="display:block;text-align:center;">Get Started &rarr;</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <h3>Growth</h3>
+          <p style="font-size:0.9rem;color:#aaa;margin-bottom:0;">Chat + phone + SMS</p>
+          <div class="price">$399<span style="font-size:0.9rem;font-weight:400;">/mo</span></div>
+          <div class="price-sub">billed monthly</div>
+          <div class="setup">$1,000 one-time setup</div>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>AI phone answering agent</li>
+            <li>SMS lead follow-up sequences</li>
+            <li>Automatic appointment booking</li>
+            <li>Calendar integration</li>
+            <li>Daily lead summary emails</li>
+          </ul>
+          <a href="/#contact" class="btn-primary" style="display:block;text-align:center;">Get Started &rarr;</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Premium</h3>
+          <p style="font-size:0.9rem;color:#aaa;margin-bottom:0;">Full AI front desk</p>
+          <div class="price">$599<span style="font-size:0.9rem;font-weight:400;">/mo</span></div>
+          <div class="price-sub">billed monthly</div>
+          <div class="setup">$1,500 one-time setup</div>
+          <ul>
+            <li>Everything in Growth</li>
+            <li>CRM integration &amp; lead tracking</li>
+            <li>Custom AI training on your business</li>
+            <li>Multi-location support</li>
+            <li>Analytics dashboard</li>
+            <li>Priority support</li>
+            <li>Quarterly optimization reviews</li>
+          </ul>
+          <a href="/#contact" class="btn-primary" style="display:block;text-align:center;">Get Started &rarr;</a>
+        </div>
+
+      </div>
+
+      <p style="text-align:center;color:#888;font-size:0.9rem;margin-top:1rem;">All plans include setup, training, and ongoing AI updates. No long-term contracts.</p>
+
+      <h2>Why Freeland Marketing</h2>
+
+      <p>We do not just hand you a chatbot and disappear. We design the entire lead capture system around how your specific business works — your services, your booking flow, your customer questions. We set it up, train the AI on your business, test it, and go live. Then we monitor performance and optimize it every month.</p>
+
+      <p>This connects directly to our full marketing ecosystem. Leads from <a href="/services/google-ads-management/">Google Ads</a> and <a href="/services/seo/">SEO</a> flow into the AI system. Captured leads are fed into <a href="/services/lead-nurturing/">nurturing sequences</a> and <a href="/services/crm-automation/">CRM automation</a>. The result is a complete pipeline from first click to booked appointment — with no gaps where leads fall through.</p>
+
+      <h2>The Math Is Simple</h2>
+
+      <p>If your average customer is worth $500 and the AI system captures just 5 additional leads per month that you were previously losing, that is $2,500 in recovered monthly revenue — from a system that costs $199-$599/month. Most businesses see payback within 3-6 months and the ROI only grows from there.</p>
+
+      <div class="post-callout">
+        <p>"Speed to lead is one of the highest-leverage variables in business. Companies that respond within 5 minutes are 21x more likely to qualify a lead than those that respond in 30 minutes. AI makes your business the fastest responder every single time."</p>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>How many leads is my business actually losing?</h3>
+      <p>Most small businesses lose 20-40% of potential leads from after-hours inquiries, slow response times, and missed calls during busy periods. We can analyze your current traffic and call volume to give you a specific estimate during a free consultation.</p>
+
+      <h3>Will customers know they are talking to AI?</h3>
+      <p>The AI is trained on your specific business information and responds naturally. Most customers prefer getting an instant, helpful response over leaving a voicemail and waiting. The system can hand off to a human team member at any time during business hours.</p>
+
+      <h3>How fast is the setup?</h3>
+      <p>Most businesses are fully live within 5-7 business days. We handle all configuration, AI training, testing, and deployment. Many clients start capturing recovered leads within the first week.</p>
+
+      <h3>What if I already have a website chatbot?</h3>
+      <p>Most generic chatbots are decision-tree bots that frustrate visitors. Our AI is conversational — it understands questions, gives real answers about your business, and guides visitors to take action. It replaces basic chatbots with something that actually converts.</p>
+
+      <h3>Do I need to be technical?</h3>
+      <p>Not at all. We handle all the technical setup and management. You just tell us about your business, approve the AI responses, and start receiving leads.</p>
+
+      <h2>Nationwide Service</h2>
+
+      <p>Headquartered in <strong>Palm Coast, FL</strong> and serving businesses across all 50 states. Every system is set up, managed, and optimized remotely — no matter your industry or location.</p>
+
+      <div class="post-cta-box">
+        <h3>Find Out How Many Leads You Are Losing</h3>
+        <p>Book a free 15-minute consultation. We will look at your current website traffic, call patterns, and response times — then show you exactly how many leads the AI system would recover for your business.</p>
+        <a href="/#contact" class="btn-primary btn-large">Book My Free Consultation &rarr;</a>
+      </div>
+
+      <p style="margin-top:2rem;">Related: <a href="/services/call-center-booking-automation/">Call-Center &amp; Booking Automation</a> | <a href="/services/ai-automation/">AI Automation Services</a> | <a href="/services/lead-nurturing/">Lead Nurturing Sequences</a></p>
+
+    </div>
+
+  </article>
+
+{% endblock %}
