@@ -1,0 +1,222 @@
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>About Freeland Marketing &amp; Entertainment | Kevin Freeland, CEO</title>
+  <meta name="description" content="Meet Kevin Freeland, founder and CEO of Freeland Marketing & Entertainment. Full-service marketing and AI automation agency headquartered in Palm Coast, FL — serving businesses nationwide." />
+  <meta name="keywords" content="Kevin Freeland, Freeland Marketing, marketing agency Palm Coast, AI automation agency, about Freeland Marketing" />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/about/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/about/" />
+  <meta property="og:title" content="About Freeland Marketing &amp; Entertainment | Kevin Freeland" />
+  <meta property="og:description" content="Full-service marketing and AI automation agency. Meet the team behind the results." />
+  <meta property="og:image" content="https://freelandme.com/images/kevin-headshot.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:alt" content="Kevin Freeland — Founder and CEO of Freeland Marketing and Entertainment" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Freeland Marketing &amp; Entertainment" />
+  <meta name="twitter:description" content="Full-service marketing and AI automation agency. Meet the team behind the results." />
+  <meta name="twitter:image" content="https://freelandme.com/images/kevin-headshot.jpg" />
+  <meta name="twitter:image:alt" content="Kevin Freeland — Founder and CEO" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Freeland Marketing & Entertainment",
+    "url": "https://freelandme.com/about/",
+    "mainEntity": {
+      "@type": "MarketingAgency",
+      "name": "Freeland Marketing & Entertainment",
+      "url": "https://freelandme.com",
+      "email": "kevin@freelandme.com",
+      "telephone": "+1-954-937-2510",
+      "foundingDate": "2024",
+      "founder": {
+        "@type": "Person",
+        "name": "Kevin Freeland",
+        "jobTitle": "CEO & Founder",
+        "image": "https://freelandme.com/images/kevin-headshot.jpg"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Palm Coast",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "areaServed": "United States",
+      "description": "Full-service digital marketing and AI automation agency serving businesses nationwide.",
+      "sameAs": [
+        "https://facebook.com/FreelandMarketingandEntertainment",
+        "https://instagram.com/freelandmarketing"
+      ]
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://freelandme.com/about/" }
+    ]
+  }
+  </script>
+
+  <style>
+    .about-founder {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin: 2rem 0;
+    }
+    .about-founder img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--blue);
+    }
+    .about-values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .value-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .value-card p {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .about-founder {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .about-founder img {
+        margin: 0 auto;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/" class="post-breadcrumb">&larr; Back to Home</a>
+        <h1>About Freeland Marketing &amp; Entertainment</h1>
+        <div class="post-meta">
+          <span>Headquartered in <strong>Palm Coast, FL</strong></span>
+          <span>Serving Businesses Nationwide</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <div class="about-founder">
+        <img src="/images/kevin-headshot.webp" alt="Kevin Freeland — CEO and Founder of Freeland Marketing and Entertainment" width="200" height="200" />
+        <div>
+          <h2 style="margin-top:0;">Kevin Freeland, CEO &amp; Founder</h2>
+          <p>Kevin Freeland started Freeland Marketing &amp; Entertainment with a straightforward belief: small businesses deserve the same quality marketing that big companies get — without the big company price tag.</p>
+          <p>Based in Palm Coast, Florida, Kevin works directly with every client. There is no account manager buffer, no junior team running your campaigns. When you hire Freeland Marketing, you work with Kevin and his team personally.</p>
+        </div>
+      </div>
+
+      <h2>What We Do</h2>
+
+      <p>We are a full-service digital marketing and AI automation agency. That means we handle everything a business needs to get found online, generate leads, and convert them into paying customers — all under one roof.</p>
+
+      <ul>
+        <li><a href="/services/social-media-management/">Social media management</a> — content, scheduling, community management</li>
+        <li><a href="/services/meta-ads/">Meta Ads</a> and <a href="/services/google-ads-management/">Google Ads</a> — paid campaigns that drive leads</li>
+        <li><a href="/services/seo/">SEO</a> — local and organic search that compounds over time</li>
+        <li><a href="/services/website-design/">Website design</a> — fast, mobile-first sites built to convert</li>
+        <li><a href="/services/ai-automation/">AI automation</a> — CRM, email, booking, and lead nurturing systems that run 24/7</li>
+        <li><a href="/services/ai-lead-capture/">24/7 AI lead capture</a> — chatbots, AI phone answering, and SMS follow-up so you never miss a lead</li>
+        <li><a href="/services/ai-consulting/">AI consulting</a> — strategic guidance for businesses ready to integrate AI into operations</li>
+      </ul>
+
+      <p>See all of our services on the <a href="/services/">services page</a>.</p>
+
+      <h2>How We Are Different</h2>
+
+      <div class="about-values">
+        <div class="value-card">
+          <h3>No Long-Term Contracts</h3>
+          <p>We earn your business every month. If we are not delivering results, you are free to leave. That is how confident we are in what we do.</p>
+        </div>
+        <div class="value-card">
+          <h3>Direct Access to the Team</h3>
+          <p>You will never be passed off to a junior account manager. Kevin and his team work directly with you — every call, every strategy session, every campaign.</p>
+        </div>
+        <div class="value-card">
+          <h3>AI-Powered, Human-Led</h3>
+          <p>We use AI and automation to deliver faster, smarter results at lower cost. But every strategy, every decision, and every client relationship is led by a human who understands your business.</p>
+        </div>
+        <div class="value-card">
+          <h3>Results You Can Measure</h3>
+          <p>We do not hide behind vanity metrics. You will see exactly what is working, what is not, and where your money is going. Full transparency, always.</p>
+        </div>
+      </div>
+
+      <h2>Who We Work With</h2>
+
+      <p>We serve businesses of every size — from solo contractors and local restaurants to multi-location companies and growing brands. Our clients span all 50 states, though we are proudly headquartered in Palm Coast, FL.</p>
+
+      <p>Industries we work with include restaurants, home services, healthcare, real estate, e-commerce, professional services, hospitality, and more. If you sell a product or service, we can help you get more customers.</p>
+
+      <h2>Our Track Record</h2>
+
+      <ul>
+        <li>Clients across multiple states and industries</li>
+        <li>Over 100,000 social media impressions generated for clients</li>
+        <li>Websites, ad campaigns, and automation systems built and running</li>
+        <li>5.0 rating on Google Business Profile</li>
+      </ul>
+
+      <div class="post-callout">
+        <p>"We treat every client's business like it is our own. That means no wasted spend, no fluff reports, and no excuses — just the work that moves the needle."</p>
+        <p style="margin-bottom:0;color:#888;">— Kevin Freeland</p>
+      </div>
+
+      <h2>Get In Touch</h2>
+
+      <p>Ready to talk about what marketing and automation can do for your business? We offer a free strategy call where we will look at your current marketing, identify the biggest opportunities, and show you exactly what we would do differently.</p>
+
+      <div class="post-cta-box">
+        <h3>Book Your Free Strategy Call</h3>
+        <p>No commitment, no pressure. Just a conversation about your business and how we can help it grow.</p>
+        <a href="/#contact" class="btn-primary btn-large">Book My Free Call &rarr;</a>
+      </div>
+
+      <p style="margin-top:2rem;text-align:center;">
+        <a href="mailto:kevin@freelandme.com">kevin@freelandme.com</a> &nbsp;|&nbsp; <a href="tel:+19549372510">(954) 937-2510</a>
+      </p>
+
+    </div>
+
+  </article>
+
+{% endblock %}

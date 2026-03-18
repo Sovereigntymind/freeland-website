@@ -1021,6 +1021,9 @@ footer::before {
 
 .footer-inner p { color: rgba(255,255,255,0.25); font-size: 0.85rem; margin-top: 8px; }
 .footer-inner a { color: #6da4ff; text-decoration: none; }
+.footer-legal { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.footer-legal a { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-legal a:hover { color: #6da4ff; }
 .copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.12) !important; }
 
 /* ===== FLOATING CTA ===== */
