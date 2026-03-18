@@ -457,6 +457,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 /* ===== SECTIONS ===== */
 .section { padding: 100px 24px; }
 .section.dark { background: var(--navy); }
+.section.dark p, .section.dark .section-sub { color: rgba(255,255,255,0.7); }
 .light-section { background: var(--off-white); }
 
 .container { max-width: 1200px; margin: 0 auto; }
