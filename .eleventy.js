@@ -33,6 +33,8 @@ module.exports = function(eleventyConfig) {
       "uVngk6c7sVd-Q6tonUrYt_n9krfwnk",
       "yu7WKtk0fUDgXGX8Kky57_FqhbhiXz",
       "zuR-VhB_CZ7bebLicgx0K_gW0zliSk",
+      "what-is-a-crm",
+      "crm-automation-florida",
     ];
 
     const imgOutDir = path.join(out, "images");

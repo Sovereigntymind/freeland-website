@@ -582,6 +582,9 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 }
 
 .card:hover::before { opacity: 1; }
+.card { cursor: pointer; }
+.card a[href*="/services/"] { position: static; }
+.card a[href*="/services/"]::after { content: ''; position: absolute; inset: 0; }
 
 .dark-card {
   background: rgba(255,255,255,0.03);
@@ -1428,6 +1431,35 @@ footer::before {
 .post-body strong { color: var(--text); }
 .post-body a { color: var(--blue); text-decoration: none; font-weight: 600; }
 .post-body a:hover { text-decoration: underline; }
+/* Light-background overrides for forms and FAQs inside post-body */
+.post-body .contact-form input,
+.post-body .contact-form select,
+.post-body .contact-form textarea {
+  background: var(--off-white);
+  border: 1px solid #ddd;
+  color: var(--text);
+  backdrop-filter: none;
+}
+.post-body .contact-form input::placeholder,
+.post-body .contact-form textarea::placeholder { color: #999; }
+.post-body .contact-form select { color: #666; }
+.post-body .contact-form select option { color: var(--text); background: #fff; }
+.post-body .contact-form input:focus,
+.post-body .contact-form select:focus,
+.post-body .contact-form textarea:focus {
+  border-color: var(--blue);
+  background: #fff;
+}
+.post-body .form-group label { color: #445; }
+.post-body .form-note { color: var(--gray); }
+.post-body .btn-primary { color: #fff; }
+
+.post-body .faq-item { background: var(--off-white); border: 1px solid #e0e0e8; backdrop-filter: none; }
+.post-body .faq-item[open] { background: #eef1f8; border-color: var(--blue); }
+.post-body .faq-item summary { color: var(--text); }
+.post-body .faq-item p { color: #445; }
+.post-body .faq-item strong { color: var(--text); }
+
 .post-callout {
   background: linear-gradient(135deg, rgba(0,51,160,0.06), rgba(191,10,48,0.04));
   border-left: 4px solid var(--blue);
