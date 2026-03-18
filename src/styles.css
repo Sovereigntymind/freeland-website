@@ -347,7 +347,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
   margin-bottom: 24px;
 }
 
-.hero-footnote { color: rgba(255,255,255,0.25); font-size: 0.82rem; }
+.hero-footnote { color: rgba(255,255,255,0.45); font-size: 0.82rem; }
 
 /* ===== WAVE DIVIDERS ===== */
 .wave { line-height: 0; display: block; }
@@ -945,7 +945,7 @@ blockquote {
 }
 
 .contact-form input::placeholder,
-.contact-form textarea::placeholder { color: rgba(255,255,255,0.2); }
+.contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
 .contact-form select { color: rgba(255,255,255,0.35); }
 .contact-form select option { color: var(--white); background: #0d1a3a; }
 
@@ -957,7 +957,7 @@ blockquote {
   background: rgba(255,255,255,0.07);
 }
 
-.form-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.22); margin-top: -4px; }
+.form-note { text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: -4px; }
 
 .contact-alt {
   margin-top: 44px;
@@ -991,7 +991,7 @@ blockquote {
 .fb-link:hover { color: #1877F2; }
 .ig-link:hover { color: #E1306C; }
 .footer-social { display: flex; gap: 20px; justify-content: center; margin: 16px 0; }
-.footer-social .social-icon { color: rgba(255,255,255,0.25); transition: color 0.2s; }
+.footer-social .social-icon { color: rgba(255,255,255,0.45); transition: color 0.2s; }
 
 /* ===== FOOTER ===== */
 footer {
@@ -1021,15 +1021,15 @@ footer::before {
   margin: 20px 0;
 }
 
-.footer-nav a { color: rgba(255,255,255,0.28); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-nav a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-nav a:hover { color: #6da4ff; }
 
-.footer-inner p { color: rgba(255,255,255,0.25); font-size: 0.85rem; margin-top: 8px; }
+.footer-inner p { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 8px; }
 .footer-inner a { color: #6da4ff; text-decoration: none; }
 .footer-legal { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
-.footer-legal a { color: rgba(255,255,255,0.2); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+.footer-legal a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
 .footer-legal a:hover { color: #6da4ff; }
-.copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.12) !important; }
+.copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.35) !important; }
 
 /* ===== FLOATING CTA ===== */
 .float-cta {
