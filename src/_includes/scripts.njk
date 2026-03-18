@@ -3,13 +3,20 @@
     document.getElementById('mobileNav').classList.toggle('open');
     document.querySelector('body > header').classList.toggle('menu-open');
   }
-  window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 40);
-  });
-  const floatBtn = document.querySelector('.float-cta');
-  if (floatBtn) {
-    window.addEventListener('scroll', () => {
-      floatBtn.classList.toggle('visible', window.scrollY > 400);
+  (function() {
+    var ticking = false;
+    var header = document.querySelector('header');
+    var floatBtn = document.querySelector('.float-cta');
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var y = window.scrollY;
+          header.classList.toggle('scrolled', y > 40);
+          if (floatBtn) floatBtn.classList.toggle('visible', y > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
-  }
+  })();
 </script>
