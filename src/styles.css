@@ -982,6 +982,8 @@ blockquote {
   transition: color 0.2s;
 }
 
+.social-links .social-icon svg { width: 28px; height: 28px; display: block; }
+
 .social-icon svg { width: 28px; height: 28px; display: block; }
 .fb-link:hover { color: #1877F2; }
 .ig-link:hover { color: #E1306C; }
