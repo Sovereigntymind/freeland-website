@@ -1,0 +1,269 @@
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>SEO Client Intake Form | Freeland Marketing</title>
+  <meta name="description" content="New client intake form for Freeland Marketing SEO services. Provide your business details so we can build your custom SEO plan." />
+  <meta name="author" content="Kevin Freeland" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://freelandme.com/seo-intake/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/seo-intake/" />
+  <meta property="og:title" content="SEO Client Intake Form | Freeland Marketing" />
+  <meta property="og:description" content="New client intake form for Freeland Marketing SEO services." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SEO Client Intake Form | Freeland Marketing" />
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/services/seo/" class="post-breadcrumb">&larr; Back to SEO Services</a>
+        <h1>SEO Client Intake Form</h1>
+        <p style="color:#ccc;margin-top:0.75rem;font-size:1.05rem;">Thank you for choosing Freeland Marketing for your SEO. Please fill out this form so we can build your custom plan. It takes about 5 minutes.</p>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="intake-form">
+        <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
+        <input type="hidden" name="subject" value="New SEO Client Intake" />
+        <input type="hidden" name="redirect" value="https://freelandme.com/thank-you.html" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <!-- Business Information -->
+        <h2 style="font-size:1.3rem;margin-top:0;">Business Information</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="business_name">Business Name *</label>
+            <input type="text" id="business_name" name="business_name" required />
+          </div>
+          <div class="form-group">
+            <label for="website_url">Website URL *</label>
+            <input type="url" id="website_url" name="website_url" placeholder="https://yourbusiness.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="industry">Industry *</label>
+            <input type="text" id="industry" name="industry" placeholder="e.g. Plumbing, Restaurant, Real Estate" required />
+          </div>
+          <div class="form-group">
+            <label for="year_founded">Year Founded</label>
+            <input type="text" id="year_founded" name="year_founded" placeholder="e.g. 2018" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="locations">Location(s)</label>
+          <input type="text" id="locations" name="locations" placeholder="e.g. Palm Coast, FL / Multiple locations" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact_name">Primary Contact Name *</label>
+            <input type="text" id="contact_name" name="contact_name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="phone" placeholder="(386) 555-0100" required autocomplete="tel" />
+        </div>
+
+        <!-- About Your Business -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">About Your Business</h2>
+
+        <div class="form-group">
+          <label for="business_description">What does your business do?</label>
+          <textarea id="business_description" name="business_description" rows="3" placeholder="Describe your products or services..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="ideal_customer">Who is your ideal customer?</label>
+          <textarea id="ideal_customer" name="ideal_customer" rows="2" placeholder="e.g. Homeowners aged 30-55 in the Palm Coast area"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="geographic_area">Geographic area served</label>
+          <select id="geographic_area" name="geographic_area">
+            <option value="" disabled selected>Select one...</option>
+            <option>Local (single city or county)</option>
+            <option>Regional (multi-city or state)</option>
+            <option>National</option>
+            <option>International</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="competitors">Top 3 competitors</label>
+          <textarea id="competitors" name="competitors" rows="3" placeholder="List competitor names or websites"></textarea>
+        </div>
+
+        <!-- Current Marketing -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">Current Marketing</h2>
+
+        <div class="form-group">
+          <label>What marketing are you currently doing? (check all that apply)</label>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem;">
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Social media posting" /> Social media posting</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Google Ads" /> Google Ads</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Facebook/Instagram ads" /> Facebook/Instagram ads</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Email marketing" /> Email marketing</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Blog/content" /> Blog/content</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="SEO (previous or current)" /> SEO (previous or current)</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="Google Business Profile" /> Google Business Profile</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="marketing[]" value="None of the above" /> None of the above</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="previous_seo">Have you worked with an SEO company before?</label>
+            <select id="previous_seo" name="previous_seo">
+              <option value="" disabled selected>Select one...</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="previous_seo_details">If yes, what did they do?</label>
+          <textarea id="previous_seo_details" name="previous_seo_details" rows="2" placeholder="e.g. Monthly blog posts, backlinks, technical fixes..."></textarea>
+        </div>
+
+        <!-- Your Goals -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">Your Goals</h2>
+
+        <div class="form-group">
+          <label>What are your goals? (check all that apply)</label>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;margin-top:0.5rem;">
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="More website traffic" /> More website traffic</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="More phone calls/leads" /> More phone calls/leads</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Rank higher for specific terms" /> Rank higher for specific terms</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Show up in Google Maps" /> Show up in Google Maps</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Beat a specific competitor" /> Beat a specific competitor</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Build brand awareness" /> Build brand awareness</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Sell products online" /> Sell products online</label>
+            <label style="font-weight:400;display:flex;align-items:center;gap:0.5rem;"><input type="checkbox" name="goals[]" value="Other" /> Other</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="target_keywords">Keywords you want to rank for</label>
+          <textarea id="target_keywords" name="target_keywords" rows="2" placeholder="e.g. plumber near me, best restaurant palm coast, custom wood carving"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="customer_value">What is a new customer worth to you?</label>
+          <input type="text" id="customer_value" name="customer_value" placeholder="e.g. $500, $2,000, varies" />
+        </div>
+
+        <!-- Website Details -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">Website Details</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="platform">Website platform</label>
+            <select id="platform" name="platform">
+              <option value="" disabled selected>Select one...</option>
+              <option>WordPress</option>
+              <option>Wix</option>
+              <option>Squarespace</option>
+              <option>Shopify</option>
+              <option>Custom</option>
+              <option>Don't know</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="hosting">Hosting provider</label>
+            <select id="hosting" name="hosting">
+              <option value="" disabled selected>Select one...</option>
+              <option>GoDaddy</option>
+              <option>SiteGround</option>
+              <option>Bluehost</option>
+              <option>Hostinger</option>
+              <option>Netlify</option>
+              <option>Don't know</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="gbp_status">Google Business Profile set up?</label>
+            <select id="gbp_status" name="gbp_status">
+              <option value="" disabled selected>Select one...</option>
+              <option>Yes — verified</option>
+              <option>Yes — not verified</option>
+              <option>No</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ga_status">Google Analytics set up?</label>
+            <select id="ga_status" name="ga_status">
+              <option value="" disabled selected>Select one...</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gsc_status">Google Search Console set up?</label>
+          <select id="gsc_status" name="gsc_status">
+            <option value="" disabled selected>Select one...</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+        <!-- Timeline -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">Timeline</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="timeline">How soon do you want to get started?</label>
+            <select id="timeline" name="timeline">
+              <option value="" disabled selected>Select one...</option>
+              <option>Immediately</option>
+              <option>Within 2 weeks</option>
+              <option>Within a month</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="importance">How important is SEO to your business?</label>
+            <select id="importance" name="importance">
+              <option value="" disabled selected>Select one...</option>
+              <option>Critical — we need this now</option>
+              <option>Important — high priority</option>
+              <option>Exploring — want to learn more</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Anything Else -->
+        <h2 style="font-size:1.3rem;margin-top:2.5rem;">Anything Else</h2>
+
+        <div class="form-group">
+          <label for="additional_notes">Anything else we should know?</label>
+          <textarea id="additional_notes" name="additional_notes" rows="4" placeholder="Special requests, concerns, deadlines, or anything that would help us build a better plan for you..."></textarea>
+        </div>
+
+        <div class="h-captcha" data-captcha="true"></div>
+        <button type="submit" class="btn-primary btn-large btn-full">Submit Intake Form &rarr;</button>
+        <p class="form-note">We'll review your information and schedule a call within 2 business days.</p>
+      </form>
+
+    </div>
+
+  </article>
+
+{% endblock %}
