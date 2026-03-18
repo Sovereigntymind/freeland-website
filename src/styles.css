@@ -606,8 +606,9 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .card p { font-size: 0.88rem; color: #5c5c6e; line-height: 1.7; }
 
 .card.dark-card h3 { color: #ffffff !important; }
-.card.dark-card p { color: rgba(255,255,255,0.65) !important; }
+.card.dark-card p { color: rgba(255,255,255,0.75) !important; }
 #automation .card h3 { color: #ffffff !important; }
+#automation .card p { color: rgba(255,255,255,0.75) !important; }
 
 .automation-cta {
   text-align: center;
@@ -1024,12 +1025,12 @@ footer::before {
 .footer-nav a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-nav a:hover { color: #6da4ff; }
 
-.footer-inner p { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-top: 8px; }
+.footer-inner p { color: rgba(255,255,255,0.55); font-size: 0.85rem; margin-top: 8px; }
 .footer-inner a { color: #6da4ff; text-decoration: none; }
 .footer-legal { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
 .footer-legal a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
 .footer-legal a:hover { color: #6da4ff; }
-.copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.35) !important; }
+.copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.55) !important; }
 
 /* ===== FLOATING CTA ===== */
 .float-cta {
