@@ -27,12 +27,9 @@ module.exports = function(eleventyConfig) {
     ];
 
     const blogImageNames = [
-      "Yz9jwTyJpb06TSV6U6MHN_JCkv8NwO",
-      "n2hvMUYzyesDvDO4TrpsK_pirj3Eyl",
-      "oiZiG99bnLXCH7g6rzCXY_EyVJ2IEI",
-      "uVngk6c7sVd-Q6tonUrYt_n9krfwnk",
-      "yu7WKtk0fUDgXGX8Kky57_FqhbhiXz",
-      "zuR-VhB_CZ7bebLicgx0K_gW0zliSk",
+      "social-media-florida-2026",
+      "ai-automation-small-business",
+      "local-seo-guide-florida",
       "what-is-a-crm",
       "crm-automation-florida",
     ];
