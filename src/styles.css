@@ -14,7 +14,7 @@
   --glass-border: rgba(255,255,255,0.09);
   --white: #FFFFFF;
   --off-white: #f5f6fb;
-  --gray: #889;
+  --gray: #6b6b7b;
   --text: #0d0d1e;
 }
 
@@ -486,13 +486,13 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 
 .section-sub {
   font-size: 1.05rem;
-  color: #778;
+  color: #5c5c6e;
   max-width: 600px;
   margin-bottom: 56px;
   line-height: 1.75;
 }
 
-.section-sub.light { color: rgba(255,255,255,0.4); }
+.section-sub.light { color: rgba(255,255,255,0.6); }
 
 /* ===== PAIN SECTION ===== */
 .pain-inner {
@@ -603,7 +603,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 
 .card-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
 .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-.card p { font-size: 0.88rem; color: #778; line-height: 1.7; }
+.card p { font-size: 0.88rem; color: #5c5c6e; line-height: 1.7; }
 
 .card.dark-card h3 { color: #ffffff !important; }
 .card.dark-card p { color: rgba(255,255,255,0.65) !important; }
@@ -750,7 +750,7 @@ blockquote {
 
 .client-info { display: flex; flex-direction: column; gap: 3px; }
 .client-info strong { font-weight: 700; color: var(--text); font-size: 0.95rem; }
-.client-info span { font-size: 0.8rem; color: #889; }
+.client-info span { font-size: 0.8rem; color: #6b6b7b; }
 
 .result-badge {
   display: inline-block;
@@ -823,7 +823,7 @@ blockquote {
 .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 
 .team-member strong { font-weight: 700; font-size: 1rem; color: var(--text); }
-.team-member span { font-size: 0.82rem; color: #889; }
+.team-member span { font-size: 0.82rem; color: #6b6b7b; }
 
 /* ===== FAQ ===== */
 .faq-list {
@@ -1138,7 +1138,7 @@ footer::before {
   line-height: 1.5;
 }
 
-.wd-note { font-size: 0.78rem; color: rgba(255,255,255,0.22); margin-top: 12px; }
+.wd-note { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 12px; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 960px) {
@@ -1212,7 +1212,7 @@ footer::before {
 }
 
 .process-step h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
-.process-step p { font-size: 0.9rem; color: #778; line-height: 1.7; }
+.process-step p { font-size: 0.9rem; color: #5c5c6e; line-height: 1.7; }
 
 /* ===== SERVICE AREAS ===== */
 .areas-grid {
@@ -1338,7 +1338,7 @@ footer::before {
 .load-more-btn:hover { background: var(--blue); color: #fff; }
 .blog-card-excerpt {
   font-size: 0.88rem;
-  color: #778;
+  color: #5c5c6e;
   line-height: 1.7;
   margin-bottom: 20px;
   flex: 1;
