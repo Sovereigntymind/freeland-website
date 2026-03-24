@@ -34,6 +34,7 @@
     "email": "kevin@freelandme.com",
     "description": "National marketing and AI consulting agency specializing in social media management, paid ads, AI automation, AI workflow design, AI consulting, CRM, SEO, and website builds — serving businesses from startups to corporations across the US.",
     "founder": { "@type": "Person", "name": "Kevin Freeland" },
+    "foundingDate": "2024",
     "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" },
     "logo": { "@type": "ImageObject", "url": "https://freelandme.com/images/logo.webp" },
     "areaServed": "United States",
@@ -438,6 +439,12 @@
           <a href="/services/crm-automation/" style="color:var(--blue);font-weight:600;text-decoration:none;font-size:0.82rem">Learn more →</a>
         </article>
         <article class="card dark-card">
+          <div class="card-icon" aria-hidden="true">💬</div>
+          <h3>24/7 AI Lead Capture</h3>
+          <p>AI-powered chat and response systems that capture every inquiry instantly — nights, weekends, holidays. Never lose a lead to slow response times again.</p>
+          <a href="/services/ai-lead-capture/" style="color:var(--blue);font-weight:600;text-decoration:none;font-size:0.82rem">Learn more →</a>
+        </article>
+        <article class="card dark-card">
           <div class="card-icon" aria-hidden="true">📞</div>
           <h3>Call-Center Booking Automation</h3>
           <p>AI-powered booking systems that handle appointments and inquiries 24/7 — no staff needed, no leads missed.</p>
@@ -751,17 +758,4 @@
     </div>
   </section>
 
-{% endblock %}
-
-{% block extra_scripts %}
-<script>
-  document.querySelectorAll('.faq-item summary').forEach(s => {
-    s.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        s.parentElement.toggleAttribute('open');
-      }
-    });
-  });
-</script>
 {% endblock %}
