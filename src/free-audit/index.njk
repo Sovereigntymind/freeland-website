@@ -49,6 +49,29 @@ description: "Get a free marketing audit for your business. We'll analyze your w
     "areaServed": "US"
   }
   </script>
+
+  <style>
+    .audit-trust { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(77,136,255,0.08); border: 1px solid rgba(77,136,255,0.18); border-radius: 12px; }
+    .audit-trust-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(77,136,255,0.4); }
+    .audit-trust-text { font-size: 0.88rem; color: #b0b0c0; line-height: 1.45; }
+    .audit-trust-text strong { color: #fff; }
+    .audit-stats { display: flex; gap: 1.5rem; justify-content: center; margin: 1.75rem 0 0.5rem; flex-wrap: wrap; }
+    .audit-stat { text-align: center; }
+    .audit-stat-num { font-size: 1.5rem; font-weight: 700; color: #4d88ff; }
+    .audit-stat-label { font-size: 0.75rem; color: #7a7a90; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.15rem; }
+    .audit-urgency { text-align: center; margin: 1rem 0 0; padding: 0.6rem 1rem; background: rgba(191,10,48,0.1); border: 1px solid rgba(191,10,48,0.2); border-radius: 8px; font-size: 0.85rem; color: #ff6b7f; }
+    .audit-check-list { list-style: none; padding: 0; margin: 0; }
+    .audit-check-list li { padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0.65rem; align-items: flex-start; }
+    .audit-check-list li:last-child { border-bottom: none; }
+    .audit-check { color: #4d88ff; font-weight: 700; flex-shrink: 0; font-size: 1.1rem; line-height: 1.4; }
+    .audit-steps { counter-reset: steps; list-style: none; padding: 0; }
+    .audit-steps li { counter-increment: steps; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0.85rem; align-items: flex-start; }
+    .audit-steps li:last-child { border-bottom: none; }
+    .audit-steps li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(77,136,255,0.12); border: 1px solid rgba(77,136,255,0.25); color: #4d88ff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+    .audit-callout-quote { background: rgba(255,255,255,0.03); border-left: 3px solid #4d88ff; padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .audit-callout-quote p { color: #b0b0c0; font-size: 0.92rem; line-height: 1.55; margin: 0; }
+    .audit-callout-quote .quote-author { color: #7a7a90; font-size: 0.82rem; margin-top: 0.5rem; }
+  </style>
 {% endblock %}
 
 {% block content %}
@@ -57,16 +80,43 @@ description: "Get a free marketing audit for your business. We'll analyze your w
 
     <header class="post-header">
       <div class="post-header-inner">
-        <a href="/" class="post-breadcrumb">&larr; Back to Home</a>
-        <span class="blog-category">Free Audit</span>
+        <a href="/" class="post-breadcrumb">&larr; Home</a>
+        <span class="blog-category">Free — No Strings Attached</span>
         <h1>Your Marketing Has Gaps. Let Us Show You Where.</h1>
         <p style="color:#ccc;margin-top:0.75rem;font-size:1.05rem;">Get a personalized marketing audit covering your website, SEO, social media, and ads. We'll tell you exactly what's working, what's not, and what to fix first.</p>
+
+        <div class="audit-stats">
+          <div class="audit-stat">
+            <div class="audit-stat-num">3M+</div>
+            <div class="audit-stat-label">Views Delivered</div>
+          </div>
+          <div class="audit-stat">
+            <div class="audit-stat-num">3x</div>
+            <div class="audit-stat-label">Revenue Growth</div>
+          </div>
+          <div class="audit-stat">
+            <div class="audit-stat-num">2.5x</div>
+            <div class="audit-stat-label">Traffic Increase</div>
+          </div>
+          <div class="audit-stat">
+            <div class="audit-stat-num">48hr</div>
+            <div class="audit-stat-label">Turnaround</div>
+          </div>
+        </div>
       </div>
     </header>
 
     <div class="post-body">
 
-      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="audit-form">
+      <div class="audit-trust">
+        <img src="/images/kevin-headshot.jpg" alt="Kevin Freeland" class="audit-trust-photo" width="52" height="52" />
+        <div class="audit-trust-text">
+          <strong>Personally reviewed by Kevin Freeland</strong><br>
+          Every audit is reviewed by me personally — not a template, not a bot. You get real analysis from someone who's generated 3M+ views and tripled revenue for clients.
+        </div>
+      </div>
+
+      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="audit-form" style="margin-top:1.5rem">
         <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
         <input type="hidden" name="subject" value="Free Marketing Audit Request" />
         <input type="hidden" name="redirect" value="https://freelandme.com/thank-you.html" />
@@ -97,35 +147,45 @@ description: "Get a free marketing audit for your business. We'll analyze your w
         </div>
         <div class="form-group">
           <label for="goals">What's your biggest marketing challenge right now?</label>
-          <textarea id="goals" name="marketing_challenge" rows="3" placeholder="e.g. We're not getting enough leads from our website, our social media isn't growing..."></textarea>
+          <textarea id="goals" name="marketing_challenge" rows="3" placeholder="e.g. We're not getting enough leads, our social media isn't growing, we're wasting money on ads..."></textarea>
         </div>
         <button type="submit" class="btn-primary btn-large btn-full">Get My Free Marketing Audit &rarr;</button>
-        <p class="form-note">100% free. No obligation. No credit card. Audit delivered within 48 hours.</p>
+        <p class="form-note">100% free. No obligation. No credit card. Report delivered within 48 hours.</p>
       </form>
+
+      <div class="audit-urgency">
+        We only take on 5 free audits per week to ensure quality. Spots fill fast.
+      </div>
 
       <h2>What We'll Analyze</h2>
 
-      <ul>
-        <li><strong>Website performance</strong> — speed, mobile experience, conversion paths, and whether your site is actually turning visitors into leads</li>
-        <li><strong>SEO health</strong> — how you rank on Google, technical issues holding you back, and keywords you should be targeting</li>
-        <li><strong>Social media presence</strong> — profile optimization, posting frequency, engagement rates, and content strategy gaps</li>
-        <li><strong>Paid advertising</strong> — if you're running ads, we'll review your targeting, copy, and spend efficiency</li>
-        <li><strong>Competitor analysis</strong> — what your top competitors are doing that you're not, and where you can beat them</li>
-        <li><strong>AI automation opportunities</strong> — specific tasks in your marketing that can be automated to save time and money</li>
+      <ul class="audit-check-list">
+        <li><span class="audit-check">&#10003;</span> <div><strong>Website performance</strong> — speed, mobile experience, conversion paths, and whether your site is actually turning visitors into leads</div></li>
+        <li><span class="audit-check">&#10003;</span> <div><strong>SEO health</strong> — how you rank on Google, technical issues holding you back, and keywords you should be targeting</div></li>
+        <li><span class="audit-check">&#10003;</span> <div><strong>Social media presence</strong> — profile optimization, posting frequency, engagement rates, and content strategy gaps</div></li>
+        <li><span class="audit-check">&#10003;</span> <div><strong>Paid advertising</strong> — if you're running ads, we'll review your targeting, copy, and spend efficiency</div></li>
+        <li><span class="audit-check">&#10003;</span> <div><strong>Competitor analysis</strong> — what your top competitors are doing that you're not, and where you can beat them</div></li>
+        <li><span class="audit-check">&#10003;</span> <div><strong>AI automation opportunities</strong> — specific tasks in your marketing that can be automated to save you 10+ hours a week</div></li>
       </ul>
 
-      <div class="post-callout">
-        <p><strong>Why We Do This For Free</strong></p>
-        <p>Most business owners don't know what they don't know. They're spending money on marketing that isn't working — or missing opportunities they can't see. This audit changes that. We show you the truth about your marketing, and if you want help fixing it, we're here. If not, the audit is yours to keep.</p>
+      <div class="audit-callout-quote">
+        <p>"Most agencies charge $500-$2,000 for this kind of analysis. We do it free because we believe every business owner deserves to know the truth about their marketing — before they spend another dollar."</p>
+        <div class="quote-author">— Kevin Freeland, Founder</div>
       </div>
 
-      <h2>What Happens After I Submit?</h2>
+      <h2>How It Works</h2>
 
-      <ol>
-        <li><strong>We review your business</strong> — website, social profiles, Google presence, and competitive landscape</li>
-        <li><strong>You get a personalized report</strong> — delivered to your email within 48 hours with specific findings and recommendations</li>
-        <li><strong>Optional: Free strategy call</strong> — 15 minutes to walk through the findings and answer questions. Zero pressure, zero obligation.</li>
+      <ol class="audit-steps">
+        <li><div><strong>Submit your info above</strong> — takes 60 seconds. We just need your website and a bit about your business.</div></li>
+        <li><div><strong>We analyze everything</strong> — website, social profiles, Google presence, competitors, and automation opportunities.</div></li>
+        <li><div><strong>You get a personalized report</strong> — delivered to your email within 48 hours with specific findings and a prioritized action plan.</div></li>
+        <li><div><strong>Optional: 15-minute strategy call</strong> — walk through the findings together. Ask questions. Zero pressure, zero obligation.</div></li>
       </ol>
+
+      <div class="post-callout">
+        <p><strong>Why It's Free</strong></p>
+        <p>We've helped businesses 3x their revenue, double their viewership, and increase traffic by 250%. But most business owners don't even know what's broken until someone shows them. This audit does exactly that. If you want help fixing what we find, we're here. If not, the report is 100% yours to keep and act on.</p>
+      </div>
 
       <h2>Frequently Asked Questions</h2>
 
