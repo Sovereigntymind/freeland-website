@@ -18,49 +18,45 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
     const out = dir.output;
 
-    // --- Generate WebP versions of local images ---
-    const mainImages = [
-      { src: "./src/images/hero-bg.jpg",       name: "hero-bg" },
-      { src: "./src/images/kevin-headshot.jpg", name: "kevin-headshot" },
-      { src: "./src/images/josh-headshot.jpg",  name: "josh-headshot" },
-      { src: "./src/images/joe-tiki-logo.png",  name: "joe-tiki-logo" },
-    ];
-
-    const blogImageNames = [
-      "social-media-florida-2026",
-      "ai-automation-small-business",
-      "local-seo-guide-florida",
-      "what-is-a-crm",
-      "crm-automation-florida",
-    ];
-
+    // --- Generate WebP versions of ALL images (jpg/png → webp) ---
     const imgOutDir = path.join(out, "images");
     fs.mkdirSync(imgOutDir, { recursive: true });
 
-    for (const { src, name } of mainImages) {
-      if (!fs.existsSync(src)) continue;
-      await Image(src, {
-        widths: ["auto"],
-        formats: ["webp"],
-        outputDir: imgOutDir,
-        filenameFormat: () => `${name}.webp`,
-        sharpWebpOptions: { quality: 82 },
-      });
+    // Convert all main images
+    const mainImgDir = "./src/images";
+    if (fs.existsSync(mainImgDir)) {
+      const mainFiles = fs.readdirSync(mainImgDir).filter(f => /\.(jpg|jpeg|png)$/i.test(f));
+      for (const file of mainFiles) {
+        const name = path.parse(file).name;
+        await Image(path.join(mainImgDir, file), {
+          widths: ["auto"],
+          formats: ["webp"],
+          outputDir: imgOutDir,
+          filenameFormat: () => `${name}.webp`,
+          sharpWebpOptions: { quality: 82 },
+        });
+      }
+      console.log(`[11ty] WebP: ${mainFiles.length} main images converted`);
     }
 
+    // Convert all blog images
+    const blogImgDir = "./src/blog/images";
     const blogImgOutDir = path.join(out, "blog", "images");
     fs.mkdirSync(blogImgOutDir, { recursive: true });
 
-    for (const name of blogImageNames) {
-      const src = `./src/blog/images/${name}.jpg`;
-      if (!fs.existsSync(src)) continue;
-      await Image(src, {
-        widths: ["auto"],
-        formats: ["webp"],
-        outputDir: blogImgOutDir,
-        filenameFormat: () => `${name}.webp`,
-        sharpWebpOptions: { quality: 82 },
-      });
+    if (fs.existsSync(blogImgDir)) {
+      const blogFiles = fs.readdirSync(blogImgDir).filter(f => /\.(jpg|jpeg|png)$/i.test(f));
+      for (const file of blogFiles) {
+        const name = path.parse(file).name;
+        await Image(path.join(blogImgDir, file), {
+          widths: ["auto"],
+          formats: ["webp"],
+          outputDir: blogImgOutDir,
+          filenameFormat: () => `${name}.webp`,
+          sharpWebpOptions: { quality: 82 },
+        });
+      }
+      console.log(`[11ty] WebP: ${blogFiles.length} blog images converted`);
     }
 
     // --- Generate favicons from logo ---
