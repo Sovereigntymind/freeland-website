@@ -326,11 +326,6 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 /* ===== WAVE DIVIDERS ===== */
 .wave { line-height: 0; display: block; }
 .wave svg { display: block; width: 100%; }
-.wave-navy { background: var(--navy); }
-.wave-blue { background: var(--blue); }
-.wave-white { background: #fff; }
-.wave-offwhite { background: var(--off-white); }
-.wave-darkblue { background: #001580; }
 
 /* ===== SECTION UTILITIES ===== */
 .section-white { background: #fff; padding-bottom: 60px; }
