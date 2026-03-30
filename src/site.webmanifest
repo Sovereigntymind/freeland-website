@@ -1,7 +1,7 @@
 {
   "name": "Freeland Marketing & Entertainment",
   "short_name": "Freeland",
-  "description": "Florida marketing agency — social media, AI automation, paid ads, SEO & website builds.",
+  "description": "National marketing and AI automation agency — social media, paid ads, SEO & website builds.",
   "icons": [
     { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }

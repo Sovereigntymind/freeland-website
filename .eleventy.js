@@ -13,6 +13,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
+  eleventyConfig.addPassthroughCopy("src/fonts");
 
   // After build: generate WebP images + minify CSS
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
@@ -22,7 +23,7 @@ module.exports = function(eleventyConfig) {
     const imgOutDir = path.join(out, "images");
     fs.mkdirSync(imgOutDir, { recursive: true });
 
-    // Convert all main images
+    // Convert all main images (WebP + AVIF)
     const mainImgDir = "./src/images";
     if (fs.existsSync(mainImgDir)) {
       const mainFiles = fs.readdirSync(mainImgDir).filter(f => /\.(jpg|jpeg|png)$/i.test(f));
@@ -35,11 +36,18 @@ module.exports = function(eleventyConfig) {
           filenameFormat: () => `${name}.webp`,
           sharpWebpOptions: { quality: 82 },
         });
+        await Image(path.join(mainImgDir, file), {
+          widths: ["auto"],
+          formats: ["avif"],
+          outputDir: imgOutDir,
+          filenameFormat: () => `${name}.avif`,
+          sharpAvifOptions: { quality: 65 },
+        });
       }
-      console.log(`[11ty] WebP: ${mainFiles.length} main images converted`);
+      console.log(`[11ty] Images: ${mainFiles.length} main → WebP + AVIF`);
     }
 
-    // Convert all blog images
+    // Convert all blog images (WebP + AVIF)
     const blogImgDir = "./src/blog/images";
     const blogImgOutDir = path.join(out, "blog", "images");
     fs.mkdirSync(blogImgOutDir, { recursive: true });
@@ -55,8 +63,15 @@ module.exports = function(eleventyConfig) {
           filenameFormat: () => `${name}.webp`,
           sharpWebpOptions: { quality: 82 },
         });
+        await Image(path.join(blogImgDir, file), {
+          widths: ["auto"],
+          formats: ["avif"],
+          outputDir: blogImgOutDir,
+          filenameFormat: () => `${name}.avif`,
+          sharpAvifOptions: { quality: 65 },
+        });
       }
-      console.log(`[11ty] WebP: ${blogFiles.length} blog images converted`);
+      console.log(`[11ty] Images: ${blogFiles.length} blog → WebP + AVIF`);
     }
 
     // --- Generate favicons from logo ---
@@ -89,11 +104,46 @@ module.exports = function(eleventyConfig) {
       console.log("[11ty] Favicons generated from logo");
     }
 
+    // --- Optimize logo.webp for smaller file size ---
+    const logoWebp = path.join(out, "images", "logo.webp");
+    if (fs.existsSync(logoWebp)) {
+      const origSize = fs.statSync(logoWebp).size;
+      const optimized = await sharp(logoWebp)
+        .resize(520, 160, { fit: "inside" })
+        .webp({ quality: 80, effort: 6 })
+        .toBuffer();
+      fs.writeFileSync(logoWebp, optimized);
+      console.log(`[11ty] Logo: ${Math.round(origSize/1024)}KB → ${Math.round(optimized.length/1024)}KB`);
+    }
+
+    // --- Minify HTML ---
+    const htmlFiles = [];
+    function walkDir(dir) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) walkDir(full);
+        else if (entry.name.endsWith('.html')) htmlFiles.push(full);
+      }
+    }
+    walkDir(out);
+    let htmlSaved = 0;
+    for (const file of htmlFiles) {
+      const orig = fs.readFileSync(file, 'utf8');
+      const mini = orig
+        .replace(/<!--(?!\[if)[\s\S]*?-->/g, '')          // strip comments (keep IE conditionals)
+        .replace(/>\s{2,}</g, '> <')                       // collapse whitespace between tags
+        .replace(/\n\s*\n/g, '\n')                         // collapse blank lines
+        .replace(/^\s+/gm, '');                            // strip leading whitespace per line
+      fs.writeFileSync(file, mini);
+      htmlSaved += orig.length - mini.length;
+    }
+    console.log(`[11ty] HTML: ${htmlFiles.length} files minified, saved ${Math.round(htmlSaved/1024)}KB total`);
+
     // --- Minify CSS ---
     const cssPath = path.join(out, "styles.css");
     if (fs.existsSync(cssPath)) {
       const css = fs.readFileSync(cssPath, "utf8");
-      const { styles } = new CleanCSS({ level: 1 }).minify(css);
+      const { styles } = new CleanCSS({ level: 2 }).minify(css);
       fs.writeFileSync(cssPath, styles);
       console.log(`[11ty] CSS: ${css.length} → ${styles.length} bytes (${Math.round((1 - styles.length / css.length) * 100)}% smaller)`);
     }
