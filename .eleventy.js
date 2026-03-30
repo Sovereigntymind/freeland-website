@@ -116,6 +116,18 @@ module.exports = function(eleventyConfig) {
       console.log(`[11ty] Logo: ${Math.round(origSize/1024)}KB → ${Math.round(optimized.length/1024)}KB`);
     }
 
+    // --- Generate optimized OG share image (1200x630) ---
+    const heroJpg = path.join(out, "images", "hero-bg.jpg");
+    const ogOut = path.join(out, "images", "og-share.jpg");
+    if (fs.existsSync(heroJpg) && !fs.existsSync(ogOut)) {
+      const ogBuf = await sharp(heroJpg)
+        .resize(1200, 630, { fit: "cover" })
+        .jpeg({ quality: 80, progressive: true })
+        .toBuffer();
+      fs.writeFileSync(ogOut, ogBuf);
+      console.log(`[11ty] OG image: ${Math.round(ogBuf.length/1024)}KB (1200x630)`);
+    }
+
     // --- Minify HTML ---
     const htmlFiles = [];
     function walkDir(dir) {
