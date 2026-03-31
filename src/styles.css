@@ -591,8 +591,10 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 
 .card.dark-card h3 { color: #ffffff !important; }
 .card.dark-card p { color: rgba(255,255,255,0.75) !important; }
+.card.dark-card .card-link { color: #6da4ff; }
 #automation .card h3 { color: #ffffff !important; }
 #automation .card p { color: rgba(255,255,255,0.75) !important; }
+#automation .card .card-link { color: #6da4ff; }
 
 .automation-cta {
   text-align: center;
