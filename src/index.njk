@@ -765,4 +765,25 @@ web3forms: true
     </div>
   </section>
 
+  <script>
+    (function() {
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', function() {
+        var data = {
+          name: form.querySelector('[name="name"]').value,
+          email: form.querySelector('[name="email"]').value,
+          phone: form.querySelector('[name="phone"]').value,
+          business: form.querySelector('[name="business"]').value,
+          message: form.querySelector('[name="message"]').value,
+          form_type: 'contact'
+        };
+        navigator.sendBeacon(
+          'https://freelandme.app.n8n.cloud/webhook/form-auto-reply',
+          new Blob([JSON.stringify(data)], { type: 'application/json' })
+        );
+      });
+    })();
+  </script>
+
 {% endblock %}
