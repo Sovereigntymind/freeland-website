@@ -247,6 +247,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://freelandme.com/services/google-business-profile/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://freelandme.com/services/done-for-you-ai/</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://freelandme.com/about/</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>

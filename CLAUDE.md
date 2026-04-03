@@ -21,5 +21,4 @@ Eleventy 3.1.2 + Nunjucks, Netlify auto-deploy, Node 20
 - Every page: title, meta description, canonical, OG tags, Twitter cards, schema
 - Blog posts: Article schema, sitemap.xml entry, internal links
 - No phone number placeholder
-- No fixed pricing on service pages — drive to consultation
-  - Exception: AI Lead Capture ($199/$399/$599)
+- No fixed pricing on ANY service page — drive to consultation/quote. Every business has different needs.

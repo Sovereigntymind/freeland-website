@@ -1,0 +1,395 @@
+---
+title: "Done-for-You AI Implementation | Freeland Marketing"
+---
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>Done-for-You AI Implementation | Freeland Marketing</title>
+  <meta name="description" content="Full-scale AI implementation for businesses ready to automate operations. Custom AI workflows, CRM automation, lead systems, reporting, and training — built, deployed, and managed for you." />
+  <meta name="keywords" content="done for you AI, AI implementation agency, business AI automation, custom AI workflows, AI integration services, enterprise AI automation, AI business transformation, full service AI agency" />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/services/done-for-you-ai/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/services/done-for-you-ai/" />
+  <meta property="og:title" content="Done-for-You AI Implementation | Freeland Marketing" />
+  <meta property="og:description" content="Full-scale AI implementation for businesses. Custom workflows, CRM automation, lead systems, and training — built and managed for you." />
+  <meta property="og:image" content="https://freelandme.com/images/hero-bg.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="624" />
+  <meta property="og:image:alt" content="Done-for-You AI Implementation Service" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Done-for-You AI Implementation | Freeland Marketing" />
+  <meta name="twitter:description" content="Full-scale AI for your business — built, deployed, and managed. Not consulting. Implementation." />
+  <meta name="twitter:image" content="https://freelandme.com/images/hero-bg.jpg" />
+  <meta name="twitter:image:alt" content="Done-for-You AI Implementation Service" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Done-for-You AI Implementation",
+    "provider": {
+      "@type": "MarketingAgency",
+      "name": "Freeland Marketing & Entertainment",
+      "url": "https://freelandme.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" }
+    },
+    "areaServed": "United States",
+    "description": "Full-scale AI implementation including custom workflow design, CRM automation, lead capture systems, content pipelines, automated reporting, team training, and ongoing management — built and deployed for your business.",
+    "url": "https://freelandme.com/services/done-for-you-ai/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "Done-for-You AI", "item": "https://freelandme.com/services/done-for-you-ai/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does done-for-you AI implementation actually include?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Everything. We audit your operations, identify where AI and automation will have the biggest impact, design the workflows, build and deploy the systems, train your team, and manage it ongoing. You do not need to know anything about AI — that is our job." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does full AI implementation cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends entirely on the scope — the size of your business, the number of systems being automated, and the complexity of your operations. Engagements range from focused single-system builds to full-scale enterprise transformations. We scope and price every project individually after understanding your business. Book a consultation and we will give you an honest assessment." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does implementation take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Focused projects — a single workflow or automation system — can go live in 2-4 weeks. Full-scale implementations involving multiple departments and systems typically take 1-3 months, rolled out in phases so you see value quickly without disrupting operations." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need technical staff to maintain this?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. We build systems your existing team can use without technical knowledge. We also offer ongoing management retainers so we handle maintenance, updates, and optimization — you just use the systems." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from AI consulting?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI consulting gives you a strategy and roadmap. Done-for-you AI implementation builds and deploys the actual systems. We do both — but this service is for businesses that want us to handle the entire process, not just advise on it." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .scope-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .scope-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+    .scope-card ul {
+      padding-left: 1.25rem;
+      margin: 0;
+    }
+    .scope-card li {
+      padding: 0.25rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .scope-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .timeline-step {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+    .timeline-step .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #BF0A30, #8b0022);
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-step h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-step p {
+      font-size: 0.85rem;
+      color: #aaa;
+      margin: 0;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
+      border: 1px solid rgba(0, 123, 255, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-card .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .stat-label {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/services/" class="post-breadcrumb">&larr; All Services</a>
+        <span class="blog-category">Premium Service</span>
+        <h1>Done-for-You AI Implementation</h1>
+        <div class="post-meta">
+          <span>By <strong>Freeland Marketing &amp; Entertainment</strong></span>
+          <span>Palm Coast, FL</span>
+          <span>Serving Businesses Nationwide</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <p style="font-size:1.15rem;line-height:1.7;">You have heard the pitch a hundred times: "AI will transform your business." But nobody is actually building it for you. They sell you a strategy deck, a roadmap, maybe a tool recommendation — and then you are on your own to figure out the hard part. That is where most businesses get stuck.</p>
+
+      <p>We do not just consult. <strong>We build, deploy, and manage the entire AI and automation stack for your business.</strong> Every workflow, every integration, every system — designed around how your business actually operates, not a template.</p>
+
+      <p>This is our premium service for businesses that are serious about running smarter, faster, and leaner. Whether you need a single high-impact automation or a full operational transformation, we handle every piece of it.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">80%</div>
+          <div class="stat-label">of repetitive business tasks can be automated with AI</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">your automated systems work nights, weekends, and holidays</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">0</div>
+          <div class="stat-label">additional hires needed to scale operations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">custom — built for your business, not a template</div>
+        </div>
+      </div>
+
+      <h2>What We Build</h2>
+
+      <p>Every engagement is scoped to your business. Here is the full range of what we implement:</p>
+
+      <div class="scope-grid">
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">⚙️</span>
+          <h3>Custom AI Workflows</h3>
+          <ul>
+            <li>End-to-end process automation</li>
+            <li>Multi-tool integrations (CRM, email, scheduling, payments)</li>
+            <li>Decision logic and conditional routing</li>
+            <li>Data pipelines between your existing systems</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">💬</span>
+          <h3>AI Lead Capture &amp; Response</h3>
+          <ul>
+            <li>AI chatbots on your website</li>
+            <li>AI voice agents for phone and missed calls</li>
+            <li>SMS follow-up sequences</li>
+            <li>Lead qualification and routing</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">🤖</span>
+          <h3>CRM &amp; Pipeline Automation</h3>
+          <ul>
+            <li>Automated lead tagging and scoring</li>
+            <li>Pipeline stage progression</li>
+            <li>Follow-up sequences and task creation</li>
+            <li>Customer lifecycle management</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">✉️</span>
+          <h3>Email &amp; Communication Automation</h3>
+          <ul>
+            <li>Drip campaigns and nurture sequences</li>
+            <li>Segmentation and personalization</li>
+            <li>Review request automation</li>
+            <li>Internal notification systems</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">📊</span>
+          <h3>Reporting &amp; Intelligence</h3>
+          <ul>
+            <li>Automated dashboards and KPI tracking</li>
+            <li>Scheduled reports delivered to your inbox</li>
+            <li>Revenue forecasting</li>
+            <li>Client health monitoring</li>
+          </ul>
+        </div>
+        <div class="scope-card">
+          <span class="scope-icon" aria-hidden="true">📱</span>
+          <h3>Content &amp; Social Automation</h3>
+          <ul>
+            <li>AI content generation pipelines</li>
+            <li>Automated scheduling and posting</li>
+            <li>Image and graphic generation workflows</li>
+            <li>Performance tracking and optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>How It Works</h2>
+
+      <div class="process-timeline">
+        <div class="timeline-step">
+          <div class="step-num">1</div>
+          <h4>Discovery</h4>
+          <p>We map your current operations, identify bottlenecks, and scope the highest-impact automations.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">2</div>
+          <h4>Design</h4>
+          <p>Custom workflow architecture designed around how your business actually runs — not a template.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">3</div>
+          <h4>Build &amp; Deploy</h4>
+          <p>We build every system, integrate your tools, test thoroughly, and deploy in phases so nothing breaks.</p>
+        </div>
+        <div class="timeline-step">
+          <div class="step-num">4</div>
+          <h4>Train &amp; Manage</h4>
+          <p>Your team gets trained on every system. We stay on as needed to manage, optimize, and scale.</p>
+        </div>
+      </div>
+
+      <h2>Who This Is For</h2>
+
+      <p>This is not a starter package. Done-for-you AI implementation is for businesses that:</p>
+
+      <ul>
+        <li><strong>Have real revenue</strong> and want to scale without adding proportional headcount</li>
+        <li><strong>Are losing money to inefficiency</strong> — manual processes, slow follow-ups, missed leads, disjointed tools</li>
+        <li><strong>Want a partner, not a vendor</strong> — someone who understands your operations and builds systems that actually fit</li>
+        <li><strong>Need it done right the first time</strong> — no DIY trial and error, no half-built tools collecting dust</li>
+        <li><strong>Operate at a scale where automation compounds</strong> — the more volume you do, the more every automated system saves</li>
+      </ul>
+
+      <p>We have scoped engagements from focused single-system builds to full-scale operational transformations spanning marketing, sales, operations, and client delivery. The scope matches your business — we do not sell you more than you need, and we do not build less than what will actually work.</p>
+
+      <h2>What You Get That Others Do Not Offer</h2>
+
+      <ul>
+        <li><strong>Actual implementation, not just strategy.</strong> You get working systems, not a PowerPoint.</li>
+        <li><strong>One partner for everything.</strong> Marketing, automation, AI, and technology — under one roof. No coordinating between five vendors.</li>
+        <li><strong>Systems that work together.</strong> Your CRM talks to your email, which talks to your lead capture, which feeds your reporting. Everything is connected.</li>
+        <li><strong>Ongoing management option.</strong> We do not build and disappear. Monthly retainers keep your systems optimized as your business evolves.</li>
+        <li><strong>No technical knowledge required from you.</strong> We build it so your team can use it. If they can click a button, they can run the system.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <details class="faq-item">
+        <summary>What does done-for-you AI implementation actually include?</summary>
+        <p>Everything. We audit your operations, identify where AI and automation will have the biggest impact, design the workflows, build and deploy the systems, train your team, and manage it ongoing. You do not need to know anything about AI — that is our job.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How much does this cost?</summary>
+        <p>It depends entirely on the scope — the size of your business, the number of systems being automated, and the complexity of your operations. Engagements range from focused single-system builds to full-scale enterprise transformations. We scope and price every project individually after understanding your business. Book a consultation and we will give you an honest assessment.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How long does implementation take?</summary>
+        <p>Focused projects — a single workflow or automation system — can go live in 2-4 weeks. Full-scale implementations involving multiple departments and systems typically take 1-3 months, rolled out in phases so you see value quickly without disrupting operations.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need technical staff to maintain this?</summary>
+        <p>No. We build systems your existing team can use without technical knowledge. We also offer ongoing management retainers so we handle maintenance, updates, and optimization — you just use the systems.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is this different from AI consulting?</summary>
+        <p><a href="/services/ai-consulting/">AI consulting</a> gives you a strategy and roadmap. Done-for-you implementation builds and deploys the actual systems. We do both — but this service is for businesses that want the whole thing handled, not just advice.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can you work with our existing tools and software?</summary>
+        <p>Yes. We integrate with the tools you already use — your CRM, email platform, scheduling software, payment systems, and more. If a better tool exists for the job, we will recommend it, but we do not force you onto new platforms unnecessarily.</p>
+      </details>
+
+      <div class="post-callout" style="margin-top:2.5rem;">
+        <p><strong>Every manual process in your business is costing you time, money, and growth.</strong> The businesses that automate first win the market. The ones that wait spend more to catch up later.</p>
+      </div>
+
+      <div class="post-cta-box">
+        <h3>Ready to Automate Your Business?</h3>
+        <p>Book a free consultation. We will walk through your operations, identify the highest-impact automations, and give you an honest scope and timeline — no pressure, no obligation.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+          <a href="/#contact" class="btn-primary btn-large">Book a Free Consultation &rarr;</a>
+          <a href="/services/ai-automation/" class="btn-primary btn-large" style="background:transparent;border:2px solid var(--blue);color:var(--blue);">See All AI Services &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+
+{% endblock %}

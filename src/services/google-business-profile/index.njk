@@ -1,0 +1,361 @@
+---
+title: "Google Business Profile Optimization | Freeland Marketing"
+---
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>Google Business Profile Optimization | Freeland Marketing</title>
+  <meta name="description" content="Google Business Profile optimization for businesses nationwide. Get found in Google Maps, the local 3-pack, and 'near me' searches. Full setup, optimization, and ongoing management." />
+  <meta name="keywords" content="Google Business Profile optimization, GBP management, Google Maps marketing, local 3-pack ranking, Google Business Profile setup, GBP SEO, Google My Business optimization, local search optimization" />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/services/google-business-profile/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/services/google-business-profile/" />
+  <meta property="og:title" content="Google Business Profile Optimization | Freeland Marketing" />
+  <meta property="og:description" content="Get found in Google Maps and local search. Full GBP setup, optimization, and ongoing management for businesses nationwide." />
+  <meta property="og:image" content="https://freelandme.com/images/hero-bg.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="624" />
+  <meta property="og:image:alt" content="Google Business Profile Optimization Service" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google Business Profile Optimization | Freeland Marketing" />
+  <meta name="twitter:description" content="Get found in Google Maps and local search. Full GBP setup, optimization, and management." />
+  <meta name="twitter:image" content="https://freelandme.com/images/hero-bg.jpg" />
+  <meta name="twitter:image:alt" content="Google Business Profile Optimization Service" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Google Business Profile Optimization",
+    "provider": {
+      "@type": "MarketingAgency",
+      "name": "Freeland Marketing & Entertainment",
+      "url": "https://freelandme.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" }
+    },
+    "areaServed": "United States",
+    "description": "Complete Google Business Profile optimization including setup, category strategy, photo optimization, review management, weekly posts, and ongoing monitoring to rank in the local 3-pack and Google Maps.",
+    "url": "https://freelandme.com/services/google-business-profile/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "Google Business Profile", "item": "https://freelandme.com/services/google-business-profile/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Google Business Profile and why does it matter?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Your Google Business Profile (formerly Google My Business) is the listing that appears when someone searches your business name or searches for services you offer on Google Maps and in the local 3-pack. It shows your hours, reviews, photos, and contact info. If it is not optimized, you are invisible to local searchers — and your competitors are getting those calls instead." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to see results from GBP optimization?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses see measurable improvements in local search visibility within 30-60 days. The speed depends on your current profile state, competition level, and review volume. Businesses with strong review counts tend to see faster results." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a physical storefront for a Google Business Profile?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Service-area businesses — contractors, cleaners, mobile services, consultants — can set up a Google Business Profile without showing a physical address. We configure your service area correctly so you show up when nearby customers search." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I already have a Google Business Profile?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses have a profile that was claimed and then forgotten. We audit what you have, fix what is wrong, fill in what is missing, and build an ongoing strategy to keep you ranking — not just a one-time cleanup." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Google Business Profile optimization cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every business is different. Pricing depends on whether you need a fresh setup or a full overhaul, your industry competition, and whether you want ongoing management or a one-time optimization. Book a free consultation and we will build a plan that fits your goals." }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .phase-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+    .phase-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+    .phase-card .phase-label {
+      font-size: 0.8rem;
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .phase-card ul {
+      padding-left: 1.25rem;
+      margin: 1rem 0;
+    }
+    .phase-card li {
+      padding: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .phase-card .phase-note {
+      font-size: 0.85rem;
+      color: #888;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
+      border: 1px solid rgba(0, 123, 255, 0.15);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-card .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-card .stat-label {
+      font-size: 0.85rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .industry-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .industry-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #fff;
+    }
+    .industry-item span {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/services/" class="post-breadcrumb">&larr; All Services</a>
+        <span class="blog-category">Service</span>
+        <h1>Google Business Profile Optimization That Gets You Found</h1>
+        <div class="post-meta">
+          <span>By <strong>Freeland Marketing &amp; Entertainment</strong></span>
+          <span>Palm Coast, FL</span>
+          <span>Serving Businesses Nationwide</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <p style="font-size:1.15rem;line-height:1.7;">When someone searches "best [your service] near me," Google shows three businesses above all other results. Those three businesses — the local 3-pack — get the majority of clicks, calls, and walk-ins. If your Google Business Profile is not optimized, you are not in that 3-pack. And every day you are not, your competitors are getting the customers that should be yours.</p>
+
+      <p>Most business owners claim their Google Business Profile, add a phone number and maybe a photo, and never touch it again. That is not optimization — that is a placeholder. Google rewards profiles that are complete, active, and consistent. We make yours all three.</p>
+
+      <p><strong>We set up, optimize, and manage your Google Business Profile so you show up when local customers are ready to buy.</strong></p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">46%</div>
+          <div class="stat-label">of all Google searches have local intent</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">76%</div>
+          <div class="stat-label">of people who search "near me" visit a business within 24 hours</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5x</div>
+          <div class="stat-label">more views for optimized profiles vs. unoptimized ones</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">#1</div>
+          <div class="stat-label">ranking factor for local search: your Google Business Profile</div>
+        </div>
+      </div>
+
+      <h2>What We Actually Do</h2>
+
+      <div class="phase-grid">
+
+        <div class="phase-card">
+          <span class="phase-label">Phase 1 — Setup &amp; Optimization</span>
+          <h3>Build Your Foundation</h3>
+          <p>A full audit and optimization of your Google Business Profile from top to bottom. If you do not have one, we build it from scratch.</p>
+          <ul>
+            <li>Claim, verify, or create your Google Business Profile</li>
+            <li>Primary and secondary category strategy (critical for ranking)</li>
+            <li>Business description optimized for search</li>
+            <li>Complete service listings with keyword-rich descriptions</li>
+            <li>Photo optimization — cover, logo, interior, exterior, team, products</li>
+            <li>Attributes and amenities setup</li>
+            <li>Q&A section populated with common customer questions</li>
+            <li>Review response strategy and templates</li>
+            <li>NAP consistency audit (Name, Address, Phone across the web)</li>
+            <li>Citation building — directory listings that boost your authority</li>
+            <li>Link your profile to your website, booking system, and menu (if applicable)</li>
+          </ul>
+          <div class="phase-note">Typically completed in 1-2 weeks. Custom quote based on your industry and current profile state.</div>
+        </div>
+
+        <div class="phase-card">
+          <span class="phase-label">Phase 2 — Ongoing Management</span>
+          <h3>Stay on Top</h3>
+          <p>Ranking is not a one-time event. We keep your profile active, relevant, and ahead of competitors.</p>
+          <ul>
+            <li>Weekly Google Business Profile posts (offers, updates, events)</li>
+            <li>Photo uploads on a regular schedule (Google rewards fresh visuals)</li>
+            <li>Review monitoring and professional response management</li>
+            <li>Competitor tracking — know where you rank vs. local competitors</li>
+            <li>Monthly performance report: views, searches, calls, direction requests</li>
+            <li>Category and keyword adjustments based on performance data</li>
+            <li>Seasonal campaign updates and holiday hours management</li>
+            <li>New service or product additions as your business grows</li>
+          </ul>
+          <div class="phase-note">Month-to-month after initial setup. No long-term contract.</div>
+        </div>
+
+      </div>
+
+      <p style="text-align:center;color:#888;font-size:0.9rem;">Every business is different. We quote pricing after reviewing your profile, competition, and goals — so you get a plan that fits, not a one-size-fits-all package.</p>
+
+      <h2>Why This Matters More Than You Think</h2>
+
+      <p>Google Business Profile is the fastest path to local visibility for most businesses. It is free to have a profile, but without optimization and consistent activity, it does nothing for you. Here is what changes when it is done right:</p>
+
+      <ul>
+        <li><strong>You show up in Google Maps</strong> when customers search for what you sell</li>
+        <li><strong>You appear in the local 3-pack</strong> — the three results above all organic listings</li>
+        <li><strong>Customers see your reviews, photos, and hours</strong> before they ever visit your website</li>
+        <li><strong>You get direct calls, direction requests, and website clicks</strong> from the search results page itself</li>
+        <li><strong>You build trust before the first conversation</strong> — a well-maintained profile signals a professional business</li>
+      </ul>
+
+      <p>Most of your competitors either have not set this up properly or set it up once and never touched it again. That is your advantage.</p>
+
+      <h2>Industries We Serve</h2>
+
+      <div class="industry-grid">
+        <div class="industry-item">
+          <strong>Restaurants &amp; Food Service</strong>
+          <span>Menu links, reservation integration, food photos, review strategy</span>
+        </div>
+        <div class="industry-item">
+          <strong>Auto Shops &amp; Dealerships</strong>
+          <span>Service listings, before/after photos, appointment booking</span>
+        </div>
+        <div class="industry-item">
+          <strong>Contractors &amp; Home Services</strong>
+          <span>Service area configuration, project photos, lead generation</span>
+        </div>
+        <div class="industry-item">
+          <strong>Dental &amp; Medical Practices</strong>
+          <span>Insurance info, appointment links, patient review management</span>
+        </div>
+        <div class="industry-item">
+          <strong>Retail &amp; E-commerce</strong>
+          <span>Product catalogs, inventory updates, shopping integration</span>
+        </div>
+        <div class="industry-item">
+          <strong>Professional Services</strong>
+          <span>Lawyers, accountants, consultants — trust signals and review strategy</span>
+        </div>
+      </div>
+
+      <p>If your business serves customers in a specific area, Google Business Profile optimization will get you more of them.</p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <details class="faq-item">
+        <summary>What is a Google Business Profile and why does it matter?</summary>
+        <p>Your Google Business Profile (formerly Google My Business) is the listing that appears when someone searches your business name or searches for services you offer on Google Maps and in the local 3-pack. It shows your hours, reviews, photos, and contact info. If it is not optimized, you are invisible to local searchers — and your competitors are getting those calls instead.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How long does it take to see results?</summary>
+        <p>Most businesses see measurable improvements in local search visibility within 30-60 days. The speed depends on your current profile state, competition level, and review volume. Businesses with strong review counts tend to see faster results.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do I need a physical storefront?</summary>
+        <p>No. Service-area businesses — contractors, cleaners, mobile services, consultants — can set up a Google Business Profile without showing a physical address. We configure your service area correctly so you show up when nearby customers search.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What if I already have a profile but it is not ranking?</summary>
+        <p>That is exactly who we work with most. We audit what you have, fix what is wrong, fill in what is missing, and build an ongoing strategy to keep you ranking — not just a one-time cleanup.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is this different from SEO?</summary>
+        <p>GBP optimization focuses specifically on your Google Maps and local search presence. <a href="/services/seo/">SEO</a> covers your website's organic rankings across all of Google. They work together — a strong GBP combined with good website SEO gives you both local and organic visibility. We offer both.</p>
+      </details>
+
+      <div class="post-callout" style="margin-top:2.5rem;">
+        <p><strong>Your competitors are showing up in the local 3-pack right now.</strong> Every day your profile sits unoptimized is a day you are losing calls, walk-ins, and revenue to businesses that took the time to get this right.</p>
+      </div>
+
+      <div class="post-cta-box">
+        <h3>Get Your Google Business Profile Working for You</h3>
+        <p>Book a free consultation. We will review your current profile, show you where you stand against local competitors, and map out exactly what it takes to get you ranking.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+          <a href="/#contact" class="btn-primary btn-large">Book a Free Consultation &rarr;</a>
+          <a href="/seo-audit/" class="btn-primary btn-large" style="background:transparent;border:2px solid var(--blue);color:var(--blue);">Get a Free SEO Audit &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+  </article>
+
+{% endblock %}
