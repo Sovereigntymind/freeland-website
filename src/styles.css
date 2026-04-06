@@ -1015,11 +1015,10 @@ footer::before {
 .footer-logo { height: 38px; width: auto; margin-bottom: 24px; opacity: 0.85; }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
   text-align: left;
-  max-width: 1100px;
   margin: 0 auto 2.5rem;
 }
 .footer-grid .footer-heading { color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-bottom: 10px; font-weight: 700; letter-spacing: 0.02em; }
@@ -1034,11 +1033,8 @@ footer::before {
 .footer-legal a:hover { color: #6da4ff; }
 .copyright { margin-top: 20px; font-size: 0.75rem !important; color: rgba(255,255,255,0.75) !important; }
 
-@media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-}
 @media (max-width: 480px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .footer-grid { flex-direction: column; gap: 1.5rem; align-items: center; }
 }
 
 /* ===== FLOATING CTA ===== */
