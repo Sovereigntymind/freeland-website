@@ -5,6 +5,17 @@ const path = require("path");
 const sharp = require("sharp");
 
 module.exports = function(eleventyConfig) {
+  // Global data: current build date for footer
+  eleventyConfig.addGlobalData("buildDate", () => {
+    const d = new Date();
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return {
+      month: months[d.getMonth()],
+      year: d.getFullYear(),
+      iso: d.toISOString().slice(0, 10)
+    };
+  });
+
   // Pass through static files as-is
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/blog/images");
