@@ -21,7 +21,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog/images");
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
   eleventyConfig.addPassthroughCopy("src/fonts");
@@ -138,6 +137,37 @@ module.exports = function(eleventyConfig) {
       fs.writeFileSync(ogOut, ogBuf);
       console.log(`[11ty] OG image: ${Math.round(ogBuf.length/1024)}KB (1200x630)`);
     }
+
+    // --- Auto-generate sitemap.xml from all built pages ---
+    const today = new Date().toISOString().slice(0, 10);
+    const sitemapPages = [];
+    function findHtml(dir, base) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) findHtml(full, base);
+        else if (entry.name === 'index.html') {
+          const rel = path.relative(base, dir).replace(/\\/g, '/');
+          const urlPath = rel ? `/${rel}/` : '/';
+          if (urlPath === '/404/' || urlPath === '/thank-you/') continue;
+          let priority = '0.7', freq = 'monthly';
+          if (urlPath === '/') { priority = '1.0'; freq = 'weekly'; }
+          else if (['/services/', '/seo-audit/', '/free-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/'].includes(urlPath)) { priority = '0.9'; }
+          else if (urlPath.startsWith('/services/') || urlPath === '/blog/' || urlPath === '/about/' || urlPath === '/case-studies/') { priority = '0.8'; }
+          else if (urlPath === '/privacy/' || urlPath === '/terms/' || urlPath === '/seo-intake/') { priority = '0.3'; freq = 'yearly'; }
+          sitemapPages.push({ urlPath, priority, freq });
+        }
+      }
+    }
+    findHtml(out, out);
+    sitemapPages.sort((a, b) => {
+      if (a.priority !== b.priority) return parseFloat(b.priority) - parseFloat(a.priority);
+      return a.urlPath.localeCompare(b.urlPath);
+    });
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPages.map(p =>
+      `  <url>\n    <loc>https://freelandme.com${p.urlPath}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${p.freq}</changefreq>\n    <priority>${p.priority}</priority>\n  </url>`
+    ).join('\n')}\n</urlset>\n`;
+    fs.writeFileSync(path.join(out, 'sitemap.xml'), sitemapXml);
+    console.log(`[11ty] Sitemap: ${sitemapPages.length} URLs (auto-generated)`);
 
     // --- Minify HTML ---
     const htmlFiles = [];

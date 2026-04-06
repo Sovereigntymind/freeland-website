@@ -531,6 +531,14 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .value-item strong { display: block; color: var(--white); font-weight: 700; margin-bottom: 3px; font-size: 0.95rem; }
 .value-item p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin: 0; }
 
+.pain-section { background: var(--navy); }
+.pain-section .section-label { color: var(--red); }
+.pain-section .section-title { color: #fff; }
+.pain-list li { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.08); }
+.pain-list li::before { color: #ff4d6a; }
+.pain-solution { color: rgba(255,255,255,0.85); background: linear-gradient(135deg, rgba(0,51,160,0.2), rgba(191,10,48,0.12)); }
+.pain-link { color: #6da4ff; }
+
 /* ===== CARDS ===== */
 .cards {
   display: grid;
@@ -604,6 +612,12 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 }
 
 .automation-cta p { color: rgba(255,255,255,0.75); margin-bottom: 20px; font-size: 1.1rem; }
+
+.services-also { text-align: center; margin-top: 48px; padding-top: 40px; border-top: 1px solid #e0e0e8; }
+.services-also > p { font-size: 0.95rem; color: var(--gray); margin-bottom: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.services-also-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.services-also-links a { display: inline-block; padding: 8px 18px; border-radius: 100px; background: var(--off-white); border: 1px solid #dde; color: var(--text); font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.2s; }
+.services-also-links a:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
 /* ===== MID-PAGE CTA ===== */
 .mid-cta {
@@ -1505,3 +1519,26 @@ footer::before {
   .post-cta-box { padding: 36px 24px; }
   .post-nav-bottom { flex-direction: column; align-items: flex-start; }
 }
+
+/* ===== Google Reviews Slider ===== */
+.google-reviews-section { padding: 5rem 0 4rem; background: #05091a; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); }
+.gr-header { display: inline-flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 0.75rem 2rem; }
+.gr-score-block { display: flex; align-items: center; gap: 0.75rem; }
+.gr-score-block > div { display: flex; flex-direction: column; align-items: flex-start; }
+.gr-stars { color: #fbbc04; font-size: 1.15rem; letter-spacing: 2px; line-height: 1; }
+.gr-score { color: #fff; font-weight: 800; font-size: 2rem; line-height: 1; }
+.gr-count { color: #8a8aa0; font-size: 0.78rem; margin-top: 0.15rem; }
+.gr-track-wrapper { width: 100%; overflow: hidden; mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
+.gr-track { display: flex; gap: 1.5rem; width: max-content; animation: gr-scroll 80s linear infinite; }
+.gr-track:hover { animation-play-state: paused; }
+@keyframes gr-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.google-reviews-section .gr-card { flex-shrink: 0; width: 340px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem 1.75rem 1.25rem; position: relative; transition: border-color 0.3s; color: #fff; }
+.google-reviews-section .gr-card:hover { border-color: rgba(191,10,48,0.3); }
+.google-reviews-section .gr-card-quote { position: absolute; top: 0.75rem; right: 1.25rem; font-size: 3rem; line-height: 1; color: rgba(191,10,48,0.25); font-family: Georgia, serif; pointer-events: none; }
+.google-reviews-section .gr-card-stars { color: #fbbc04; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.google-reviews-section .gr-card p { color: #ccc !important; font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
+.google-reviews-section .gr-card-author { display: flex; align-items: center; gap: 0.65rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.85rem; }
+.google-reviews-section .gr-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #BF0A30, #8b0022); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
+.google-reviews-section .gr-card-author strong { display: block; color: #fff !important; font-size: 0.88rem; font-weight: 600; }
+.google-reviews-section .gr-card-author span { display: block; color: #8a8aa0 !important; font-size: 0.75rem; }
+@media (max-width: 768px) { .gr-card { width: 280px; padding: 1.25rem 1.25rem 1rem; } .gr-header { padding: 0.6rem 1.25rem; } .gr-score { font-size: 1.5rem; } }
