@@ -60,7 +60,8 @@ async function urlExists(url) {
 
 // --- HTML parsing helpers ---
 function extractTag(html, tag) {
-  const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i");
+  // Use 's' (dotAll) flag so '.' matches newlines — avoids fragile \\s\\S escaping in RegExp constructor
+  const regex = new RegExp(`<${tag}[^>]*>(.*?)</${tag}>`, "is");
   const match = html.match(regex);
   return match ? match[1].trim() : null;
 }
