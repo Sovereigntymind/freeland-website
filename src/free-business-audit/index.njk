@@ -1,0 +1,337 @@
+---
+title: "Free Business Audit | See What's Costing You Customers | Freeland"
+description: "Get a free 19-point business audit covering your website, Google presence, and marketing. See your score and exactly what to fix."
+web3forms: true
+---
+{% extends "base.njk" %}
+
+{% block head %}
+  <title>Free Business Audit | See What's Costing You Customers | Freeland</title>
+  <meta name="description" content="Get a free 19-point business audit covering your website, Google presence, and marketing. See your score and exactly what to fix." />
+  <meta name="author" content="Kevin Freeland" />
+  <link rel="canonical" href="https://freelandme.com/free-business-audit/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freelandme.com/free-business-audit/" />
+  <meta property="og:title" content="Free Business Audit — See What's Costing You Customers" />
+  <meta property="og:description" content="Get a free 19-point audit of your website, Google presence, and marketing. We'll show you exactly what's broken and what to fix first." />
+  <meta property="og:image" content="https://freelandme.com/images/kevin-headshot.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="624" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Business Audit — See What's Costing You Customers" />
+  <meta name="twitter:description" content="Get a free 19-point audit of your website, Google presence, and marketing. We'll show you exactly what's broken and what to fix first." />
+  <meta name="twitter:image" content="https://freelandme.com/images/kevin-headshot.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Free Business Audit", "item": "https://freelandme.com/free-business-audit/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Free Business Audit",
+    "description": "Comprehensive 19-point audit covering your website, Google presence, SEO, and marketing — with revenue impact estimates for every gap.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Freeland Marketing & Entertainment",
+      "url": "https://freelandme.com"
+    },
+    "areaServed": "US"
+  }
+  </script>
+
+  <style>
+    .gbp-hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(66,133,244,0.12); border: 1px solid rgba(66,133,244,0.25); color: #8ab4f8; padding: 6px 16px; border-radius: 100px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.03em; margin-bottom: 1.25rem; }
+    .gbp-hero-badge svg { width: 16px; height: 16px; }
+    .gbp-score-preview { display: flex; gap: 1.5rem; justify-content: center; margin: 2rem 0 1rem; flex-wrap: wrap; }
+    .gbp-score-card { text-align: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.25rem; min-width: 120px; }
+    .gbp-score-card .num { font-size: 1.6rem; font-weight: 800; }
+    .gbp-score-card .num.red { color: #ff6b7f; }
+    .gbp-score-card .num.blue { color: #4d88ff; }
+    .gbp-score-card .num.green { color: #22c55e; }
+    .gbp-score-card .label { font-size: 0.72rem; color: #7a7a90; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+    .gbp-form { margin-top: 1.5rem; }
+    .gbp-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .gbp-form .form-group { display: flex; flex-direction: column; }
+    .gbp-form label { font-size: 0.85rem; font-weight: 600; color: #ccc; margin-bottom: 0.35rem; }
+    .gbp-form input, .gbp-form select { padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: #fff; font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; }
+    .gbp-form input:focus, .gbp-form select:focus { outline: none; border-color: #4d88ff; }
+    .gbp-form input::placeholder { color: #555; }
+    .gbp-form select { cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23777' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    .gbp-form select option { background: #1a1a2e; color: #fff; }
+    .gbp-form .form-note { text-align: center; font-size: 0.82rem; color: #666; margin-top: 0.75rem; }
+    .gbp-trust { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; padding: 1rem 1.25rem; background: rgba(77,136,255,0.08); border: 1px solid rgba(77,136,255,0.18); border-radius: 12px; }
+    .gbp-trust-photo { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid rgba(77,136,255,0.4); }
+    .gbp-trust-text { font-size: 0.88rem; color: #b0b0c0; line-height: 1.45; }
+    .gbp-trust-text strong { color: #fff; }
+    .gbp-urgency { text-align: center; margin: 1rem 0 0; padding: 0.6rem 1rem; background: rgba(191,10,48,0.1); border: 1px solid rgba(191,10,48,0.2); border-radius: 8px; font-size: 0.85rem; color: #ff6b7f; }
+    .gbp-check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0; }
+    .gbp-check-item { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.75rem; background: rgba(255,255,255,0.03); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); }
+    .gbp-check-icon { color: #4d88ff; font-weight: 700; flex-shrink: 0; font-size: 1rem; line-height: 1.4; }
+    .gbp-check-item strong { color: #fff; font-size: 0.9rem; }
+    .gbp-check-item p { margin: 0.15rem 0 0; font-size: 0.82rem; color: #888; line-height: 1.4; }
+    .gbp-steps { counter-reset: steps; list-style: none; padding: 0; }
+    .gbp-steps li { counter-increment: steps; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; gap: 0.85rem; align-items: flex-start; }
+    .gbp-steps li:last-child { border-bottom: none; }
+    .gbp-steps li::before { content: counter(steps); display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(77,136,255,0.12); border: 1px solid rgba(77,136,255,0.25); color: #4d88ff; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+    .gbp-callout { background: rgba(255,255,255,0.03); border-left: 3px solid #4d88ff; padding: 1rem 1.25rem; border-radius: 0 10px 10px 0; margin: 1.5rem 0; }
+    .gbp-callout p { color: #b0b0c0; font-size: 0.92rem; line-height: 1.55; margin: 0; }
+    .gbp-callout .quote-author { color: #7a7a90; font-size: 0.82rem; margin-top: 0.5rem; }
+    @media (max-width: 600px) {
+      .gbp-form .form-row { grid-template-columns: 1fr; }
+      .gbp-check-grid { grid-template-columns: 1fr; }
+      .gbp-score-preview { gap: 0.75rem; }
+      .gbp-score-card { min-width: 80px; padding: 0.75rem; }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+  <article>
+
+    <header class="post-header">
+      <div class="post-header-inner">
+        <a href="/" class="post-breadcrumb">&larr; Home</a>
+        <div class="gbp-hero-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" style="width:16px;height:16px"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.49.49 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1115.6 12 3.611 3.611 0 0112 15.6z"/></svg>
+          Free Business Audit
+        </div>
+        <h1>Your Marketing Has Blind Spots. We'll Show You Where.</h1>
+        <p style="color:#ccc;margin-top:0.75rem;font-size:1.05rem;max-width:640px;margin-left:auto;margin-right:auto;">Get a free 19-point audit of your website, Google presence, and marketing — with a dollar amount attached to every gap. Takes 30 seconds to start.</p>
+
+        <div class="gbp-score-preview">
+          <div class="gbp-score-card">
+            <div class="num red">73%</div>
+            <div class="label">Avg. Score</div>
+          </div>
+          <div class="gbp-score-card">
+            <div class="num blue">19</div>
+            <div class="label">Checks Run</div>
+          </div>
+          <div class="gbp-score-card">
+            <div class="num green">$2K-8K</div>
+            <div class="label">Monthly Revenue Left on Table</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      <div class="gbp-trust">
+        <img src="/images/kevin-headshot.jpg" alt="Kevin Freeland" class="gbp-trust-photo" width="52" height="52" loading="lazy" />
+        <div class="gbp-trust-text">
+          <strong>Analyzed by Kevin Freeland</strong><br>
+          Every audit is personally reviewed. Not a template — real analysis from someone who's helped businesses 3x their revenue.
+        </div>
+      </div>
+
+      <form class="gbp-form contact-form" action="https://api.web3forms.com/submit" method="POST" id="gbp-audit-form">
+        <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
+        <input type="hidden" name="subject" value="Free Business Audit Request — Lead Magnet" />
+        <input type="hidden" name="redirect" value="https://freelandme.com/free-business-audit/thank-you/" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="business_name">Business Name *</label>
+            <input type="text" id="business_name" name="business_name" placeholder="Palm Coast Dental" required autocomplete="organization" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="website">Website URL *</label>
+            <input type="url" id="website" name="website" placeholder="https://yourbusiness.com" required />
+          </div>
+          <div class="form-group">
+            <label for="city">City *</label>
+            <input type="text" id="city" name="city" placeholder="Palm Coast, FL" required autocomplete="address-level2" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="industry">Industry</label>
+            <select id="industry" name="industry">
+              <option value="default">Select your industry...</option>
+              <option value="auto">Auto Repair / Body Shop</option>
+              <option value="construction">Construction / Contractor</option>
+              <option value="dental">Dental</option>
+              <option value="fitness">Fitness / Gym</option>
+              <option value="hvac">HVAC</option>
+              <option value="insurance">Insurance</option>
+              <option value="landscaping">Landscaping</option>
+              <option value="legal">Legal / Law Firm</option>
+              <option value="medical">Medical / Healthcare</option>
+              <option value="plumbing">Plumbing</option>
+              <option value="realestate">Real Estate</option>
+              <option value="restaurant">Restaurant / Food Service</option>
+              <option value="retail">Retail</option>
+              <option value="roofing">Roofing</option>
+              <option value="salon">Salon / Spa</option>
+              <option value="default">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(386) 555-0100" autocomplete="tel" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary btn-large btn-full" id="gbp-submit-btn">Get My Free Business Audit &rarr;</button>
+        <p class="form-note">100% free. No credit card. No obligation. Branded report emailed within minutes.</p>
+      </form>
+
+      <div class="gbp-urgency">
+        We review every audit personally — limited to 10 per week. Spots fill fast.
+      </div>
+
+      <h2>What We Audit (19 Checks, 4 Categories)</h2>
+
+      <div class="gbp-check-grid">
+        <div class="gbp-check-item">
+          <span class="gbp-check-icon">&#10003;</span>
+          <div>
+            <strong>Can Customers Find You?</strong>
+            <p>Google title, description, city targeting, schema data, sitemap, headline, content depth</p>
+          </div>
+        </div>
+        <div class="gbp-check-item">
+          <span class="gbp-check-icon">&#10003;</span>
+          <div>
+            <strong>Can Customers Reach You?</strong>
+            <p>Contact form, tap-to-call, after-hours AI capture, Google Maps embed</p>
+          </div>
+        </div>
+        <div class="gbp-check-item">
+          <span class="gbp-check-icon">&#10003;</span>
+          <div>
+            <strong>Does Your Site Build Trust?</strong>
+            <p>Reviews, social proof, social media links, sharing previews, image SEO</p>
+          </div>
+        </div>
+        <div class="gbp-check-item">
+          <span class="gbp-check-icon">&#10003;</span>
+          <div>
+            <strong>Speed &amp; Security</strong>
+            <p>HTTPS, page load time, mobile responsiveness</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gbp-callout">
+        <p>"Most businesses we audit score between 30-60 out of 100. The gaps we find typically represent $2,000-$8,000 per month in revenue that's going to competitors instead. We show you exactly where those dollars are going."</p>
+        <div class="quote-author">— Kevin Freeland, Founder</div>
+      </div>
+
+      <h2>How It Works</h2>
+
+      <ol class="gbp-steps">
+        <li><div><strong>Enter your business info</strong> — takes 30 seconds. We need your website URL and city to run the scan.</div></li>
+        <li><div><strong>Our system scans 19 data points</strong> — we check everything from your Google search appearance to page speed and trust signals.</div></li>
+        <li><div><strong>You get a branded report</strong> — emailed to you with your score, what's broken, and a dollar amount for each issue.</div></li>
+        <li><div><strong>Optional: 15-minute strategy call</strong> — walk through the findings together. Zero pressure, zero obligation.</div></li>
+      </ol>
+
+      <div class="post-callout">
+        <p><strong>Why This Matters</strong></p>
+        <p>46% of all Google searches have local intent. If your website, Google profile, and marketing aren't working together, you're invisible to nearly half the people searching for what you sell. The businesses that show up in Google's top results get 44% of the clicks. Everyone else fights over the scraps.</p>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is this really free?</summary>
+          <p>Yes — 100% free. No credit card, no hidden fees. We provide the audit because it helps business owners see what they're missing. If you want help fixing what we find, we're here. If not, the report is yours to keep.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What exactly do you check?</summary>
+          <p>19 data points across 4 categories: findability (can Google show you to local customers?), reachability (can visitors contact you easily?), trust signals (do you look credible?), and technical performance (is your site fast and secure?). Each check is scored and comes with a specific fix.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How fast do I get the report?</summary>
+          <p>The automated scan runs within minutes of submitting your info. Kevin personally reviews every report before it goes out — most are delivered within 2 hours, always within 24 hours.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need a Google Business Profile?</summary>
+          <p>No — we audit your website and overall online presence regardless. If you don't have a Google Business Profile set up yet, that's actually one of the biggest findings we'll flag, because it means you're missing out on the entire local search channel.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will you try to sell me something?</summary>
+          <p>The audit stands on its own. We'll show you what's broken and how to fix it — many of the fixes are things you can do yourself for free. If you want us to handle the implementation, we can discuss that, but there's zero pressure.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What makes this different from other free audits?</summary>
+          <p>Most free audits are generic templates. Ours runs a real scan of your actual website and gives you a score out of 100 with specific dollar estimates for every gap. Plus Kevin personally reviews every report before it goes out.</p>
+        </details>
+      </div>
+
+      <div class="post-cta-box">
+        <h3>Stop Guessing. Start Growing.</h3>
+        <p>Find out your score and exactly what to fix — completely free.</p>
+        <a href="#gbp-audit-form" class="btn-primary btn-large">Get My Free Business Audit &rarr;</a>
+      </div>
+
+    </div>
+
+  </article>
+
+  <script>
+    (function() {
+      var form = document.getElementById('gbp-audit-form');
+      var submitBtn = document.getElementById('gbp-submit-btn');
+      if (!form) return;
+
+      form.addEventListener('submit', function() {
+        var data = {
+          business_name: form.querySelector('[name="business_name"]').value,
+          email: form.querySelector('[name="email"]').value,
+          website: form.querySelector('[name="website"]').value,
+          city: form.querySelector('[name="city"]').value,
+          industry: form.querySelector('[name="industry"]').value,
+          phone: form.querySelector('[name="phone"]').value,
+          source: 'business-audit-landing-page',
+          timestamp: new Date().toISOString()
+        };
+
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        // Send to n8n webhook for audit automation + drip sequence
+        navigator.sendBeacon(
+          'https://freelandme.app.n8n.cloud/webhook/business-audit',
+          new Blob([JSON.stringify(data)], { type: 'application/json' })
+        );
+
+        // Trigger Netlify Function to run the audit
+        fetch('/.netlify/functions/business-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(function() {});
+
+        // Web3Forms handles the actual redirect via form action
+      });
+    })();
+  </script>
+
+{% endblock %}

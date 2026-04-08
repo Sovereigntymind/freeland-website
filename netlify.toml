@@ -5,6 +5,10 @@
 [build.environment]
   NODE_VERSION = "20"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Force trailing slashes to prevent Google "Redirect error" indexing issues
 # These only fire when no file exists at the from path (force defaults to false)
 [[redirects]]
@@ -25,6 +29,11 @@
 [[redirects]]
   from = "/services/*"
   to = "/services/:splat/"
+  status = 301
+
+[[redirects]]
+  from = "/free-business-audit"
+  to = "/free-business-audit/"
   status = 301
 
 # Fallback 404

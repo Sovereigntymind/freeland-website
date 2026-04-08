@@ -148,10 +148,10 @@ module.exports = function(eleventyConfig) {
         else if (entry.name === 'index.html') {
           const rel = path.relative(base, dir).replace(/\\/g, '/');
           const urlPath = rel ? `/${rel}/` : '/';
-          if (urlPath === '/404/' || urlPath === '/thank-you/') continue;
+          if (urlPath === '/404/' || urlPath.endsWith('/thank-you/')) continue;
           let priority = '0.7', freq = 'monthly';
           if (urlPath === '/') { priority = '1.0'; freq = 'weekly'; }
-          else if (['/services/', '/seo-audit/', '/free-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/'].includes(urlPath)) { priority = '0.9'; }
+          else if (['/services/', '/seo-audit/', '/free-audit/', '/free-business-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/'].includes(urlPath)) { priority = '0.9'; }
           else if (urlPath.startsWith('/services/') || urlPath === '/blog/' || urlPath === '/about/' || urlPath === '/case-studies/') { priority = '0.8'; }
           else if (urlPath === '/privacy/' || urlPath === '/terms/' || urlPath === '/seo-intake/') { priority = '0.3'; freq = 'yearly'; }
           sitemapPages.push({ urlPath, priority, freq });
