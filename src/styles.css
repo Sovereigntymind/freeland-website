@@ -437,7 +437,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .stat p { font-size: 0.85rem; color: rgba(255,255,255,0.75); font-weight: 500; }
 
 /* ===== SECTIONS ===== */
-.section { padding: 100px 24px; content-visibility: auto; contain-intrinsic-size: auto 800px; }
+.section { padding: 100px 24px; }
 .section.dark { background: var(--navy); }
 .section.dark p, .section.dark .section-sub { color: rgba(255,255,255,0.75); }
 .light-section { background: var(--off-white); }
