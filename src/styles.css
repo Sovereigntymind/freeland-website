@@ -400,7 +400,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 
 /* ===== STATS BAR ===== */
 .stats {
-  background: linear-gradient(135deg, var(--blue) 0%, #001f6b 100%);
+  background: linear-gradient(to bottom, var(--blue) 0%, #001f6b 100%);
   padding: 52px 24px;
   position: relative;
   overflow: hidden;
@@ -621,7 +621,7 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 
 /* ===== MID-PAGE CTA ===== */
 .mid-cta {
-  background: linear-gradient(135deg, #001580 0%, var(--blue) 50%, #001f80 100%);
+  background: linear-gradient(to bottom, #001580 0%, #001f80 100%);
   padding: 64px 24px;
   position: relative;
   overflow: hidden;
