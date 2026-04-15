@@ -324,8 +324,8 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .hero-footnote { color: rgba(255,255,255,0.75); font-size: 0.82rem; }
 
 /* ===== WAVE DIVIDERS ===== */
-.wave { line-height: 0; display: block; margin-top: -2px; margin-bottom: -2px; position: relative; z-index: 2; }
-.wave svg { display: block; width: 100%; height: auto; vertical-align: bottom; }
+.wave { line-height: 0; display: block; margin-top: -3px; margin-bottom: -3px; position: relative; z-index: 2; }
+.wave svg { display: block; width: 100%; height: 80px !important; vertical-align: bottom; }
 
 /* ===== SECTION UTILITIES ===== */
 .section-white { background: #fff; padding-bottom: 60px; }
