@@ -1537,3 +1537,17 @@ footer::before {
 .google-reviews-section .gr-card-author strong { display: block; color: #fff !important; font-size: 0.88rem; font-weight: 600; }
 .google-reviews-section .gr-card-author span { display: block; color: #8a8aa0 !important; font-size: 0.75rem; }
 @media (max-width: 768px) { .gr-card { width: 280px; padding: 1.25rem 1.25rem 1rem; } .gr-header { padding: 0.6rem 1.25rem; } .gr-score { font-size: 1.5rem; } }
+
+/* ===== MOBILE PERFORMANCE OVERRIDES =====
+   Expensive GPU/compositor effects (backdrop-filter, large blur filters,
+   drop-shadows) cause long style/layout tasks on mobile CPUs. Disable or
+   simplify them on small viewports to keep TBT low. */
+@media (max-width: 768px) {
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  body > header::before { background: rgba(5, 9, 26, 0.92); }
+  .hero-orb { display: none; }
+  .hero-logo { filter: none; }
+}
