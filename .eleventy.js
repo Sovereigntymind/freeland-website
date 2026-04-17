@@ -114,16 +114,22 @@ module.exports = function(eleventyConfig) {
       console.log("[11ty] Favicons generated from logo");
     }
 
-    // --- Optimize logo.webp for smaller file size ---
+    // --- Optimize logo.webp for smaller file size + generate mobile variant ---
     const logoWebp = path.join(out, "images", "logo.webp");
     if (fs.existsSync(logoWebp)) {
       const origSize = fs.statSync(logoWebp).size;
-      const optimized = await sharp(logoWebp)
+      const desktop = await sharp(logoWebp)
         .resize(520, 160, { fit: "inside" })
-        .webp({ quality: 80, effort: 6 })
+        .webp({ quality: 78, effort: 6 })
         .toBuffer();
-      fs.writeFileSync(logoWebp, optimized);
-      console.log(`[11ty] Logo: ${Math.round(origSize/1024)}KB → ${Math.round(optimized.length/1024)}KB`);
+      fs.writeFileSync(logoWebp, desktop);
+      const logoMobile = path.join(out, "images", "logo-360.webp");
+      const mobile = await sharp(logoWebp)
+        .resize(360, 111, { fit: "inside" })
+        .webp({ quality: 76, effort: 6 })
+        .toBuffer();
+      fs.writeFileSync(logoMobile, mobile);
+      console.log(`[11ty] Logo: ${Math.round(origSize/1024)}KB → ${Math.round(desktop.length/1024)}KB (desktop) + ${Math.round(mobile.length/1024)}KB (mobile)`);
     }
 
     // --- Generate optimized OG share image (1200x630) ---

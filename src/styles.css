@@ -532,7 +532,6 @@ body > header.menu-open::before { background: rgba(5,9,26,0.98); }
 .value-item p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin: 0; }
 
 .pain-section { background: var(--navy); }
-.pain-section .section-label { color: var(--red); }
 .pain-section .section-title { color: #fff; }
 .pain-list li { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.08); }
 .pain-list li::before { color: #ff4d6a; }
