@@ -155,11 +155,13 @@ module.exports = function(eleventyConfig) {
           const rel = path.relative(base, dir).replace(/\\/g, '/');
           const urlPath = rel ? `/${rel}/` : '/';
           if (urlPath === '/404/' || urlPath.endsWith('/thank-you/')) continue;
+          // Exclude any page with noindex meta tag — contradicts sitemap inclusion and wastes crawl budget
+          const html = fs.readFileSync(full, 'utf8');
+          if (/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)) continue;
           let priority = '0.7', freq = 'monthly';
           if (urlPath === '/') { priority = '1.0'; freq = 'weekly'; }
           else if (['/services/', '/seo-audit/', '/free-audit/', '/free-business-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/'].includes(urlPath)) { priority = '0.9'; }
           else if (urlPath.startsWith('/services/') || urlPath === '/blog/' || urlPath === '/about/' || urlPath === '/case-studies/') { priority = '0.8'; }
-          else if (urlPath === '/privacy/' || urlPath === '/terms/' || urlPath === '/seo-intake/') { priority = '0.3'; freq = 'yearly'; }
           sitemapPages.push({ urlPath, priority, freq });
         }
       }
