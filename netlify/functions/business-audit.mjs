@@ -58,6 +58,47 @@ async function urlExists(url) {
   }
 }
 
+// --- Firecrawl fallback (ported from autoresearch/audit-coverage experiments) ---
+// Uses process.env in Netlify. If FIRECRAWL_API_KEY is set in Netlify env vars, falls back
+// to Firecrawl for JS-rendered SPAs, 4xx/5xx bot blocks, and thin error pages. Otherwise
+// skips gracefully (site remains flagged unreachable, same as before).
+const FIRECRAWL_KEY = process.env.FIRECRAWL_API_KEY || null;
+
+async function firecrawlScrape(url) {
+  if (!FIRECRAWL_KEY) return null;
+  try {
+    const response = await fetch("https://api.firecrawl.dev/v2/scrape", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${FIRECRAWL_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ url, formats: ["rawHtml"] }),
+      signal: AbortSignal.timeout(20000), // Netlify functions have a 26s limit, stay well under
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    return data?.data?.rawHtml || null;
+  } catch {
+    return null;
+  }
+}
+
+function looksLikeJsShell(html) {
+  if (!html) return true;
+  if (html.length < 3000) return true;
+  const hasFrameworkSig = /__NEXT_DATA__|__NUXT__|data-reactroot|ng-version|data-react-helmet|window\.__INITIAL_STATE__|id=["'](root|app|__next|__nuxt)["']/.test(html);
+  const shellBody = /<body[^>]*>\s*(<noscript>[\s\S]{0,500}?<\/noscript>\s*)?<div id=["'](root|app|__next|__nuxt)["'][^>]*>\s*<\/div>\s*(<script|<\/body>)/i.test(html);
+  return hasFrameworkSig && shellBody;
+}
+
+function looksLikeErrorPage(html) {
+  if (!html) return false;
+  const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  const title = titleMatch ? titleMatch[1].trim().toLowerCase() : "";
+  const errorTitle = /^\s*(4\d{2}|5\d{2})\b|\b(forbidden|not found|access denied|bot protection|attention required|access restricted|cloudflare|service unavailable|under construction|error)\b/i.test(title);
+  const textOnly = html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const veryThin = textOnly.split(/\s+/).filter((w) => w.length > 0).length < 50;
+  return errorTitle || veryThin;
+}
+
 // --- HTML parsing helpers ---
 function extractTag(html, tag) {
   // Use 's' (dotAll) flag so '.' matches newlines — avoids fragile \\s\\S escaping in RegExp constructor
@@ -445,6 +486,17 @@ async function runAudit(formData) {
       html = await response.text();
     } catch (err2) {
       results.errors.push(`HTTP fallback failed: ${err2.message}`);
+    }
+  }
+
+  // Firecrawl fallback: if native fetch failed, returned a JS shell, or returned an error page, try Firecrawl
+  if (!results.siteReachable || looksLikeJsShell(html) || looksLikeErrorPage(html)) {
+    const fcHtml = await firecrawlScrape(baseUrl);
+    if (fcHtml && fcHtml.length > (html?.length || 0)) {
+      html = fcHtml;
+      results.siteReachable = true;
+      results.ssl = baseUrl.startsWith("https://");
+      if (!results.loadTimeMs || results.loadTimeMs === 99999) results.loadTimeMs = 3000;
     }
   }
 
