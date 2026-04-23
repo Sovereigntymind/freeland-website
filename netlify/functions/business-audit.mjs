@@ -595,12 +595,23 @@ export default async (req) => {
       timestamp: new Date().toISOString(),
     };
 
-    // Send to n8n webhook (non-blocking — don't wait for response)
-    fetch("https://freelandme.app.n8n.cloud/webhook/business-audit-results", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(n8nPayload),
-    }).catch(() => {});
+    // Send to n8n webhook (awaited — Netlify kills pending promises when the response returns,
+    // so fire-and-forget silently drops the call. ~1s added to user-facing latency, worth it
+    // for reliable email delivery.)
+    try {
+      const n8nRes = await fetch("https://freelandme.app.n8n.cloud/webhook/business-audit-results", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(n8nPayload),
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!n8nRes.ok) {
+        console.error(`n8n webhook returned ${n8nRes.status}`);
+      }
+    } catch (err) {
+      console.error("n8n webhook failed:", err.message);
+      // Don't fail the user-facing response if email delivery fails.
+    }
 
     // Return success
     return new Response(JSON.stringify({
