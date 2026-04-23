@@ -9,6 +9,19 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Deleted duplicate blog post — content cannibalized /services/meta-ads/ (rejected by Google)
+[[redirects]]
+  from = "/blog/meta-ads-florida-small-business/"
+  to = "/services/meta-ads/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/meta-ads-florida-small-business"
+  to = "/services/meta-ads/"
+  status = 301
+  force = true
+
 # Force trailing slashes to prevent Google "Redirect error" indexing issues
 # These only fire when no file exists at the from path (force defaults to false)
 [[redirects]]

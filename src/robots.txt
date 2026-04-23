@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
+
+# Form confirmation pages — no value in search, don't waste crawl budget
 Disallow: /thank-you.html
+Disallow: /thank-you/
+Disallow: /free-business-audit/thank-you/
+Disallow: /free-gbp-audit/thank-you/
 
 Sitemap: https://freelandme.com/sitemap.xml
