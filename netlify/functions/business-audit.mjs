@@ -29,7 +29,9 @@ const INDUSTRY_DATA = {
 };
 
 // --- Fetch with timeout ---
-async function fetchWithTimeout(url, timeoutMs = 8000) {
+// Netlify default function budget is 26s. Worst-case pipeline must stay under that:
+//   https fetch (5s) + http fallback (4s) + Firecrawl (10s) + n8n webhook (5s) = 24s
+async function fetchWithTimeout(url, timeoutMs = 5000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -71,7 +73,7 @@ async function firecrawlScrape(url) {
       method: "POST",
       headers: { Authorization: `Bearer ${FIRECRAWL_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({ url, formats: ["rawHtml"] }),
-      signal: AbortSignal.timeout(20000), // Netlify functions have a 26s limit, stay well under
+      signal: AbortSignal.timeout(10000), // Netlify functions have a 26s limit — budget tight, stay well under
     });
     if (!response.ok) return null;
     const data = await response.json();
@@ -83,7 +85,8 @@ async function firecrawlScrape(url) {
 
 function looksLikeJsShell(html) {
   if (!html) return true;
-  if (html.length < 3000) return true;
+  // Only treat tiny pages as shells when paired with SPA markers.
+  // Naked 3KB HTML pages are common for legit static sites and must not force Firecrawl.
   const hasFrameworkSig = /__NEXT_DATA__|__NUXT__|data-reactroot|ng-version|data-react-helmet|window\.__INITIAL_STATE__|id=["'](root|app|__next|__nuxt)["']/.test(html);
   const shellBody = /<body[^>]*>\s*(<noscript>[\s\S]{0,500}?<\/noscript>\s*)?<div id=["'](root|app|__next|__nuxt)["'][^>]*>\s*<\/div>\s*(<script|<\/body>)/i.test(html);
   return hasFrameworkSig && shellBody;
@@ -470,7 +473,7 @@ async function runAudit(formData) {
   // 1. Fetch homepage
   let html = "";
   try {
-    const { response, elapsed } = await fetchWithTimeout(baseUrl, 8000);
+    const { response, elapsed } = await fetchWithTimeout(baseUrl, 5000);
     results.siteReachable = true;
     results.loadTimeMs = elapsed;
     results.ssl = response.url.startsWith("https://");
@@ -479,7 +482,7 @@ async function runAudit(formData) {
     results.errors.push(`Could not reach ${baseUrl}: ${err.message}`);
     // Try HTTP fallback
     try {
-      const { response, elapsed } = await fetchWithTimeout(`http://${rawWebsite}`, 8000);
+      const { response, elapsed } = await fetchWithTimeout(`http://${rawWebsite}`, 4000);
       results.siteReachable = true;
       results.loadTimeMs = elapsed;
       results.ssl = response.url.startsWith("https://");
@@ -596,31 +599,40 @@ export default async (req) => {
     };
 
     // Send to n8n webhook (awaited — Netlify kills pending promises when the response returns,
-    // so fire-and-forget silently drops the call. ~1s added to user-facing latency, worth it
-    // for reliable email delivery.)
+    // so fire-and-forget silently drops the call.)
+    let emailQueued = false;
+    let emailError = null;
     try {
       const n8nRes = await fetch("https://freelandme.app.n8n.cloud/webhook/business-audit-results", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(n8nPayload),
-        signal: AbortSignal.timeout(10000),
+        signal: AbortSignal.timeout(5000),
       });
+      emailQueued = n8nRes.ok;
       if (!n8nRes.ok) {
-        console.error(`n8n webhook returned ${n8nRes.status}`);
+        emailError = `n8n webhook returned ${n8nRes.status}`;
+        console.error(emailError);
       }
     } catch (err) {
-      console.error("n8n webhook failed:", err.message);
-      // Don't fail the user-facing response if email delivery fails.
+      emailError = `n8n webhook failed: ${err.message}`;
+      console.error(emailError);
     }
 
-    // Return success
+    // Signal delivery status to the caller so the landing page can
+    // differentiate "audit ran + email queued" from "audit ran but no email".
+    // 502 tells the client the upstream mail pipeline failed, so it can
+    // show a fallback message instead of a thank-you page the user shouldn't trust.
+    const status = emailQueued ? 200 : 502;
     return new Response(JSON.stringify({
-      success: true,
+      success: emailQueued,
+      emailQueued,
+      emailError,
       score: scoring.score,
       grade: scoring.grade,
       issuesFound: insights.length,
     }), {
-      status: 200,
+      status,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "https://freelandme.com",

@@ -141,7 +141,6 @@ web3forms: true
       <form class="gbp-form contact-form" action="https://api.web3forms.com/submit" method="POST" id="gbp-audit-form">
         <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
         <input type="hidden" name="subject" value="Free Business Audit Request — Lead Magnet" />
-        <input type="hidden" name="redirect" value="https://freelandme.com/free-business-audit/thank-you/" />
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-row">
           <div class="form-group">
@@ -193,6 +192,7 @@ web3forms: true
         </div>
         <button type="submit" class="btn-primary btn-large btn-full" id="gbp-submit-btn">Get My Free Business Audit &rarr;</button>
         <p class="form-note">100% free. No credit card. No obligation. Branded report emailed within minutes.</p>
+        <p id="gbp-audit-error" role="alert" style="display:none;margin-top:0.75rem;padding:0.75rem 1rem;background:rgba(191,10,48,0.12);border:1px solid rgba(191,10,48,0.3);border-radius:8px;color:#ff6b7f;font-size:0.88rem;"></p>
       </form>
 
       <div class="gbp-urgency">
@@ -299,9 +299,20 @@ web3forms: true
     (function() {
       var form = document.getElementById('gbp-audit-form');
       var submitBtn = document.getElementById('gbp-submit-btn');
+      var errorBox = document.getElementById('gbp-audit-error');
       if (!form) return;
 
-      form.addEventListener('submit', function() {
+      function showError(msg) {
+        if (!errorBox) return;
+        errorBox.textContent = msg;
+        errorBox.style.display = 'block';
+      }
+
+      form.addEventListener('submit', function(e) {
+        // Take over submission so we can wait for the audit + email-queue
+        // confirmation before sending the user to the thank-you page.
+        e.preventDefault();
+
         var data = {
           business_name: form.querySelector('[name="business_name"]').value,
           email: form.querySelector('[name="email"]').value,
@@ -313,23 +324,53 @@ web3forms: true
           timestamp: new Date().toISOString()
         };
 
-        submitBtn.textContent = 'Submitting...';
+        if (errorBox) errorBox.style.display = 'none';
+        submitBtn.textContent = 'Running your audit... (up to 30s)';
         submitBtn.disabled = true;
 
-        // Send to n8n webhook for audit automation + drip sequence
-        navigator.sendBeacon(
-          'https://freelandme.app.n8n.cloud/webhook/business-audit',
-          new Blob([JSON.stringify(data)], { type: 'application/json' })
-        );
+        // Lead-capture backup: Web3Forms via JSON POST (no navigation).
+        // Always sends regardless of audit outcome so the lead isn't lost.
+        var web3formsPayload = Object.assign({}, data, {
+          access_key: 'af9a5ef5-c8be-450b-8fdd-9039551baa76',
+          subject: 'Free Business Audit Request — Lead Magnet'
+        });
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(web3formsPayload)
+        }).catch(function() { /* backup channel — non-blocking */ });
 
-        // Trigger Netlify Function to run the audit
+        // Also ping the n8n drip-sequence webhook. sendBeacon is reliable
+        // even if the page closes mid-flight.
+        try {
+          navigator.sendBeacon(
+            'https://freelandme.app.n8n.cloud/webhook/business-audit',
+            new Blob([JSON.stringify(data)], { type: 'application/json' })
+          );
+        } catch (err) { /* best-effort */ }
+
+        // Primary path: Netlify Function runs the audit and queues the
+        // branded report email through n8n. Only redirect to thank-you
+        // once we have confirmation the email is queued.
         fetch('/.netlify/functions/business-audit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
-        }).catch(function() {});
-
-        // Web3Forms handles the actual redirect via form action
+        }).then(function(resp) {
+          return resp.json().then(function(body) {
+            if (resp.ok && body && body.emailQueued) {
+              window.location.href = '/free-business-audit/thank-you/';
+            } else {
+              submitBtn.textContent = 'Get My Free Business Audit →';
+              submitBtn.disabled = false;
+              showError("We received your request but the audit pipeline hit a snag. Kevin was notified and will email your report manually within the hour. No action needed on your end.");
+            }
+          });
+        }).catch(function() {
+          submitBtn.textContent = 'Get My Free Business Audit →';
+          submitBtn.disabled = false;
+          showError("Connection issue running the audit. Your info was received — Kevin will email your report manually within the hour.");
+        });
       });
     })();
   </script>
