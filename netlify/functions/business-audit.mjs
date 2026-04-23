@@ -375,7 +375,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#05091
 <div class="container">
 
 <div style="text-align:center;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.08)">
-  <img src="https://freelandme.com/images/logo.webp" alt="Freeland Marketing" style="width:200px;height:auto;margin-bottom:16px" width="200" height="62" />
+  <img src="https://freelandme.com/images/logo-email.png" alt="Freeland Marketing" style="width:200px;height:auto;margin-bottom:16px" width="200" height="62" />
   <h1 style="font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:8px">Business Audit Report</h1>
   <p style="color:#888;font-size:0.95rem">${formData.business_name} &middot; ${date}</p>
 </div>
