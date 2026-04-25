@@ -24,6 +24,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy("src/site.webmanifest");
   eleventyConfig.addPassthroughCopy("src/fonts");
+  eleventyConfig.addPassthroughCopy("src/downloads");
 
   // After build: generate WebP images + minify CSS
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
@@ -160,7 +161,7 @@ module.exports = function(eleventyConfig) {
           if (/<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html)) continue;
           let priority = '0.7', freq = 'monthly';
           if (urlPath === '/') { priority = '1.0'; freq = 'weekly'; }
-          else if (['/services/', '/seo-audit/', '/free-audit/', '/free-business-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/'].includes(urlPath)) { priority = '0.9'; }
+          else if (['/services/', '/seo-audit/', '/free-audit/', '/free-business-audit/', '/services/ai-lead-capture/', '/services/done-for-you-ai/', '/services/google-business-profile/', '/meta-ads-playbook/', '/google-ads-checklist/', '/lead-follow-up/'].includes(urlPath)) { priority = '0.9'; }
           else if (urlPath.startsWith('/services/') || urlPath === '/blog/' || urlPath === '/about/' || urlPath === '/case-studies/') { priority = '0.8'; }
           sitemapPages.push({ urlPath, priority, freq });
         }
