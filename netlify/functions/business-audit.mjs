@@ -28,6 +28,74 @@ const INDUSTRY_DATA = {
   default:     { avgTicket: 500,  missedPerDay: 5, closeRate: 0.30, label: "business" },
 };
 
+// --- SSRF guard ---
+// This function is publicly invokable from a form on freelandme.com. Without
+// validation a caller can submit `127.0.0.1`, `169.254.169.254` (cloud metadata),
+// or RFC1918 hosts and have the function fetch them.
+import { lookup as dnsLookup } from "node:dns/promises";
+
+const MAX_BODY_BYTES = 5 * 1024 * 1024; // 5 MB cap on fetched HTML
+const RATE_LIMIT_MAX = 10;              // requests per window per IP
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const rateBuckets = new Map();          // best-effort, per-instance only
+
+function isPrivateOrLoopbackIp(ip) {
+  if (!ip) return true;
+  if (ip === "::1" || ip === "::") return true;
+  // IPv4-mapped IPv6 → strip prefix
+  const v4 = ip.startsWith("::ffff:") ? ip.slice(7) : ip;
+  if (/^(?:127\.|10\.|169\.254\.|192\.168\.)/.test(v4)) return true;
+  if (/^172\.(1[6-9]|2\d|3[0-1])\./.test(v4)) return true;
+  if (/^0\./.test(v4)) return true;
+  if (/^(?:fc|fd)/i.test(ip)) return true;     // fc00::/7 unique-local
+  if (/^fe[89ab]/i.test(ip)) return true;       // fe80::/10 link-local
+  return false;
+}
+
+async function assertPublicHttpUrl(rawWebsite) {
+  const candidate = /^https?:\/\//i.test(rawWebsite) ? rawWebsite : `https://${rawWebsite}`;
+  let parsed;
+  try { parsed = new URL(candidate); } catch { throw new Error("Invalid URL"); }
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") throw new Error("Only http(s) URLs allowed");
+  const host = parsed.hostname;
+  if (!host || host.endsWith(".local") || host === "localhost") throw new Error("Host not allowed");
+  // Reject IP literals in private ranges directly.
+  if (/^[\d.:a-fA-F]+$/.test(host) && isPrivateOrLoopbackIp(host)) throw new Error("Private IP not allowed");
+  // Resolve and reject if any A/AAAA points at private space.
+  try {
+    const addrs = await dnsLookup(host, { all: true });
+    if (!addrs.length) throw new Error("DNS resolution failed");
+    for (const a of addrs) if (isPrivateOrLoopbackIp(a.address)) throw new Error("Resolved to private IP");
+  } catch (e) {
+    if (e.message.startsWith("Resolved to") || e.message.startsWith("DNS")) throw e;
+    throw new Error("DNS resolution failed");
+  }
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const bucket = rateBuckets.get(ip) || { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
+  if (now > bucket.resetAt) { bucket.count = 0; bucket.resetAt = now + RATE_LIMIT_WINDOW_MS; }
+  bucket.count += 1;
+  rateBuckets.set(ip, bucket);
+  return bucket.count <= RATE_LIMIT_MAX;
+}
+
+// Read the body up to a hard byte cap so a hostile target can't OOM us.
+async function readBodyCapped(response) {
+  const reader = response.body?.getReader?.();
+  if (!reader) return await response.text();
+  const chunks = []; let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > MAX_BODY_BYTES) { try { reader.cancel(); } catch {} ; break; }
+    chunks.push(value);
+  }
+  return new TextDecoder("utf-8", { fatal: false }).decode(Buffer.concat(chunks.map(c => Buffer.from(c))));
+}
+
 // --- Fetch with timeout ---
 // Netlify default function budget is 26s. Worst-case pipeline must stay under that:
 //   https fetch (5s) + http fallback (4s) + Firecrawl (10s) + n8n webhook (5s) = 24s
@@ -456,6 +524,8 @@ ${checkRow("Mobile Responsive", !!audit.mobileResponsive, audit.mobileResponsive
 // --- MAIN AUDIT LOGIC ---
 async function runAudit(formData) {
   const rawWebsite = formData.website.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  // SSRF guard: refuse before any fetch hits the wire.
+  await assertPublicHttpUrl(rawWebsite);
   const baseUrl = `https://${rawWebsite}`;
   const cityName = (formData.city || "").replace(/,.*$/, "").trim();
 
@@ -486,7 +556,7 @@ async function runAudit(formData) {
       results.siteReachable = true;
       results.loadTimeMs = elapsed;
       results.ssl = response.url.startsWith("https://");
-      html = await response.text();
+      html = await readBodyCapped(response);
     } catch (err2) {
       results.errors.push(`HTTP fallback failed: ${err2.message}`);
     }
@@ -553,12 +623,42 @@ export default async (req) => {
     });
   }
 
+  // Best-effort per-IP rate limiting (per-instance memory; Netlify scales out so
+  // this is a soft cap, not a hard one — paired with honeypot + URL validation).
+  const clientIp =
+    req.headers.get("x-nf-client-connection-ip") ||
+    (req.headers.get("x-forwarded-for") || "").split(",")[0].trim() ||
+    "unknown";
+  if (!checkRateLimit(clientIp)) {
+    return new Response(JSON.stringify({ error: "Rate limit exceeded" }), {
+      status: 429,
+      headers: { "Content-Type": "application/json", "Retry-After": "60" },
+    });
+  }
+
+  // Cap raw request body before parsing JSON.
+  const rawBody = await req.text();
+  if (rawBody.length > 32 * 1024) {
+    return new Response(JSON.stringify({ error: "Payload too large" }), {
+      status: 413,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   let formData;
   try {
-    formData = await req.json();
+    formData = JSON.parse(rawBody);
   } catch {
     return new Response(JSON.stringify({ error: "Invalid JSON" }), {
       status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Honeypot: if a hidden _hp / website_extra / company_url field is set, drop silently.
+  if (formData._hp || formData.website_extra || formData.company_url) {
+    return new Response(JSON.stringify({ success: true, emailQueued: true, score: 0, grade: "A", issuesFound: 0 }), {
+      status: 200,
       headers: { "Content-Type": "application/json" },
     });
   }
