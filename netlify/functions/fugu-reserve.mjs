@@ -87,9 +87,11 @@ export default async (request) => {
     }
     return Response.json({ results });
   }
-  const fn = ACTIONS[payload.action];
+  // Retell custom-function shape (docs.retellai.com/build/single-multi-prompt/custom-function, fetched 2026-08-27): body = {name, call, args:{...}}; whatever we return is stringified for the LLM.
+  const args = payload.args && typeof payload.args === "object" ? payload.args : payload;
+  const fn = ACTIONS[args.action || String(payload.name || "").replace(/^fugu_/, "")];
   if (!fn) return Response.json({ ok: false, error: "action must be check|send|book" }, { status: 400 });
-  return Response.json(await fn(payload).catch((e) => ({ ok: false, error: String(e) })));
+  return Response.json(await fn(args).catch((e) => ({ ok: false, error: String(e) })));
 };
 
 export const config = { path: "/api/fugu-reserve" };
