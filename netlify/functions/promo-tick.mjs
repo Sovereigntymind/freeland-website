@@ -13,6 +13,29 @@ const ONE_SHOTS = [
   ["redd-blog-publish-0902.yml", "2026-09-02", 14], // Redd 10-Year Health Gap blog, 9:07am CDT (D-163)
 ];
 
+// Missed-cron backups: GitHub's own schedule ran daily-automation 10h late on
+// 8/27 (20:52Z vs 11Z) and nightly-feeds 8h late on 8/28. At the check hour, if
+// the workflow has no run created inside the window, dispatch it. Neither job is
+// idempotent for a same-day double run (Daily Focus email would send twice), so
+// the run-list check is the guard, and an API error fails CLOSED (no dispatch).
+// [workflow file, UTC check hour, window hours back]
+const BACKUPS = [
+  ["daily-automation.yml", 13, 6], // cron 11Z; by 13Z (9am ET) it must have run
+  ["nightly-feeds.yml", 6, 10],    // cron 22Z; by 06Z it must have run
+];
+
+async function ranWithin(token, workflow, hours) {
+  const since = new Date(Date.now() - hours * 3600e3).toISOString();
+  const res = await fetch(
+    `https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/runs?created=>=${since}&per_page=1`,
+    { headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token}`, "User-Agent": "freelandme-promo-tick" } },
+  );
+  if (!res.ok) { console.error(`promo-tick: run check ${workflow} HTTP ${res.status}`); return true; }
+  const n = (await res.json()).total_count;
+  console.log(`promo-tick: ${workflow} runs since ${since}: ${n}`);
+  return n > 0;
+}
+
 async function dispatch(token, workflow, inputs) {
   const res = await fetch(
     `https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`,
@@ -44,6 +67,9 @@ export default async () => {
   const jobs = [dispatch(token, "promo-scheduler.yml", { mode: "tick" })];
   for (const [wf, date, h] of ONE_SHOTS) {
     if (date === today && h === hour) jobs.push(dispatch(token, wf, {}));
+  }
+  for (const [wf, h, win] of BACKUPS) {
+    if (h === hour && !(await ranWithin(token, wf, win))) jobs.push(dispatch(token, wf, {}));
   }
   const ok = (await Promise.all(jobs)).every(Boolean);
   return new Response(ok ? "ok" : "dispatch failed", { status: ok ? 200 : 500 });
