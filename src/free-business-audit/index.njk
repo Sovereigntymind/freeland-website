@@ -340,13 +340,14 @@ web3forms: true
           body: JSON.stringify(web3formsPayload)
         }).catch(function() { /* backup channel — non-blocking */ });
 
-        // Also ping the n8n drip-sequence webhook. sendBeacon is reliable
-        // even if the page closes mid-flight.
+        // Also ping the n8n Form Handler ("being generated" auto-reply).
+        // keepalive fetch survives page navigation; credentials omitted
+        // because n8n's CORS reply does not allow cookies (beacons were dropped).
         try {
-          navigator.sendBeacon(
+          fetch(
             'https://freelandme.app.n8n.cloud/webhook/business-audit',
-            new Blob([JSON.stringify(data)], { type: 'application/json' })
-          );
+            { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
+          ).catch(function() { /* best-effort */ });
         } catch (err) { /* best-effort */ }
 
         // Primary path: Netlify Function runs the audit and queues the

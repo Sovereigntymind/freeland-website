@@ -857,10 +857,10 @@ web3forms: true
           message: form.querySelector('[name="message"]').value,
           form_type: 'contact'
         };
-        navigator.sendBeacon(
+        fetch(
           'https://freelandme.app.n8n.cloud/webhook/form-auto-reply',
-          new Blob([JSON.stringify(data)], { type: 'application/json' })
-        );
+          { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
+        ).catch(function() { /* best-effort */ });
       });
     })();
   </script>

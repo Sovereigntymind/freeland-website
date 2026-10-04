@@ -240,10 +240,10 @@ web3forms: true
           business_description: form.querySelector('[name="business_description"]').value,
           marketing_challenge: form.querySelector('[name="marketing_challenge"]').value
         };
-        navigator.sendBeacon(
+        fetch(
           'https://freelandme.app.n8n.cloud/webhook/form-auto-reply',
-          new Blob([JSON.stringify(data)], { type: 'application/json' })
-        );
+          { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
+        ).catch(function() { /* best-effort */ });
       });
     })();
   </script>
