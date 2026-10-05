@@ -33,6 +33,7 @@ const INDUSTRY_DATA = {
 // validation a caller can submit `127.0.0.1`, `169.254.169.254` (cloud metadata),
 // or RFC1918 hosts and have the function fetch them.
 import { lookup as dnsLookup } from "node:dns/promises";
+import { randomUUID } from "node:crypto";
 
 const MAX_BODY_BYTES = 5 * 1024 * 1024; // 5 MB cap on fetched HTML
 const RATE_LIMIT_MAX = 10;              // requests per window per IP
@@ -613,6 +614,82 @@ async function runAudit(formData) {
   return { results, scoring, insights, reportHtml };
 }
 
+// --- n8n delivery: one bounded retry, then a Web3Forms backup alert so the lead is never lost (G-50) ---
+// Same public Web3Forms key the landing page already uses; it reaches kevin@. Worst case added time:
+// 2 x 4s n8n + 0.5s pause + 3s alert, which stays inside the budget noted at fetchWithTimeout.
+// D-561 (X1-04): retry ONLY when n8n provably never got the request: a connection-level error raised
+// before any HTTP response (refused, DNS failure, connect timeout before the socket opened). ANY HTTP
+// response (429/503 included) or a timeout/reset after send may mean n8n already started the report +
+// drip, so it goes straight to the backup alert instead: Kevin gets the lead once, never twice.
+// Every attempt and the alert carry one submission_id so any duplicate can be matched later.
+const WEB3FORMS_KEY = "af9a5ef5-c8be-450b-8fdd-9039551baa76";
+const NOT_SENT_CODES = new Set(["ECONNREFUSED", "ENOTFOUND", "EAI_AGAIN", "ENETUNREACH", "EHOSTUNREACH", "UND_ERR_CONNECT_TIMEOUT"]);
+function failedBeforeSend(err) {
+  const codes = [];
+  for (let e = err, depth = 0; e && depth < 4; e = e.cause, depth++) {
+    if (e.code) codes.push(e.code);
+    if (Array.isArray(e.errors)) for (const x of e.errors) if (x?.code) codes.push(x.code);
+  }
+  return codes.length > 0 && codes.every((c) => NOT_SENT_CODES.has(c));
+}
+export async function postToN8n(payload, fetchImpl = fetch, sleepImpl = (ms) => new Promise((r) => setTimeout(r, ms))) {
+  const url = "https://freelandme.app.n8n.cloud/webhook/business-audit-results";
+  const submissionId = payload.submission_id || randomUUID();
+  const body = JSON.stringify({ ...payload, submission_id: submissionId });
+  let emailError = null;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    let retryable = false;
+    try {
+      const res = await fetchImpl(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+        signal: AbortSignal.timeout(4000),
+      });
+      if (res.ok) return { emailQueued: true, emailError: null, submissionId };
+      emailError = `n8n webhook returned ${res.status}`; // any HTTP reply = n8n saw it: never retry
+    } catch (err) {
+      emailError = `n8n webhook failed: ${err.message}${err.cause?.code ? ` (${err.cause.code})` : ""}`;
+      retryable = failedBeforeSend(err);
+    }
+    console.error(`${emailError} (attempt ${attempt}/2, submission_id=${submissionId}, retry=${retryable && attempt < 2})`);
+    if (!retryable || attempt === 2) break;
+    await sleepImpl(500);
+  }
+  // Failure alert + lead backup. Never throws: the visitor still gets the 502 fallback message.
+  // X1-10: a non-2xx or success:false from Web3Forms counts as failed, and the lead is then logged
+  // so it can be recovered from the Netlify function log.
+  const lead = payload.lead || {};
+  let alertError = null;
+  try {
+    const res = await fetchImpl("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `ALERT: free audit lead NOT emailed (n8n failed) - ${lead.business_name || "unknown"}`,
+        from_name: "Business Audit function",
+        message: `${emailError}. Report email may not have gone out. Check n8n for submission ${submissionId} before following up by hand.`,
+        submission_id: submissionId,
+        business_name: lead.business_name, email: lead.email, website: lead.website,
+        city: lead.city, industry: lead.industry, phone: lead.phone,
+      }),
+      signal: AbortSignal.timeout(3000),
+    });
+    let data = null;
+    try { data = await res.json(); } catch { /* non-JSON reply */ }
+    if (!res.ok || data?.success !== true) {
+      alertError = `Web3Forms returned ${res.status}${data?.message ? `: ${data.message}` : ""}`;
+    }
+  } catch (err) {
+    alertError = `Web3Forms request failed: ${err.message}`;
+  }
+  if (alertError) {
+    console.error(`BACKUP ALERT FAILED submission_id=${submissionId} business=${JSON.stringify(lead.business_name ?? null)} email=${JSON.stringify(lead.email ?? null)} website=${JSON.stringify(lead.website ?? null)} phone=${JSON.stringify(lead.phone ?? null)} n8n_error=${JSON.stringify(emailError)} alert_error=${JSON.stringify(alertError)}`);
+  }
+  return { emailQueued: false, emailError, submissionId };
+}
+
 // --- NETLIFY FUNCTION HANDLER ---
 export default async (req) => {
   // Only accept POST
@@ -696,28 +773,12 @@ export default async (req) => {
       },
       reportHtml,
       timestamp: new Date().toISOString(),
+      submission_id: randomUUID(),
     };
 
     // Send to n8n webhook (awaited — Netlify kills pending promises when the response returns,
     // so fire-and-forget silently drops the call.)
-    let emailQueued = false;
-    let emailError = null;
-    try {
-      const n8nRes = await fetch("https://freelandme.app.n8n.cloud/webhook/business-audit-results", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(n8nPayload),
-        signal: AbortSignal.timeout(5000),
-      });
-      emailQueued = n8nRes.ok;
-      if (!n8nRes.ok) {
-        emailError = `n8n webhook returned ${n8nRes.status}`;
-        console.error(emailError);
-      }
-    } catch (err) {
-      emailError = `n8n webhook failed: ${err.message}`;
-      console.error(emailError);
-    }
+    const { emailQueued, emailError } = await postToN8n(n8nPayload);
 
     // Signal delivery status to the caller so the landing page can
     // differentiate "audit ran + email queued" from "audit ran but no email".
