@@ -149,10 +149,11 @@ export async function book({ phone, pin, name, email, guests, date, time, sectio
   if (!email || !email.includes("@") || !email.includes(".")) return { ok: false, error: "email required by Menu11" };
   if (toMin(time) == null) return { ok: false, error: "time must look like 7:00 PM" };
   // Pick the slot BEFORE using the caller's code, with a fresh cap count, so a full time never burns the code.
-  const avail = await check({ guests, date, time, section: section || "" }, { fresh: true });
+  // Ask Menu11 for every section, then match by area: Menu11 renamed Main/Patio to Inside/Outside on 10/15.
+  const avail = await check({ guests, date, time, section: "" }, { fresh: true });
   if (!avail.ok) return avail;
   // Exact time only (10/15): the old fallback filed a 7:45 request at 7:00 without telling the caller.
-  const want = avail.slots?.find((s) => toMin(s.time) === toMin(time) && (!section || s.section === section));
+  const want = avail.slots?.find((s) => toMin(s.time) === toMin(time) && (!section || area(s.section) === area(section)));
   if (!want) return { ok: false, error: "that exact time is not open for phone booking", slots: avail.slots || [] };
   const v = await getJson("login_phone_verify", { phone: p, pin: code, remember: "" });
   if (v?.STATUS !== "OK" || v.action !== "DONE" || !v.sid) return { ok: false, error: "invalid code", raw: v };
