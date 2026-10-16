@@ -25,11 +25,12 @@ async function getJson(path, params, cookie) {
   try { return JSON.parse(t); } catch { try { return JSON.parse(t.slice(0, t.lastIndexOf("}") + 1)); } catch { return { STATUS: "BAD_JSON", raw: t.slice(0, 200) }; } }
 }
 
-// Phone-booking cap (Kevin 10/15): at most GUEST_CAP phone GUESTS per half hour in EACH area (12 inside + 12 patio).
+// Phone-booking cap (Kevin 10/15): at most this many phone GUESTS per half hour per area: 12 inside, 10 patio
+// (patio music area is almost never open, so the patio is 12 tables / 40 seats).
 // Counts guests, not bookings, so three 2-tops no longer fill a half hour (research: Resy/Tock/OpenTable pace in covers).
 // Counted from Mika's own successful fugu_book results in Retell call history (the only phone-booking
 // path besides the host). Host-entered POS bookings and walk-ins are not visible here; the host owns those.
-const GUEST_CAP = Number(process.env.FUGU_PHONE_GUEST_CAP || 12);
+const GUEST_CAP = { Main: Number(process.env.FUGU_CAP_INSIDE || 12), Patio: Number(process.env.FUGU_CAP_PATIO || 10) };
 const MIKA_AGENT = "agent_bb38403baa3b3142f0869c1faf";
 // Bookings the host re-timed in the POS after Mika booked them (booking id -> real time).
 const RETIMED = { rs202610151716354b38054a476ad142b3572fb381950106e3: "7:45 PM" }; // Paul, Fri 10/16 (asked 7:45, filed 7:00; fixed in POS 10/15)
@@ -102,7 +103,7 @@ export async function check({ guests, date, time, section = "" }, { fresh = fals
   let counts;
   try { counts = await phoneCounts({ fresh }); } catch (e) { return { ok: true, slots: [], note: `${e.message}; treat every time as full and offer the host` }; }
   const party = Number(guests) || 1;
-  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) + party <= GUEST_CAP);
+  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) + party <= GUEST_CAP[area(s.section)]);
   return { ok: true, slots: open.map((s) => ({ section: s.section, hour: s.hour, time: hourToText(s.hour) })) };
 }
 
