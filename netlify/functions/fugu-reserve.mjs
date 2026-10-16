@@ -25,12 +25,26 @@ async function getJson(path, params, cookie) {
   try { return JSON.parse(t); } catch { try { return JSON.parse(t.slice(0, t.lastIndexOf("}") + 1)); } catch { return { STATUS: "BAD_JSON", raw: t.slice(0, 200) }; } }
 }
 
-// Phone-booking cap (Kevin 10/15): at most this many phone GUESTS per half hour per area: 12 inside, 10 patio
-// (patio music area is almost never open, so the patio is 12 tables / 40 seats).
-// Counts guests, not bookings, so three 2-tops no longer fill a half hour (research: Resy/Tock/OpenTable pace in covers).
-// Counted from Mika's own successful fugu_book results in Retell call history (the only phone-booking
-// path besides the host). Host-entered POS bookings and walk-ins are not visible here; the host owns those.
-const GUEST_CAP = { Main: Number(process.env.FUGU_CAP_INSIDE || 12), Patio: Number(process.env.FUGU_CAP_PATIO || 10) };
+// Phone bookings hold real tables (Kevin 10/15: "pick it up by 2 tops, 4 tops"). Phone owns about half of each
+// area's tables; every phone booking holds the right-size table for its expected stay, so a 5:30 couple still
+// seated at 6:30 still counts and nothing is booked on top of a seated party. Walk-ins keep the other half; the
+// host can always seat or book beyond this in the POS (POS bookings and walk-ins are not visible here).
+// Tables (POS map, 10/15): inside bookable 8 two-tops + 10 four-tops (10, 15, 53 never phone-booked);
+// patio P1-P12 = 4 two-tops + 8 four-tops (patio music area almost never open).
+const PHONE_TABLES = {
+  Main: { two: Number(process.env.FUGU_INSIDE_TWOS || 4), four: Number(process.env.FUGU_INSIDE_FOURS || 5) },
+  Patio: { two: Number(process.env.FUGU_PATIO_TWOS || 2), four: Number(process.env.FUGU_PATIO_FOURS || 4) },
+};
+// Pacing (Kevin 10/15, 15-minute slots): at most this many phone parties ARRIVE in the same 15 minutes per area,
+// so the door and kitchen never get a wave; parties of 5-6 (two pushed four-tops) at most 1 seated at once per area;
+// 7 or more always go to the host (Mika transfers; check() returns no times).
+const ARRIVALS_PER_15 = { Main: Number(process.env.FUGU_INSIDE_ARRIVALS || 2), Patio: Number(process.env.FUGU_PATIO_ARRIVALS || 1) };
+const BIG_AT_ONCE = 1;
+export const HOST_PARTY = 7;
+// Expected stay by party size (Kevin's 1h15 guess + general research; tune from POS data).
+const stayMin = (g) => (g <= 2 ? 70 : g <= 4 ? 85 : g <= 6 ? 100 : 115);
+// Tables a party needs: 1-2 a two-top (or a free four-top), 3-4 a four-top, 5-8 two four-tops pushed together.
+const need = (g) => (g <= 2 ? { two: 1, four: 0 } : g <= 4 ? { two: 0, four: 1 } : { two: 0, four: 2 });
 const MIKA_AGENT = "agent_bb38403baa3b3142f0869c1faf";
 // Bookings the host re-timed in the POS after Mika booked them (booking id -> real time).
 const RETIMED = { rs202610151716354b38054a476ad142b3572fb381950106e3: "7:45 PM" }; // Paul, Fri 10/16 (asked 7:45, filed 7:00; fixed in POS 10/15)
@@ -43,7 +57,7 @@ const toMin = (t) => {
   if (mm > 59 || h > 23 || (m[3] && (h < 1 || h > 12))) return null;
   return (m[3] ? (h % 12) + (m[3] === "pm" ? 12 : 0) : h) * 60 + mm;
 };
-// One date key for counting and lookups: "10/6/2026", "10/06/2026", "2026-10-06" -> "10/06/2026"; else null.
+// One date key: "10/6/2026", "10/06/2026", "2026-10-06" -> "10/06/2026"; else null.
 const normDate = (d) => {
   const s = String(d ?? "").trim();
   let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/), y, mo, da;
@@ -53,20 +67,37 @@ const normDate = (d) => {
 };
 // Menu11 sections are Main/Patio online; the POS edit form calls them Inside/Outside.
 const area = (sec) => (/^(patio|outside)$/i.test(String(sec ?? "").trim()) ? "Patio" : "Main");
-const bucket = (date, mins, sec) => `${normDate(date)}|${Math.floor(mins / 30) * 30}|${area(sec)}`;
+
+// True if one more party of g at `start` fits the phone tables in area `ar` on `date`, given existing phone
+// bookings. Checks every 5 minutes of the new party's stay: four-tops in use <= allotment, and couples fit in
+// the phone two-tops plus any phone four-tops left over.
+export function fits(bookings, date, ar, start, g) {
+  const cap = PHONE_TABLES[ar];
+  const mine = [...bookings.filter((b) => b.date === date && b.area === ar), { start, g }];
+  const block = Math.floor(start / 15);
+  if (mine.filter((b) => Math.floor(b.start / 15) === block).length > ARRIVALS_PER_15[ar]) return false;
+  for (let t = start; t < start + stayMin(g); t += 5) {
+    let two = 0, four = 0, big = 0;
+    for (const b of mine) {
+      if (b.start <= t && t < b.start + stayMin(b.g)) { const n = need(b.g); two += n.two; four += n.four; big += b.g >= 5 ? 1 : 0; }
+    }
+    if (four > cap.four || two > cap.two + (cap.four - four) || (g >= 5 && big > BIG_AT_ONCE)) return false;
+  }
+  return true;
+}
 
 // Menu11 RESERVE AHEAD is empty = 7 days (Back Office, read 10/15), so 9 days of calls covers every future booking.
 const LOOKBACK_MS = 9 * 864e5;
-// Bookings this instance just made, counted even before Retell lists the call (a call's tool results may only
-// show in list-calls after it ends). Covers back-to-back calls on a warm instance; cross-instance races remain
-// possible but rare at Fugu's call volume.
-const recentBooks = new Map(); // id -> { key, guests }
-let capCache = { at: 0, counts: null };
-async function phoneCounts({ fresh = false } = {}) {
-  if (!fresh && capCache.counts && Date.now() - capCache.at < 20000) return withRecent(capCache.counts);
+// Bookings this instance just made, counted before Retell lists the call (a call's tool results may only show in
+// list-calls after it ends). Covers back-to-back calls on a warm instance; cross-instance races remain possible
+// but rare at Fugu's call volume.
+const recentBooks = new Map(); // id -> { date, area, start, g }
+let capCache = { at: 0, list: null };
+async function phoneBookings({ fresh = false } = {}) {
+  if (!fresh && capCache.list && Date.now() - capCache.at < 20000) return [...capCache.list, ...recentBooks.values()];
   const key = process.env.RETELL_FUGU_API_KEY;
   if (!key) throw new Error("cap check unavailable (no Retell key)");
-  const counts = {}, seen = new Set();
+  const list = [], seen = new Set();
   let pagination_key, full = false;
   for (let page = 0; page < 5; page++) {
     const body = { filter_criteria: { agent_id: [MIKA_AGENT], start_timestamp: { lower_threshold: Date.now() - LOOKBACK_MS } }, sort_order: "descending", limit: 1000, ...(pagination_key ? { pagination_key } : {}) };
@@ -78,8 +109,8 @@ async function phoneCounts({ fresh = false } = {}) {
       let d; try { d = JSON.parse(m.content || "{}"); } catch { continue; }
       if (!d?.ok || !d.booked?.dated || !d.id || seen.has(d.id)) continue;
       seen.add(d.id);
-      const mins = toMin(RETIMED[d.id] || d.booked.timed);
-      if (mins != null && normDate(d.booked.dated)) counts[bucket(d.booked.dated, mins, d.booked.section)] = (counts[bucket(d.booked.dated, mins, d.booked.section)] || 0) + (Number(d.booked.guestCount) || 1);
+      const start = toMin(RETIMED[d.id] || d.booked.timed), date = normDate(d.booked.dated);
+      if (start != null && date) list.push({ date, area: area(d.booked.section), start, g: Number(d.booked.guestCount) || 1 });
     }
     full = calls.length >= 1000;
     if (!full) break;
@@ -87,23 +118,19 @@ async function phoneCounts({ fresh = false } = {}) {
   }
   if (full) throw new Error("cap check unavailable (call history too long to count)");
   for (const id of seen) recentBooks.delete(id); // Retell now lists it, so stop double counting
-  capCache = { at: Date.now(), counts };
-  return withRecent(counts);
+  capCache = { at: Date.now(), list };
+  return [...list, ...recentBooks.values()];
 }
-const withRecent = (counts) => {
-  const out = { ...counts };
-  for (const { key, guests } of recentBooks.values()) out[key] = (out[key] || 0) + guests;
-  return out;
-};
 
 export async function check({ guests, date, time, section = "" }, { fresh = false } = {}) {
   if (!normDate(date)) return { ok: false, error: "date must be MM/DD/YYYY" };
   const slots = await getJson("reserve_check", { guestCount: guests, dated: normDate(date), timed: time, section });
   if (!Array.isArray(slots)) return { ok: false, error: "no availability data", raw: slots };
-  let counts;
-  try { counts = await phoneCounts({ fresh }); } catch (e) { return { ok: true, slots: [], note: `${e.message}; treat every time as full and offer the host` }; }
+  let list;
+  try { list = await phoneBookings({ fresh }); } catch (e) { return { ok: true, slots: [], note: `${e.message}; treat every time as full and offer the host` }; }
   const party = Number(guests) || 1;
-  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) + party <= GUEST_CAP[area(s.section)]);
+  if (party >= HOST_PARTY) return { ok: true, slots: [], note: `parties of ${HOST_PARTY} or more are booked by the host; offer the transfer` };
+  const open = slots.filter((s) => fits(list, normDate(date), area(s.section), s.hour, party));
   return { ok: true, slots: open.map((s) => ({ section: s.section, hour: s.hour, time: hourToText(s.hour) })) };
 }
 
@@ -140,7 +167,7 @@ export async function book({ phone, pin, name, email, guests, date, time, sectio
   const alertMsg = (html.match(/alert\('([^']+)'\)/) || [])[1];
   if (alertMsg) return { ok: false, error: alertMsg, hint: /Max number/i.test(alertMsg) ? "this mobile number already has an open reservation request; ask the caller to cancel it or use the restaurant line" : undefined };
   const id = (loc.match(/x=([A-Za-z0-9]+)/) || html.match(/x=([A-Za-z0-9]+)/) || [])[1] || null;
-  if (id) recentBooks.set(id, { key: bucket(req.dated, want.hour, want.section), guests: Number(guests) || 1 });
+  if (id) recentBooks.set(id, { date: req.dated, area: area(want.section), start: want.hour, g: Number(guests) || 1 });
   const status = /PENDING/i.test(html) ? "PENDING" : /CONFIRM/i.test(html) ? "CONFIRMED" : "SUBMITTED";
   return { ok: !!id, id, status, booked: { ...req, customerPhone: undefined }, cancelUrl: id ? `${BASE}reserve_cancel?x=${id}` : null, httpStatus: r.status, location: loc };
 }
