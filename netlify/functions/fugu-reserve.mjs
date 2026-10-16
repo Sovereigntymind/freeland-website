@@ -25,7 +25,7 @@ async function getJson(path, params, cookie) {
   try { return JSON.parse(t); } catch { try { return JSON.parse(t.slice(0, t.lastIndexOf("}") + 1)); } catch { return { STATUS: "BAD_JSON", raw: t.slice(0, 200) }; } }
 }
 
-// Phone-booking cap (Kevin 10/15): at most PHONE_CAP bookings per half hour, inside + patio combined.
+// Phone-booking cap (Kevin 10/15): at most PHONE_CAP bookings per half hour in EACH area (3 inside + 3 patio).
 // Counted from Mika's own successful fugu_book results in Retell call history (the only phone-booking
 // path besides the host). Host-entered POS bookings and walk-ins are not visible here; the host owns those.
 const PHONE_CAP = Number(process.env.FUGU_PHONE_CAP || 3);
@@ -49,7 +49,9 @@ const normDate = (d) => {
   if (+mo < 1 || +mo > 12 || +da < 1 || +da > 31) return null;
   return `${String(mo).padStart(2, "0")}/${String(da).padStart(2, "0")}/${y}`;
 };
-const bucket = (date, mins) => `${normDate(date)}|${Math.floor(mins / 30) * 30}`;
+// Menu11 sections are Main/Patio online; the POS edit form calls them Inside/Outside.
+const area = (sec) => (/^(patio|outside)$/i.test(String(sec ?? "").trim()) ? "Patio" : "Main");
+const bucket = (date, mins, sec) => `${normDate(date)}|${Math.floor(mins / 30) * 30}|${area(sec)}`;
 
 // Menu11 RESERVE AHEAD is empty = 7 days (Back Office, read 10/15), so 9 days of calls covers every future booking.
 const LOOKBACK_MS = 9 * 864e5;
@@ -75,7 +77,7 @@ async function phoneCounts({ fresh = false } = {}) {
       if (!d?.ok || !d.booked?.dated || !d.id || seen.has(d.id)) continue;
       seen.add(d.id);
       const mins = toMin(RETIMED[d.id] || d.booked.timed);
-      if (mins != null && normDate(d.booked.dated)) counts[bucket(d.booked.dated, mins)] = (counts[bucket(d.booked.dated, mins)] || 0) + 1;
+      if (mins != null && normDate(d.booked.dated)) counts[bucket(d.booked.dated, mins, d.booked.section)] = (counts[bucket(d.booked.dated, mins, d.booked.section)] || 0) + 1;
     }
     full = calls.length >= 1000;
     if (!full) break;
@@ -98,7 +100,7 @@ export async function check({ guests, date, time, section = "" }, { fresh = fals
   if (!Array.isArray(slots)) return { ok: false, error: "no availability data", raw: slots };
   let counts;
   try { counts = await phoneCounts({ fresh }); } catch (e) { return { ok: true, slots: [], note: `${e.message}; treat every time as full and offer the host` }; }
-  const open = slots.filter((s) => (counts[bucket(date, s.hour)] || 0) < PHONE_CAP);
+  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) < PHONE_CAP);
   return { ok: true, slots: open.map((s) => ({ section: s.section, hour: s.hour, time: hourToText(s.hour) })) };
 }
 
@@ -135,7 +137,7 @@ export async function book({ phone, pin, name, email, guests, date, time, sectio
   const alertMsg = (html.match(/alert\('([^']+)'\)/) || [])[1];
   if (alertMsg) return { ok: false, error: alertMsg, hint: /Max number/i.test(alertMsg) ? "this mobile number already has an open reservation request; ask the caller to cancel it or use the restaurant line" : undefined };
   const id = (loc.match(/x=([A-Za-z0-9]+)/) || html.match(/x=([A-Za-z0-9]+)/) || [])[1] || null;
-  if (id) recentBooks.set(id, bucket(req.dated, want.hour));
+  if (id) recentBooks.set(id, bucket(req.dated, want.hour, want.section));
   const status = /PENDING/i.test(html) ? "PENDING" : /CONFIRM/i.test(html) ? "CONFIRMED" : "SUBMITTED";
   return { ok: !!id, id, status, booked: { ...req, customerPhone: undefined }, cancelUrl: id ? `${BASE}reserve_cancel?x=${id}` : null, httpStatus: r.status, location: loc };
 }
