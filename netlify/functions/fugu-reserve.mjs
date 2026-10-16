@@ -25,10 +25,11 @@ async function getJson(path, params, cookie) {
   try { return JSON.parse(t); } catch { try { return JSON.parse(t.slice(0, t.lastIndexOf("}") + 1)); } catch { return { STATUS: "BAD_JSON", raw: t.slice(0, 200) }; } }
 }
 
-// Phone-booking cap (Kevin 10/15): at most PHONE_CAP bookings per half hour in EACH area (3 inside + 3 patio).
+// Phone-booking cap (Kevin 10/15): at most GUEST_CAP phone GUESTS per half hour in EACH area (12 inside + 12 patio).
+// Counts guests, not bookings, so three 2-tops no longer fill a half hour (research: Resy/Tock/OpenTable pace in covers).
 // Counted from Mika's own successful fugu_book results in Retell call history (the only phone-booking
 // path besides the host). Host-entered POS bookings and walk-ins are not visible here; the host owns those.
-const PHONE_CAP = Number(process.env.FUGU_PHONE_CAP || 3);
+const GUEST_CAP = Number(process.env.FUGU_PHONE_GUEST_CAP || 12);
 const MIKA_AGENT = "agent_bb38403baa3b3142f0869c1faf";
 // Bookings the host re-timed in the POS after Mika booked them (booking id -> real time).
 const RETIMED = { rs202610151716354b38054a476ad142b3572fb381950106e3: "7:45 PM" }; // Paul, Fri 10/16 (asked 7:45, filed 7:00; fixed in POS 10/15)
@@ -58,7 +59,7 @@ const LOOKBACK_MS = 9 * 864e5;
 // Bookings this instance just made, counted even before Retell lists the call (a call's tool results may only
 // show in list-calls after it ends). Covers back-to-back calls on a warm instance; cross-instance races remain
 // possible but rare at Fugu's call volume.
-const recentBooks = new Map(); // id -> bucket key
+const recentBooks = new Map(); // id -> { key, guests }
 let capCache = { at: 0, counts: null };
 async function phoneCounts({ fresh = false } = {}) {
   if (!fresh && capCache.counts && Date.now() - capCache.at < 20000) return withRecent(capCache.counts);
@@ -77,7 +78,7 @@ async function phoneCounts({ fresh = false } = {}) {
       if (!d?.ok || !d.booked?.dated || !d.id || seen.has(d.id)) continue;
       seen.add(d.id);
       const mins = toMin(RETIMED[d.id] || d.booked.timed);
-      if (mins != null && normDate(d.booked.dated)) counts[bucket(d.booked.dated, mins, d.booked.section)] = (counts[bucket(d.booked.dated, mins, d.booked.section)] || 0) + 1;
+      if (mins != null && normDate(d.booked.dated)) counts[bucket(d.booked.dated, mins, d.booked.section)] = (counts[bucket(d.booked.dated, mins, d.booked.section)] || 0) + (Number(d.booked.guestCount) || 1);
     }
     full = calls.length >= 1000;
     if (!full) break;
@@ -90,7 +91,7 @@ async function phoneCounts({ fresh = false } = {}) {
 }
 const withRecent = (counts) => {
   const out = { ...counts };
-  for (const k of recentBooks.values()) out[k] = (out[k] || 0) + 1;
+  for (const { key, guests } of recentBooks.values()) out[key] = (out[key] || 0) + guests;
   return out;
 };
 
@@ -100,7 +101,8 @@ export async function check({ guests, date, time, section = "" }, { fresh = fals
   if (!Array.isArray(slots)) return { ok: false, error: "no availability data", raw: slots };
   let counts;
   try { counts = await phoneCounts({ fresh }); } catch (e) { return { ok: true, slots: [], note: `${e.message}; treat every time as full and offer the host` }; }
-  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) < PHONE_CAP);
+  const party = Number(guests) || 1;
+  const open = slots.filter((s) => (counts[bucket(date, s.hour, s.section)] || 0) + party <= GUEST_CAP);
   return { ok: true, slots: open.map((s) => ({ section: s.section, hour: s.hour, time: hourToText(s.hour) })) };
 }
 
@@ -137,7 +139,7 @@ export async function book({ phone, pin, name, email, guests, date, time, sectio
   const alertMsg = (html.match(/alert\('([^']+)'\)/) || [])[1];
   if (alertMsg) return { ok: false, error: alertMsg, hint: /Max number/i.test(alertMsg) ? "this mobile number already has an open reservation request; ask the caller to cancel it or use the restaurant line" : undefined };
   const id = (loc.match(/x=([A-Za-z0-9]+)/) || html.match(/x=([A-Za-z0-9]+)/) || [])[1] || null;
-  if (id) recentBooks.set(id, bucket(req.dated, want.hour, want.section));
+  if (id) recentBooks.set(id, { key: bucket(req.dated, want.hour, want.section), guests: Number(guests) || 1 });
   const status = /PENDING/i.test(html) ? "PENDING" : /CONFIRM/i.test(html) ? "CONFIRMED" : "SUBMITTED";
   return { ok: !!id, id, status, booked: { ...req, customerPhone: undefined }, cancelUrl: id ? `${BASE}reserve_cancel?x=${id}` : null, httpStatus: r.status, location: loc };
 }
