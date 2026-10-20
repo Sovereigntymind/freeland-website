@@ -88,35 +88,92 @@ export function fits(bookings, date, ar, start, g) {
 
 // Menu11 RESERVE AHEAD is empty = 7 days (Back Office, read 10/15), so 9 days of calls covers every future booking.
 const LOOKBACK_MS = 9 * 864e5;
-// Bookings this instance just made, counted before Retell lists the call (a call's tool results may only show in
-// list-calls after it ends). Covers back-to-back calls on a warm instance; cross-instance races remain possible
-// but rare at Fugu's call volume.
+// Retell retired /v2/list-calls (notice 10/19) and /v3/list-calls omits transcripts, so book() writes each booking
+// onto its call's metadata (fugu_bookings = [{id, dated, timed, section, g}]) and the cap count reads that back.
+// PATCH replaces the whole metadata object (tested 10/19), so a call's full list is written every time.
+// Calls from before this change were backfilled by clients/fugu/agent/backfill_booking_metadata.py.
+const RETELL = "https://api.retellai.com";
+const retellHeaders = () => ({ Authorization: `Bearer ${process.env.RETELL_FUGU_API_KEY}`, "Content-Type": "application/json" });
+const callBooks = new Map(); // call_id -> raw bookings made on that call (this instance; fallback if the GET fails)
+const mergeById = (...lists) => [...new Map(lists.flat().filter((b) => b?.id).map((b) => [b.id, b])).values()];
+// Read-modify-write so a second booking on the same call (another instance, cold start) never erases the first,
+// and any other metadata keys survive. Returns true only when Retell confirmed the write; failures are logged.
+async function tagCall(callId, rec) {
+  if (!process.env.RETELL_FUGU_API_KEY || !/^call_[A-Za-z0-9]+$/.test(String(callId || ""))) {
+    console.error("fugu_tag skipped: no call id/key", callId, rec.id);
+    return false;
+  }
+  if (callBooks.size > 200) callBooks.clear();
+  callBooks.set(callId, mergeById(callBooks.get(callId) || [], [rec]));
+  // One budget (~4.5 s) for both attempts so book() stays inside the function time limit. If the GET fails we do NOT
+  // write (a blind write could erase another instance's booking); the transcript backup counts it after the call ends.
+  const deadline = Date.now() + 4500;
+  for (let attempt = 1; attempt <= 2 && deadline - Date.now() > 1000; attempt++) {
+    try {
+      const left = () => Math.max(500, Math.min(2000, deadline - Date.now()));
+      const g = await fetch(`${RETELL}/v2/get-call/${callId}`, { headers: retellHeaders(), signal: AbortSignal.timeout(left()) });
+      if (!g.ok) { console.error("fugu_tag GET failed", g.status, callId, rec.id, attempt); continue; }
+      const meta = (await g.json()).metadata || {};
+      const all = mergeById(meta.fugu_bookings || [], callBooks.get(callId), [rec]);
+      const p = await fetch(`${RETELL}/v2/update-call/${callId}`, { method: "PATCH", headers: retellHeaders(), body: JSON.stringify({ metadata: { ...meta, fugu_bookings: all } }), signal: AbortSignal.timeout(left()) });
+      if (p.ok) { console.log("fugu_tag ok", callId, rec.id); return true; }
+      console.error("fugu_tag PATCH failed", p.status, callId, rec.id, attempt);
+    } catch (e) {
+      console.error("fugu_tag error", String(e), callId, rec.id, attempt);
+    }
+  }
+  return false;
+}
+const transcriptCache = new Map(); // ended call_id -> raw bookings read from its transcript (backup path)
+// Same shape book() writes, from the old source: tool results in transcript_with_tool_calls.
+function fromTranscript(msgs) {
+  const out = [];
+  for (const m of msgs || []) {
+    if (m.role !== "tool_call_result") continue;
+    let d; try { d = JSON.parse(m.content || "{}"); } catch { continue; }
+    if (d?.ok && d.id && d.booked?.dated) out.push({ id: d.id, dated: d.booked.dated, timed: d.booked.timed, section: d.booked.section, g: Number(d.booked.guestCount) || 1 });
+  }
+  return out;
+}
+// Bookings this instance just made, counted before Retell lists the call's metadata. Covers back-to-back calls on a
+// warm instance; cross-instance races remain possible but rare at Fugu's call volume.
 const recentBooks = new Map(); // id -> { date, area, start, g }
 let capCache = { at: 0, list: null };
 async function phoneBookings({ fresh = false } = {}) {
   if (!fresh && capCache.list && Date.now() - capCache.at < 20000) return [...capCache.list, ...recentBooks.values()];
-  const key = process.env.RETELL_FUGU_API_KEY;
-  if (!key) throw new Error("cap check unavailable (no Retell key)");
+  if (!process.env.RETELL_FUGU_API_KEY) throw new Error("cap check unavailable (no Retell key)");
   const list = [], seen = new Set();
-  let pagination_key, full = false;
+  let pagination_key, more = false;
   for (let page = 0; page < 5; page++) {
-    const body = { filter_criteria: { agent_id: [MIKA_AGENT], start_timestamp: { lower_threshold: Date.now() - LOOKBACK_MS } }, sort_order: "descending", limit: 1000, ...(pagination_key ? { pagination_key } : {}) };
-    const r = await fetch("https://api.retellai.com/v2/list-calls", { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify(body), signal: AbortSignal.timeout(4000) });
+    const body = { filter_criteria: { agent: [{ agent_id: MIKA_AGENT }], start_timestamp: { type: "number", op: "ge", value: Date.now() - LOOKBACK_MS } }, sort_order: "descending", limit: 1000, ...(pagination_key ? { pagination_key } : {}) };
+    const r = await fetch(`${RETELL}/v3/list-calls`, { method: "POST", headers: retellHeaders(), body: JSON.stringify(body), signal: AbortSignal.timeout(4000) });
     if (!r.ok) throw new Error(`cap check unavailable (Retell ${r.status})`);
-    const calls = await r.json();
-    for (const c of calls) for (const m of c.transcript_with_tool_calls || []) {
-      if (m.role !== "tool_call_result") continue;
-      let d; try { d = JSON.parse(m.content || "{}"); } catch { continue; }
-      if (!d?.ok || !d.booked?.dated || !d.id || seen.has(d.id)) continue;
-      seen.add(d.id);
-      const start = toMin(RETIMED[d.id] || d.booked.timed), date = normDate(d.booked.dated);
-      if (start != null && date) list.push({ date, area: area(d.booked.section), start, g: Number(d.booked.guestCount) || 1 });
+    const res = await r.json();
+    const items = res.items || [];
+    // Backup for a note that failed to save mid-call: an ENDED call long enough to book, with no fugu_bookings key,
+    // gets its transcript read once (ended calls never change, so the result is cached on this instance).
+    const untagged = items.filter((c) => !Array.isArray(c.metadata?.fugu_bookings) && ["ended", "error"].includes(c.call_status) && (c.duration_ms || 0) >= 60000 && !transcriptCache.has(c.call_id));
+    await Promise.all(untagged.map(async (c) => {
+      const g = await fetch(`${RETELL}/v2/get-call/${c.call_id}`, { headers: retellHeaders(), signal: AbortSignal.timeout(3000) });
+      if (!g.ok) throw new Error(`cap check unavailable (Retell get-call ${g.status})`);
+      transcriptCache.set(c.call_id, fromTranscript((await g.json()).transcript_with_tool_calls));
+    }));
+    for (const c of items) {
+      const raw = Array.isArray(c.metadata?.fugu_bookings) ? c.metadata.fugu_bookings : transcriptCache.get(c.call_id) || [];
+      for (const b of raw) {
+        if (!b?.id || !b.dated || seen.has(b.id)) continue;
+        seen.add(b.id);
+        const start = toMin(RETIMED[b.id] || b.timed), date = normDate(b.dated);
+        if (start != null && date) list.push({ date, area: area(b.section), start, g: Number(b.g) || 1 });
+        else console.error("fugu_cap unreadable booking", b.id, b.dated, b.timed);
+      }
     }
-    full = calls.length >= 1000;
-    if (!full) break;
-    pagination_key = calls[calls.length - 1].call_id;
+    more = !!res.has_more;
+    if (more && !res.pagination_key) throw new Error("cap check unavailable (Retell page key missing)");
+    if (!more) break;
+    pagination_key = res.pagination_key;
   }
-  if (full) throw new Error("cap check unavailable (call history too long to count)");
+  if (more) throw new Error("cap check unavailable (call history too long to count)");
   for (const id of seen) recentBooks.delete(id); // Retell now lists it, so stop double counting
   capCache = { at: Date.now(), list };
   return [...list, ...recentBooks.values()];
@@ -141,7 +198,7 @@ export async function send({ phone }) {
   return { ok: r?.STATUS === "OK", raw: r };
 }
 
-export async function book({ phone, pin, name, email, guests, date, time, section }) {
+export async function book({ phone, pin, name, email, guests, date, time, section, callId }) {
   const p = digits(phone), code = String(pin || "").replace(/\D/g, "");
   if (p.length !== 10) return { ok: false, error: "need a 10-digit mobile number" };
   if (code.length !== 5) return { ok: false, error: "code must be 5 digits" };
@@ -168,9 +225,13 @@ export async function book({ phone, pin, name, email, guests, date, time, sectio
   const alertMsg = (html.match(/alert\('([^']+)'\)/) || [])[1];
   if (alertMsg) return { ok: false, error: alertMsg, hint: /Max number/i.test(alertMsg) ? "this mobile number already has an open reservation request; ask the caller to cancel it or use the restaurant line" : undefined };
   const id = (loc.match(/x=([A-Za-z0-9]+)/) || html.match(/x=([A-Za-z0-9]+)/) || [])[1] || null;
-  if (id) recentBooks.set(id, { date: req.dated, area: area(want.section), start: want.hour, g: Number(guests) || 1 });
+  let capLogged = false;
+  if (id) {
+    recentBooks.set(id, { date: req.dated, area: area(want.section), start: want.hour, g: Number(guests) || 1 });
+    capLogged = await tagCall(callId, { id, dated: req.dated, timed: want.time, section: want.section, g: Number(guests) || 1 });
+  }
   const status = /PENDING/i.test(html) ? "PENDING" : /CONFIRM/i.test(html) ? "CONFIRMED" : "SUBMITTED";
-  return { ok: !!id, id, status, booked: { ...req, customerPhone: undefined }, cancelUrl: id ? `${BASE}reserve_cancel?x=${id}` : null, httpStatus: r.status, location: loc };
+  return { ok: !!id, id, status, booked: { ...req, customerPhone: undefined }, cancelUrl: id ? `${BASE}reserve_cancel?x=${id}` : null, httpStatus: r.status, location: loc, cap_logged: capLogged };
 }
 
 const ACTIONS = { check, send, book };
@@ -199,7 +260,7 @@ export default async (request) => {
   const args = payload.args && typeof payload.args === "object" ? payload.args : payload;
   const fn = ACTIONS[args.action || String(payload.name || "").replace(/^fugu_/, "")];
   if (!fn) return Response.json({ ok: false, error: "action must be check|send|book" }, { status: 400 });
-  return Response.json(await fn(args).catch((e) => ({ ok: false, error: String(e) })));
+  return Response.json(await fn({ ...args, callId: payload.call?.call_id }).catch((e) => ({ ok: false, error: String(e) })));
 };
 
 export const config = { path: "/api/fugu-reserve" };
