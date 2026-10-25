@@ -1,4 +1,4 @@
-const Image = require("@11ty/eleventy-img");
+const Image = require("@11ty/eleventy-img").default;
 const fs = require("fs");
 const CleanCSS = require("clean-css");
 const path = require("path");
