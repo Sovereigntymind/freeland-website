@@ -239,7 +239,9 @@ const ACTIONS = { check, send, book };
 // Netlify handler. VAPI "API Request"/custom tool posts JSON: {action, ...params}. Shared secret in X-Fugu-Key.
 export default async (request) => {
   if (request.method !== "POST") return Response.json({ ok: false, error: "POST only" }, { status: 405 });
-  if (process.env.FUGU_WEBHOOK_SECRET && request.headers.get("x-fugu-key") !== process.env.FUGU_WEBHOOK_SECRET) return Response.json({ ok: false, error: "unauthorized" }, { status: 401 });
+  const secret = process.env.FUGU_WEBHOOK_SECRET;
+  if (!secret) return Response.json({ ok: false, error: "not configured" }, { status: 503 }); // an unset secret never opens the door (same as fugu-order)
+  if (request.headers.get("x-fugu-key") !== secret) return Response.json({ ok: false, error: "unauthorized" }, { status: 401 });
   let payload = {};
   try { payload = await request.json(); } catch { return Response.json({ ok: false, error: "bad json" }, { status: 400 }); }
   // VAPI shape (docs.vapi.ai/tools/custom-tools, fetched 2026-08-26): {message:{type:"tool-calls",toolCallList:[{id,name,arguments:{...}}]}}
