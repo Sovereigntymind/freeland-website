@@ -13,8 +13,8 @@
 // choice and a hidden item id were both accepted). Menu11 is NOT a safety net: every rule is enforced in the core.
 // Tools (Retell custom functions, name or args.action): order_cart | order_send | order_place | order_status.
 // Placing is OFF unless FUGU_ORDER_SUBMIT=on (set only for Kevin-approved test orders / go-live).
-// The pay_confirm answer has never been seen (no order placed yet), so NOTHING it returns is trusted as success:
-// every posted order comes back UNKNOWN -> the host confirms it. Tighten only after real answers are on file.
+// Success = only the exact order_done redirect seen on the 11/11 test order (readPayConfirm). Anything else it returns
+// stays UNKNOWN -> the host confirms it, and is never retried.
 import crypto from "node:crypto";
 import { buildIndex, decodeConfig, orderFlow, memoryStore } from "../lib/fugu-order-core.mjs";
 
@@ -36,6 +36,15 @@ export function jqParams(prefix, v, out = []) {
   else if (v !== null && typeof v === "object") for (const [k, x] of Object.entries(v)) jqParams(`${prefix}[${k}]`, x, out);
   else out.push([prefix, v === null || v === undefined ? "" : String(v)]);
   return out;
+}
+
+// pay_confirm success, first seen on the real test order 2026-11-11 (ORDER #94001, confirmed on the order_done page):
+// HTTP 200 + body `<script>location.href="https://fugusushi.menu11.com/ormond/order_done?x=2026111110035494001.<hex>";</script>`
+// (x = 14-digit yyyymmddhhmmss + order number). Anything else stays UNKNOWN -> host confirms. Returns the order number or null.
+export function readPayConfirm(status, text) {
+  if (status !== 200) return null;
+  const m = String(text || "").match(/^\s*<script>\s*location\.href\s*=\s*"https:\/\/fugusushi\.menu11\.com\/ormond\/order_done\?x=(\d{14})(\d{1,9})\.[0-9a-f]{16,64}"\s*;?\s*<\/script>\s*$/);
+  return m ? m[2] : null;
 }
 
 // Menu + hours. fresh=true (used right before placing) always re-reads the page; otherwise a 60 s cache.
@@ -78,7 +87,9 @@ export function menu11Client({ submitOn = process.env.FUGU_ORDER_SUBMIT === "on"
       const r = await fetch(BASE + "pay_confirm", { method: "POST", headers: { ...H(cookie, false), "Content-Type": "application/x-www-form-urlencoded" }, body, redirect: "manual", signal: AbortSignal.timeout(Math.max(1000, Math.min(SUBMIT_MS, maxMs))) });
       const text = r.status >= 300 && r.status < 400 ? "" : await r.text().catch(() => "");
       const scrub = (s) => String(s || "").replaceAll(customer.sid, "SID").replace(/\s+/g, " ");
-      return { state: "UNKNOWN", seen: { status: r.status, location: scrub(r.headers.get("location")).slice(0, 200), body: scrub(text).slice(0, 600) } };
+      const seen = { status: r.status, location: scrub(r.headers.get("location")).slice(0, 200), body: scrub(text).slice(0, 600) };
+      const ref = readPayConfirm(r.status, text);
+      return ref ? { state: "ACCEPTED", ref, seen } : { state: "UNKNOWN", seen };
     },
   };
 }
