@@ -3,6 +3,10 @@
 // The voice agent only ever sends item ids + choices; names, prices, tax and kitchen routing come from the live menu.
 import crypto from "node:crypto";
 
+// Card at pickup: the POS adds an NCA (non-cash adjust) of 3.59% on the full total incl tax (David Campbell 11/13; #95001 3515 -> 3641).
+// Cash pays the plain total. Mika reads the card total so nobody pays more than they heard.
+export const NCA_BP = 359;
+export const cardTotal = (cents) => cents + Math.round((cents * NCA_BP) / 10000);
 export const LIMITS = { lines: 8, units: 12, perItem: 6, subtotalCents: 15000, noteChars: 80, approvalMinutes: 10 };
 const CONFIG_KEY = "ajjlklkJLKdjklfa83k22".padEnd(24, " ").slice(0, 24); // public key in the page script (config_init)
 const ALLERGY = /\b(allerg\w*|anaphyla\w*|epi-?pen|celiac|coeliac|gluten[- ]free|intoleran\w*|cross[- ]contamin\w*|safe for)\b/i;
@@ -284,7 +288,7 @@ export function orderFlow({ store, m11, loadIndex, now = () => new Date(), disab
         approval, approvedAt: now().getTime(), total: priced.total }));
       if (!rec) return already((await store.get(key(callId))).value); // a placement won the race: the order is not editable
       return { ...say("READ_BACK"), approval, items: priced.view.map((l) => ({ qty: l.qty, name: l.name, choices: l.mods.map((m) => m.name), note: l.note, total: l.total })),
-        subtotal: priced.subtotal, tax: priced.tax, total: priced.total, pickup_minutes: priced.pickupMinutes, pay: "at the restaurant" };
+        subtotal: priced.subtotal, tax: priced.tax, total: priced.total, card_total: cardTotal(priced.total), pickup_minutes: priced.pickupMinutes, pay: "at the restaurant" };
     },
     async sendCode(callId, phone, approval) {
       const p = digits(phone); if (p.length !== 10) return say("NEED_10_DIGIT_MOBILE");
@@ -338,7 +342,7 @@ export function orderFlow({ store, m11, loadIndex, now = () => new Date(), disab
       try { res = await m11.submit(rec.cookie, server, { name: who, phone: rec.phone, sid: sess.id }, left); } catch { res = null; }
       const state = res?.state === "ACCEPTED" ? "ACCEPTED" : res?.state === "NOT_SENT" ? "DRAFT" : "UNKNOWN"; // UNKNOWN keeps the lock forever
       await update(store, k, (cur2) => ({ ...cur2, state, ref: res?.ref || null, reason: res?.reason || null, seen: res?.seen || null }));
-      return state === "ACCEPTED" ? { ...say("PLACED"), ref: res.ref || null, total: c.priced.total, pickup_minutes: c.priced.pickupMinutes }
+      return state === "ACCEPTED" ? { ...say("PLACED"), ref: res.ref || null, total: c.priced.total, card_total: cardTotal(c.priced.total), pickup_minutes: c.priced.pickupMinutes }
         : state === "DRAFT" ? { ...say("NOT_PLACED"), reason: res.reason || null } : say("HOST_CONFIRM");
     },
     async status(callId) { const r = (await store.get(key(callId)))?.value; return r ? { ...say(r.state), ref: r.ref || null } : say("NO_ORDER_YET"); },
