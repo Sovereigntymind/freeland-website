@@ -10,16 +10,21 @@ export const config = { path: '/api/roadmap-apply' };
 const json = (code, data) => new Response(JSON.stringify(data), { status: code, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
 const failure = (code, error, extra = {}) => json(code, { accepted: false, error, ...extra });
 const inList = (email, list = '') => list.split(/[,;\s]+/).some(item => item.toLowerCase() === email);
-const receipt = record => record.rejected ? failure(429, 'rate_limited') : record.admission === 'pending' ? failure(503, 'server') : json(200, {
+const receipt = record => record.rejected ? failure(429, 'rate_limited', {
+  retry_at: new Date((Math.floor(Date.parse(record.created_at) / 3600000) + 1) * 3600000).toISOString()
+}) : record.admission === 'pending' ? failure(503, 'server') : json(200, {
   accepted: true, application_id: record.id, eligible: record.eligible,
   status: record.status === 'test' ? 'test' : ({ n8n_ack: 'delivered', backup_sent: 'backup_sent', pending: 'pending' }[record.delivery_status] || 'delivery_failed'),
   ...(record.test || record.status === 'test' || record.delivery_mode === 'test_delivery' ? { test: true } : {})
 });
 
-// 16 KB: a real hCaptcha token alone runs about 2 to 4 KB (launch day 11/19: the old 4 KB body and 2,048 token caps rejected real submissions).
+// Launch day 11/19: one production submission returned an hcaptcha_token
+// validation error. A later token measured 1,892 characters; token length varies.
+// Caps were raised to 8,192 characters and 16 KB for headroom.
 const BODY_LIMIT = 16384;
 async function body(request, budget) {
-  if (Number(request.headers.get('content-length')) > BODY_LIMIT) throw new RangeError();
+  const tooLarge = bytes => Object.assign(new RangeError(), { body_bytes: bytes });
+  if (Number(request.headers.get('content-length')) > BODY_LIMIT) throw tooLarge(Number(request.headers.get('content-length')));
   const reader = request.body?.getReader();
   if (!reader) throw new SyntaxError();
   const chunks = []; let size = 0;
@@ -28,10 +33,10 @@ async function body(request, budget) {
       const { done, value } = await budget.run(() => reader.read());
       if (done) break;
       size += value.byteLength;
-      if (size > BODY_LIMIT) throw new RangeError();
+      if (size > BODY_LIMIT) throw tooLarge(size);
       chunks.push(Buffer.from(value));
     }
-    return JSON.parse(Buffer.concat(chunks).toString('utf8'));
+    return { value: JSON.parse(Buffer.concat(chunks).toString('utf8')), bytes: size };
   } finally { void reader.cancel().catch(() => {}); reader.releaseLock(); }
 }
 
@@ -41,8 +46,16 @@ export function createHandler({ store, env = process.env, fetcher = fetch, now =
     if (request.method !== 'POST') return failure(405, 'validation', { fields: { form: 'Use POST.' } });
     if (!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type') || '')) return failure(400, 'validation', { fields: { form: 'Send JSON.' } });
     let input;
-    try { input = validate(await body(request, budget)); }
-    catch (error) { return error.name === 'TimeoutError' ? failure(503, 'server') : failure(400, 'validation', { fields: { form: 'Send valid JSON no larger than 4 KB.' } }); }
+    try {
+      const parsed = await body(request, budget);
+      input = validate(parsed.value);
+      if (!input.silent && input.errors.hcaptcha_token && typeof parsed.value.hcaptcha_token === 'string' && parsed.value.hcaptcha_token.length > 8192) {
+        console.error({ field: 'hcaptcha_token', token_length: parsed.value.hcaptcha_token.length, body_bytes: parsed.bytes });
+      }
+    } catch (error) {
+      if (error.body_bytes !== undefined) console.error({ field: 'form', body_bytes: error.body_bytes });
+      return error.name === 'TimeoutError' ? failure(503, 'server') : failure(400, 'validation', { fields: { form: 'Send valid JSON no larger than 16 KB.' } });
+    }
     if (input.silent) return json(200, { accepted: false });
     if (Object.keys(input.errors).length) return failure(400, 'validation', { fields: input.errors });
     if (!env.LEADS_IP_SALT) return failure(500, 'server');

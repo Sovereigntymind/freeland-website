@@ -60,7 +60,7 @@ function formPage({ formType = 'roadmap', audit = false, captcha = false, fetche
   let booted = false;
   const time = clock(), form = element(), button = element('Send'), status = element(), slot = element();
   const calls = [], events = [], widgets = [], resets = [], removals = [], scripts = [];
-  const fields = { store_url: 'brand.com', revenue_band: 'under-50k', main_channel: 'Meta', role: 'founder', email: 'you@example.com', hp_company_url: '', company_url: '', agency_name: 'Agency', agency_website: 'agency.com', client_count: '1-5', services: 'SEO', business_name: 'Brand', website: 'https://brand.com', city: '', industry: '', phone: '' };
+  const fields = { store_url: 'brand.com', revenue_band: 'under-50k', main_channel: 'Meta', role: 'founder', email: 'you@example.com', contact_check: '', hp_company_url: '', company_url: '', agency_name: 'Agency', agency_website: 'agency.com', client_count: '1-5', services: 'SEO', business_name: 'Brand', website: 'https://brand.com', city: '', industry: '', phone: '' };
   button.disabled = true;
   const errors = Object.fromEntries(Object.keys(fields).map(name => [name, element()]));
   form.elements = Object.fromEntries(Object.entries(fields).map(([name, value]) => [name, { ...element(), value }]));
@@ -76,6 +76,67 @@ function formPage({ formType = 'roadmap', audit = false, captcha = false, fetche
   booted = true;
   return { errors, storage, time, form, button, status, calls, events, widgets, resets, removals, scripts, window, submit: async () => { form.handlers.submit({ preventDefault() {} }); await flush(); }, load: async () => { window.flHcaptchaReady(); await flush(); } };
 }
+
+for (const formType of ['roadmap', 'partner']) test(`429 retry waits for reset, rotates only the rejected ID and keeps ${formType} answers`, async () => {
+  let attempt = 0;
+  const p = formPage({ formType, fetcher: async () => ++attempt === 1
+    ? { status: 429, json: async () => ({ accepted: false, error: 'rate_limited', retry_at: new Date(104000).toISOString() }) }
+    : { status: 200, json: async () => ({ accepted: true }) } });
+  p.window.crypto.randomUUID = () => 'retry-id';
+  await p.submit();
+  assert.equal(p.storage.get('fl_app_' + formType), 'retry-id');
+  assert.equal(p.storage.has('fl_app_' + formType + '_receipt'), false);
+  assert.equal(p.events.filter(e => e.name === 'generate_lead').length, 0);
+  assert.match(p.status.textContent, /Try again after/);
+  await p.submit(); assert.equal(p.calls.length, 1);
+  await p.time.advance(1000); await p.submit();
+  assert.equal(p.calls.length, 2);
+  const [first, retry] = p.calls.map(c => JSON.parse(c[1].body));
+  assert.equal(first.application_id, 'application-id'); assert.equal(retry.application_id, 'retry-id');
+  assert.deepEqual(retry.fields, first.fields);
+  assert.equal(p.events.filter(e => e.name === 'generate_lead').length, 1);
+});
+
+for (const formType of ['roadmap', 'partner']) test(`silent ${formType} rejection clears autofilled trap again immediately before retry`, async () => {
+  const p = formPage({ formType, fetcher: async (_url, init) => ({ status: 200, json: async () => ({ accepted: !JSON.parse(init.body).contact_check }) }) });
+  p.form.elements.contact_check.value = 'autofilled';
+  await p.submit();
+  assert.equal(JSON.parse(p.calls[0][1].body).contact_check, 'autofilled');
+  assert.equal(p.form.elements.contact_check.value, '');
+  assert.equal(p.form.replacement, undefined);
+  p.form.elements.contact_check.value = 'autofilled again';
+  p.form.elements.hp_company_url.value = 'legacy autofill';
+  await p.submit();
+  const retry = JSON.parse(p.calls[1][1].body);
+  assert.equal(retry.contact_check, ''); assert.equal(retry.hp_company_url, undefined);
+  assert.equal(p.form.elements.hp_company_url.value, '');
+  assert.equal(retry.application_id, JSON.parse(p.calls[0][1].body).application_id);
+  assert.deepEqual(retry.fields, JSON.parse(p.calls[0][1].body).fields);
+  assert.equal(p.events.filter(e => e.name === 'generate_lead').length, 1);
+});
+
+for (const formType of ['roadmap', 'partner']) test(`client checks normalized ${formType} URL length and offers homepage recovery`, async () => {
+  const p = formPage({ formType }), key = formType === 'roadmap' ? 'store_url' : 'agency_website';
+  for (const url of ['https://example.com/' + '界'.repeat(54), 'https://example.com/' + 'a'.repeat(481)]) {
+    p.form.elements[key].value = url;
+    await p.submit();
+    assert.equal(p.calls.length, 0);
+    assert.match(p.errors[key].textContent, /homepage address.*500 characters/);
+    assert.equal(p.form.elements[key].attrs['aria-invalid'], 'true');
+  }
+  p.form.elements[key].value = 'https://münchen.de/'; await p.submit();
+  assert.equal(p.calls.length, 1);
+  assert.equal(JSON.parse(p.calls[0][1].body).fields[formType][key], new URL('https://münchen.de/').href);
+});
+
+test('both source forms use neutral honeypot names, matching labels and disabled autofill', () => {
+  for (const [page, prefix] of [['growth-roadmap', 'rm'], ['partners', 'pt']]) {
+    const source = fs.readFileSync(new URL(`../src/${page}/index.njk`, import.meta.url), 'utf8');
+    assert.match(source, new RegExp(`<label for="${prefix}-contact-check">Leave blank</label>`));
+    assert.match(source, new RegExp(`<input id="${prefix}-contact-check" name="contact_check" type="text" tabindex="-1" autocomplete="off">`));
+    assert.doesNotMatch(source, /hp_company_url|Company URL \(leave this empty\)/);
+  }
+});
 
 test('initialization failure keeps submit disabled and exposes a usable email fallback', () => {
   const p = formPage({ initFails: true });

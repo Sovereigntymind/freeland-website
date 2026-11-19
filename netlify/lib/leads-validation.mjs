@@ -13,7 +13,8 @@ export function validate(input) {
   };
   if (!object(input)) return { errors: { form: 'Send a JSON object.' } };
   // Check the trap before validation, including whitespace, controls and oversize values.
-  if (input.hp_company_url != null && input.hp_company_url !== '') return { errors, silent: true };
+  // Keep the legacy name for one release so cached pages still hit the trap.
+  if (['contact_check', 'hp_company_url'].some(key => input[key] != null && input[key] !== '')) return { errors, silent: true };
   const id = string(input.application_id, 'application_id', 36);
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)) errors.application_id = 'Reload the form and try again.';
   const type = input.form_type;
@@ -30,10 +31,13 @@ export function validate(input) {
   fields.email = fields.email.toLowerCase();
   if (!/^[^\s@<>]+@[^\s@<>]+\.[a-z]{2,}$/i.test(fields.email)) errors.email = 'Add a valid email.';
   const urlKey = type === 'roadmap' ? 'store_url' : 'agency_website';
-  try {
+  const homepage = type === 'roadmap' ? "Enter your store's homepage address (up to 500 characters after URL formatting)." : "Enter your agency's homepage address (up to 500 characters after URL formatting).";
+  if (typeof raw[urlKey] === 'string' && raw[urlKey].length > 500) errors[urlKey] = homepage;
+  if (!errors[urlKey]) try {
     const url = new URL(fields[urlKey]);
     if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i.test(url.hostname) || url.hostname.endsWith('.local')) throw new Error();
     fields[urlKey] = url.href;
+    if (url.href.length > 500) errors[urlKey] = homepage;
   } catch { errors[urlKey] = 'Add a full website URL, such as https://yourstore.com.'; }
   for (const [key, values] of Object.entries(type === 'roadmap' ? { revenue_band: bands, main_channel: channels, role: roles } : { client_count: ['1-5', '6-20', '21-50', '50+'] })) {
     if (!values.includes(fields[key])) errors[key] = 'Choose one of the listed options.';

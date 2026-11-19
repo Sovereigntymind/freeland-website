@@ -162,6 +162,7 @@
     var loadedAt = Date.now();
     var buttonLabel = button.textContent;
     var busy = false, started = false;
+    var retryAt = 0, clearTrapOnRetry = false;
     var ready = null;
     function ensureCaptcha() { if (!ready) ready = loadCaptcha(form.getAttribute("data-hcaptcha-sitekey"), slot); return ready; }
     form.addEventListener("focusin", ensureCaptcha, { once: true });
@@ -195,9 +196,14 @@
       var first = null;
       Object.keys(spec.fields).forEach(function (name) {
         var rule = spec.fields[name], v = data[name], bad = !v;
+        var message = rule.message;
         if (!bad && rule.url) bad = !normalizeUrl(v);
+        if (!bad && rule.url && normalizeUrl(v).length > 500) {
+          bad = true;
+          message = "Enter your " + (type === "roadmap" ? "store's" : "agency's") + " homepage address (up to 500 characters after URL formatting).";
+        }
         if (!bad && rule.email) bad = !EMAIL_RE.test(v);
-        setError(name, bad ? rule.message : "");
+        setError(name, bad ? message : "");
         if (bad && !first) first = input(name);
       });
       return first;
@@ -206,7 +212,7 @@
     function showProblem(kind) {
       var copy = {
         unconfirmed: ["We could not confirm your application.", "Try again or email Kevin."],
-        rate_limited: ["Too many applications from this connection.", "Wait a few minutes and send it again. Your answers are still here. Or email Kevin and he will take it from there."],
+        rate_limited: ["Too many applications from this connection.", (retryAt > Date.now() ? "Try again after " + new Date(retryAt).toLocaleTimeString() + ". " : "Send it again when the hourly limit resets. ") + "Your answers are still here. Or email Kevin and he will take it from there."],
         challenge_failed: ["The spam check did not pass.", "Send it again. If it keeps failing, email Kevin your store address and he will take it from there."],
         conflict: ["We already have an application from this browser.", "It was sent with different answers. To change an answer, email Kevin."],
         network: ["We could not reach the server.", "Check your connection and send it again. Your answers are still here."],
@@ -280,6 +286,8 @@
       }
       if (httpStatus === 200 && body && body.accepted === false) {
         // Acceptance is unconfirmed: preserve answers and retry, never a lead or receipt.
+        clearTrapOnRetry = true;
+        clearTrap();
         setBusy(false);
         showProblem("unconfirmed"); return;
       }
@@ -302,14 +310,28 @@
         return;
       }
       if (httpStatus === 409) return showProblem("conflict");
-      if (httpStatus === 429) return showProblem("rate_limited");
+      if (httpStatus === 429) {
+        // A definitive rejection cannot have delivered. Other failures retain the ID.
+        applicationId = uuid();
+        store(idKey, applicationId);
+        store(receiptKey, null);
+        retryAt = Date.parse(body && body.retry_at) || 0;
+        return showProblem("rate_limited");
+      }
       if (httpStatus === 403) return showProblem("challenge_failed");
       showProblem("server");
+    }
+
+    function clearTrap() {
+      ["contact_check", "hp_company_url"].forEach(function (name) {
+        if (input(name)) input(name).value = "";
+      });
     }
 
     function submit(e) {
       if (e && e.preventDefault) e.preventDefault();
       if (busy) return;
+      if (Date.now() < retryAt) return showProblem("rate_limited");
       clearStatus();
       var data = values();
       var firstBad = validate(data);
@@ -319,12 +341,13 @@
         return;
       }
       setBusy(true);
-      var hp = form.elements.hp_company_url;
+      var hp = input("contact_check") || input("hp_company_url");
       // Autofill can finish before the server's 2.5-second anti-bot minimum.
       // Wait actual elapsed time instead of fabricating the timing field.
       var remaining = Math.max(0, 2500 - (Date.now() - loadedAt));
       var settled = remaining ? new Promise(function (resolve) { setTimeout(resolve, remaining); }) : Promise.resolve();
       settled.then(function () { return captchaToken(ensureCaptcha(), form.getAttribute("data-hcaptcha-sitekey"), slot); }).then(function (token) {
+        if (clearTrapOnRetry) { clearTrap(); clearTrapOnRetry = false; }
         var fields = {};
         fields[type] = data;
         var payload = {
@@ -337,7 +360,7 @@
             return { landing_path: a.landing_path, last_cta_id: a.last_cta_id, last_cta_path: a.last_cta_path, utm: a.utm };
           })(),
           hcaptcha_token: token,
-          hp_company_url: hp ? hp.value : "",
+          contact_check: hp ? hp.value : "",
           elapsed_ms: Math.min(Date.now() - loadedAt, MAX_ELAPSED)
         };
         var ctrl = window.AbortController ? new AbortController() : null;
