@@ -47,7 +47,7 @@ export function validate(input) {
   }
   attribution.utm = {};
   for (const key of ['source', 'medium', 'campaign', 'term', 'content']) attribution.utm[key] = string(source.utm?.[key] ?? '', `utm_${key}`, 100, false);
-  const token = string(input.hcaptcha_token ?? '', 'hcaptcha_token', 2048, false);
+  const token = string(input.hcaptcha_token ?? '', 'hcaptcha_token', 8192, false);
   if (!Number.isSafeInteger(input.elapsed_ms) || input.elapsed_ms < 0 || input.elapsed_ms > 86400000) errors.elapsed_ms = 'Reload the form and try again.';
   return { errors, id: id.toLowerCase(), type, fields, attribution, token, silent: input.elapsed_ms < 2500 };
 }

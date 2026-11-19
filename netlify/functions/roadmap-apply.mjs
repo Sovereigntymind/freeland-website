@@ -16,8 +16,10 @@ const receipt = record => record.rejected ? failure(429, 'rate_limited') : recor
   ...(record.test || record.status === 'test' || record.delivery_mode === 'test_delivery' ? { test: true } : {})
 });
 
+// 16 KB: a real hCaptcha token alone runs about 2 to 4 KB (launch day 11/19: the old 4 KB body and 2,048 token caps rejected real submissions).
+const BODY_LIMIT = 16384;
 async function body(request, budget) {
-  if (Number(request.headers.get('content-length')) > 4096) throw new RangeError();
+  if (Number(request.headers.get('content-length')) > BODY_LIMIT) throw new RangeError();
   const reader = request.body?.getReader();
   if (!reader) throw new SyntaxError();
   const chunks = []; let size = 0;
@@ -26,7 +28,7 @@ async function body(request, budget) {
       const { done, value } = await budget.run(() => reader.read());
       if (done) break;
       size += value.byteLength;
-      if (size > 4096) throw new RangeError();
+      if (size > BODY_LIMIT) throw new RangeError();
       chunks.push(Buffer.from(value));
     }
     return JSON.parse(Buffer.concat(chunks).toString('utf8'));
