@@ -49,8 +49,10 @@ export function createHandler({ store, env = process.env, fetcher = fetch, now =
     try {
       const parsed = await body(request, budget);
       input = validate(parsed.value);
-      if (!input.silent && input.errors.hcaptcha_token && typeof parsed.value.hcaptcha_token === 'string' && parsed.value.hcaptcha_token.length > 8192) {
-        console.error({ field: 'hcaptcha_token', token_length: parsed.value.hcaptcha_token.length, body_bytes: parsed.bytes });
+      // Every non-silent token rejection is logged with lengths only (never content), so an unexplained rejection can be diagnosed.
+      if (!input.silent && input.errors.hcaptcha_token) {
+        const token = parsed.value.hcaptcha_token;
+        console.error({ field: 'hcaptcha_token', token_length: typeof token === 'string' ? token.length : null, body_bytes: parsed.bytes });
       }
     } catch (error) {
       if (error.body_bytes !== undefined) console.error({ field: 'form', body_bytes: error.body_bytes });
