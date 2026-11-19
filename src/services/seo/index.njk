@@ -1,364 +1,125 @@
-{% extends "base.njk" %}
-
-{% block head %}
-  <title>SEO Services for Businesses | Freeland Marketing</title>
-  <meta name="description" content="SEO services for businesses nationwide. Complete website audits, technical fixes, keyword tracking, monthly reporting, and ongoing optimization. Get found on Google." />
-  <meta name="keywords" content="SEO services small business, local SEO small business, SEO agency, Google Business Profile management, search engine optimization, SEO company, website audit, SEO monitoring" />
-  <meta name="author" content="Kevin Freeland" />
-  <link rel="canonical" href="https://freelandme.com/services/seo/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freelandme.com/services/seo/" />
-  <meta property="og:title" content="SEO Services for Businesses | Freeland Marketing" />
-  <meta property="og:description" content="SEO for businesses — complete audits, technical fixes, keyword tracking, and monthly reporting so you show up when customers search." />
-  <meta property="og:image" content="https://freelandme.com/blog/images/service-seo-florida.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="624" />
-  <meta property="og:image:alt" content="SEO Services for Businesses Nationwide" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SEO Services for Businesses | Freeland Marketing" />
-  <meta name="twitter:description" content="SEO for businesses — audits, technical fixes, keyword tracking, and monthly reporting." />
-  <meta name="twitter:image" content="https://freelandme.com/blog/images/service-seo-florida.jpg" />
-  <meta name="twitter:image:alt" content="SEO Services for Businesses Nationwide" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "SEO Services",
-    "provider": {
-      "@type": "MarketingAgency",
-      "name": "Freeland Marketing & Entertainment",
-      "url": "https://freelandme.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" }
+---
+{
+  "layout": "layouts/service.njk",
+  "title": "SEO and AEO Services for DTC Brands | Freeland",
+  "description": "Search engine and answer engine optimization for DTC brands, built around useful content, technical foundations and clear product information.",
+  "serviceName": "SEO and AEO",
+  "serviceSlug": "seo",
+  "lead": "Freeland does SEO and AEO (answer engine optimization) for founder-led DTC brands. That means technical fixes, structured data, product and category pages, and clear answers that search engines and AI assistants can read and cite. The work is judged on search visits that lead to store actions. Rankings are not promised.",
+  "included": [
+    {
+      "title": "Technical foundations",
+      "text": "We review indexing, page structure, broken links and internal links, so important product and category pages can be found."
     },
-    "areaServed": "United States",
-    "description": "Complete SEO services for businesses including website audits, on-page optimization, technical fixes, keyword rank tracking, backlink monitoring, and monthly reporting.",
-    "url": "https://freelandme.com/services/seo/"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" },
-      { "@type": "ListItem", "position": 3, "name": "SEO Services", "item": "https://freelandme.com/services/seo/" }
+    {
+      "title": "Structured data",
+      "text": "Product, FAQ and organization markup tells search engines and AI assistants what a page is about. We add or fix it and test it before it ships."
+    },
+    {
+      "title": "Product and category pages",
+      "text": "Titles, descriptions and page copy are written around the words buyers search with, using accurate product information."
+    },
+    {
+      "title": "Clear answers",
+      "text": "Buyer questions get plain answers near the top of the page, written so a person can read them and an AI assistant can quote them."
+    },
+    {
+      "title": "Claims checked before publishing",
+      "text": "Copy is checked against your list of what you can and cannot say before it goes live. That matters most in categories where claims get scrutinized."
+    },
+    {
+      "title": "Guides linked to products",
+      "text": "Guides and product pages get linked to each other, so visitors and search engines can move from a question to the product that answers it."
+    }
+  ],
+  "fit": {
+    "for": [
+      "DTC brands with an existing store and products people search for.",
+      "Brands whose product and category pages are thin, duplicated or hard to read.",
+      "Founders who want search judged on visits that buy, not rank reports."
+    ],
+    "notFor": [
+      "Brands that want a promised ranking or a fixed date for traffic.",
+      "Pre-launch sites with no products to sell yet."
     ]
+  },
+  "start": "The work starts with the free Growth Roadmap. You apply with five answers and pick a time. Kevin starts from your public store and ads plus those answers, and a deeper read of your accounts needs view-only access. On the 30-minute call he walks you through your roadmap. If search is where your numbers point, it says so, starting with the pages closest to a sale. If the bigger leak is somewhere else, it says that instead. Then you decide whether you want us to do the work or to do it yourself. If you want us to, the work is scoped for your brand. You keep the roadmap either way.",
+  "access": [
+    "Store address and five answers for the roadmap.",
+    "View-only access to Google Search Console and your analytics for the deeper read.",
+    "Store admin or theme access once work is agreed, so pages and markup can be changed.",
+    "Your approved claims list and any product facts that need sign-off."
+  ],
+  "measure": "Search work is judged on what search visitors do in your store: product views, carts and orders. Search Console clicks, impressions and positions are one input. AI answer visibility is something we observe and report, not a placement anyone can promise. Results are read as trends over weeks and months, not single days.",
+  "reviewIds": [
+    "google-jakim-hartford"
+  ],
+  "relatedPosts": [
+    {
+      "url": "/blog/content-marketing-strategy-small-business/",
+      "title": "Content Marketing Strategy for DTC Brands"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Check the foundations",
+      "text": "Review indexing, page structure, internal links and structured data. Make sure important product and category pages can be found."
+    },
+    {
+      "title": "Write useful answers",
+      "text": "Connect buyer questions to clear page content. Use accurate product information and relevant proof, with claims reviewed before publication."
+    },
+    {
+      "title": "Track discovery and action",
+      "text": "Review search visibility alongside visits and useful store actions. Treat AI answer visibility as something to observe, not a placement we can promise."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What is AEO?",
+      "a": "AEO, or answer engine optimization, is the work of making your pages easy for AI assistants and answer features to read, trust and cite. That means plain answers to real buyer questions, accurate product facts, structured data and clear page structure. It builds on SEO rather than replacing it."
+    },
+    {
+      "q": "Do you write the content?",
+      "a": "Yes. We write and edit product, category and answer content using accurate product information. Your team reviews claims before anything is published, and copy is checked against your list of what you can and cannot say. If you prefer to supply drafts, we edit them for search and clarity."
+    },
+    {
+      "q": "How do you track AI answer visibility?",
+      "a": "We watch it and report it, and we do not promise it. We check the questions your buyers ask in AI assistants and note whether your brand and pages are named or cited, then read that next to search traffic and store actions. Answers change by assistant and by day, so we read trends."
+    },
+    {
+      "q": "What are Shopify's SEO limits?",
+      "a": "Shopify fixes some URL patterns, like /products/ and /collections/, and builds parts of the sitemap for you. Most of what matters stays in your hands: titles, descriptions, page copy, internal links, structured data and how your theme loads. We work within the platform rather than fighting it."
+    },
+    {
+      "q": "Can you promise rankings or AI citations?",
+      "a": "No. We can improve the content and technical foundations, but search engines and AI assistants decide what they show. What we can do is make your pages clear, accurate and easy to read, and report honestly on search visits and what those visitors do in your store."
+    },
+    {
+      "q": "What drives the scope of SEO work?",
+      "a": "Scope depends on the size of your catalog, how much technical cleanup the site needs, how many pages need new or rewritten copy, and whether claims review adds steps. The roadmap shows where search fits in your numbers, and the scope is set from that read. There are no fixed SEO packages."
+    }
+  ],
+  "contextualCta": "Find out which pages buyers cannot find, and which to fix first.",
+  "proofSlug": "redd-remedies",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Services",
+      "url": "/services/"
+    },
+    {
+      "name": "SEO and AEO",
+      "url": "/services/seo/"
+    }
+  ],
+  "sample": {
+    "title": "What Kevin checks first",
+    "text": "Does the page answer the question a buyer actually asks? Does the structured data match what the page shows? Which technical fixes stand in the way?"
   }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How long does SEO take to work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google Business Profile optimization can show results in 30-60 days. On-page improvements typically take 60-90 days. Content and link-building compound over 3-6 months. Unlike paid ads, SEO results keep generating traffic long after the work is done." }
-      },
-      {
-        "@type": "Question",
-        "name": "What is included in an SEO audit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We audit every page of your site for meta titles, descriptions, headings, schema markup, sitemap, robots.txt, page speed, mobile performance, broken links, security issues, and duplicate content. We also check your Google presence, competitor landscape, and backlink profile." }
-      },
-      {
-        "@type": "Question",
-        "name": "How much do SEO services cost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every business is different, so we quote SEO services on a case-by-case basis after reviewing your site, competition, and goals. We start with a free audit so you can see exactly what needs fixing before any money changes hands." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need SEO if I already run ads?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Ads stop generating traffic the moment you stop paying. SEO builds organic traffic that compounds over time. Most successful businesses run both — ads for immediate leads and SEO for long-term growth." }
-      },
-      {
-        "@type": "Question",
-        "name": "What makes your SEO different from other agencies?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We don't guess — we measure. Every client gets automated rank tracking, weekly site health crawls, backlink monitoring, and monthly branded reports. You see exactly what's working and what we're doing. No mystery, no fluff." }
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    .phase-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .phase-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 2rem;
-    }
-    .phase-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.25rem;
-    }
-    .phase-card .phase-label {
-      font-size: 0.8rem;
-      color: var(--blue);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .phase-card ul {
-      padding-left: 1.25rem;
-      margin: 1rem 0;
-    }
-    .phase-card li {
-      padding: 0.3rem 0;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .phase-card .phase-note {
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    .stat-card {
-      background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 123, 255, 0.02));
-      border: 1px solid rgba(0, 123, 255, 0.15);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-    .stat-card .stat-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-    .stat-card .stat-label {
-      font-size: 0.85rem;
-      color: #aaa;
-      line-height: 1.4;
-    }
-    .industry-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
-    }
-    .industry-item {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-    }
-    .industry-item strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: #fff;
-    }
-    .industry-item span {
-      font-size: 0.85rem;
-      color: #aaa;
-    }
-  </style>
-{% endblock %}
-
-{% block content %}
-
-  <article>
-
-    <header class="post-header">
-      <div class="post-header-inner">
-        <a href="/services/" class="post-breadcrumb">&larr; All Services</a>
-        <span class="blog-category">Service</span>
-        <h1>SEO Services That Get Your Business Found on Google</h1>
-        <div class="post-meta">
-          <span>By <strong>Freeland Marketing &amp; Entertainment</strong></span>
-          <span>Palm Coast, FL</span>
-          <span>Serving Businesses Nationwide</span>
-        </div>
-      </div>
-    </header>
-
-    <div class="post-featured-img">
-      <picture>
-        <img src="/blog/images/service-seo-florida.jpg" alt="SEO services for businesses — reviewing search rankings and organic traffic" width="860" height="480" />
-      </picture>
-    </div>
-
-    <div class="post-body">
-
-      <p style="font-size:1.15rem;line-height:1.7;">Right now, someone is searching Google for exactly what your business sells. "Best contractor near me." "Dentist open Saturday." "Marketing agency for restaurants." If your business does not show up on the first page, that customer is going to your competitor. Every single time.</p>
-
-      <p>Most businesses have websites that are invisible on Google. They were built, launched, and forgotten — with no SEO strategy, no monitoring, and no one watching whether they actually rank. Some have been hurt by bad past SEO work — keyword stuffing, spam links, or outdated techniques that now get penalized.</p>
-
-      <p><strong>We fix what is broken, set up professional monitoring, and keep your site performing month after month.</strong></p>
-
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-number">75%</div>
-          <div class="stat-label">of users never scroll past page 1 of Google</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">46%</div>
-          <div class="stat-label">of all Google searches have local intent</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">28%</div>
-          <div class="stat-label">of local searches result in a purchase within 24 hours</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">0%</div>
-          <div class="stat-label">of SEO traffic costs you per click (unlike ads)</div>
-        </div>
-      </div>
-
-      <h2>How It Works: Two Phases</h2>
-
-      <div class="phase-grid">
-
-        <div class="phase-card">
-          <span class="phase-label">Phase 1 — Foundation</span>
-          <h3>Fix What's Broken</h3>
-          <p>A complete audit and remediation of your website's SEO. We find every issue and fix it.</p>
-          <ul>
-            <li>Complete website SEO audit (every page reviewed)</li>
-            <li>Security scan for malware, spam, or injected content</li>
-            <li>Fix all meta titles and descriptions</li>
-            <li>Fix heading structure across every page</li>
-            <li>Set up or fix XML sitemap and robots.txt</li>
-            <li>Add schema markup (tells Google what your business is)</li>
-            <li>Set up Open Graph tags for social sharing</li>
-            <li>Set up Google Search Console and submit sitemap</li>
-            <li>Set up Google Analytics (if not already in place)</li>
-            <li>Full report of everything found and fixed</li>
-          </ul>
-          <div class="phase-note">One-time engagement. Typically completed in 1-2 weeks. Custom quote based on site size and issue severity.</div>
-        </div>
-
-        <div class="phase-card">
-          <span class="phase-label">Phase 2 — Ongoing Monitoring</span>
-          <h3>Keep It Working</h3>
-          <p>Automated monitoring and monthly optimization so your rankings keep improving.</p>
-          <ul>
-            <li>Keyword rank tracking (50-100 keywords, weekly)</li>
-            <li>Automated weekly site health crawls</li>
-            <li>Backlink monitoring (gain/loss alerts)</li>
-            <li>24/7 uptime monitoring (instant alerts)</li>
-            <li>Monthly branded SEO report delivered to your inbox</li>
-            <li>Fix new technical issues as they are detected</li>
-            <li>Google Search Console monitoring</li>
-            <li>Quarterly strategy review call</li>
-          </ul>
-          <div class="phase-note">Month-to-month after initial commitment. Custom quote based on your goals and competitive landscape.</div>
-        </div>
-
-      </div>
-
-      <p style="text-align:center;color:#888;font-size:0.9rem;">Every business is different. We quote pricing after reviewing your site, competition, and goals — so you get a plan that fits, not a one-size-fits-all package.</p>
-
-      <h2>What You Don't Have to Do</h2>
-
-      <p>Nothing. The monitoring runs automatically. We review the data, fix issues as they come up, and send you a clear report every month showing exactly what changed and why. You focus on running your business — we handle the SEO.</p>
-
-      <h2>Industries We Serve</h2>
-
-      <div class="industry-grid">
-        <div class="industry-item">
-          <strong>Restaurants &amp; Hospitality</strong>
-          <span>Google Business Profile, local Map Pack, review strategy</span>
-        </div>
-        <div class="industry-item">
-          <strong>Contractors &amp; Home Services</strong>
-          <span>"Near me" searches, service area pages, local citations</span>
-        </div>
-        <div class="industry-item">
-          <strong>Dental &amp; Medical Practices</strong>
-          <span>Local SEO, patient reviews, healthcare schema markup</span>
-        </div>
-        <div class="industry-item">
-          <strong>Real Estate</strong>
-          <span>Listing pages, neighborhood content, agent profiles</span>
-        </div>
-        <div class="industry-item">
-          <strong>E-commerce</strong>
-          <span>Product SEO, category optimization, technical performance</span>
-        </div>
-        <div class="industry-item">
-          <strong>Professional Services</strong>
-          <span>Law firms, accountants, consultants — authority and trust signals</span>
-        </div>
-      </div>
-
-      <h2>Google Business Profile: Your Most Valuable Free SEO Asset</h2>
-
-      <p>For most businesses, an optimized Google Business Profile is the single most impactful SEO investment. It determines whether you appear in the Map Pack — the three listings with a map that dominate local search results.</p>
-
-      <p>A fully optimized profile includes complete business information, correct categories, photos, weekly posts, Q&amp;A management, and active review responses. Most profiles are incomplete. A complete one consistently outranks them.</p>
-
-      <h2>SEO + Marketing: The Full System</h2>
-
-      <p>SEO works best as part of a connected marketing system. Leads from <a href="/services/google-ads-management/">Google Ads</a> drive immediate traffic while SEO builds long-term. <a href="/services/social-media-management/">Social media</a> amplifies content. <a href="/services/ai-lead-capture/">AI lead capture</a> converts the traffic SEO brings in. A fast, well-built <a href="/services/website-design/">website</a> is the foundation everything else sits on. We build the whole system — not just one piece.</p>
-
-      <div class="post-callout">
-        <p>"We don't guess — we measure. Every client gets automated rank tracking, weekly site crawls, and monthly reports. You see exactly what's working and what we're doing. No mystery, no fluff."</p>
-      </div>
-
-      <h2>Frequently Asked Questions</h2>
-
-      <details class="faq-item">
-        <summary>How long does SEO take to work?</summary>
-        <p>Google Business Profile optimization can show results in 30-60 days. On-page improvements typically take 60-90 days. Content and link-building strategies compound over 3-6 months. Unlike paid ads, SEO keeps generating traffic long after the work is done.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>What is included in an SEO audit?</summary>
-        <p>We audit every page of your site for meta titles, descriptions, headings, schema markup, sitemap, robots.txt, page speed, mobile performance, broken links, security issues, and duplicate content. We also check your Google presence, competitor landscape, and backlink profile. You get a full report with every issue documented and prioritized.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>How much do SEO services cost?</summary>
-        <p>Every business is different, so we quote on a case-by-case basis after reviewing your site, competition, and goals. We start with a <a href="/seo-audit/">free audit</a> so you can see exactly what needs fixing before any money changes hands. No pressure, no surprise fees.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Do I need SEO if I already run ads?</summary>
-        <p>Yes. Ads stop generating traffic the moment you stop paying. SEO builds organic traffic that compounds over time. Most successful businesses run both — <a href="/services/google-ads-management/">ads</a> for immediate leads and SEO for long-term sustainable growth.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>What makes your SEO different from other agencies?</summary>
-        <p>Transparency and measurement. Every client gets automated keyword tracking, weekly site health scans, backlink monitoring, and a monthly branded report. You always know exactly what we are doing and what results it is producing. No black box, no vague promises.</p>
-      </details>
-
-      <h2>Nationwide Service</h2>
-
-      <p>Headquartered in <strong>Palm Coast, FL</strong> and serving businesses across all 50 states. Every SEO engagement is managed remotely — no matter your industry or location.</p>
-
-      <div class="post-cta-box">
-        <h3>Get a Free SEO Audit for Your Website</h3>
-        <p>We will review your website, Google Business Profile, and local search presence — then show you exactly what is hurting your rankings and what to fix first. No cost, no obligation.</p>
-        <a href="/seo-audit/" class="btn-primary btn-large">Get My Free SEO Audit &rarr;</a>
-      </div>
-
-      <p style="margin-top:2rem;">Related: <a href="/blog/local-seo-guide-florida-small-business/">Local SEO Guide for Small Businesses</a> | <a href="/blog/google-business-profile-setup-florida/">Google Business Profile Setup Guide</a> | <a href="/services/ai-lead-capture/">24/7 AI Lead Capture</a></p>
-
-    </div>
-
-  </article>
-
-{% endblock %}
+}
+---
+<p>Your pages should be easy for people to understand and for search systems to read. We work on the technical and content gaps that get in the way.</p>

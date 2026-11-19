@@ -1,0 +1,69 @@
+{#- Night Shift page shell. Front matter per page:
+    title, description, permalink (canonical path), ogImage (optional), noindex (optional),
+    schema (optional list of extra JSON-LD nodes for this page's @graph), breadcrumbs (optional [{name,url}]),
+    heroPreload (optional image path to preload), bodyClass (optional). -#}
+{%- set canonical = site.url + (canonicalPath or page.url) -%}
+{# Existing page callers are writer-owned. Resolve only auto-level review headings
+   here; explicit macro headingLevel arguments always take precedence. #}
+{%- if page.url in ["/", "/results/", "/growth-roadmap/"] -%}
+  {%- set content = content | replace('<h2 data-review-heading="auto">Selected Google reviews</h2>', '<h3>Selected Google reviews</h3>') | replace('<h2 data-review-heading="auto">Letters</h2>', '<h3>Letters</h3>') -%}
+{%- endif -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  {% if page.url != '/404.html' %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+  {%- if noindex or env.preview %}
+  <meta name="robots" content="noindex, nofollow">
+  {%- else %}
+  <meta name="robots" content="index, follow">
+  {%- endif %}
+  <meta name="theme-color" content="#0E0F11">
+  <meta name="google-site-verification" content="C9Mjm98XjUhpnGL0mvL3Y5MlJ6dcUB7cDzm_QxuCyMw">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:title" content="{{ ogTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ ogImage or site.defaultOgImage }}">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ogTitle or title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ ogImage or site.defaultOgImage }}">
+  <link rel="preload" href="/fonts/inter-tight-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  {%- if heroPreload %}
+  <link rel="preload" as="image" href="{{ heroPreload }}" fetchpriority="high">
+  {%- endif %}
+  <link rel="stylesheet" href="/css/site.css?v={{ buildDate.iso }}">
+  <link rel="stylesheet" href="/css/site-codex.css?v={{ buildDate.iso }}">
+  {% include "partials/schema.njk" %}
+  <script>
+    window.FL = { env: "{{ 'preview' if env.preview else 'production' }}", ga: "{{ site.ga4 }}" };
+    window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); }
+  </script>
+  <script src="/js/events.js?v={{ buildDate.iso }}" defer></script>
+  <script src="/js/site.js?v={{ buildDate.iso }}" defer></script>
+  {%- if motion %}
+  <script src="/js/vendor/gsap.min.js" defer></script>
+  <script src="/js/vendor/ScrollTrigger.min.js" defer></script>
+  {%- endif %}
+  {%- for s in pageScripts %}
+  <script src="{{ s }}?v={{ buildDate.iso }}" defer></script>
+  {%- endfor %}
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>

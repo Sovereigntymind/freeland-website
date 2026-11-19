@@ -1,0 +1,40 @@
+{% set serviceContent = content %}
+{% from "partials/reviews.njk" import reviews %}
+{% set extended = included or fit or start or access or measure or sample or reviewIds or relatedPosts or contextualCta %}
+{% set qa = [] %}
+{% for f in faqs %}{% set qa = (qa.push({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a } }), qa) %}{% endfor %}
+{% set schema = [
+  {"@type":"Service","@id":site.url + page.url + "#service","name":serviceName,"serviceType":serviceType or serviceName,"description":description,"provider":{"@id":site.url + "/#org" },"url":site.url + page.url,"areaServed":site.areaServed,"audience":{"@type":"BusinessAudience","name":"Founder-led DTC brands" } }
+] %}
+{% if qa.length %}{% set schema = (schema.push({"@type":"FAQPage","@id":site.url + page.url + "#faq","mainEntity":qa}), schema) %}{% endif %}
+{% set content %}
+<section class="page-top section-tight"><div class="wrap stack-v">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services/">Services</a> / <span>{{ serviceName }}</span></nav>
+<h1>{{ serviceName }}</h1><p class="lede">{{ lead }}</p>
+</div></section>
+{% if extended %}
+{% if included.length %}<section class="section-tight rule-top"><div class="wrap stack-v"><h2>What is included</h2><div class="grid-3">{% for item in included %}<div class="panel stack-v"><h3>{{ item.title | escape }}</h3><p>{{ item.text | escape }}</p></div>{% endfor %}</div></div></section>{% endif %}
+{% if fit %}<section class="section-tight surface"><div class="wrap stack-v"><h2>Who it is for</h2><div class="grid-2">{% if fit.for.length %}<div><h3>A good fit</h3><ul>{% for item in fit.for %}<li>{{ item | escape }}</li>{% endfor %}</ul></div>{% endif %}{% if fit.notFor.length %}<div><h3>Not a fit</h3><ul>{% for item in fit.notFor %}<li>{{ item | escape }}</li>{% endfor %}</ul></div>{% endif %}</div></div></section>{% endif %}
+{% if start %}<section class="section-tight"><div class="wrap narrow stack-v"><h2>How we start</h2><p>{{ start | escape }}</p></div></section>{% endif %}
+{% if access.length %}<section class="section-tight rule-top"><div class="wrap narrow stack-v"><h2>What access we need</h2><ul>{% for item in access %}<li>{{ item | escape }}</li>{% endfor %}</ul></div></section>{% endif %}
+{% if measure %}<section class="section-tight"><div class="wrap narrow stack-v"><h2>How we measure</h2><p>{{ measure | escape }}</p></div></section>{% endif %}
+{% if sample %}<section class="section-tight surface"><div class="wrap narrow stack-v" data-work-sample><h2>{{ sample.title | escape }}</h2><p>{{ sample.text | escape }}</p></div></section>{% endif %}
+{% if relatedPosts.length %}<section class="section-tight rule-top"><div class="wrap narrow stack-v"><h2>Related guides</h2><ul>{% for post in relatedPosts %}<li><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></li>{% endfor %}</ul></div></section>{% endif %}
+{% else %}
+<section class="section-tight rule-top"><div class="wrap prose narrow">{{ serviceContent | safe }}</div></section>
+<section class="section-tight surface"><div class="wrap grid-3">
+{% for item in steps %}<div class="panel stack-v"><h2>{{ item.title }}</h2><p>{{ item.text }}</p></div>{% endfor %}
+</div></section>
+{% endif %}
+{% if faqs.length or not extended %}
+<section class="section-tight"><div class="wrap narrow stack-v">
+<h2>Questions before we start</h2>
+<div class="faq-list">{% for f in faqs %}<details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>{% endfor %}</div>
+{% set related = false %}{% for c in proof.cases %}{% if c.published and c.slug == proofSlug %}{% set related = c %}{% endif %}{% endfor %}
+<p><a href="{{ '/results/' + related.slug + '/' if related else '/results/' }}">Related proof{% if related %}: {{ related.client }}{% endif %}</a></p>
+</div></section>
+{% endif %}
+{% if reviewIds.length %}<div class="section-tight" data-service-proof><div class="wrap narrow stack-v">{{ reviews(proof, ids=reviewIds, headingLevel=2) }}</div></div>{% endif %}
+<section class="cta-band section-tight"><div class="wrap stack-v"><h2>{{ (closingHeading or "Start with the work your numbers need.") | escape }}</h2><p class="lede">{{ contextualCta or "Get a Growth Roadmap you can use whether or not you hire us." }}</p><a class="button button-primary" href="/growth-roadmap/" data-cta="service_{{ serviceSlug }}_roadmap">Get your Growth Roadmap</a></div></section>
+{% endset %}
+{% include "layouts/site.njk" %}

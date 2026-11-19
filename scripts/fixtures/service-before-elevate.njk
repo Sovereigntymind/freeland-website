@@ -1,0 +1,25 @@
+{% set serviceContent = content %}
+{% set qa = [] %}
+{% for f in faqs %}{% set qa = (qa.push({"@type":"Question","name":f.q,"acceptedAnswer":{"@type":"Answer","text":f.a } }), qa) %}{% endfor %}
+{% set schema = [
+  {"@type":"Service","@id":site.url + page.url + "#service","name":serviceName,"description":description,"provider":{"@id":site.url + "/#org" },"url":site.url + page.url},
+  {"@type":"FAQPage","@id":site.url + page.url + "#faq","mainEntity":qa}
+] %}
+{% set content %}
+<section class="page-top section-tight"><div class="wrap stack-v">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services/">Services</a> / <span>{{ serviceName }}</span></nav>
+<h1>{{ serviceName }}</h1><p class="lede">{{ lead }}</p>
+</div></section>
+<section class="section-tight rule-top"><div class="wrap prose narrow">{{ serviceContent | safe }}</div></section>
+<section class="section-tight surface"><div class="wrap grid-3">
+{% for item in steps %}<div class="panel stack-v"><h2>{{ item.title }}</h2><p>{{ item.text }}</p></div>{% endfor %}
+</div></section>
+<section class="section-tight"><div class="wrap narrow stack-v">
+<h2>Questions before we start</h2>
+<div class="faq-list">{% for f in faqs %}<details><summary>{{ f.q }}</summary><p>{{ f.a }}</p></details>{% endfor %}</div>
+{% set related = false %}{% for c in proof.cases %}{% if c.published and c.slug == proofSlug %}{% set related = c %}{% endif %}{% endfor %}
+<p><a href="{{ '/results/' + related.slug + '/' if related else '/results/' }}">Related proof{% if related %}: {{ related.client }}{% endif %}</a></p>
+</div></section>
+<section class="cta-band section-tight"><div class="wrap stack-v"><h2>Start with the work your numbers need.</h2><p class="lede">Get a Growth Roadmap you can use whether or not you hire us.</p><a class="button button-primary" href="/growth-roadmap/" data-cta="service_{{ serviceSlug }}_roadmap">Get your Growth Roadmap</a></div></section>
+{% endset %}
+{% include "layouts/site.njk" %}

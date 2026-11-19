@@ -1,0 +1,23 @@
+---
+pagination:
+  data: publishedCases
+  size: 1
+  alias: case
+permalink: "/results/{{ case.slug }}/"
+eleventyComputed:
+  title: "{{ case.title }} | Freeland"
+  description: "{{ case.summary }}"
+---
+{% set breadcrumbs = [{name:"Home",url:"/"},{name:"Results",url:"/results/"},{name:case.client,url:page.url}] %}
+{% set schema = [{"@type":"Article","@id":site.url + page.url + "#article","headline":case.title,"author":{"@id":site.url + "/#kevin" },"mainEntityOfPage":{"@id":site.url + page.url + "#webpage" } }] %}
+{% set content %}
+<section class="page-top section-tight"><div class="wrap stack-v"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/results/">Results</a> / {{ case.client }}</nav><h1>{{ case.title }}</h1><p class="lede">{{ case.summary }}</p></div></section>
+<section class="section-tight rule-top"><div class="wrap narrow prose">
+<h2>Before</h2><p>{{ case.before }}</p>
+<h2>What we did</h2><p>{{ case.work }}</p>
+<h2>After</h2><p data-proof>{{ case.after }}</p>
+<h2>Why it matters</h2><p>{{ case.meaning }}</p>
+<p><a class="button button-primary" href="/growth-roadmap/" data-cta="case_{{ case.slug }}_roadmap">Get your Growth Roadmap</a></p>
+</div></section>
+{% endset %}
+{% include "layouts/site.njk" %}

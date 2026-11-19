@@ -1,159 +1,130 @@
-{% extends "base.njk" %}
-
-{% block head %}
-  <title>Meta Ads Management | Facebook & Instagram | Freeland</title>
-  <meta name="description" content="Facebook and Instagram ads management for businesses nationwide. Audience targeting, ad creative, campaign optimization & reporting. Headquartered in Palm Coast, FL." />
-  <meta name="keywords" content="Meta ads small business, Facebook ads management small business, Instagram ads small business, paid social media management, Facebook advertising agency, Meta ads agency" />
-  <meta name="author" content="Kevin Freeland" />
-  <link rel="canonical" href="https://freelandme.com/services/meta-ads/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freelandme.com/services/meta-ads/" />
-  <meta property="og:title" content="Meta Ads Management for Businesses | Freeland Marketing" />
-  <meta property="og:description" content="Facebook and Instagram advertising for businesses nationwide. Precise audience targeting, compelling ad creative, and campaigns built to generate leads and sales." />
-  <meta property="og:image" content="https://freelandme.com/blog/images/meta-ads-florida-small-business.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="624" />
-  <meta property="og:image:alt" content="Meta Ads Management for Businesses Nationwide" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Meta Ads for Businesses | Facebook & Instagram Advertising | Freeland Marketing" />
-  <meta name="twitter:description" content="Facebook and Instagram ads management for businesses nationwide — targeting, creative, and optimization that drives real results." />
-  <meta name="twitter:image" content="https://freelandme.com/blog/images/meta-ads-florida-small-business.jpg" />
-  <meta name="twitter:image:alt" content="Meta Ads Management for Businesses Nationwide" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Meta Ads Management (Facebook & Instagram)",
-    "provider": {
-      "@type": "MarketingAgency",
-      "name": "Freeland Marketing & Entertainment",
-      "url": "https://freelandme.com",
-      "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" }
+---
+{
+  "layout": "layouts/service.njk",
+  "title": "Meta Ads Management for DTC Brands | Freeland",
+  "description": "Meta ads management for founder-led DTC brands, connecting campaign tests, offers and landing pages with acquisition costs and store results.",
+  "serviceName": "Meta ads management",
+  "serviceSlug": "meta-ads",
+  "lead": "Freeland manages Meta ads on Facebook and Instagram for founder-led DTC brands. Kevin Freeland reads the account, offer and store together. Our system checks the ads daily, and each decision is judged on store sales, not on the return Meta reports alone.",
+  "included": [
+    {
+      "title": "Account and buying path review",
+      "text": "Kevin reviews account structure, acquisition costs and the route from ad to checkout. The goal is to tell a campaign problem apart from an offer or page problem before anything changes."
     },
-    "areaServed": "United States",
-    "description": "Professional Facebook and Instagram advertising management for businesses nationwide including audience targeting, ad creative production, campaign optimization, and performance reporting.",
-    "url": "https://freelandme.com/services/meta-ads/"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" },
-      { "@type": "ListItem", "position": 3, "name": "Meta Ads Management", "item": "https://freelandme.com/services/meta-ads/" }
+    {
+      "title": "Daily ad checks",
+      "text": "Our system reads Meta results ad by ad each day. It flags ads that look like waste and ads worth more testing. Budget moves follow the evidence and what we agreed with you, and a person reviews the calls that need judgment."
+    },
+    {
+      "title": "A testing plan with limits",
+      "text": "Campaigns are built around clear questions about messages, offers and audiences. Each test runs inside agreed spending limits, so you know what a result can and cannot tell you."
+    },
+    {
+      "title": "Ad copy checked before it runs",
+      "text": "For brands with ad rules to follow, such as supplements, each brand gets a list of what it can and cannot say. Copy is checked against it before launch. Rejected phrases are recorded in the brand rules and checked in later drafts."
+    },
+    {
+      "title": "Landing pages that match the ad",
+      "text": "The page an ad sends people to should repeat the same promise and the same price. Landing pages are price-checked against the real cart before ad money is spent."
+    },
+    {
+      "title": "Sale and creator ads",
+      "text": "Sale ads are set to switch on when a sale starts and off when it ends, along with the banners and pages. Creator whitelisting lets creator content run as ads, tracked to sales."
+    }
+  ],
+  "fit": {
+    "for": [
+      "Founder-led DTC brands already selling online and spending on Meta.",
+      "Brands whose Meta numbers and store numbers tell different stories.",
+      "Founders who want one plan across the ad, the offer, the page and the follow-up."
+    ],
+    "notFor": [
+      "Pre-launch ideas without a store or sales history.",
+      "Brands looking for the cheapest vendor.",
+      "Teams that want ads changed without anyone looking at the offer or the page."
     ]
+  },
+  "start": "The work starts with the free Growth Roadmap. You apply with five answers and pick a time. Kevin starts from your public store and ads plus those answers, and a deeper read of your Meta ad account and store reports needs view-only access. On the 30-minute call he walks you through your roadmap. If Meta is the place to fix first, it says so. If the real leak is the offer, the page or retention, it says that instead. Then you decide whether you want us to do the work or to do it yourself. If you want us to, the work is scoped for your brand. You keep the roadmap either way.",
+  "access": [
+    "Your store address and the answers on the roadmap application.",
+    "View-only access to your Meta ad account and store reports for the deeper read.",
+    "Access to manage campaigns, granted by you, once the scope is agreed.",
+    "Any brand or legal rules your ads have to follow."
+  ],
+  "measure": "Store results come first: orders, revenue and what a new customer costs, read from your store. The return Meta reports is one input, not a profit statement, because the platform counts sales its own way. For products people reorder, ads are judged on what a subscriber is worth, not only on the first sale. Each week you get a plain-English read of what moved, why, and the next three moves.",
+  "reviewIds": [
+    "google-danielle-silva"
+  ],
+  "relatedPosts": [
+    {
+      "url": "/blog/how-to-run-facebook-ads/",
+      "title": "How to Run Facebook Ads for Ecommerce Brands"
+    },
+    {
+      "url": "/blog/what-is-social-media-marketing/",
+      "title": "What Is Social Media Marketing? A Plain Guide"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do you run Advantage+ or manual campaigns?",
+      "a": "We choose the campaign structure after reading your account, not before. Some accounts do better with more automated campaigns, and some need tighter manual control over audiences and spend. The roadmap looks at what your current setup produces in the store, and the plan names the structure and the reason for it."
+    },
+    {
+      "q": "How many new creatives do you make a month?",
+      "a": "There is no set monthly count, because it depends on what your account needs. New creative is planned around the tests in the plan: which message, offer or format to try next. The roadmap shows whether fresh creative, a better offer or a better page will do more for you right now."
+    },
+    {
+      "q": "How do you judge results when Meta and Shopify disagree?",
+      "a": "Your store's numbers come first. Meta counts sales its own way and can credit a purchase differently from your store, so a gap is normal. We compare the two, read store orders and new-customer cost, and treat the return Meta reports as one input when deciding where spend goes."
+    },
+    {
+      "q": "Do you make the creative?",
+      "a": "Yes. We make the ad creative. New creative is planned around the tests in the plan: which message, offer or format to try next. The ad, the offer and the page are read together, so what gets made and in what format depends on what your account needs and the material you already have."
+    },
+    {
+      "q": "What access do you need?",
+      "a": "To start, only your store address and five answers. For the deeper read, view-only access to your Meta ad account and store reports. Access to manage campaigns comes after you agree to the scope, and nothing is changed without your say-so."
+    },
+    {
+      "q": "What shapes the scope of Meta ads work?",
+      "a": "The scope depends on how many accounts and products are involved, how much testing the plan calls for, how much creative is needed, and whether pages or follow-up need work too. It is set after the roadmap, based on what your numbers need, and there are no packages to pick from."
+    }
+  ],
+  "contextualCta": "Find out whether the ads, the offer or the page is costing you most.",
+  "steps": [
+    {
+      "title": "Find the constraint",
+      "text": "Review account structure, customer acquisition costs and the route from ad to checkout. Separate a campaign problem from an offer or page problem."
+    },
+    {
+      "title": "Build a useful testing plan",
+      "text": "Set up campaigns around clear hypotheses. Compare messages and audiences with agreed spending limits and enough context to interpret results."
+    },
+    {
+      "title": "Read beyond the platform",
+      "text": "Review platform results alongside store sales and customer data. A reported return on ad spend is one input, not a profit statement."
+    }
+  ],
+  "proofSlug": "mara-labs",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Services",
+      "url": "/services/"
+    },
+    {
+      "name": "Meta ads",
+      "url": "/services/meta-ads/"
+    }
+  ],
+  "sample": {
+    "title": "What Kevin checks first",
+    "text": "Do two messages for the same offer lead to the matching page? Do Meta's numbers agree with your store orders?"
   }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much should a business spend on Meta Ads?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses start with $500 to $1,000/month in ad spend. Local awareness campaigns can work with as little as $300/month. Lead generation campaigns in competitive markets typically need $800 to $2,000/month for consistent results." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you create the ad graphics and video?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our Meta Ads management includes ad creative production — static image ads, carousel ads, and video/Reels content. For local clients, Kevin personally films on-location to create authentic content that outperforms stock imagery." }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between boosting a post and running a real Meta Ads campaign?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Boosting a post is the simplest and least effective way to advertise on Facebook. Real Meta Ads campaigns are built in Ads Manager with precise audience targeting, custom objectives, multiple ad variations, conversion tracking, and ongoing optimization — producing significantly better results at lower cost." }
-      }
-    ]
-  }
-  </script>
-{% endblock %}
-
-{% block content %}
-
-  <article>
-
-    <header class="post-header">
-      <div class="post-header-inner">
-        <a href="/" class="post-breadcrumb">&larr; Back to Home</a>
-        <span class="blog-category">Service</span>
-        <h1>Meta Ads Management for Businesses</h1>
-        <div class="post-meta">
-          <span>By <strong>Freeland Marketing &amp; Entertainment</strong></span>
-          <span>Palm Coast, FL</span>
-          <span>Serving Businesses Nationwide</span>
-        </div>
-      </div>
-    </header>
-
-    <div class="post-featured-img">
-      <picture>
-        <img src="/blog/images/meta-ads-florida-small-business.jpg" alt="Meta Ads management for businesses — professional reviewing Facebook and Instagram campaign results" width="860" height="480" />
-      </picture>
-    </div>
-
-    <div class="post-body">
-
-      <p>Facebook and Instagram give businesses something no other advertising channel can match: the ability to show your offer to exactly the right person — by age, location, income, interests, and behavior — before they even know they need you. That targeting precision, combined with compelling creative, is what makes Meta Ads one of the most powerful growth channels available to businesses today.</p>
-
-      <p>We build and manage Meta Ads campaigns from the ground up — audience strategy, ad creative, campaign structure, pixel tracking, and ongoing optimization. Everything you need to turn Facebook and Instagram into a reliable lead generation machine.</p>
-
-      <h2>What Our Meta Ads Management Includes</h2>
-
-      <ul>
-        <li><strong>Audience research and targeting strategy</strong> — custom audiences, lookalike audiences, and interest-based targeting built for your market</li>
-        <li><strong>Ad creative production</strong> — static image ads, carousel ads, video, and Reels content that stops the scroll</li>
-        <li><strong>Campaign funnel design</strong> — cold traffic, retargeting, and retention campaigns working together as a system</li>
-        <li><strong>Meta Pixel setup and conversion tracking</strong> — so every lead and sale is attributed accurately</li>
-        <li><strong>A/B testing</strong> — continuous creative and audience testing to lower cost per lead over time</li>
-        <li><strong>Ad refresh and fatigue management</strong> — new creative rotated before performance drops</li>
-        <li><strong>Monthly reporting</strong> — reach, clicks, leads, cost per lead, and ROAS reported clearly</li>
-      </ul>
-
-      <h2>Campaign Types We Run</h2>
-
-      <ul>
-        <li><strong>Lead Generation</strong> — native Meta lead forms for high-volume, low-friction lead capture</li>
-        <li><strong>Conversion Campaigns</strong> — driving specific actions on your website (bookings, purchases, form fills)</li>
-        <li><strong>Retargeting</strong> — re-engaging website visitors and social media engagers who did not convert</li>
-        <li><strong>Brand Awareness</strong> — getting your business in front of your ideal audience at scale</li>
-        <li><strong>Traffic Campaigns</strong> — driving qualified visitors to your website or landing page</li>
-      </ul>
-
-      <h2>On-Location Content for Local Clients</h2>
-
-      <p>The biggest differentiator in Meta Ads performance is creative quality. Generic stock photos underperform authentic content every time. For local clients, Kevin personally visits your business to film Reels, photograph products, and capture the real story of your brand. This content performs significantly better in the feed — and it doubles as organic social media content too.</p>
-
-      <h2>Why Meta Ads Work for Businesses</h2>
-
-      <p>Whether you are targeting customers in a single zip code or running campaigns across multiple states, Meta lets you define your audience with a precision that broad media like radio or print simply cannot match. We manage Meta Ads for businesses in every industry — hospitality, home services, retail, healthcare, real estate, professional services, and more.</p>
-
-      <p>Pair Meta Ads with <a href="/services/social-media-management/">organic social media management</a>, <a href="/services/crm-automation/">CRM automation</a>, <a href="/services/google-ads-management/">Google Ads management</a> for full search and social coverage, and <a href="/services/creative-graphic-design/">professional graphic design</a> for scroll-stopping ad creative — and you have a complete customer acquisition and retention system.</p>
-
-      <div class="post-callout">
-        <p>"Retargeting audiences on Meta convert at three to five times the rate of cold traffic. Every business running Meta Ads should have retargeting campaigns running — most do not."</p>
-      </div>
-
-      <h2>Service Areas</h2>
-
-      <p>Running Meta Ads for businesses across all 50 states. Headquartered in <strong>Palm Coast, FL</strong> — serving clients nationwide, fully remote.</p>
-
-      <div class="post-cta-box">
-        <h3>Get a Free Meta Ads Audit</h3>
-        <p>Already running Facebook or Instagram ads? We will find what is costing you leads. Starting fresh? We will map out a profitable Meta Ads strategy for your business at no cost.</p>
-        <a href="/#contact" class="btn-primary btn-large">Get My Free Meta Ads Audit &rarr;</a>
-      </div>
-
-    </div>
-
-  </article>
-
-{% endblock %}
+}
+---
+<p>More spend only helps when the offer, creative and store can turn attention into customers. We look at those pieces together before deciding what to change.</p>

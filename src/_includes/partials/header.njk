@@ -1,0 +1,22 @@
+<header class="site-header" id="site-header">
+  <div class="wrap nav-inner">
+    <a class="wordmark" href="/" aria-label="Freeland home">FREELAND</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        {%- for item in site.nav %}
+        <li><a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {% if not confirmationOnly %}<a class="button button-primary button-small nav-cta" href="{{ site.primaryCta.href }}" data-cta="nav_roadmap">{{ site.primaryCta.label }}</a>{% endif %}
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobile-nav" hidden>
+  <ul>
+    {%- for item in site.nav %}
+    <li><a href="{{ item.href }}">{{ item.label }}</a></li>
+    {%- endfor %}
+  </ul>
+  {% if not confirmationOnly %}<a class="button button-primary" href="{{ site.primaryCta.href }}" data-cta="mobile_nav_roadmap">{{ site.primaryCta.label }}</a>{% endif %}
+</div>

@@ -1,0 +1,11 @@
+{#- Visible FAQ rendered from the same data as the FAQPage JSON-LD (faq.json[faqKey]) so they never drift. -#}
+{%- if faqKey and faq[faqKey] %}
+<div class="faq-list">
+  {%- for f in faq[faqKey] %}
+  <details>
+    <summary>{{ f.q }}</summary>
+    <p>{{ f.a }}</p>
+  </details>
+  {%- endfor %}
+</div>
+{%- endif %}

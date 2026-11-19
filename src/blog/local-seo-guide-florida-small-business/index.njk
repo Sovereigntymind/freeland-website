@@ -1,95 +1,112 @@
-{% extends "base.njk" %}
-
-{% block head %}
-  <title>Local SEO Guide for Small Businesses | Freeland</title>
-  <meta name="description" content="Local SEO guide for small businesses: Google Business Profile, on-page SEO, content strategy, and mistakes to avoid. Get found on Google." />
-  <meta name="keywords" content="local SEO small business, Google Business Profile optimization, how to rank on Google, small business SEO tips, local search optimization" />
-  <meta name="author" content="Kevin Freeland" />
-  <link rel="canonical" href="https://freelandme.com/blog/local-seo-guide-florida-small-business/" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://freelandme.com/blog/local-seo-guide-florida-small-business/" />
-  <meta property="og:title" content="Local SEO Guide: How Small Businesses Get Found on Google" />
-  <meta property="og:description" content="A practical local SEO guide for small businesses — Google Business Profile, on-page basics, content strategy, and the mistakes to avoid." />
-  <meta property="og:image" content="https://freelandme.com/blog/images/local-seo-guide-florida.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="624" />
-  <meta property="og:image:alt" content="Local SEO Guide: How Small Businesses Get Found on Google" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Local SEO Guide for Small Businesses" />
-  <meta name="twitter:description" content="Google Business Profile, on-page SEO, content strategy, and mistakes to avoid. Get found on Google." />
-  <meta name="twitter:image" content="https://freelandme.com/blog/images/local-seo-guide-florida.jpg" />
-  <meta name="twitter:image:alt" content="Local SEO Guide: How Small Businesses Get Found on Google" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Local SEO Guide: How Small Businesses Get Found on Google",
-    "author": { "@type": "Person", "name": "Kevin Freeland" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Freeland Marketing & Entertainment",
-      "url": "https://freelandme.com"
+---
+{
+  "layout": "layouts/article.njk",
+  "title": "Local SEO Guide for Florida Small Businesses | Freeland",
+  "description": "A plain local SEO guide for Florida small businesses: set up your Google Business Profile, fix your website basics, earn reviews, and get found nearby.",
+  "canonicalPath": "/blog/local-seo-guide-florida-small-business/",
+  "ogTitle": "Local SEO Guide for Florida Small Businesses",
+  "ogImage": "https://freelandme.com/blog/images/local-seo-guide-florida.jpg",
+  "ogType": "article",
+  "tags": [
+    "insights"
+  ],
+  "articleSlug": "local-seo-guide-florida-small-business",
+  "schema": [
+    {
+      "@type": "Article",
+      "headline": "Local SEO Guide for Florida Small Businesses",
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Freeland",
+        "url": "https://freelandme.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Freeland Marketing & Entertainment",
+        "url": "https://freelandme.com"
+      },
+      "datePublished": "2026-03-08",
+      "dateModified": "2026-11-19",
+      "description": "A plain local SEO guide for Florida small businesses: set up your Google Business Profile, fix your website basics, earn reviews, and get found nearby.",
+      "url": "https://freelandme.com/blog/local-seo-guide-florida-small-business/",
+      "image": "https://freelandme.com/blog/images/local-seo-guide-florida.jpg",
+      "@id": "https://freelandme.com/blog/local-seo-guide-florida-small-business/#article"
     },
-    "datePublished": "2026-03-08",
-    "dateModified": "2026-03-24",
-    "description": "A practical local SEO guide for small businesses covering Google Business Profile, on-page optimization, content strategy, and common mistakes.",
-    "url": "https://freelandme.com/blog/local-seo-guide-florida-small-business/",
-    "image": "https://freelandme.com/blog/images/local-seo-guide-florida.jpg"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://freelandme.com/blog/" },
-      { "@type": "ListItem", "position": 3, "name": "Local SEO Guide for Small Businesses", "item": "https://freelandme.com/blog/local-seo-guide-florida-small-business/" }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is local SEO and why does it matter for small businesses?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Local SEO is the process of optimizing your online presence so your business appears when people in your area search for what you offer. For most small businesses, local SEO is far more valuable than broad SEO because people searching location-specific terms like 'contractor in Palm Coast FL' are much closer to hiring someone than those searching general terms." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does local SEO take to work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Optimizing your Google Business Profile and fixing major on-page issues can produce noticeable improvements within 30 to 60 days. Building content and earning links takes longer — typically three to six months before you see significant organic traffic gains. Unlike paid ads that stop when you stop paying, SEO continues to generate traffic long after the initial work is done." }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the most common local SEO mistakes small businesses make?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The most frequent mistakes include: no H1 tag on the homepage, title tags that do not include a location, incomplete or unclaimed Google Business Profile, inconsistent NAP (Name, Address, Phone) information across directories, no blog or content strategy, slow mobile load times, and no reviews or review management." }
-      }
-    ]
-  }
-  </script>
-{% endblock %}
-
-{% block content %}
-
-  <article>
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freelandme.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://freelandme.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Local SEO Guide for Florida Small Businesses",
+          "item": "https://freelandme.com/blog/local-seo-guide-florida-small-business/"
+        }
+      ],
+      "@id": "https://freelandme.com/blog/local-seo-guide-florida-small-business/#breadcrumbs"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is local SEO and why does it matter for small businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local SEO is the work of making your business appear when people in your area search for what you offer. For a business that serves a local area, it usually matters more than broad SEO, because people searching terms like 'contractor in Palm Coast FL' are closer to hiring someone than people searching general terms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does local SEO take to work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Local SEO has no fixed timetable. Results depend on your starting point, local competition, demand and the changes you make. Track relevant search visibility, profile interactions and qualified inquiries against a baseline. Review individual improvements over time instead of promising a ranking or a deadline for new customers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the most common local SEO mistakes small businesses make?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The most frequent mistakes include: no clear main heading on the homepage, title tags that do not include a location, incomplete or unclaimed Google Business Profile, inconsistent NAP (Name, Address, Phone) information across directories, no blog or content strategy, slow mobile load times, and no reviews or review management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a separate page for each city I serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only for the cities you actually serve and want to rank in. Each page should cover one service in one place, with details unique to that location, like local projects, photos and reviews. Pages that only swap the city name add little value for a reader, so write each one for the people in that town."
+          }
+        }
+      ],
+      "@id": "https://freelandme.com/blog/local-seo-guide-florida-small-business/#faq"
+    }
+  ],
+  "date": "2026-03-08",
+  "dateModified": "2026-11-19"
+}
+---
+<article>
 
     <header class="post-header">
       <div class="post-header-inner">
-        <a href="/blog/" class="post-breadcrumb">&larr; Back to Blog</a>
-        <span class="blog-category">SEO</span>
-        <h1>Local SEO Guide: How Small Businesses Get Found on Google</h1>
+        <a href="/blog/" class="post-breadcrumb">All insights</a>
+        <h1>Local SEO Guide for Florida Small Businesses</h1>
         <div class="post-meta">
-          <span>By <strong>Kevin Freeland</strong></span>
+          <span>By <a href="/about/"><strong>Kevin Freeland</strong></a></span>
           <span>March 8, 2026</span>
           <span>8 min read</span>
         </div>
@@ -105,108 +122,106 @@
 
     <div class="post-body">
 
-      <p>When someone in your city searches "best plumber near me," "restaurant in Palm Coast FL," or "social media agency near me" — does your business show up? If the answer is no or maybe, you are losing customers to competitors every single day without even knowing it.</p>
+      <p>Local SEO for a Florida small business comes down to four things: a complete Google Business Profile, a website that says what you do and which towns you serve, a steady flow of reviews, and content that answers the questions local customers search. These steps help customers and search engines understand your business. Visibility also depends on relevance, distance, competition and how well known the business is.</p>
 
-      <p>Local SEO is the process of optimizing your online presence so your business appears when people in your area search for what you offer. In today's competitive small business market, getting this right is one of the highest-leverage things you can do for long-term growth.</p>
+      <p>Think about the searches that matter to you: "best plumber near me," "restaurant in Palm Coast FL," "roofer in Daytona Beach." If your business does not show up, those customers call a competitor and you never hear about it.</p>
 
-      <p>This guide covers the essentials — no technical jargon, just the things that actually move the needle for small businesses.</p>
+      <p>This guide covers the essentials with no technical jargon, just the work that actually gets small businesses found.</p>
 
       <h2>What Is Local SEO and Why Does It Matter?</h2>
 
       <p>Regular SEO focuses on ranking for broad terms like "best coffee maker." Local SEO focuses on ranking for location-specific searches like "coffee shop in Palm Coast" or "best coffee near me."</p>
 
-      <p>For most small businesses, local SEO is far more valuable than broad SEO. The people searching "contractor in Palm Coast FL" are much closer to hiring someone than those searching "what does a contractor do." Local search intent is buying intent.</p>
+      <p>For a business that serves a local area, local SEO usually matters more than broad SEO. The people searching "contractor in Palm Coast FL" are much closer to hiring someone than those searching "what does a contractor do." Local search intent is buying intent.</p>
 
-      <p>Google serves local results in two main ways: the Map Pack (the three business listings with a map that appear at the top of local searches) and organic results (the regular website links below). Winning both requires different strategies — but they reinforce each other.</p>
+      <p>Google serves local results in two main ways: the Map Pack (the three business listings with a map that appear at the top of local searches) and organic results (the regular website links below). Winning each takes different work, but they help each other.</p>
 
-      <h2>Start With Your Google Business Profile — It Is Free and Critical</h2>
+      <h2>Start With Your Google Business Profile (It Is Free)</h2>
 
-      <p>The single most important local SEO action you can take right now costs nothing. If you have not claimed and fully optimized your Google Business Profile (formerly Google My Business), do it today.</p>
+      <p>The single most important local SEO action you can take right now costs nothing. If you have not claimed and fully optimized your Google Business Profile (formerly Google My Business), do it today. Our <a href="/blog/google-business-profile-setup-florida/">step-by-step Google Business Profile setup guide</a> walks through every field.</p>
 
-      <p>Your Google Business Profile is what appears in the Map Pack and the knowledge panel on the right side of the screen when someone searches for your business. An incomplete or unclaimed profile is invisible — and a competitor with a fully optimized profile will always rank above you in local map results.</p>
+      <p>Your Google Business Profile is what appears in the Map Pack and the knowledge panel on the right side of the screen when someone searches for your business. An incomplete or unclaimed profile is easy to miss, and a competitor with a complete profile has a clear edge over you in local map results.</p>
 
       <p>Here is what a fully optimized Google Business Profile includes:</p>
 
       <ul>
-        <li>Accurate business name, address, and phone number — exactly matching what appears on your website</li>
+        <li>Accurate business name, address, and phone number, exactly matching what appears on your website</li>
         <li>Your primary business category and all relevant secondary categories</li>
         <li>Your complete hours of operation, including holiday hours</li>
         <li>A detailed business description with your core services and location naturally included</li>
-        <li>At least 10 high-quality photos of your business, team, products, or work</li>
+        <li>A solid set of real photos of your business, team, products, or work</li>
         <li>Regular posts (at least once a week) with updates, offers, or content</li>
-        <li>Active review management — responding to every review, positive and negative</li>
+        <li>Active review management: responding to every review, positive and negative</li>
       </ul>
 
       <div class="post-callout">
-        <p>"Businesses with complete Google Business Profiles get significantly more clicks, calls, and direction requests than those with incomplete listings. It is the most cost-effective local SEO investment a small business can make."</p>
+        <p>A complete Google Business Profile gives searchers what they need to call you, visit you, or get directions without leaving Google. For a local business it is usually the best place to start.</p>
       </div>
 
       <h2>On-Page SEO Basics Every Small Business Website Needs</h2>
 
-      <p>Your <a href="/services/website-design/">website</a> needs to tell Google clearly what you do and where you do it. Most small business websites fail at this in very basic ways that are easy to fix.</p>
+      <p>Your <a href="/services/website-design/">website</a> needs to tell Google clearly what you do and where you do it. Many small business websites miss this in basic ways that are easy to fix.</p>
 
       <h3>Title Tags With Your Location</h3>
 
-      <p>Your page title is one of the most important SEO signals on your website. It should include your primary service and your location. For example: "Social Media Marketing Agency | Palm Coast, FL" tells Google exactly what you do and where you are. A title that just says "Home" or your business name alone wastes this opportunity entirely.</p>
+      <p>Your page title is one of the most important SEO signals on your website. It should include your primary service and your location. For example: "Roof Repair in Palm Coast, FL | Smith Roofing" tells Google exactly what you do and where you are. A title that just says "Home" or your business name alone wastes this opportunity entirely.</p>
 
       <h3>A Clear H1 Tag on Every Page</h3>
 
-      <p>The H1 is the main headline on your page — and it is one of the most important on-page SEO elements. Every page on your site should have exactly one H1 tag that clearly describes what that page is about, ideally including your service and location. Many small business websites either have no H1 at all or have multiple H1 tags, both of which hurt rankings.</p>
+      <p>The H1 is the main headline on your page. Every page on your site should have one clear H1 that describes what the page is about, ideally including your service and location.</p>
 
       <h3>Meta Descriptions That Include Your Location</h3>
 
-      <p>The meta description is the short text that appears under your page title in Google results. While it is not a direct ranking factor, a well-written meta description with your city name increases click-through rates significantly — which does influence rankings over time.</p>
+      <p>The meta description is the short text that appears under your page title in Google results. While it is not a direct ranking factor, a clear meta description with your city name gives local searchers a reason to click your result instead of the one below it.</p>
 
       <h3>NAP Consistency Across Every Directory</h3>
 
-      <p>NAP stands for Name, Address, and Phone number. Google cross-references your business information across dozens of directories — Yelp, Yellow Pages, Facebook, TripAdvisor, and many others. If your business name or phone number is slightly different across these listings, it sends conflicting signals that hurt your local rankings.</p>
+      <p>NAP stands for Name, Address, and Phone number. Google cross-references your business information across many directories: Yelp, Yellow Pages, Facebook, TripAdvisor, and others. If your business name or phone number is slightly different across these listings, it sends conflicting signals that hurt your local rankings.</p>
 
       <p>Audit every directory where your business appears and make sure your NAP information is identical everywhere.</p>
 
       <h2>Content Strategy That Ranks Locally</h2>
 
-      <p>One of the most underused local SEO strategies for small businesses is targeted blog content. Writing articles that answer the specific questions your local customers are searching for builds long-term organic traffic that compounds over time.</p>
+      <p>One of the most underused local SEO strategies for small businesses is targeted blog content. Writing articles that answer the specific questions your local customers are searching for can build organic traffic over time.</p>
 
       <p>Here are the types of content that work best for local SEO:</p>
 
       <h3>Service Plus Location Pages</h3>
 
-      <p>If you serve multiple cities or regions, create a dedicated page for each major service-location combination. "Web Design Services in Palm Coast, FL" and "Web Design Services in Daytona Beach, FL" are separate pages targeting separate searches. Each page should have unique, useful content — not just the same text with the city name swapped.</p>
+      <p>If you serve multiple cities or regions, create a dedicated page for each major service-location combination. "Web Design Services in Palm Coast, FL" and "Web Design Services in Daytona Beach, FL" are separate pages targeting separate searches. Each page should have unique, useful content, not just the same text with the city name swapped.</p>
 
       <h3>Local Guides and Resources</h3>
 
-      <p>Content like "The Best Places to Eat in Palm Coast" or "A Small Business Owner's Guide to Marketing in Flagler County" targets local search intent while positioning your business as a community authority. This type of content earns links, shares, and trust — all of which improve your overall SEO performance.</p>
+      <p>Content like "The Best Places to Eat in Palm Coast" or "A Small Business Owner's Guide to Marketing in Flagler County" targets local search intent while positioning your business as a community authority. This type of content earns links, shares, and trust, and all of that helps your overall SEO.</p>
 
       <h3>Client Case Studies With Location Details</h3>
 
-      <p>Detailed case studies about local clients — "How We Helped a Palm Coast Restaurant Triple Its Traffic" — target high-intent local searches while also serving as powerful social proof. These pages rank well because they are specific, credible, and locally relevant.</p>
+      <p>Detailed write-ups of real local jobs, with the town and the problem you solved named in the title, target high-intent local searches while also serving as proof that you do good work. These pages work because they are specific, credible, and locally relevant.</p>
 
       <h2>Common Local SEO Mistakes Small Businesses Make</h2>
 
-      <p>These are the most frequent SEO problems we find when auditing business websites — and every one of them is fixable.</p>
+      <p>These are the SEO problems that show up again and again on small business websites. Every one of them is fixable.</p>
 
       <ul>
-        <li><strong>No H1 tag on the homepage.</strong> The most common mistake. Google cannot clearly identify what the page is about without it.</li>
+        <li><strong>An unclear main heading.</strong> State the service and relevant location plainly so visitors can understand the page.</li>
         <li><strong>Title tags that do not include a location.</strong> "Welcome to Our Website" helps no one find your business.</li>
         <li><strong>Incomplete or unclaimed Google Business Profile.</strong> You are essentially invisible in map searches.</li>
         <li><strong>Inconsistent NAP information across directories.</strong> Conflicting information creates confusion for Google's ranking algorithm.</li>
         <li><strong>No blog or content strategy.</strong> Your competitors are publishing content that answers the questions your customers search for. You are not.</li>
-        <li><strong>Slow mobile load times.</strong> Google uses mobile page speed as a ranking factor. A slow site on mobile actively hurts your rankings.</li>
-        <li><strong>No reviews or no review management.</strong> Reviews are a direct ranking factor for local search. Businesses with more recent, positive reviews consistently outrank those with fewer.</li>
+        <li><strong>Slow mobile load times.</strong> Google counts page experience, including speed on phones, when it ranks pages. A slow site loses visitors before they call.</li>
+        <li><strong>No reviews or no review management.</strong> Google says review count and rating are part of how it ranks local businesses. A profile with recent, positive reviews has an edge over one with few or none. Here is <a href="/blog/how-to-get-more-google-reviews/">how to get more Google reviews</a> within Google's rules.</li>
       </ul>
 
-      <h2>How Long Does Local SEO Take to Work?</h2>
+      <h2>How Should You Measure Local SEO Progress?</h2>
 
-      <p>Local SEO is not a campaign with a launch date and an end date — it is an ongoing strategy that builds equity over time. That said, some actions produce results faster than others.</p>
+      <p>Measure the searches and inquiries that matter to your business. Keep a record of major changes so you can compare progress without attributing every movement to the latest edit.</p>
 
-      <p>Optimizing your Google Business Profile and fixing major on-page issues can produce noticeable improvements within 30 to 60 days. Building content and earning links takes longer — typically three to six months before you see significant organic traffic gains. But the results are sustainable. Unlike paid ads that stop the moment you stop paying, SEO continues to generate traffic long after the initial work is done.</p>
-
-      <p>The businesses that are winning on Google today started their <a href="/services/seo/">SEO</a> efforts months or years ago. The best time to start was then. The second best time is now.</p>
+      <p><a href="/services/seo/">SEO</a> builds over time, so start with the basics above and track your progress against a baseline.</p>
 
       <div class="post-cta-box">
-        <h3>Want a Free SEO Audit for Your Business?</h3>
-        <p>We review your current website, Google Business Profile, and local presence — then show you exactly what is hurting your rankings and how to fix it. No cost, no obligation.</p>
-        <a href="/#contact" class="btn-primary btn-large">Get My Free SEO Audit &rarr;</a>
+        <h3>Want to Know What to Fix First?</h3>
+        <p>Get a free Growth Roadmap. We look at your website, your Google presence, and how customers find you, then show you what to fix first.</p>
+        <a href="/growth-roadmap/" class="button button-primary" data-cta="blog_local-seo-guide-florida-small-business_roadmap">Get your Growth Roadmap</a>
       </div>
 
       <div class="related-services">
@@ -218,12 +233,14 @@
       </div>
 
       <div class="post-nav-bottom">
-        <a href="/blog/what-is-ai-automation-and-how-it-transforms-small-business/">&larr; Previous: AI Automation Guide</a>
-        <a href="/blog/">Back to Blog &rarr;</a>
+        <a href="/blog/google-business-profile-setup-florida/">Related: Google Business Profile Setup Guide</a>
+        <a href="/blog/">All insights</a>
       </div>
 
     </div>
 
-  </article>
-
-{% endblock %}
+  <section class="post-body" aria-label="Frequently asked questions"><h2>Frequently asked questions</h2><h3>What is local SEO and why does it matter for small businesses?</h3><p>Local SEO is the work of making your business appear when people in your area search for what you offer. For a business that serves a local area, it usually matters more than broad SEO, because people searching terms like 'contractor in Palm Coast FL' are closer to hiring someone than people searching general terms.</p>
+<h3>How long does local SEO take to work?</h3><p>Local SEO has no fixed timetable. Results depend on your starting point, local competition, demand and the changes you make. Track relevant search visibility, profile interactions and qualified inquiries against a baseline. Review individual improvements over time instead of promising a ranking or a deadline for new customers.</p>
+<h3>What are the most common local SEO mistakes small businesses make?</h3><p>The most frequent mistakes include: no clear main heading on the homepage, title tags that do not include a location, incomplete or unclaimed Google Business Profile, inconsistent NAP (Name, Address, Phone) information across directories, no blog or content strategy, slow mobile load times, and no reviews or review management.</p>
+<h3>Do I need a separate page for each city I serve?</h3><p>Only for the cities you actually serve and want to rank in. Each page should cover one service in one place, with details unique to that location, like local projects, photos and reviews. Pages that only swap the city name add little value for a reader, so write each one for the people in that town.</p></section>
+</article>

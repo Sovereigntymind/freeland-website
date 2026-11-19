@@ -1,0 +1,80 @@
+[
+  {
+    "name": "unknown id",
+    "id": "google-does-not-exist",
+    "error": "Unknown review id"
+  },
+  {
+    "name": "unverified Google review",
+    "id": "google-jakim-hartford",
+    "error": "Withheld review rendered",
+    "verified": false
+  },
+  {
+    "name": "unverified cleared letter",
+    "id": "letter-joe-miller",
+    "error": "Withheld review rendered",
+    "verified": false
+  },
+  {
+    "name": "uncleared letter even if verified",
+    "id": "letter-uncleared-fixture",
+    "verified": true,
+    "error": "Withheld review rendered",
+    "entry": {
+      "id": "letter-uncleared-fixture",
+      "name": "Fixture client",
+      "source": "Letter",
+      "sourceFile": "fixtures/uncleared-letter.txt",
+      "text": "This fixture letter has not been cleared.",
+      "verifiedVerbatim": true,
+      "cleared": false,
+      "tags": []
+    }
+  },
+  {
+    "name": "Sasha letter is not cleared by the legacy exception",
+    "id": "letter-sasha-gooray",
+    "verified": true,
+    "error": "Withheld review rendered",
+    "entry": {
+      "id": "letter-sasha-gooray",
+      "name": "Sasha Gooray",
+      "source": "Letter",
+      "sourceFile": "fixtures/uncleared-sasha-letter.txt",
+      "text": "I sent him documentation about my company, and within two days the site was already 90% complete with only minor corrections remaining.",
+      "verifiedVerbatim": true,
+      "cleared": false,
+      "tags": []
+    }
+  },
+  {
+    "name": "altered quote",
+    "id": "google-sasha-gooray",
+    "quote": "A rewritten testimonial.",
+    "error": "Altered quote"
+  },
+  {
+    "name": "altered attribution",
+    "id": "google-sasha-gooray",
+    "caption": "Another person, Google review",
+    "error": "Altered attribution"
+  },
+  {
+    "name": "invented business",
+    "id": "google-sasha-gooray",
+    "caption": "Sasha Gooray, Invented business, Google review",
+    "error": "Altered attribution"
+  },
+  {
+    "name": "internal citation",
+    "id": "google-sasha-gooray",
+    "cite": "CF/private.pdf",
+    "error": "Invalid public citation"
+  },
+  {
+    "name": "off-message placement",
+    "id": "google-richard-steele",
+    "error": "Withheld review rendered"
+  }
+]

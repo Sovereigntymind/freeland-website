@@ -1,0 +1,93 @@
+{
+  "name": "Freeland Marketing & Entertainment",
+  "shortName": "Freeland",
+  "url": "https://freelandme.com",
+  "email": "kevin@freelandme.com",
+  "ga4": "G-89PW952D8G",
+  "founder": "Kevin Freeland",
+  "logo": "https://freelandme.com/images/logo.webp",
+  "defaultOgImage": "https://freelandme.com/images/ns-night-desk.jpg",
+  "primaryCta": {
+    "label": "Get your Growth Roadmap",
+    "href": "/growth-roadmap/"
+  },
+  "nav": [
+    {
+      "label": "How it works",
+      "href": "/how-it-works/"
+    },
+    {
+      "label": "Results",
+      "href": "/results/"
+    },
+    {
+      "label": "Services",
+      "href": "/services/"
+    },
+    {
+      "label": "Insights",
+      "href": "/blog/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    }
+  ],
+  "orgSameAs": [
+    "https://www.facebook.com/FreelandMarketingandEntertainment",
+    "https://www.instagram.com/freelandmarketing/",
+    "https://www.google.com/maps?cid=12454933700455021390"
+  ],
+  "personSameAs": [
+    "https://www.linkedin.com/in/kevinfreelandaiautomationandmarketingexpert/",
+    "https://www.tiktok.com/@kevin_freeland"
+  ],
+  "social": [
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/FreelandMarketingandEntertainment"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/freelandmarketing/"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/kevinfreelandaiautomationandmarketingexpert/"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@kevin_freeland"
+    }
+  ],
+  "alternateName": [
+    "Freeland Marketing",
+    "Freeland Marketing and Entertainment",
+    "FM&E"
+  ],
+  "legalName": "Freeland Marketing and Entertainment, LLC",
+  "description": "Freeland Marketing is a remote growth agency for founder-led DTC brands.",
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "knowsAbout": [
+    "Meta ads",
+    "Google Ads",
+    "Landing page optimization",
+    "Email and retention marketing",
+    "Creator and affiliate programs",
+    "SEO and AEO",
+    "AI automation"
+  ],
+  "personDescription": "Kevin Freeland is the founder of Freeland Marketing, a remote growth agency for founder-led DTC brands.",
+  "personKnowsAbout": [
+    "Meta ads",
+    "Google Ads",
+    "Landing page optimization",
+    "Email and retention marketing",
+    "Creator and affiliate programs",
+    "SEO and AEO",
+    "AI automation"
+  ]
+}

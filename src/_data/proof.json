@@ -1,0 +1,526 @@
+{
+  "cases": [
+    {
+      "slug": "mara-labs",
+      "client": "Mara Labs",
+      "published": false,
+      "title": null,
+      "summary": null,
+      "baseline": null,
+      "result": null,
+      "change": null,
+      "period": null,
+      "source": null,
+      "verifiedAt": null
+    },
+    {
+      "slug": "redd-remedies",
+      "client": "Redd Remedies",
+      "published": false,
+      "title": null,
+      "summary": null,
+      "baseline": null,
+      "result": null,
+      "change": null,
+      "period": null,
+      "source": null,
+      "verifiedAt": null
+    }
+  ],
+  "trackRecord": [
+    {
+      "client": "A&D",
+      "description": "Part of Kevin's client history.",
+      "claim": "33% lower cost per call",
+      "baseline": 26.75,
+      "result": 17.94,
+      "unit": "USD per call",
+      "source": "tasks/growth-roadmap/case-study-pack.md, Case 2",
+      "date": "2026-11-18",
+      "date_basis": "Internal record catalogued for this rebuild; measurement dates not supplied.",
+      "kind": "track_record",
+      "verified_from": "internal record",
+      "re_pulled": false,
+      "attribution": "A&D Auto Workz, Google Ads",
+      "id": "ad-auto-workz",
+      "context": {
+        "work": "Google Ads for A&D Auto Workz.",
+        "measured": "Cost per call decreased from $26.75 to $17.94.",
+        "reportedBy": "Freeland internal case-study record; not re-pulled from the account.",
+        "period": "Internal record catalogued for this rebuild; measurement dates not supplied."
+      },
+      "metric": {
+        "label": "Lower cost per call",
+        "value": 33,
+        "suffix": "%",
+        "decimals": 0
+      },
+      "contextLine": "Google Ads for A&D Auto Workz, a past client. Measured: cost per call, from $26.75 to $17.94. Reported by: Freeland's internal case record; measurement dates are not on file.",
+      "homeContextLine": "Cost per call fell from $26.75 to $17.94, per Freeland's internal case record."
+    },
+    {
+      "client": "Handyman 2 the Rescue",
+      "description": "Part of Kevin's client history.",
+      "claim": "2.7x logged job value / ad spend in 30 days",
+      "result": 2.7,
+      "period": "30 days",
+      "source": "tasks/growth-roadmap/case-study-pack.md, Case 1",
+      "date": "2026-11-18",
+      "date_basis": "Internal record catalogued for this rebuild; measurement dates not supplied.",
+      "kind": "track_record",
+      "verified_from": "internal record",
+      "re_pulled": false,
+      "attribution": "Handyman 2 the Rescue, Google Ads",
+      "id": "handyman",
+      "context": {
+        "work": "Google Ads for Handyman 2 the Rescue.",
+        "measured": "Logged job value divided by ad spend over 30 days; not profit or incremental return.",
+        "reportedBy": "Freeland internal case-study record; not re-pulled from the account.",
+        "period": "Internal record catalogued for this rebuild; measurement dates not supplied."
+      },
+      "metric": {
+        "label": "Logged job value / ad spend in 30 days",
+        "value": 2.7,
+        "suffix": "x",
+        "decimals": 1
+      },
+      "contextLine": "Google Ads for Handyman 2 the Rescue, a past client. Measured: logged job value divided by ad spend over 30 days, not profit. Reported by: Freeland's internal case record.",
+      "homeContextLine": "Logged job value divided by ad spend over 30 days, per Freeland's internal case record; not profit."
+    },
+    {
+      "client": "Joe Tiki",
+      "description": "Part of Kevin's client history.",
+      "claim": "10x customer-reported growth in one year",
+      "result": 10,
+      "period": "one year",
+      "source": "Signed recommendation letter: Joe Tiki Referral.pdf; memory/reference_client_testimonials.md, Joe Miller",
+      "date": "2026-11-18",
+      "date_basis": "Signed letter dated 2026-02-25; verified against original PDF on 2026-11-19.",
+      "kind": "track_record",
+      "verified_from": "internal record",
+      "re_pulled": false,
+      "attribution": "Joe Tiki Custom Wood Carving",
+      "id": "joe-tiki",
+      "context": {
+        "work": "Marketing support for Joe Tiki Custom Wood Carving.",
+        "measured": "Customer-reported tenfold business growth over one year; the letter does not define a revenue or profit measure.",
+        "reportedBy": "Joe Miller in a signed recommendation letter.",
+        "period": "Signed letter dated 2026-02-25; verified against original PDF on 2026-11-19."
+      },
+      "metric": {
+        "label": "Customer-reported growth in one year",
+        "value": 10,
+        "suffix": "x",
+        "decimals": 0
+      },
+      "contextLine": "Marketing support for Joe Tiki Custom Wood Carving. Measured: growth as the owner describes it, customer-reported; the letter does not define revenue or profit. Reported by: Joe Miller, in a signed letter.",
+      "homeContextLine": "Customer-reported business growth over one year, per Joe Miller's signed letter; no revenue or profit measure specified."
+    },
+    {
+      "client": "Real Joyful",
+      "description": "Part of Kevin's client history.",
+      "claim": "I sent him documentation about my company, and within two days the site was already 90% complete with only minor corrections remaining.",
+      "attribution": "Sasha Gooray, Founder, The Real You Joyful Learning Center",
+      "source": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "date": "2026-11-19",
+      "date_basis": "Google review text captured on November 19, 2026; review publication date not supplied.",
+      "kind": "track_record",
+      "verified_from": "Google review",
+      "re_pulled": false,
+      "id": "sasha-existing",
+      "context": {
+        "work": "Website development for The Real You Joyful Learning Center.",
+        "measured": "Website completion as described by the client; an individual experience, not a delivery promise.",
+        "reportedBy": "Sasha Gooray in her Google review.",
+        "period": "Google review text captured on November 19, 2026; review publication date not supplied."
+      },
+      "contextLine": "Website build for The Real You Joyful Learning Center, reported by Sasha Gooray in her Google review."
+    }
+  ],
+  "googleProfile": {
+    "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+    "pulledAt": "2026-11-19",
+    "rating": 5.0,
+    "reviewCount": 14,
+    "verifiedTextCount": 14,
+    "note": "All 14 current texts read in full on 2026-11-19; historical Debra Mauro entry is withheld."
+  },
+  "reviews": [
+    {
+      "id": "google-sasha-gooray",
+      "name": "Sasha Gooray",
+      "business": null,
+      "text": "Kevin is exceptional at what he does. My website was not accurately communicating the depth of my work or performing the way it needed to. He candidly explained what needed to change while still remaining highly collaborative throughout the process.\n\nWhat impressed me most was his efficiency. I sent him documentation about my company, and within two days the site was already 90% complete with only minor corrections remaining. He quickly understood the vision, streamlined the process, and executed with excellence.\n\nI highly recommend working with him.",
+      "excerpt": "I sent him documentation about my company, and within two days the site was already 90% complete with only minor corrections remaining. He quickly understood the vision, streamlined the process, and executed with excellence.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "website-design",
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-palm-coast-farmers-market",
+      "name": "Palm Coast Farmer's Market",
+      "business": null,
+      "text": "Kevin is G-R-E-A-T at what he does. You will not be disappointed! The knowledge you pick up pays for itself... minor details matter and Kevin is master of spotting them and increasing your bottom-line ROI.",
+      "excerpt": "Kevin is G-R-E-A-T at what he does. You will not be disappointed! The knowledge you pick up pays for itself... minor details matter and Kevin is master of spotting them and increasing your bottom-line ROI.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "kevin",
+        "results"
+      ]
+    },
+    {
+      "id": "google-robert-s",
+      "name": "Robert S",
+      "business": null,
+      "text": "Freeland Marketing and Entertainment has been nothing short of exceptional. From the very beginning, the level of professionalism, communication, and genuine dedication stood out immediately. It’s rare to find someone who not only understands the vision but actually takes the time to elevate it—and that’s exactly what was delivered.\n\nWhat impressed me most was the consistency and reliability. Every step of the process was handled with care, attention to detail, and a clear focus on results. There was never a moment where I felt out of the loop or unsure about what was happening. Everything was transparent, smooth, and executed at a high level.\n\nBeyond just the work itself, the support and guidance made a huge difference. This wasn’t just a service—it felt like having someone truly invested in helping my business grow and succeed. That kind of commitment is hard to come by.\n\nIf you’re looking for someone who knows what they’re doing, follows through, and actually cares about delivering real value, I highly recommend Freeland Marketing and Entertainment. Easily a 5-star experience and someone I will continue working with moving forward.",
+      "excerpt": "Every step of the process was handled with care, attention to detail, and a clear focus on results. There was never a moment where I felt out of the loop or unsure about what was happening.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "kevin",
+        "results"
+      ]
+    },
+    {
+      "id": "google-danielle-silva",
+      "name": "Danielle Silva",
+      "business": null,
+      "text": "I can’t recommend Kevin enough! ⭐⭐⭐⭐⭐\n\nHe has been handling our advertising/social media for our business, and the difference has been incredible. His creativity, consistency, and attention to detail really stand out. He truly understands how to grow a brand and connect with the right audience.\n\nSince working with him, we’ve seen noticeable growth and engagement, and we feel confident knowing our business is in great hands. If you’re looking for someone reliable, professional, and results-driven, Kevin is the way to go!",
+      "excerpt": "Since working with him, we’ve seen noticeable growth and engagement, and we feel confident knowing our business is in great hands. If you’re looking for someone reliable, professional, and results-driven, Kevin is the way to go!",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "meta-ads",
+        "social-media-management",
+        "results"
+      ]
+    },
+    {
+      "id": "google-brody-guy",
+      "name": "Brody GUY",
+      "business": null,
+      "text": "Just got off a consultation call with Kevin and all I can say is wow, I’ve talk to plenty of companies but none of them covered what Kevin went over with me today. His company is covering all aspects with his AI services from marketing, website design, building agent's and behind the “screen” with coding, securing your business, and more! This company is the real deal. I’m not looking anywhere else. I learned a lot thanks Kevin,",
+      "excerpt": "Just got off a consultation call with Kevin and all I can say is wow, I’ve talk to plenty of companies but none of them covered what Kevin went over with me today.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "call",
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-joshua-archer",
+      "name": "Joshua Archer",
+      "business": null,
+      "text": "Kevin is a master at marketing! He has helped me with promotions, events, increasing social reach and even consulting me on best practices for content creation. If you want to increase your business’ reach to a demographic that matters to you, Kevin will help take you to the next level.",
+      "excerpt": "Kevin is a master at marketing! He has helped me with promotions, events, increasing social reach and even consulting me on best practices for content creation.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "social-media-management",
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-irishprince247",
+      "name": "IrishPrince247",
+      "business": null,
+      "text": "Kevin has amazing ideas and is very knowledgeable.  He offers creative, innovative ways to help business become more profitable",
+      "excerpt": "Kevin has amazing ideas and is very knowledgeable.  He offers creative, innovative ways to help business become more profitable",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-the-underdog-report",
+      "name": "The Underdog Report",
+      "business": null,
+      "text": "Kevin Freeland's marketing and technical expertise is the absolute best available. His knowledge of Ai is unmatched and his commitment to provide measurable results for his clients is surberb.",
+      "excerpt": "Kevin Freeland's marketing and technical expertise is the absolute best available. His knowledge of Ai is unmatched and his commitment to provide measurable results for his clients is surberb.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "ai-automation",
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-jakim-hartford",
+      "name": "Jakim Hartford",
+      "business": null,
+      "text": "Highly recommend Freeland Marketing. They did an excellent job with my website and SEO fixes. They were thorough, knowledgeable, and made the whole process smooth and stress-free. The website looks better, functions better, and I feel much more confident that the SEO side is in much better shape now. Great work, great communication, and overall a very positive experience.",
+      "excerpt": "They did an excellent job with my website and SEO fixes. They were thorough, knowledgeable, and made the whole process smooth and stress-free.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "seo",
+        "website-design"
+      ]
+    },
+    {
+      "id": "google-miesha-davis",
+      "name": "Miesha Davis",
+      "business": null,
+      "text": "Kevin is extremely professional and talented. I’ve really enjoyed working with him.",
+      "excerpt": "Kevin is extremely professional and talented. I’ve really enjoyed working with him.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-crowded-market-report",
+      "name": "CMR Team",
+      "business": null,
+      "text": "As the Managing Partner of CMR Publishing LLC, I needed a professional agency to manage our social media, edit and upload YouTube content, and overhaul our outdated website.  Kevin and his team delivered on all three.  Our website is now professional, organized, and conveys a clear, concise message to avoid any visitor confusion.  Kevin made CMR consistent across all social media platforms, updating our branding, headshots and visuals.  YouTube views increased as Kevin focused on shorts (where we severely lacked) and introduced tools, software and leveraged AI to make the process as efficient as possible.  Kevin also provided services outside of the initial scope securing meetings with sponsors, set up interviews and helped us create a studio from scratch by traveling last minute to help set up.  We highly recommend Freeland Marketing, especially now as they become leaders in the AI marketing and automation space.",
+      "excerpt": "As the Managing Partner of CMR Publishing LLC, I needed a professional agency to manage our social media, edit and upload YouTube content, and overhaul our outdated website.  Kevin and his team delivered on all three.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "social-media-management",
+        "website-design",
+        "results"
+      ]
+    },
+    {
+      "id": "google-gary-scarano",
+      "name": "Gary Scarano",
+      "business": null,
+      "text": "Kevin Freeland of FM&E is not only an excellent marketer, but a brilliant expert on the bleeding edge of Ai development and it uses for business. He as demonstrated measurable success with his clients and the growth of FM&E is skyrocketing.",
+      "excerpt": "Kevin Freeland of FM&E is not only an excellent marketer, but a brilliant expert on the bleeding edge of Ai development and it uses for business.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "ai-automation",
+        "kevin"
+      ]
+    },
+    {
+      "id": "google-yallboi-foxsin",
+      "name": "yallboi FOXSIN",
+      "business": null,
+      "text": "One of the best of what he does!! Recommended to tha MAX♾️",
+      "excerpt": "One of the best of what he does!! Recommended to tha MAX♾️",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [],
+      "placementExcluded": true,
+      "placementNote": "Excluded by the approved November 19 selection."
+    },
+    {
+      "id": "google-richard-steele",
+      "name": "Richard Steele",
+      "business": null,
+      "text": "Absolutely the Best Tshirts , we ordered all new ones for both our companies. He designed , made changes and great price !!!",
+      "excerpt": "Absolutely the Best Tshirts , we ordered all new ones for both our companies. He designed , made changes and great price !!!",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/google-reviews-raw-full-2026-11-19.txt",
+      "pulledAt": "2026-11-19",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [],
+      "placementExcluded": true,
+      "placementNote": "Excluded by the approved November 19 selection."
+    },
+    {
+      "id": "google-debra-mauro",
+      "name": "Debra Mauro",
+      "business": "Jeff Handyman 2 the Rescue",
+      "text": "I can highly recommend Kevin Freeland. He will deliver what he says he is going to do. If I could have gave him 100 stars, I would. Thank you Kevin.",
+      "source": "Google review",
+      "sourceUrl": "https://www.google.com/maps?cid=12454933700455021390",
+      "sourceFile": "_rebuild-docs/PROOF-ON-FILE.md",
+      "pulledAt": "2026-06-10",
+      "verifiedVerbatim": false,
+      "cleared": true,
+      "tags": [
+        "kevin"
+      ],
+      "placementExcluded": true,
+      "placementNote": "Not on the Google profile on 2026-11-19."
+    }
+  ],
+  "letters": [
+    {
+      "id": "letter-joe-miller",
+      "name": "Joe Miller",
+      "role": "Owner",
+      "business": "Joe Tiki Custom Wood Carving",
+      "excerpt": "Over the past year alone, my business has grown tenfold, and I credit much of that success to the strategic marketing, organization, and guidance provided by Freeland Marketing.",
+      "source": "Letter",
+      "sourceFile": "Client Recomendations/Joe Tiki Referral.pdf",
+      "sourceUrl": null,
+      "date": "2026-02-25",
+      "dateBasis": "signed letter given to Kevin; PDF dated 2026-02-25",
+      "channel": "signed letter",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "meta-ads",
+        "results",
+        "kevin"
+      ],
+      "verifiedAt": "2026-11-19",
+      "text": "Palm Coast, Fl I am pleased to provide this letter of recommendation for Freeland Marketing and its owner, Kevin. When I first began working with Freeland Marketing, my wood carving business was operating as a small hobby out of my garage. Today, I run a fully operational wood shop creating custom hand-carved pieces featuring tiki designs and Florida wildlife themes. Over the past year alone, my business has grown tenfold, and I credit much of that success to the strategic marketing, organization, and guidance provided by Freeland Marketing. Freeland Marketing utilizes Facebook and Instagram advertising to reach hundreds of thousands of people throughout Florida, dramatically increasing my visibility and customer base. Their marketing strategy has consistently generated strong engagement and high-quality leads, allowing my business to expand at a pace I had never imagined possible. What truly sets this company apart is their hands-on involvement and genuine commitment to client success. Kevin has personally visited my workshop on multiple occasions to photograph and film my artwork—not only at my home shop but also at carefully selected locations around town—to ensure the highest-quality presentation of my work online. That level of dedication and attention to detail speaks volumes about their professionalism. In addition to marketing, Freeland Marketing has helped me organize and optimize my business operations. From improving scheduling systems to offering professional guidance on business structure, they have gone far beyond traditional marketing services. Kevin has also recommended trusted professionals and resources, including a tax representative, warehouse opportunities, and T-shirt printing companies, all of which have contributed to my company’s overall growth and stability. Freeland Marketing worked with me on pricing when I was just getting started, demonstrating their willingness to invest in my potential. As my business grew, I was able to transition to their standard monthly rate—something that would not have been possible without their initial support and effective marketing strategy. From my experience, Freeland Marketing has no interest other than supporting your business and helping you grow. Their professionalism, integrity, and dedication make them an outstanding marketing partner. I highly recommend Freeland Marketing to any business owner looking to elevate their brand, expand their reach, and achieve meaningful growth. Sincerely, Joe Miller Owner Joe Tiki Custom Wood Carving",
+      "excerpts": [
+        "Over the past year alone, my business has grown tenfold, and I credit much of that success to the strategic marketing, organization, and guidance provided by Freeland Marketing.",
+        "From my experience, Freeland Marketing has no interest other than supporting your business and helping you grow."
+      ],
+      "contextLabel": "Customer-reported growth; the letter does not define revenue or profit."
+    },
+    {
+      "id": "letter-tokyo-japanese-steakhouse",
+      "name": null,
+      "role": null,
+      "business": "Tokyo Japanese Steakhouse",
+      "excerpt": "Mr. Freeland is able to create customer engagement without an overwhelming amount of posts on social media. We have also seen an increase in positive reviews across multiple platforms, such as Google and Facebook.",
+      "source": "Letter",
+      "sourceFile": "Client Recomendations/Letter of Recommendation Tokyo.pdf",
+      "sourceUrl": null,
+      "date": "2025-06-14",
+      "dateBasis": "letter from the business, no named signer; PDF dated 2025-06-14",
+      "channel": "signed letter",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "social-media-management",
+        "results"
+      ],
+      "verifiedAt": "2026-11-19",
+      "text": "Tokyo Japanese Steakhouse wholeheartedly recommends Freeland Marketing and Entertainment. After working with Mr. Kevin Freeland we’ve seen exponential growth in revenue and a growing customer base. Mr. Freeland is able to create customer engagement without an overwhelming amount of posts on social media. We have also seen an increase in positive reviews across multiple platforms, such as Google and Facebook. Freeland Marketing and Entertainment provides new marketing ideas to keep up with an ever changing industry. They also handle all photography from menu items to employee photos. Mr. Freeland maintains a friendly, but professional disposition with customers and employees, making all feel welcome in the restaurant. In the time we have worked with Freeland Marketing and Entertainment, Tokyo Japanese Steakhouse has become a vibrant restaurant for everyone in the community to enjoy.",
+      "excerpts": [
+        "Mr. Freeland is able to create customer engagement without an overwhelming amount of posts on social media. We have also seen an increase in positive reviews across multiple platforms, such as Google and Facebook."
+      ]
+    },
+    {
+      "id": "letter-debbie-mauro",
+      "name": "Debbie Mauro",
+      "role": "Owner",
+      "business": "Jeff Handyman 2 the Rescue LLC",
+      "excerpt": "Website, Google ads and much more, Kevin Freeland will get it done for you. He is very up-to-date and very knowledgeable when it comes to getting your business name out there whether it's a small business or a large business.",
+      "source": "Letter",
+      "sourceFile": "Client Recomendations/Debbie Mauro - Jeff Handyman 2 the Rescue Referral.pdf",
+      "sourceUrl": null,
+      "date": "2026-04-21",
+      "dateBasis": "emailed endorsement 2026-04-21; Kevin cleared 2026-11-19",
+      "channel": "email",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "google-ads-management",
+        "website-design",
+        "kevin"
+      ],
+      "verifiedAt": "2026-11-19",
+      "text": "Debbie Mauro Owner, Jeff Handyman 2 the Rescue LLC Palm Coast, Florida mrjeffhandyman2therescue@gmail.com (386) 986-6083 cell · (386) 447-7633 office Licensed: CRC1329768 · CC1329185 · HI498 April 21, 2026 Letter of Recommendation Re: Kevin Freeland / Freeland Marketing and Entertainment To Whom It May Concern, Kevin Freeland, owner and operator of Freeland Marketing and Entertainment, is one of the best professional, honest and reliable company to do all your business marketing. Website, Google ads and much more, Kevin Freeland will get it done for you. He is very up-to-date and very knowledgeable when it comes to getting your business name out there whether it's a small business or a large business. As a small business owner of Jeff Handyman 2 the Rescue LLC, I, Debbie Mauro, honestly can recommend Kevin Freeland one of the best marketing guys in Palm Coast. Just wanna say thank you for all your effort, hours and days, also continuous time you put into our business to bring it up to status. Freeland Marketing and Entertainment is the only way to go. Sincerely, Debbie Mauro Owner, Jeff Handyman 2 the Rescue LLC Source: emailed endorsement from mrjeffhandyman2therescue@gmail.com to kevin@freelandme.com, subject “Review”, sent 2026-04-21 06:13 PM EDT. Verbatim text preserved above; minor spacing normalization only.",
+      "excerpts": [
+        "Website, Google ads and much more, Kevin Freeland will get it done for you. He is very up-to-date and very knowledgeable when it comes to getting your business name out there whether it's a small business or a large business."
+      ],
+      "clearanceSource": "Kevin 2026-11-19"
+    },
+    {
+      "id": "letter-sasha-gooray",
+      "name": "Sasha Gooray",
+      "role": "Founder",
+      "business": "The Real You Joyful Learning Center",
+      "excerpt": "Kevin quickly identified the gaps and helped restructure the messaging in a way that was both strategic and aligned with my vision.",
+      "source": "Letter",
+      "sourceFile": "Client Recomendations/Sasha Gooray - Real Joyful Learning Center Referral.pdf",
+      "sourceUrl": null,
+      "date": "2026-05-19",
+      "dateBasis": "emailed recommendation 2026-05-19; Kevin cleared 2026-11-19",
+      "channel": "email",
+      "verifiedVerbatim": true,
+      "cleared": true,
+      "tags": [
+        "website-design",
+        "seo",
+        "kevin"
+      ],
+      "verifiedAt": "2026-11-19",
+      "text": "Subject: Website Recommendation I personally recommend Kevin Freeland for website development and optimization work. Before working with Kevin, my website was not accurately communicating the depth of my work, the transformation I provide for families, or the premium level of support my company offers. While I knew the outcomes we create, translating that clearly and compellingly online was a challenge. Kevin quickly identified the gaps and helped restructure the messaging in a way that was both strategic and aligned with my vision. He not only improved the website itself, but also strengthened the way my services are communicated from a sales and marketing standpoint. The phrasing throughout the site is far more compelling, clearer for parents to understand, and better positioned to attract the families I am best equipped to support. He also incorporated stronger SEO strategy and language so the right people can actually find my business online rather than simply increasing generic traffic. That level of intentionality mattered to me. What stood out most was his efficiency and execution. I sent him documentation about my company, and within two days the site was already about 90% complete with only minor corrections remaining. He understood the vision quickly, streamlined the process, and translated complex ideas into a polished and professional online presence. If you desire someone who is strategic, collaborative, responsive, and highly skilled at clarifying a brand and strengthening its online presence, I highly recommend connecting with Kevin. Sasha Gooray Founder, The Real You Joyful Learning Center",
+      "excerpts": [
+        "Kevin quickly identified the gaps and helped restructure the messaging in a way that was both strategic and aligned with my vision."
+      ],
+      "clearanceSource": "Kevin 2026-11-19"
+    },
+    {
+      "id": "letter-hazem-cmr",
+      "name": "Hazem",
+      "role": "Managing Partner",
+      "business": "CMR Publishing LLC",
+      "excerpt": "especially now as they become leaders in the AI marketing and automation space.",
+      "source": "Letter",
+      "sourceFile": "memory/reference_client_testimonials_history.md",
+      "sourceUrl": null,
+      "date": "2026-04-05",
+      "dateBasis": "Received by email; only this line is supplied in the inventory.",
+      "channel": "email",
+      "verifiedVerbatim": false,
+      "cleared": true,
+      "tags": [
+        "ai-automation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{% set articleContent = content %}
+{% set articleSchema = [] %}
+{% for node in schema %}
+  {% if node["@type"] == "Article" %}
+    {% set articleSchema = (articleSchema.push({
+      "@type": "Article", "@id": node["@id"], "headline": node.headline,
+      "description": node.description, "image": node.image,
+      "datePublished": node.datePublished, "dateModified": node.dateModified,
+      "url": node.url, "mainEntityOfPage": node.mainEntityOfPage,
+      "author": {"@id": site.url + "/#kevin"},
+      "publisher": {"@id": site.url + "/#org"}
+    }), articleSchema) %}
+  {% else %}{% set articleSchema = (articleSchema.push(node), articleSchema) %}{% endif %}
+{% endfor %}
+{% set schema = articleSchema %}
+{% set content %}
+<div class="article-shell">
+{{ articleContent | safe }}
+<aside class="wrap narrow section-tight rule-top stack-v" aria-label="Your next step">
+
+{% if leadMagnet %}<div class="panel stack-v"><h2>Take the guide with you</h2><p><a class="button button-secondary" href="{{ leadMagnet.url }}">{{ leadMagnet.title }}</a></p></div>{% endif %}
+<h2>What should your brand work on next?</h2>
+<p class="lede">Start with a Growth Roadmap built around your store and the questions your numbers raise. You keep it whether or not you hire us.</p>
+<p><a class="button button-primary" href="/growth-roadmap/" data-cta="article_{{ articleSlug }}_roadmap">Get your Growth Roadmap</a></p>
+{% set related = false %}{% for c in proof.cases %}{% if c.published and (not proofSlug or c.slug == proofSlug) and not related %}{% set related = c %}{% endif %}{% endfor %}
+<p><a href="{{ '/results/' + related.slug + '/' if related else '/results/' }}">Related proof{% if related %}: {{ related.client }}{% endif %}</a> / <a href="/blog/">More insights</a></p>
+</aside>
+</div>
+{% endset %}
+{% include "layouts/site.njk" %}

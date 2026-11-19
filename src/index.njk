@@ -1,868 +1,213 @@
 ---
-web3forms: true
+layout: layouts/site.njk
+permalink: /
+title: "Freeland Marketing | Growth Agency for DTC Brands"
+description: "Kevin Freeland reads your ads, store and retention and finds the leaks. Our AI system does the work. Get a free Growth Roadmap you keep either way."
+heroPreload: /images/ns-night-desk.avif
+motion: true
+faqKey: home
+schema: []
 ---
-{% extends "base.njk" %}
-
-{% block head %}
-  <title>Marketing &amp; AI Automation Agency | Freeland Marketing</title>
-  <meta name="description" content="Social media, paid ads, SEO, and AI automation so you can focus on your business. From local shops to $1M+ corporations — results in 30 days." />
-  <meta name="keywords" content="social media management agency, AI consulting agency, AI workflow design, AI automation business, paid ads agency, Meta ads management, Google Ads management, CRM automation, marketing automation, SEO services, website design agency, email marketing automation, social media marketing agency, digital marketing agency, AI marketing automation, business automation, lead generation agency, content creation agency, national marketing agency, corporate marketing agency, AI consulting services, AI workflow automation, enterprise marketing agency" />
-  <meta name="author" content="Kevin Freeland" />
-  <link rel="canonical" href="https://freelandme.com/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freelandme.com/" />
-  <meta property="og:title" content="National Marketing &amp; AI Agency That Gets You More Customers | Freeland Marketing" />
-  <meta property="og:description" content="We handle social media, paid ads, SEO, and AI automation so you can focus on your business. Real results in 30 days. No contracts. Book a free strategy call." />
-  <meta property="og:image" content="https://freelandme.com/images/og-share.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Freeland Marketing &amp; Entertainment — National growth agency" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Freeland Marketing &amp; Entertainment" />
-  <meta name="twitter:description" content="Marketing that works while you work. Social media, AI automation &amp; paid ads for businesses nationwide." />
-  <meta name="twitter:image" content="https://freelandme.com/images/og-share.jpg" />
-  <meta name="twitter:image:alt" content="Freeland Marketing &amp; Entertainment — National growth agency" />
-
-  <link rel="preload" as="image" href="/images/hero-bg.avif" type="image/avif" />
-  <link rel="preload" as="image" href="/images/hero-bg.webp" type="image/webp" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MarketingAgency",
-    "name": "Freeland Marketing & Entertainment",
-    "url": "https://freelandme.com",
-    "email": "kevin@freelandme.com",
-    "description": "National marketing and AI consulting agency specializing in social media management, paid ads, AI automation, AI workflow design, AI consulting, CRM, SEO, and website builds — serving businesses from startups to corporations across the US.",
-    "founder": { "@type": "Person", "name": "Kevin Freeland" },
-    "foundingDate": "2024",
-    "address": { "@type": "PostalAddress", "addressLocality": "Palm Coast", "addressRegion": "FL", "addressCountry": "US" },
-    "logo": { "@type": "ImageObject", "url": "https://freelandme.com/images/logo.webp" },
-    "areaServed": "United States",
-    "priceRange": "$$",
-    "telephone": "+1-954-937-2510",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "telephone": "+1-954-937-2510",
-      "email": "kevin@freelandme.com",
-      "availableLanguage": "English"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "13",
-      "bestRating": "5"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Joe Miller" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "When I first began working with Freeland Marketing, my wood carving business was operating as a small hobby out of my garage. Today, I run a fully operational wood shop. Over the past year alone, my business has grown tenfold."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Organization", "name": "Tokyo Japanese Steakhouse" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "The steakhouse videos turned into same-day bookings. The results were immediate and real. Freeland knows exactly how to create content that makes people act."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Organization", "name": "Palm Coast Farmers Market" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "We saw weekend traffic surge after the market reels. Freeland knows how to get people through the door. Our vendors noticed it immediately."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Organization", "name": "CMR Publishing LLC (Crowded Market Report)" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Kevin and his team delivered on all three — social media, YouTube content, and a complete website overhaul. Our website is now professional, organized, and conveys a clear message. Kevin made CMR consistent across all social media platforms. YouTube views increased as Kevin focused on shorts and introduced AI tools to make the process as efficient as possible. Kevin also provided services outside of the initial scope — securing meetings with sponsors, setting up interviews, and helping us create a studio from scratch. We highly recommend Freeland Marketing."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Organization", "name": "A&D Auto Workz" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "I can't recommend Kevin enough! He has been handling our advertising and social media for our business, and the difference has been incredible. His creativity, consistency, and attention to detail really stand out. Since working with him, we've seen noticeable growth and engagement."
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Debbie Mauro" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
-        "reviewBody": "Kevin Freeland, owner and operator of Freeland Marketing and Entertainment, is one of the most professional, honest and reliable companies to do all your business marketing. Website, Google Ads and much more, Kevin Freeland will get it done for you. He is very up-to-date and knowledgeable when it comes to getting your business name out there. As a small business owner of Jeff Handyman 2 the Rescue LLC, I honestly recommend Kevin Freeland as one of the best marketing guys in Palm Coast. Freeland Marketing and Entertainment is the only way to go."
-      }
-    ],
-    "sameAs": ["https://facebook.com/FreelandMarketingandEntertainment", "https://instagram.com/freelandmarketing", "https://www.tiktok.com/@kevin_freeland", "https://www.linkedin.com/in/kevinfreelandaiautomationandmarketingexpert/"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What types of businesses do you work with?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We work with businesses of all sizes — from local shops, restaurants, and entrepreneurs to mid-size companies and corporations generating over $1 million in revenue. We also provide AI consulting and custom AI workflow design for businesses looking to integrate AI into their operations. If you want to grow, automate, or scale — we can help." }
-      },
-      {
-        "@type": "Question",
-        "name": "How soon will I see results?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Many clients see results within the first 30 days. Our client Tokyo Japanese Steakhouse saw same-day bookings from their first video campaign. Timelines vary by service, but we move fast and focus on measurable ROI from day one." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer AI automation services?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — AI and automation are core to what we do. We offer AI consulting, done-for-you AI implementation, custom workflow design, 24/7 AI lead capture, CRM automation, email marketing automation, and more. We build systems that make your business run 24/7 without extra staff." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you require long-term contracts?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No long-term contracts required. We earn your business every month through results. We're confident enough in what we deliver that we don't need to lock you in." }
-      },
-      {
-        "@type": "Question",
-        "name": "How much do your services cost?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Pricing is tailored to your business goals and the services you need. We offer flexible packages and have worked with businesses at all stages — from startups to established brands. Book a free consultation and we'll build a plan that fits your budget." }
-      },
-      {
-        "@type": "Question",
-        "name": "What makes Freeland Marketing different from other agencies?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We're not a faceless agency. Kevin personally visits clients, films content, and stays hands-on throughout. We combine creator energy, community roots, and an ROI mindset that most agencies lack. Our clients' success stories speak for themselves." }
-      },
-      {
-        "@type": "Question",
-        "name": "Where do you work with businesses?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We work with businesses anywhere in the US. Our digital services, paid ads, and automation systems are location-independent — so whether you're in New York, LA, or anywhere in between, we can help you grow." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you handle both my marketing AND automation?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely — that's our specialty. We offer full-service packages that combine social media management, paid ads, and AI automation so everything works together as one growth engine." }
-      }
-    ]
-  }
-  </script>
-{% endblock %}
-
-{% block content %}
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" aria-label="Hero">
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-content">
-      <img src="/images/logo.webp" srcset="/images/logo-360.webp 360w, /images/logo.webp 520w" sizes="(max-width: 768px) 80vw, 520px" alt="Freeland Marketing &amp; Entertainment" class="hero-logo" width="520" height="160" fetchpriority="high" />
-      <span class="badge">America's Growth Agency</span>
-      <h1>National Marketing &amp; AI Agency<br /><span class="red-text">That Gets You More Customers</span></h1>
-      <p>We handle your social media, paid ads, SEO, and AI automation — so you can focus on running your business. From local shops to $1M+ corporations, we build the system that brings customers in and keeps them coming back.</p>
-      <div class="trust-row">
-        <span>✓ No Long-Term Contracts</span>
-        <span>✓ Results in 30 Days</span>
-        <span>✓ Hands-On Team</span>
-      </div>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary btn-large">Get My Free Strategy Call</a>
-        <a href="#results" class="btn-secondary">See Client Results</a>
-      </div>
-      <p class="hero-footnote">Trusted by businesses from startups to corporations across the US</p>
+{% from "partials/reviews.njk" import reviews %}
+<section class="hero" aria-labelledby="hero-title">
+  <picture class="hero-media">
+    <source type="image/avif" srcset="/images/ns-night-desk.avif">
+    <source type="image/webp" srcset="/images/ns-night-desk.webp">
+    <img src="/images/ns-night-desk.jpg" alt="A laptop showing sales charts on a desk at night, lamp on" width="1536" height="1024" fetchpriority="high">
+  </picture>
+  <div class="wrap hero-content">
+    <h1 id="hero-title"><span>We find the leak.</span> <span>Our system fixes it.</span></h1>
+    <p class="lede">Freeland Marketing is a remote growth agency for founder-led DTC brands. Kevin Freeland reads your ads, site and retention, then our system does the repeat work.</p>
+    <div class="actions">
+      <a class="button button-primary" href="/growth-roadmap/" data-cta="hero_roadmap">Get your Growth Roadmap</a>
+      <a class="button button-secondary" href="/how-it-works/" data-cta="hero_how">See how it works</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- wave: hero(#05091a) → stats(blue) -->
-  <div class="wave" style="background:#05091a"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#0033A0"/></svg></div>
-
-  <!-- ===== STATS ===== -->
-  <section class="stats" aria-label="Key stats">
-    <div class="stats-inner">
-      <div class="stat">
-        <strong>10x</strong>
-        <p>Client business growth in under a year</p>
-      </div>
-      <div class="stat">
-        <strong>100K+</strong>
-        <p>Customers reached monthly nationwide</p>
-      </div>
-      <div class="stat">
-        <strong>3+</strong>
-        <p>Years growing businesses across the US</p>
-      </div>
-      <div class="stat">
-        <strong>0</strong>
-        <p>Long-term contracts required</p>
-      </div>
+<section class="section-tight rule-top" aria-labelledby="proof-title">
+  <div class="wrap">
+    <h2 id="proof-title" class="sr-only">Track record</h2>
+    {% set trackRecordMode = "metrics" %}
+    {% include "partials/track-record.njk" %}
+    <div class="proof-pending reveal">
+      <h3>Mara Labs and Redd Remedies</h3>
+      <p>Two supplement brands whose pages and paid ads we run today.</p>
+      <p class="pending-note"><a href="/results/">See the work</a> or read <a href="/for/supplement-brands/">how we work with supplement brands</a>.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- wave: stats(#001f6b) → white -->
-  <div class="wave" style="background:#001f6b"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,60 C360,0 1080,0 1440,60 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
-
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="section section-white" aria-labelledby="process-heading">
-    <div class="container text-center">
-      <span class="section-label">Simple Process</span>
-      <h2 class="section-title" id="process-heading">From First Call to Real Results in 3 Steps</h2>
-      <p class="section-sub section-sub-center">No complicated onboarding. No months of setup. We move fast — because your competitors aren't waiting.</p>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-num">1</div>
-          <h3>Book Your Free 30-Min Call</h3>
-          <p>Tell us about your business, your goals, and what isn't working right now. Zero pressure, zero obligation. Just a real conversation about growth.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-num">2</div>
-          <h3>Get Your Custom Growth Plan</h3>
-          <p>Within 24 hours we map out exactly which services will drive the most growth for your specific business and budget. No cookie-cutter packages.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-num">3</div>
-          <h3>Launch &amp; See Results Fast</h3>
-          <p>Campaigns go live within days. Most clients see measurable results — more calls, bookings, or revenue — within 30 days.</p>
-        </div>
+<section aria-labelledby="system-title">
+  <div class="wrap section-tight" style="padding-bottom:40px">
+    <h2 id="system-title">While you sleep.</h2>
+    <p>The times are examples. The jobs are what runs.</p>
+  </div>
+  <div class="stack" data-stack>
+    <article class="stack-card"><div class="card-panel"><div class="card-copy">
+      <p class="timestamp">2:14 AM</p>
+      <h3>Ads, checked every day</h3>
+      <p>Meta, Google, Bing and TikTok, read ad by ad. Ads that look like waste get flagged, and so do ads worth more testing. Budget moves follow the evidence and what we agreed with you.</p>
+    </div></div></article>
+    <article class="stack-card"><div class="card-panel"><div class="card-copy">
+      <p class="timestamp">2:38 AM</p>
+      <h3>Landing pages that match checkout</h3>
+      <p>Offer pages built and price-checked against the real cart before any ad money is spent.</p>
+    </div></div></article>
+    <article class="stack-card card-photo"><div class="card-panel">
+      <div class="card-copy">
+        <p class="timestamp">3:00 AM</p>
+        <h3>Sales that flip on schedule</h3>
+        <p>Banners, pages and ads are scheduled to change when the sale starts and ends, then checked.</p>
       </div>
-      <div class="cta-wrap">
-        <a href="#contact" class="btn-primary btn-large">Start With a Free Call →</a>
+      <picture class="card-media"><source type="image/avif" srcset="/images/ns-dawn-boxes.avif"><source type="image/webp" srcset="/images/ns-dawn-boxes.webp"><img src="/images/ns-dawn-boxes.jpg" alt="Packed shipping boxes on a steel table at dawn" width="1536" height="1024" loading="lazy" decoding="async"></picture>
+    </div></article>
+    <article class="stack-card card-photo"><div class="card-panel">
+      <div class="card-copy">
+        <p class="timestamp">3:22 AM</p>
+        <h3>AI agents that answer the phone</h3>
+        <p>A voice agent books real restaurant reservations around the clock.</p>
       </div>
+      <picture class="card-media"><source type="image/avif" srcset="/images/ns-night-phone.avif"><source type="image/webp" srcset="/images/ns-night-phone.webp"><img src="/images/ns-night-phone.jpg" alt="A phone glowing on a dark kitchen counter at night" width="1024" height="1280" loading="lazy" decoding="async"></picture>
+    </div></article>
+    <article class="stack-card"><div class="card-panel"><div class="card-copy">
+      <p class="timestamp">4:46 AM</p>
+      <h3>Creator programs</h3>
+      <p>Affiliate and creator whitelisting, tracked to sales.</p>
+    </div></div></article>
+    <article class="stack-card"><div class="card-panel"><div class="card-copy">
+      <p class="timestamp">6:00 AM</p>
+      <h3>A weekly read in plain English</h3>
+      <p>What moved, why, and the next three moves.</p>
+    </div></div></article>
+  </div>
+</section>
+
+<section class="section rule-top" aria-labelledby="how-title">
+  <div class="wrap">
+    <h2 id="how-title">How it works</h2>
+    <ol class="ladder">
+      <li class="ladder-step reveal">
+        <h3>Growth Roadmap</h3>
+        <p><strong>Free. You keep it either way.</strong> Kevin starts from your public store and ads plus your five answers, and hands you the leaks in order, with where to start.</p>
+      </li>
+      <li class="ladder-step reveal">
+        <h3>We run the fixes</h3>
+        <p>Ads, pages, retention and automation. One plan.</p>
+      </li>
+      <li class="ladder-step reveal">
+        <h3>It keeps running</h3>
+        <p>The system keeps working and improving, and the weekly read shows what changed and why.</p>
+      </li>
+    </ol>
+    <div class="actions"><a class="button button-secondary" href="/how-it-works/" data-cta="ladder_how">See how it works</a></div>
+  </div>
+</section>
+
+<section class="section rule-top">
+<div class="wrap stack-v">
+<h2>Why Freeland</h2>
+<p class="lede">Five things you can check before you book.</p>
+<ul class="rows">
+<li>
+<h3>You talk to Kevin.</h3>
+<p>Kevin reads your numbers and makes the calls himself. There is no account manager between you and the person accountable for the work.</p>
+<p><a href="/results/#client-reviews">Read Sasha Gooray’s review</a></p>
+</li>
+<li>
+<h3>One plan, from ad to reorder.</h3>
+<p>The ad, the offer, the page and the follow-up are read together and fixed in order. A cheaper click helps little if the page or the follow-up loses the buyer.</p>
+<p><a href="/results/">See the track record</a></p>
+</li>
+<li>
+<h3>Store sales, not platform claims.</h3>
+<p>An ad platform's reported return is one input, not a profit statement. Calls are checked against what your store actually sold.</p>
+<p><a href="/services/meta-ads/">How we read Meta ads</a></p>
+</li>
+<li>
+<h3>Repeat work with checks.</h3>
+<p>Daily ad checks, scheduled sale changes and weekly reports run on a system that keeps a record of what it did. When something needs judgment, a person looks at it.</p>
+<p><a href="/how-it-works/">What the system does</a></p>
+</li>
+<li>
+<h3>Built for supplement ad limits.</h3>
+<p>Each supplement brand gets a list of what it can and cannot say, and copy is checked against it before it runs. Page prices are checked against the real checkout before ad money is spent. Final claim approval stays with you.</p>
+<p><a href="/for/supplement-brands/">How we work with supplement brands</a></p>
+</li>
+</ul>
+</div>
+</section>
+<section class="section rule-top" aria-labelledby="guides-title">
+<div class="wrap stack-v">
+<h2 id="guides-title">Guides founders read first</h2>
+<p class="lede">Four questions founders ask before they hire anyone.</p>
+{% set firstGuides = [
+  {url: "/blog/why-hire-marketing-agency/", reason: "Agency, in-house or do it yourself: how to choose."},
+  {url: "/blog/how-to-run-facebook-ads/", reason: "What a working Meta setup looks like before you spend more."},
+  {url: "/blog/email-marketing-small-business/", reason: "The flows to build first after the first order."},
+  {url: "/blog/ai-automation-services-florida/", reason: "What to ask before you hire anyone to automate your store."}
+] %}
+<ul class="rows founder-guides">
+{% for guide in firstGuides %}{% for article in collections.all %}{% if article.url == guide.url %}
+<li><h3><a href="{{ guide.url }}">{{ article.data.title | replace(" | Freeland", "") | escape }}</a></h3><p>{{ guide.reason }}</p></li>
+{% endif %}{% endfor %}{% endfor %}
+</ul>
+<p><a class="all-guides" href="/blog/">All guides</a></p>
+</div>
+</section>
+<section class="section-tight rule-top" aria-labelledby="home-reviews-title">
+<div class="wrap stack-v">
+<h2 id="home-reviews-title" class="sr-only">What clients say</h2>
+{{ reviews(proof, ids=["google-robert-s", "google-danielle-silva", "google-jakim-hartford"]) }}
+</div>
+</section>
+<section class="section rule-top">
+<div class="wrap stack-v">
+<h2>What we run</h2>
+<div class="grid-2 service-strip"><a class="link-card panel stack-v" href="/services/meta-ads/">
+<h3>Meta ads</h3>
+<p>Facebook and Instagram ads, judged on store sales.</p></a><a class="link-card panel stack-v" href="/services/google-ads-management/">
+<h3>Google ads</h3>
+<p>Search and Shopping for buyers already looking.</p></a><a class="link-card panel stack-v" href="/services/website-design/">
+<h3>Landing pages and CRO</h3>
+<p>Pages matched to the ad and price-checked against checkout.</p></a><a class="link-card panel stack-v" href="/services/email-marketing-automation/">
+<h3>Retention and email</h3>
+<p>Flows that follow up after the first order, judged on repeat orders.</p></a><a class="link-card panel stack-v" href="/services/influencer-affiliate/">
+<h3>Creator and affiliate programs</h3>
+<p>One code or link per creator, tracked to sales.</p></a><a class="link-card panel stack-v" href="/services/ai-automation/">
+<h3>AI agents and automation</h3>
+<p>Phone agents and daily checks that run the repeat work.</p></a><a class="link-card panel stack-v" href="/services/seo/">
+<h3>SEO and AEO</h3>
+<p>Clear answers search engines and AI assistants can read.</p></a><a class="link-card panel stack-v" href="/services/social-media-management/">
+<h3>Organic social systems</h3>
+<p>A content plan, your approval, then scheduled posts.</p></a>
+</div>
+<p><a href="/services/">All services</a></p>
+</div>
+</section>
+
+<section class="section rule-top" aria-labelledby="founder-title">
+  <div class="wrap grid-2" style="gap:clamp(40px,8vw,120px);align-items:start">
+    <div>
+      <h2 id="founder-title">Who it is for</h2>
+      <p class="lede" style="margin-top:26px">Built for founder-led DTC brands already selling online. Not for pre-launch ideas or brands looking for the cheapest vendor.</p>
     </div>
-  </section>
-
-  <!-- wave: white → pain(#05091a) -->
-  <div class="wave" style="background:#fff"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#05091a"/></svg></div>
-
-  <!-- ===== PAIN / VALUE PROP ===== -->
-  <section class="section pain-section">
-    <div class="container pain-inner">
-      <div class="pain-text">
-        <span class="section-label light">The Problem</span>
-        <h2 class="section-title">Most Businesses Are Invisible Online — And Paying for It</h2>
-        <ul class="pain-list">
-          <li>Your social media posts get no reach and fewer customers</li>
-          <li>You're spending hours on tasks that could be automated</li>
-          <li>Leads fall through the cracks because follow-up is inconsistent</li>
-          <li>Competitors with smaller budgets outrank you on Google</li>
-          <li>You have no idea what's actually working in your marketing</li>
-        </ul>
-        <p class="pain-solution">We fix all of this. Freeland Marketing &amp; Entertainment is your full-stack growth partner — handling everything from <a href="/blog/how-florida-small-businesses-can-dominate-social-media-2026/" class="pain-link">social media</a> and ads to <a href="/blog/what-is-ai-automation-and-how-it-transforms-small-business/" class="pain-link">AI automation</a> and CRM so you can focus on running your business.</p>
-        <a href="#contact" class="btn-primary">Fix My Marketing</a>
-      </div>
-      <div class="pain-visual">
-        <div class="value-box">
-          <div class="value-item">
-            <span class="v-icon" aria-hidden="true">🚀</span>
-            <div>
-              <strong>Immediate Impact</strong>
-              <p>Campaigns go live within days, not months</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <span class="v-icon" aria-hidden="true">🎯</span>
-            <div>
-              <strong>Precision Targeting</strong>
-              <p>Reach the exact customers most likely to buy</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <span class="v-icon" aria-hidden="true">🤖</span>
-            <div>
-              <strong>24/7 Automation</strong>
-              <p>Your business works even when you don't</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <span class="v-icon" aria-hidden="true">📊</span>
-            <div>
-              <strong>Transparent Reporting</strong>
-              <p>Know exactly what your money is doing</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <span class="v-icon" aria-hidden="true">🤝</span>
-            <div>
-              <strong>Hands-On Partnership</strong>
-              <p>We show up — not just on calls, but in person</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- wave: pain(#05091a) → services(#f5f6fb) -->
-  <div class="wave" style="background:#05091a"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#f5f6fb"/></svg></div>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="section light-section" id="services" aria-labelledby="services-heading">
-    <div class="container">
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title" id="services-heading">AI Consulting, Social Media, Paid Ads, SEO &amp; More</h2>
-      <p class="section-sub">Full-service digital marketing and AI consulting for businesses of all sizes — from local shops to multi-million dollar corporations. Everything under one roof.</p>
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🧠</div>
-          <h3>AI Consulting</h3>
-          <p>Strategic AI advisory for businesses ready to integrate artificial intelligence. From identifying use cases to building a roadmap — we guide the entire process.</p>
-          <a href="/services/ai-consulting/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🏗️</div>
-          <h3>Done-for-You AI Systems</h3>
-          <p>Full-scale AI implementation — custom workflows, automations, and integrations built, deployed, and managed for your business from day one.</p>
-          <a href="/services/done-for-you-ai/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🤖</div>
-          <h3>24/7 AI Lead Capture</h3>
-          <p>AI-powered chat and response systems that capture every inquiry instantly — nights, weekends, holidays. Never lose a lead to slow response times again.</p>
-          <a href="/services/ai-lead-capture/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">✍️</div>
-          <h3>AI Content Creation</h3>
-          <p>AI-driven pipelines that produce high-quality, on-brand content at scale — captions, blogs, ads, graphics, and more.</p>
-          <a href="/services/ai-content-creation/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">📱</div>
-          <h3>Social Media Management</h3>
-          <p>Content creation, scheduling, and community management across Facebook and Instagram. We make your brand impossible to ignore.</p>
-          <a href="/services/social-media-management/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🎯</div>
-          <h3>Paid Ads (Meta &amp; Google)</h3>
-          <p>Targeted campaigns across Meta and Google that reach the exact people most likely to buy — driving real bookings, calls, and sales.</p>
-          <a href="/services/meta-ads/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🔍</div>
-          <h3>SEO Services</h3>
-          <p>Get found on Google without paying for every click. We optimize your site and content so customers find you organically.</p>
-          <a href="/services/seo/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">✉️</div>
-          <h3>Email Marketing Automation</h3>
-          <p>Smart sequences, segmentation, and customer journeys that nurture leads into paying customers on autopilot.</p>
-          <a href="/services/email-marketing-automation/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🌐</div>
-          <h3>Website Design</h3>
-          <p>Professional, fast, and conversion-focused websites built to turn visitors into paying customers — not just look pretty.</p>
-          <a href="/services/website-design/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">📍</div>
-          <h3>Google Business Profile</h3>
-          <p>Show up in Google Maps and the local 3-pack when customers search "near me." Full setup, optimization, and ongoing management.</p>
-          <a href="/services/google-business-profile/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">⚙️</div>
-          <h3>CRM Automation</h3>
-          <p>Automate follow-ups, lead tagging, pipeline stages, and customer tracking so no opportunity ever falls through the cracks.</p>
-          <a href="/services/crm-automation/" class="card-link">Learn more →</a>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🎨</div>
-          <h3>Creative &amp; Graphic Design</h3>
-          <p>Scroll-stopping thumbnails, graphics, and visual content built using professional tools including Canva and Flux LoRA.</p>
-          <a href="/services/creative-graphic-design/" class="card-link">Learn more →</a>
-        </article>
-      </div>
-      <div class="services-also">
-        <p>We also specialize in:</p>
-        <div class="services-also-links">
-          <a href="/services/call-center-booking-automation/">Call-Center Booking Automation</a>
-          <a href="/services/ai-workflow-design/">Custom AI Workflow Design</a>
-          <a href="/services/google-ads-management/">Google Ads Management</a>
-          <a href="/services/social-media-scheduling/">Social Media Scheduling</a>
-          <a href="/services/lead-nurturing/">Lead Nurturing Sequences</a>
-          <a href="/services/automated-reporting/">Automated Reporting</a>
-          <a href="/services/thumbnail-graphic-generation/">Thumbnail &amp; Graphic Generation</a>
-        </div>
-      </div>
-      <div class="cta-wrap" style="text-align:center;margin-top:56px;">
-        <p style="margin-bottom:20px;font-size:1.1rem;color:var(--gray);">Ready to run your business on autopilot?</p>
-        <a href="#contact" class="btn-primary btn-large">Build My Automation System →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- wave: services(#f5f6fb) → web-design(#05091a) -->
-  <div class="wave" style="background:#f5f6fb"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,60 C480,0 960,0 1440,60 L1440,60 L0,60 Z" fill="#05091a"/></svg></div>
-
-  <!-- ===== SMALL BUSINESS WEB DESIGN ===== -->
-  <section class="section dark" id="web-design" aria-labelledby="web-design-heading">
-    <div class="container">
-      <span class="section-label light">Website Design & Builds</span>
-      <h2 class="section-title light" id="web-design-heading">Need a Website?<br />We Build Them Fast.</h2>
-      <p class="section-sub light">You've got a business to run. You don't have time to build a website from scratch — or deal with someone who disappears after taking your deposit. We handle it all, start to finish — for businesses of every size.</p>
-      <div class="web-design-grid">
-        <div class="web-design-features">
-          <div class="wd-feature">
-            <span class="wd-icon" aria-hidden="true">⚡</span>
-            <div>
-              <strong>Fast Turnaround</strong>
-              <p>Get online quickly without the back-and-forth. We move at the speed your business needs.</p>
-            </div>
-          </div>
-          <div class="wd-feature">
-            <span class="wd-icon" aria-hidden="true">📱</span>
-            <div>
-              <strong>Mobile-Friendly &amp; Professional</strong>
-              <p>Every site we build looks great on any device and is designed to convert visitors into customers.</p>
-            </div>
-          </div>
-          <div class="wd-feature">
-            <span class="wd-icon" aria-hidden="true">🔍</span>
-            <div>
-              <strong>Built for Search Engines</strong>
-              <p>SEO is built in from day one so your site gets found by the right people on Google.</p>
-            </div>
-          </div>
-          <div class="wd-feature">
-            <span class="wd-icon" aria-hidden="true">🛠️</span>
-            <div>
-              <strong>Done-for-You Setup</strong>
-              <p>Domain, hosting, content — we handle the whole thing. No technical headaches on your end.</p>
-            </div>
-          </div>
-        </div>
-        <div class="web-design-cta-box">
-          <div class="wd-badge">Perfect For</div>
-          <ul class="wd-for-list">
-            <li>Local shops &amp; service providers</li>
-            <li>Restaurants &amp; food businesses</li>
-            <li>Startups &amp; entrepreneurs</li>
-            <li>Mid-size &amp; corporate businesses</li>
-            <li>Anyone ready to upgrade their online presence</li>
-          </ul>
-          <p class="wd-tagline">No website? No problem.<br />Let's fix that.</p>
-          <a href="#contact" class="btn-primary btn-large">Get a Free Quote →</a>
-          <p class="wd-note">Tell us about your business and we'll build a plan that fits your goals.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- wave: web-design(#05091a) → mid-cta(#001580) -->
-  <div class="wave" style="background:#05091a"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#001580"/></svg></div>
-
-  <!-- ===== MID-PAGE CTA ===== -->
-  <section class="mid-cta" aria-label="Mid-page call to action">
-    <div class="mid-cta-inner">
+    <figure class="founder reveal">
+      <div class="portrait"><img src="/images/kevin-headshot.jpg" alt="Kevin Freeland" width="800" height="800" loading="lazy" decoding="async"></div>
       <div>
-        <h2>Not Sure Where to Start?</h2>
-        <p>Book a free 30-minute strategy call. We'll audit your current marketing and show you exactly what's holding your business back.</p>
+        <blockquote>&ldquo;I read the numbers myself. The system does the heavy lifting. You talk to me, not an account manager.&rdquo;</blockquote>
+        <figcaption>Kevin Freeland, Founder</figcaption>
       </div>
-      <a href="#contact" class="btn-primary btn-large">Book My Free Call →</a>
-    </div>
-  </section>
+    </figure>
+  </div>
+</section>
 
-  <!-- wave: mid-cta(#001f80) → white -->
-  <div class="wave" style="background:#001f80"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#ffffff"/></svg></div>
+<section class="section rule-top" aria-labelledby="faq-title">
+  <div class="wrap grid-2" style="gap:clamp(40px,8vw,120px);align-items:start">
+    <h2 id="faq-title">Questions founders ask</h2>
+    <div>{% include "partials/faq.njk" %}<p><a href="/faq/">More questions and answers</a></p></div>
+  </div>
+</section>
 
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="section" id="results" aria-labelledby="results-heading">
-    <div class="container">
-      <span class="section-label">Real Results</span>
-      <h2 class="section-title" id="results-heading">Businesses That Trusted Us — And Won</h2>
-      <p class="section-sub">We don't just run ads. We become partners in your growth. Here's what happens when businesses work with FME.</p>
-      <div class="testimonials">
-
-        <article class="testimonial featured">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>
-            "When I first began working with Freeland Marketing, my wood carving business was operating as a <strong>small hobby out of my garage</strong>. Today, I run a fully operational wood shop creating custom hand-carved pieces. Over the past year alone, my business has grown <strong>tenfold</strong>. Kevin personally visited my workshop to photograph and film my artwork. They went far beyond traditional marketing — helping with scheduling systems, business structure, tax resources, and warehouse opportunities. From my experience, Freeland Marketing has no interest other than <strong>supporting your business and helping you grow</strong>. I highly recommend them to any business owner looking to elevate their brand."
-          </blockquote>
-          <div class="client">
-            <div class="client-avatar client-logo">
-            <picture>
-              <source srcset="/images/joe-tiki-logo.avif" type="image/avif" />
-              <source srcset="/images/joe-tiki-logo.webp" type="image/webp" />
-              <img src="/images/joe-tiki-logo.png" alt="Joe Tiki Custom Wood Carving" width="52" height="52" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-            <div class="client-info">
-              <strong>Joe Miller</strong>
-              <span>Owner — Joe Tiki Custom Wood Carving, Palm Coast FL</span>
-              <span class="result-badge">10x Business Growth</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"The steakhouse videos turned into <strong>same-day bookings</strong>. The results were immediate and real. Freeland knows exactly how to create content that makes people act."</blockquote>
-          <div class="client">
-            <div class="client-avatar client-initials">TJ</div>
-            <div class="client-info">
-              <strong>Tokyo Japanese Steakhouse</strong>
-              <span>Restaurant — Palm Coast, FL</span>
-              <span class="result-badge">Same-Day Bookings</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"We saw <strong>weekend traffic surge</strong> after the market reels. Freeland knows how to get people through the door. Our vendors noticed it immediately."</blockquote>
-          <div class="client">
-            <div class="client-avatar"><img src="/images/pcfm-logo.svg" alt="Palm Coast Farmers Market" width="52" height="52" loading="lazy" decoding="async" /></div>
-            <div class="client-info">
-              <strong>Palm Coast Farmers Market</strong>
-              <span>Community Market — Palm Coast, FL</span>
-              <span class="result-badge">Weekend Traffic Surge</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"Kevin and his team delivered on all three — social media, YouTube content, and a <strong>complete website overhaul</strong>. Our website is now professional, organized, and conveys a clear message. YouTube views increased as Kevin focused on shorts and introduced AI tools to make the process as efficient as possible. Kevin also provided services <strong>outside of the initial scope</strong> — securing meetings with sponsors, setting up interviews, and helping us create a studio from scratch. We highly recommend Freeland Marketing."</blockquote>
-          <div class="client">
-            <div class="client-avatar client-initials">CM</div>
-            <div class="client-info">
-              <strong>Crowded Market Report</strong>
-              <span>CMR Publishing LLC — Financial Media</span>
-              <span class="result-badge">YouTube Growth + Website Rebuild</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"I can't recommend Kevin enough! He has been handling our <strong>advertising and social media</strong> for our business, and the difference has been incredible. His creativity, consistency, and attention to detail really stand out. Since working with him, we've seen <strong>noticeable growth and engagement</strong>, and we feel confident knowing our business is in great hands. If you're looking for someone reliable, professional, and results-driven, Kevin is the way to go!"</blockquote>
-          <div class="client">
-            <div class="client-avatar client-initials">AD</div>
-            <div class="client-info">
-              <strong>A&amp;D Auto Workz</strong>
-              <span>Auto Repair — Bunnell, FL</span>
-              <span class="result-badge">~3x Revenue Growth</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"Kevin Freeland, owner and operator of Freeland Marketing and Entertainment, is one of the most <strong>professional, honest and reliable</strong> companies to do all your business marketing. Website, Google Ads and much more, Kevin Freeland will get it done for you. He is <strong>very up-to-date and knowledgeable</strong> when it comes to getting your business name out there, whether it's a small business or a large business. As a small business owner of Jeff Handyman 2 the Rescue LLC, I honestly recommend Kevin Freeland as one of the best marketing guys in Palm Coast. Thank you for all your effort, hours, days, and continuous time you put into our business to bring it up to status. <strong>Freeland Marketing and Entertainment is the only way to go</strong>."</blockquote>
-          <div class="client">
-            <div class="client-avatar client-initials">JH</div>
-            <div class="client-info">
-              <strong>Debbie Mauro</strong>
-              <span>Owner — Jeff Handyman 2 the Rescue LLC, Palm Coast FL</span>
-              <span class="result-badge">5 Leads / 2 Closes in 4 Days</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="testimonial">
-          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote>"Before working with Kevin, my website was not accurately communicating the <strong>depth of my work, the transformation I provide for families, or the premium level of support</strong> my company offers. Kevin quickly identified the gaps and helped <strong>restructure the messaging</strong> in a way that was both strategic and aligned with my vision. He also incorporated stronger SEO strategy so the <strong>right people can actually find my business online</strong> rather than simply increasing generic traffic. I sent him documentation about my company, and <strong>within two days the site was already about 90% complete</strong> with only minor corrections remaining. He is strategic, collaborative, responsive, and highly skilled at clarifying a brand and strengthening its online presence."</blockquote>
-          <div class="client">
-            <div class="client-avatar client-initials">SG</div>
-            <div class="client-info">
-              <strong>Sasha Gooray</strong>
-              <span>Founder — The Real You Joyful Learning Center</span>
-              <span class="result-badge">Site 90% Live in 2 Days</span>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- wave: results(#fff) → google-reviews(#05091a) -->
-  <div class="wave" style="background:#fff"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#05091a"/></svg></div>
-
-  <!-- ===== GOOGLE REVIEWS SLIDER ===== -->
-  <section class="section google-reviews-section" aria-labelledby="google-reviews-heading">
-    <div class="container" style="text-align:center;margin-bottom:2.5rem;">
-      <span class="section-label light">What Our Clients Say</span>
-      <h2 id="google-reviews-heading" class="section-title" style="margin-bottom:1.5rem;color:#fff;">Rated 5.0 on Google</h2>
-      <div class="gr-header">
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 48 48" aria-hidden="true" style="width:36px;height:36px;display:block;flex-shrink:0"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0124 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 01-4.087 5.571l.001-.001 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-        <div class="gr-score-block">
-          <span class="gr-score">5.0</span>
-          <div>
-            <span class="gr-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="gr-count">Based on 13 reviews</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="gr-track-wrapper">
-      <div class="gr-track" aria-label="Scrolling Google reviews">
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin and his team delivered on all three — social media, YouTube content, and a complete website overhaul. Our website is now professional, organized, and conveys a clear message. We highly recommend Freeland Marketing.</p><div class="gr-card-author"><div class="gr-avatar">C</div><div><strong>Crowded Market Report</strong><span>CMR Publishing LLC</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Highly recommend Freeland Marketing. They did an excellent job with my website and SEO fixes. They were thorough, knowledgeable, and made the whole process smooth and stress-free.</p><div class="gr-card-author"><div class="gr-avatar">J</div><div><strong>Jakim Hartford</strong><span>Website &amp; SEO Client</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Freeland Marketing and Entertainment has been nothing short of exceptional. Every step of the process was handled with care, attention to detail, and a clear focus on results. Easily a 5-star experience.</p><div class="gr-card-author"><div class="gr-avatar">R</div><div><strong>Robert S</strong><span>Business Owner</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>I can't recommend Kevin enough! His creativity, consistency, and attention to detail really stand out. Since working with him, we've seen noticeable growth and engagement. Kevin is the way to go!</p><div class="gr-card-author"><div class="gr-avatar">D</div><div><strong>Danielle Silva</strong><span>A&amp;D Auto Workz</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Just got off a consultation call with Kevin and all I can say is wow. His company is covering all aspects with his AI services. This company is the real deal.</p><div class="gr-card-author"><div class="gr-avatar">B</div><div><strong>Brody GUY</strong><span>Consultation Client</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin Freeland of FM&amp;E is not only an excellent marketer, but a brilliant expert on the bleeding edge of AI development and its uses for business.</p><div class="gr-card-author"><div class="gr-avatar">G</div><div><strong>Gary Scarano</strong><span>Business Professional</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>One of the best of what he does!! Recommended to the MAX!</p><div class="gr-card-author"><div class="gr-avatar">Y</div><div><strong>yallboi FOXSIN</strong><span>Google Review</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin is a master at marketing! He has helped me with promotions, events, increasing social reach and even consulting me on best practices for content creation.</p><div class="gr-card-author"><div class="gr-avatar">J</div><div><strong>Joshua Archer</strong><span>Creative Professional</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin has amazing ideas and is very knowledgeable. He offers creative, innovative ways to help businesses become more profitable.</p><div class="gr-card-author"><div class="gr-avatar">I</div><div><strong>IrishPrince247</strong><span>Google Review</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin is extremely professional and talented. I've really enjoyed working with him.</p><div class="gr-card-author"><div class="gr-avatar">M</div><div><strong>Miesha Davis</strong><span>Client</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin Freeland's marketing and technical expertise is the absolute best available. His knowledge of AI is unmatched and his commitment to provide measurable results for his clients is superb.</p><div class="gr-card-author"><div class="gr-avatar">T</div><div><strong>The Underdog Report</strong><span>Media &amp; Consulting</span></div></div></div>
-        <div class="gr-card"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>One of the most professional, honest and reliable companies to do all your business marketing. Kevin will get it done for you. Very up-to-date and knowledgeable. Freeland Marketing and Entertainment is the only way to go.</p><div class="gr-card-author"><div class="gr-avatar">D</div><div><strong>Debbie Mauro</strong><span>Jeff Handyman 2 the Rescue</span></div></div></div>
-        <!-- Duplicate set for seamless infinite scroll -->
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Kevin and his team delivered on all three — social media, YouTube content, and a complete website overhaul. We highly recommend Freeland Marketing.</p><div class="gr-card-author"><div class="gr-avatar">C</div><div><strong>Crowded Market Report</strong><span>CMR Publishing LLC</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Highly recommend Freeland Marketing. Thorough, knowledgeable, smooth and stress-free.</p><div class="gr-card-author"><div class="gr-avatar">J</div><div><strong>Jakim Hartford</strong><span>Website &amp; SEO Client</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Nothing short of exceptional. Every step handled with care, attention to detail, and a clear focus on results.</p><div class="gr-card-author"><div class="gr-avatar">R</div><div><strong>Robert S</strong><span>Business Owner</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>His creativity, consistency, and attention to detail really stand out. We've seen noticeable growth and engagement.</p><div class="gr-card-author"><div class="gr-avatar">D</div><div><strong>Danielle Silva</strong><span>A&amp;D Auto Workz</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>All I can say is wow. His company is covering all aspects with his AI services. This company is the real deal.</p><div class="gr-card-author"><div class="gr-avatar">B</div><div><strong>Brody GUY</strong><span>Consultation Client</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Not only an excellent marketer, but a brilliant expert on the bleeding edge of AI development.</p><div class="gr-card-author"><div class="gr-avatar">G</div><div><strong>Gary Scarano</strong><span>Business Professional</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>One of the best of what he does!! Recommended to the MAX!</p><div class="gr-card-author"><div class="gr-avatar">Y</div><div><strong>yallboi FOXSIN</strong><span>Google Review</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>A master at marketing! Promotions, events, increasing social reach and best practices for content creation.</p><div class="gr-card-author"><div class="gr-avatar">J</div><div><strong>Joshua Archer</strong><span>Creative Professional</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Amazing ideas and very knowledgeable. Creative, innovative ways to help businesses become more profitable.</p><div class="gr-card-author"><div class="gr-avatar">I</div><div><strong>IrishPrince247</strong><span>Google Review</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Extremely professional and talented. I've really enjoyed working with him.</p><div class="gr-card-author"><div class="gr-avatar">M</div><div><strong>Miesha Davis</strong><span>Client</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Marketing and technical expertise is the absolute best available. His knowledge of AI is unmatched.</p><div class="gr-card-author"><div class="gr-avatar">T</div><div><strong>The Underdog Report</strong><span>Media &amp; Consulting</span></div></div></div>
-        <div class="gr-card" aria-hidden="true"><div class="gr-card-quote">&ldquo;</div><div class="gr-card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>One of the most professional, honest and reliable companies to do all your business marketing. Kevin will get it done for you. Freeland Marketing and Entertainment is the only way to go.</p><div class="gr-card-author"><div class="gr-avatar">D</div><div><strong>Debbie Mauro</strong><span>Jeff Handyman 2 the Rescue</span></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- wave: google-reviews(#05091a) → about(#f5f6fb) -->
-  <div class="wave" style="background:#05091a"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,0 C480,60 960,60 1440,0 L1440,60 L0,60 Z" fill="#f5f6fb"/></svg></div>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="section about-section" aria-labelledby="about-heading">
-    <div class="container about-inner">
-      <div class="about-text">
-        <span class="section-label">Who We Are</span>
-        <h2 class="section-title" id="about-heading">Creator Energy. Community Roots. ROI Mindset.</h2>
-        <p>Freeland Marketing &amp; Entertainment was founded by Kevin Freeland — a creator who transitioned from tie-dye artist to full-service agency operator. We're built differently from the start.</p>
-        <p>We're not a faceless agency sending you monthly PDFs. Kevin personally shows up, films your products, strategizes with you, and connects you with the resources you need to grow — from marketing to business structure to trusted local partners.</p>
-        <p>Our team combines creative talent with data-driven strategy and cutting-edge AI automation to give your business a real, unfair advantage.</p>
-        <div class="about-trust">
-          <div class="trust-item"><span>✓</span> No contracts. Cancel anytime.</div>
-          <div class="trust-item"><span>✓</span> Transparent pricing. No surprises.</div>
-          <div class="trust-item"><span>✓</span> Hands-on. We show up in person.</div>
-          <div class="trust-item"><span>✓</span> Results-focused from day one.</div>
-        </div>
-        <a href="#contact" class="btn-primary">Work With Our Team</a>
-      </div>
-      <div class="team">
-        <div class="team-member">
-          <div class="avatar">
-            <picture>
-              <source srcset="/images/kevin-headshot.avif" type="image/avif" />
-              <source srcset="/images/kevin-headshot.webp" type="image/webp" />
-              <img src="/images/kevin-headshot.jpg" alt="Kevin Freeland, CEO" width="120" height="120" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <strong>Kevin Freeland</strong>
-          <span>CEO &amp; Founder</span>
-        </div>
-        <div class="team-member">
-          <div class="avatar">
-            <picture>
-              <source srcset="/images/josh-headshot.avif" type="image/avif" />
-              <source srcset="/images/josh-headshot.webp" type="image/webp" />
-              <img src="/images/josh-headshot.jpg" alt="Joshua Archer, Creative Design" width="120" height="120" loading="lazy" decoding="async" />
-            </picture>
-          </div>
-          <strong>Joshua Archer</strong>
-          <span>Creative Design</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICE AREAS ===== -->
-  <section class="section light-section" aria-labelledby="areas-heading">
-    <div class="container text-center">
-      <span class="section-label">Where We Work</span>
-      <h2 class="section-title" id="areas-heading">We Work With Businesses Nationwide</h2>
-      <p class="section-sub section-sub-center">Headquartered in <strong>Palm Coast, FL</strong> — serving businesses of every size across the United States. Social media management, paid ads, AI automation, SEO, and website builds delivered remotely to any market.</p>
-      <div class="areas-grid">
-        <span class="area-pill home">📍 Palm Coast, FL (HQ)</span>
-        <span class="area-pill">New York</span>
-        <span class="area-pill">Los Angeles</span>
-        <span class="area-pill">Chicago</span>
-        <span class="area-pill">Houston</span>
-        <span class="area-pill">Phoenix</span>
-        <span class="area-pill">Dallas</span>
-        <span class="area-pill">Atlanta</span>
-        <span class="area-pill">Miami</span>
-        <span class="area-pill">Orlando</span>
-        <span class="area-pill">Tampa</span>
-        <span class="area-pill">Jacksonville</span>
-        <span class="area-pill">Nashville</span>
-        <span class="area-pill">Charlotte</span>
-        <span class="area-pill">Denver</span>
-        <span class="area-pill">Seattle</span>
-        <span class="area-pill">Las Vegas</span>
-        <span class="area-pill">Austin</span>
-        <span class="area-pill">🇺🇸 All 50 States</span>
-      </div>
-      <a href="#contact" class="btn-primary">Get Started — It's Free</a>
-    </div>
-  </section>
-
-  <!-- wave: areas(#f5f6fb) → faq(#05091a) -->
-  <div class="wave" style="background:#f5f6fb"><svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" style="width:100%;height:60px;" width="1440" height="60"><path d="M0,60 C480,0 960,0 1440,60 L1440,60 L0,60 Z" fill="#05091a"/></svg></div>
-
-  <!-- ===== FAQ ===== -->
-  <section class="section dark" id="faq" aria-labelledby="faq-heading">
-    <div class="container">
-      <span class="section-label light">FAQ</span>
-      <h2 class="section-title light" id="faq-heading">Frequently Asked Questions</h2>
-      <p class="section-sub light">Everything you need to know before working with us. Don't see your question? Ask us directly.</p>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary>What types of businesses do you work with?</summary>
-          <p>We work with businesses of all sizes — local shops, restaurants, service providers, e-commerce brands, and entrepreneurs, as well as mid-size companies and corporations generating over $1 million in revenue. We also provide AI consulting and custom AI workflow design for businesses at every stage. If you want to grow, automate, or scale — we can help.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How soon will I see results?</summary>
-          <p>Many clients see results within the first 30 days. Our client Tokyo Japanese Steakhouse saw <strong>same-day bookings</strong> from their first video campaign. Joe Miller at Joe Tiki grew his business 10x within a year. Timelines vary by service, but we move fast and focus on measurable ROI from day one.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do you offer AI automation services?</summary>
-          <p>Yes — AI and automation are core to what we do. We offer AI consulting, done-for-you AI implementation, custom workflow design, 24/7 AI lead capture, CRM automation, email marketing automation, and more. If you're manually following up with leads, answering the same questions repeatedly, or losing customers because you're too busy to respond fast enough — we build systems to handle it all 24/7.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do you require long-term contracts?</summary>
-          <p>No long-term contracts. We earn your business every month through results. We're confident enough in what we deliver that we don't need to lock you in. You stay because it's working — not because you're trapped.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>How much do your services cost?</summary>
-          <p>Pricing is tailored to your business goals and the services you need. We've worked with businesses at all stages — from garage startups to established brands — and we have flexible packages to match. The best way to get accurate pricing is to book a free consultation so we can understand your goals and build a plan that fits your budget.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What makes Freeland Marketing different from other agencies?</summary>
-          <p>Most agencies put you in a queue and send automated reports. We show up. Kevin personally visits clients, films content on-location, and stays hands-on throughout the entire partnership. We also combine marketing services with AI automation — meaning we don't just drive traffic, we help convert and retain it too. Our client results speak louder than any pitch we could make.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Can you handle both my marketing AND automation?</summary>
-          <p>Yes — that's our specialty. We offer full-service packages that combine social media management, paid ads, SEO, and AI automation so everything works together as one unified growth engine. No juggling multiple vendors.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do you work with businesses outside of Florida?</summary>
-          <p>Yes. While we're based in Palm Coast, FL and have deep community roots here, our digital services and automation buildouts work for businesses anywhere in the United States. Reach out and let's talk.</p>
-        </details>
-
-      </div>
-      <div class="faq-cta">
-        <p>Still have questions?</p>
-        <a href="mailto:kevin@freelandme.com" class="btn-secondary-outline">Email Us Directly</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FINAL CTA / CONTACT ===== -->
-  <section class="section cta-section" id="contact" aria-labelledby="contact-heading">
-    <div class="container cta-inner">
-      <span class="section-label light">Let's Talk</span>
-      <h2 id="contact-heading">Your Competitors Aren't Waiting.<br /><span class="accent">Neither Should You.</span></h2>
-      <p class="cta-sub">Book a free 30-minute strategy call. We'll review your current marketing, identify what's costing you customers, and map out a plan to fix it — on us, no strings attached.</p>
-      <div class="cta-guarantees">
-        <span>✓ 100% Free. No obligation.</span>
-        <span>✓ No contracts required.</span>
-        <span>✓ Results within 30 days.</span>
-      </div>
-
-      <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
-        <input type="hidden" name="access_key" value="af9a5ef5-c8be-450b-8fdd-9039551baa76" />
-        <input type="hidden" name="subject" value="New FME Website Lead" />
-        <input type="hidden" name="redirect" value="https://freelandme.com/thank-you.html" />
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Your Name *</label>
-            <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name" />
-          </div>
-          <div class="form-group">
-            <label for="business">Business Name *</label>
-            <input type="text" id="business" name="business" placeholder="Smith's Restaurant" required autocomplete="organization" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email" id="email" name="email" placeholder="john@yourbusiness.com" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(386) 555-0100" autocomplete="tel" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="service">What are you interested in?</label>
-          <select id="service" name="service">
-            <option value="" disabled selected>Select a service...</option>
-            <option>Social Media Management</option>
-            <option>Paid Ads (Meta / Google)</option>
-            <option>AI Consulting</option>
-            <option>AI Workflow Design</option>
-            <option>AI Automation</option>
-            <option>24/7 AI Lead Capture</option>
-            <option>SEO</option>
-            <option>Website Build</option>
-            <option>Full Service Package</option>
-            <option>Other / Not Sure Yet</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="message">Tell us about your business and goals</label>
-          <textarea id="message" name="message" placeholder="e.g. I run a restaurant in Palm Coast and want more reservations..." rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn-primary btn-large btn-full">Send My Free Strategy Request →</button>
-        <p class="form-note">We typically respond within 2 business hours. Your info is never shared or sold.</p>
-      </form>
-
-      <div class="contact-alt">
-        <p>Prefer to reach out directly?</p>
-        <a href="mailto:kevin@freelandme.com" class="contact-email">kevin@freelandme.com</a>
-        <a href="tel:+19549372510" class="contact-email">(954) 937-2510</a>
-      </div>
-
-      <div class="social-links">
-        <a href="https://facebook.com/FreelandMarketingandEntertainment" target="_blank" rel="noopener noreferrer" aria-label="Freeland Marketing on Facebook" class="social-icon fb-link"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a href="https://instagram.com/freelandmarketing" target="_blank" rel="noopener noreferrer" aria-label="Freeland Marketing on Instagram" class="social-icon ig-link"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:28px;height:28px;display:block"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-        <a href="https://www.tiktok.com/@kevin_freeland" target="_blank" rel="noopener noreferrer" aria-label="Kevin Freeland on TikTok" class="social-icon tt-link"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:28px;height:28px;display:block"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V9.17a8.16 8.16 0 004.76 1.52v-3.4a4.85 4.85 0 01-1-.6z"/></svg></a>
-        <a href="https://www.linkedin.com/in/kevinfreelandaiautomationandmarketingexpert/" target="_blank" rel="noopener noreferrer" aria-label="Kevin Freeland on LinkedIn" class="social-icon li-link"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:28px;height:28px;display:block"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    (function() {
-      var form = document.getElementById('contactForm');
-      if (!form) return;
-      form.addEventListener('submit', function() {
-        var data = {
-          name: form.querySelector('[name="name"]').value,
-          email: form.querySelector('[name="email"]').value,
-          phone: form.querySelector('[name="phone"]').value,
-          business: form.querySelector('[name="business"]').value,
-          message: form.querySelector('[name="message"]').value,
-          form_type: 'contact'
-        };
-        fetch(
-          'https://freelandme.app.n8n.cloud/webhook/form-auto-reply',
-          { method: 'POST', keepalive: true, credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
-        ).catch(function() { /* best-effort */ });
-      });
-    })();
-  </script>
-
-{% endblock %}
+{% set ctaId = "home_band_roadmap" %}
+{% include "partials/cta-band.njk" %}

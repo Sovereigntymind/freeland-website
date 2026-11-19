@@ -1,0 +1,38 @@
+{
+  "_note": "PLAN.md R2-6: revenue_floor null = every valid application gets the booking step until Kevin sets a floor. bookingUrl is filled after the Microsoft Bookings page exists (R1-11). Revenue bands are the visitor's own monthly sales, written without currency symbols so they never read as our prices.",
+  "revenue_floor": null,
+  "revenue_bands": [
+    {
+      "value": "under-50k",
+      "label": "Under 50K a month"
+    },
+    {
+      "value": "50k-250k",
+      "label": "50K to 250K a month"
+    },
+    {
+      "value": "250k-1m",
+      "label": "250K to 1M a month"
+    },
+    {
+      "value": "over-1m",
+      "label": "Over 1M a month"
+    }
+  ],
+  "channels": [
+    "Meta",
+    "Google",
+    "TikTok",
+    "Amazon",
+    "Email and SMS",
+    "Other"
+  ],
+  "roles": [
+    "Founder",
+    "Marketing lead",
+    "Other"
+  ],
+  "bookingUrl": "https://bookings.cloud.microsoft/bookwithme/user/2bff472e6d21419cbacaa3a5f2155c00@freelandme.com/meetingtype/RxDmyyRRyEifYGLHKkrh8w2?bookingcode=13c423cb-1da3-47b8-8f5d-8559183e62ff&anonymous&ismsaljsauthenabled",
+  "applyEndpoint": "/api/roadmap-apply",
+  "hcaptchaSitekey": "3ce6ada8-9a48-4080-b7b4-420a2614dcca"
+}

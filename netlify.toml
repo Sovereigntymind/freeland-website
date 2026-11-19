@@ -9,7 +9,7 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Deleted duplicate blog post — content cannibalized /services/meta-ads/ (rejected by Google)
+# Deleted duplicate blog post: content cannibalized /services/meta-ads/ (rejected by Google)
 [[redirects]]
   from = "/blog/meta-ads-florida-small-business/"
   to = "/services/meta-ads/"
@@ -22,34 +22,230 @@
   status = 301
   force = true
 
-# Force trailing slashes to prevent Google "Redirect error" indexing issues
-# These only fire when no file exists at the from path (force defaults to false)
+# Site rebuild (PLAN s10): retired pages point at their replacement. force = true because old files may still exist.
 [[redirects]]
-  from = "/blog"
-  to = "/blog/"
+  from = "/case-studies/"
+  to = "/results/"
   status = 301
+  force = true
 
 [[redirects]]
-  from = "/services"
-  to = "/services/"
+  from = "/case-studies"
+  to = "/results/"
   status = 301
+  force = true
 
 [[redirects]]
-  from = "/blog/*"
-  to = "/blog/:splat/"
+  from = "/free-audit/"
+  to = "/growth-roadmap/"
   status = 301
+  force = true
 
 [[redirects]]
-  from = "/services/*"
-  to = "/services/:splat/"
+  from = "/free-audit"
+  to = "/growth-roadmap/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/seo-audit/"
+  to = "/growth-roadmap/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/seo-audit"
+  to = "/growth-roadmap/"
+  status = 301
+  force = true
+
+# 15 retired service pages fold into the 8 kept capability pages (STUDY s2.2)
+[[redirects]]
+  from = "/services/ai-consulting/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-consulting"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-workflow-design/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-workflow-design"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/done-for-you-ai/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/done-for-you-ai"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-lead-capture/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-lead-capture"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/call-center-booking-automation/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/call-center-booking-automation"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/crm-automation/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/crm-automation"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/automated-reporting/"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/automated-reporting"
+  to = "/services/ai-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/lead-nurturing/"
+  to = "/services/email-marketing-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/lead-nurturing"
+  to = "/services/email-marketing-automation/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ecommerce-affiliate/"
+  to = "/services/influencer-affiliate/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ecommerce-affiliate"
+  to = "/services/influencer-affiliate/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/affiliate-referral-automation/"
+  to = "/services/influencer-affiliate/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/affiliate-referral-automation"
+  to = "/services/influencer-affiliate/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/google-business-profile/"
+  to = "/services/seo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/google-business-profile"
+  to = "/services/seo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/social-media-scheduling/"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/social-media-scheduling"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-content-creation/"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/ai-content-creation"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/thumbnail-graphic-generation/"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/thumbnail-graphic-generation"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/creative-graphic-design/"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/creative-graphic-design"
+  to = "/services/social-media-management/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/free-business-audit"
   to = "/free-business-audit/"
   status = 301
 
-# Fallback 404
+# Fallback 404 (must stay last)
 [[redirects]]
   from = "/*"
   to = "/404.html"

@@ -1,8 +1,5 @@
 # Freeland Website (freelandme.com)
 
-## Stack
-Eleventy 3.1.2 + Nunjucks, Netlify auto-deploy, Node 20
-
 ## Build & Deploy
 - Build: `npm run build` (from this directory, publishes `_site`)
 - Deploy: `bash deploy.sh` from repo root (splits subtree, pushes to Netlify)

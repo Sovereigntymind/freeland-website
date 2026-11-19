@@ -1,0 +1,23 @@
+{# trackRecordMode: "metrics" for Home; otherwise full cards. Source paths stay internal. #}
+{% if trackRecordMode == "metrics" %}
+<div class="proof-numbers">
+  {% for item in proof.trackRecord %}{% if item.metric %}
+  <div class="proof-stat reveal" data-track-record-id="{{ item.id }}">
+    <p class="stat-label">{{ item.metric.label }}</p>
+    <span class="stat-value" data-proof><span data-count-to="{{ item.metric.value }}" data-decimals="{{ item.metric.decimals }}" data-suffix="{{ item.metric.suffix }}">{{ item.metric.value }}{{ item.metric.suffix }}</span></span>
+    <p class="stat-source">{{ item.attribution }}</p>
+    <p class="stat-source" data-proof>{{ item.homeContextLine }}</p>
+  </div>
+  {% endif %}{% endfor %}
+</div>
+{% else %}
+<div class="grid-2">
+  {% for item in proof.trackRecord %}
+  <div class="panel stack-v" data-track-record-id="{{ item.id }}">
+    <h3>{{ item.attribution or item.client }}</h3>
+    {% if item.result %}<p class="stat-value results-claim" data-proof>{{ item.claim }}</p>{% else %}<blockquote data-proof>&ldquo;{{ item.claim }}&rdquo;</blockquote>{% endif %}
+    <p data-proof>{{ item.contextLine }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}

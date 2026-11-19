@@ -1,0 +1,9 @@
+{# Use the reviews macro for selection. Keep text and attribution sourced from proof.json. #}
+{% if review.verifiedVerbatim == true and (review.source == "Google review" or (review.source == "Letter" and review.cleared == true)) and not review.placementExcluded %}
+<figure class="quote-block" data-review-id="{{ review.id | escape }}">
+  <blockquote{% if review.sourceUrl and (review.sourceUrl.slice(0, 8) == "https://" or review.sourceUrl.slice(0, 7) == "http://") %} cite="{{ review.sourceUrl | escape }}"{% endif %}>{% for paragraph in (review.excerpts or (review.excerpt or review.text).split('\n\n')) %}<p>{{ paragraph | escape }}</p>{% endfor %}</blockquote>
+  <figcaption>{% if review.name %}<span data-review-name>{{ review.name | escape }}</span>{% endif %}{% if review.business %}{% if review.name %}, {% endif %}<span data-review-business>{{ review.business | escape }}</span>{% endif %}, <span data-review-source>{{ review.source | escape }}</span></figcaption>
+  {% if review.contextLabel %}<p class="helper">{{ review.contextLabel | escape }}</p>{% endif %}
+  {% if review.source == "Google review" and review.excerpt %}<p class="review-link"><a href="{{ review.sourceUrl | escape }}">See our Google reviews</a></p>{% endif %}
+</figure>
+{% endif %}

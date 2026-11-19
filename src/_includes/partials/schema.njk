@@ -1,0 +1,81 @@
+{#- One @graph per page with stable @ids (PLAN.md s9). No price or priceRange keys anywhere. -#}
+{%- set breadcrumbId = "" -%}
+{%- if breadcrumbs -%}
+  {%- set breadcrumbId = site.url + (canonicalPath or page.url) + "#breadcrumbs" -%}
+{%- else -%}
+  {%- for node in schema -%}{%- if node["@type"] == "BreadcrumbList" -%}{%- set breadcrumbId = node["@id"] -%}{%- endif -%}{%- endfor -%}
+{%- endif -%}
+{%- set graph = [
+  {
+    "@type": "Organization",
+    "@id": site.url + "/#org",
+    "name": site.name,
+    "alternateName": site.alternateName,
+    "legalName": site.legalName,
+    "description": site.description,
+    "areaServed": site.areaServed,
+    "knowsAbout": site.knowsAbout,
+    "url": site.url + "/",
+    "logo": site.logo,
+    "email": site.email,
+    "founder": { "@id": site.url + "/#kevin" },
+    "sameAs": site.orgSameAs
+  },
+  {
+    "@type": "Person",
+    "@id": site.url + "/#kevin",
+    "name": site.founder,
+    "sameAs": site.personSameAs,
+    "description": site.personDescription,
+    "knowsAbout": site.personKnowsAbout,
+    "jobTitle": "Founder",
+    "worksFor": { "@id": site.url + "/#org" },
+    "image": site.url + "/images/kevin-headshot.jpg",
+    "url": site.url + "/about/"
+  },
+  {
+    "@type": "WebSite",
+    "@id": site.url + "/#website",
+    "url": site.url + "/",
+    "name": site.name,
+    "publisher": { "@id": site.url + "/#org" }
+  },
+  {
+    "@type": pageType or "WebPage",
+    "@id": site.url + (canonicalPath or page.url) + "#webpage",
+    "url": site.url + (canonicalPath or page.url),
+    "name": title,
+    "description": description,
+    "inLanguage": "en-US",
+    "isPartOf": { "@id": site.url + "/#website" },
+    "about": { "@id": site.url + "/#org" }
+  }
+] -%}
+{%- if breadcrumbId -%}
+  {# Keep the reference absent, rather than null, on pages without breadcrumbs. #}
+  {%- set webpage = graph.pop() -%}
+  {%- set graph = (graph.push({
+    "@type": webpage["@type"], "@id": webpage["@id"], "url": webpage.url,
+    "name": webpage.name, "description": webpage.description,
+    "inLanguage": webpage.inLanguage, "isPartOf": webpage.isPartOf, "about": webpage.about,
+    "breadcrumb": { "@id": breadcrumbId }
+  }), graph) -%}
+{%- endif -%}
+{%- if breadcrumbs -%}
+  {%- set items = [] -%}
+  {%- for b in breadcrumbs -%}
+    {%- set items = (items.push({ "@type": "ListItem", "position": loop.index, "name": b.name, "item": site.url + b.url }), items) -%}
+  {%- endfor -%}
+  {%- set graph = (graph.push({ "@type": "BreadcrumbList", "@id": site.url + (canonicalPath or page.url) + "#breadcrumbs", "itemListElement": items }), graph) -%}
+{%- endif -%}
+{%- if faqKey and faq[faqKey] -%}
+  {%- set qa = [] -%}
+  {%- for f in faq[faqKey] -%}
+    {%- set qa = (qa.push({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }), qa) -%}
+  {%- endfor -%}
+  {%- set graph = (graph.push({ "@type": "FAQPage", "@id": site.url + (canonicalPath or page.url) + "#faq", "mainEntity": qa }), graph) -%}
+{%- endif -%}
+{%- for node in schema -%}
+  {%- set graph = (graph.push(node), graph) -%}
+{%- endfor %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@graph": graph } | dump | safe }}</script>

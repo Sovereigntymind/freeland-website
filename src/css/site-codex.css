@@ -1,0 +1,90 @@
+/* Wire after site.css. Migrated article class names retain the original body markup. */
+.article-shell{overflow-wrap:anywhere}
+.article-shell .post-header{padding-block:calc(var(--nav-h) + 64px) 40px;border-bottom:1px solid var(--line)}
+.article-shell .post-header-inner,.article-shell .post-body,.article-shell article>.post-featured-img{width:min(100% - var(--gutter)*2,820px);margin-inline:auto}
+.article-shell .post-header-inner>*+*{margin-top:24px}
+.article-shell .post-header h1{font-size:clamp(36px,4.5vw,66px)}
+.article-shell .post-breadcrumb,.article-shell .blog-category,.article-shell .post-meta{font-size:14px;color:var(--muted)}
+.article-shell .blog-category{display:block}
+.article-shell .post-meta{display:flex;flex-wrap:wrap;gap:12px 24px}
+.article-shell .post-body{padding-block:40px 64px;font-size:18px;line-height:1.8}
+.article-shell .post-body>*+*{margin-top:24px}
+.article-shell .post-body h2{font-size:clamp(28px,3vw,40px);margin-top:56px;line-height:1.15}
+.article-shell .post-body h3{font-size:clamp(22px,2.2vw,28px);margin-top:36px;line-height:1.25}
+.article-shell .post-body a:not(.button){text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.article-shell .post-body li+li{margin-top:12px}
+.article-shell .post-body ul,.article-shell .post-body ol{padding-left:24px}
+.article-shell .post-featured-img{margin-block:32px}
+.article-shell .post-featured-img img{width:100%;height:auto;border-radius:var(--panel)}
+.article-shell .post-callout,.article-shell .post-cta-box,.article-shell .related-services{padding:clamp(20px,4vw,32px);background:var(--surface);border:1px solid var(--line);border-radius:var(--panel)}
+.article-shell .post-callout>*+*,.article-shell .post-cta-box>*+*,.article-shell .related-services>*+*{margin-top:16px}
+.article-shell .post-cta-box .button{white-space:normal}
+.article-shell .post-nav-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:16px}
+.article-shell table{display:block;overflow-x:auto;width:100%;border-collapse:collapse;font-size:16px}
+.article-shell th,.article-shell td{border:1px solid var(--line);padding:12px;text-align:left}
+.grid-3 .panel h2,.grid-2 .link-card h2{font-size:clamp(24px,2.3vw,34px);line-height:1.15}
+@media(max-width:767px){.article-shell .post-header{padding-top:calc(var(--nav-h) + 40px)}.article-shell .post-body{font-size:17px}}
+
+/* Reading comfort on dark (Kevin 11/19: stay dark everywhere, easier on the eyes): shorter lines, larger type, softer text, a slightly lifted charcoal. */
+.article-shell{--surface:#1C1F23;background:#14161A}
+.article-shell .post-header-inner,.article-shell .post-body,.article-shell article>.post-featured-img{width:min(100% - var(--gutter)*2,660px)}
+.article-shell .post-body{font-size:19px;line-height:1.75;color:rgba(233,230,223,.86)}
+.article-shell .post-body h2,.article-shell .post-body h3,.article-shell .post-body strong{color:var(--text)}
+.article-shell .post-body>*+*{margin-top:1.3em}
+.article-shell .post-body h2{margin-top:2.4em}
+.article-shell .post-body h3{margin-top:1.8em}
+@media(max-width:767px){.article-shell .post-body{font-size:18px;line-height:1.7}}
+/* Tables in posts: whole words only; wide tables scroll inside their own box on phones. */
+.article-shell table{overflow-wrap:normal;word-break:normal;line-height:1.55}
+.article-shell th,.article-shell td{min-width:128px;vertical-align:top}
+.article-shell th:first-child,.article-shell td:first-child{min-width:104px;color:var(--text);font-weight:500}
+@media(max-width:767px){.article-shell table{font-size:15px}.article-shell th,.article-shell td{padding:10px}}
+
+/* Elevate proof and responsibility blocks use the existing dark tokens. */
+[aria-label="Selected Google reviews"],[aria-label="Letters"]{margin-block:32px}
+.quote-block[data-review-id]{margin:0;padding:clamp(20px,3vw,32px);border:1px solid var(--line);border-radius:var(--panel);background:var(--surface)}
+.quote-block[data-review-id] blockquote{font-size:clamp(18px,2vw,22px);line-height:1.6;max-width:70ch}
+.quote-block[data-review-id] blockquote p+p{margin-top:20px}
+.quote-block[data-review-id] figcaption{margin-top:20px;font-size:15px;color:var(--muted)}
+.quote-block[data-review-id] .review-link{margin-top:12px;font-size:15px}
+.quote-block[data-review-id] .helper{margin-top:16px}
+.service-strip h3{font-size:clamp(22px,2vw,28px);line-height:1.25}
+.responsibility-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:var(--panel)}
+.responsibility-table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.6;word-break:normal;overflow-wrap:normal}
+.responsibility-table th,.responsibility-table td{padding:20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.responsibility-table th{color:var(--text);font-weight:500}
+.responsibility-table td{min-width:220px}
+.responsibility-table tr:last-child>*{border-bottom:0}
+.responsibility-table thead{background:var(--surface)}
+.apply-after{grid-column:2}
+.apply-copy [aria-label="Selected Google reviews"] :is(h2,h3){font-size:24px}
+.apply-copy .quote-block[data-review-id] blockquote{font-size:18px}
+.rows>li>p+p{grid-column:2}
+picture.portrait{display:block;width:100%}
+@media(max-width:900px){.apply-after{grid-column:auto}}
+@media(max-width:767px){.rows>li>p+p{grid-column:auto}.responsibility-table th,.responsibility-table td{padding:16px}}
+@media(pointer:coarse){main a:not(.link-card){display:inline-flex;align-items:center;min-height:44px}main summary,main button{min-height:44px}}
+/* Review polish: quiet section label, readable quote type, cards in a grid; phone table fits three columns. */
+[aria-label="Selected Google reviews"]>h2,[aria-label="Letters"]>h2{font-size:clamp(22px,2.2vw,30px);letter-spacing:-.01em;margin-bottom:8px}
+h2+section[aria-label="Selected Google reviews"]{margin-top:24px}
+.review-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:stretch}
+.review-grid>.quote-block[data-review-id]{display:flex;flex-direction:column;height:100%}
+.quote-block[data-review-id] blockquote{font-family:var(--body);font-weight:400;letter-spacing:0;font-size:18px;line-height:1.65;color:var(--text);max-width:none}
+.quote-block[data-review-id] figcaption{margin-top:auto;padding-top:20px;color:var(--text);font-weight:500}
+.quote-block[data-review-id] figcaption [data-review-source]{color:var(--muted);font-weight:400}
+.quote-block[data-review-id] .review-link a{color:var(--muted)}
+@media(max-width:767px){.responsibility-table{font-size:15px}.responsibility-table td{min-width:0}.responsibility-table th,.responsibility-table td{padding:12px 10px}.responsibility-table th:first-child,.responsibility-table td:first-child{width:24%}}
+
+/* Booking proof shares the action row and stacks directly below it on phones. */
+.book-first{margin-top:32px;padding-block:24px;border-block:1px solid var(--line)}
+.book-action-proof{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:40px}
+.book-action-proof [aria-label="Selected Google reviews"]{margin-block:0}
+@media(max-width:900px){.book-action-proof{grid-template-columns:1fr}}
+
+/* Book: the not-applied path is a quiet line under the booking action. */
+p.book-first{margin-top:28px;font-size:16px;color:var(--muted)}
+p.book-first a{color:var(--text)}
+
+/* Founder guides keep the existing ruled rows and generous link targets. */
+.founder-guides a,.all-guides{display:inline-flex;align-items:center;min-height:44px}
+.founder-guides h3{min-width:0;overflow-wrap:anywhere}

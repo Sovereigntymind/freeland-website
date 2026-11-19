@@ -1,0 +1,52 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="wordmark" style="color:var(--text)">FREELAND</p>
+        <p style="margin-top:14px;max-width:34ch">Growth for founder-led DTC brands. Kevin reads the numbers; the system does the work.</p>
+        <p style="margin-top:14px"><a href="mailto:{{ site.email }}" data-cta="footer_email">{{ site.email }}</a></p>
+      </div>
+      <div>
+        <h2>Start</h2>
+        <ul>
+          <li><a href="/growth-roadmap/" data-cta="footer_roadmap">Growth Roadmap</a></li>
+          <li><a href="/how-it-works/">How it works</a></li>
+          <li><a href="/results/">Results</a></li>
+          <li><a href="/for/supplement-brands/">For supplement brands</a></li>
+          <li><a href="/free-business-audit/">Instant site check</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Services</h2>
+        <ul>
+          <li><a href="/services/meta-ads/">Meta ads</a></li>
+          <li><a href="/services/google-ads-management/">Google ads</a></li>
+          <li><a href="/services/website-design/">Landing pages and CRO</a></li>
+          <li><a href="/services/ai-automation/">AI agents and automation</a></li>
+          <li><a href="/services/email-marketing-automation/">Retention and email</a></li>
+          <li><a href="/services/influencer-affiliate/">Creators and affiliates</a></li>
+          <li><a href="/services/seo/">SEO and AEO</a></li>
+          <li><a href="/services/social-media-management/">Organic social</a></li>
+          <li><a href="/services/">All services</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about/">About Kevin</a></li>
+          <li><a href="/blog/">Insights</a></li>
+          <li><a href="/partners/">Agency partners</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/llm-info/">Fact sheet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; {{ buildDate.year }} {{ site.name }}. Serving brands nationwide.</p>
+      <p>
+        {%- for social in site.social %}<a href="{{ social.url }}" rel="noopener" data-cta="footer_social" style="margin-right:14px">{{ social.label }}</a>{% endfor -%}
+        <a href="/privacy/" style="margin-right:14px">Privacy</a><a href="/terms/">Terms</a>
+      </p>
+    </div>
+  </div>
+</footer>

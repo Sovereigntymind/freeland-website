@@ -1,0 +1,36 @@
+{# ids preserve caller order. With no ids, tag + limit select in proof-file order.
+   Verified status is independent of permission. Excluded placements stay withheld.
+   Unknown ids emit a diagnostic caught by test-proof; they never emit a quote. #}
+{# headingLevel: 2 for standalone, 3 under an h2; 0 lets the site shell resolve
+   existing callers without changing writer-owned page files. #}
+{% macro reviews(proof, ids=[], tag="", limit=0, headingLevel=0) %}
+{% set headingTag = "h3" if headingLevel == 3 else "h2" %}
+{% set selected = [] %}
+{% set entries = proof.reviews.concat(proof.letters) %}
+{% if ids.length %}
+  {% for id in ids %}
+    {% set found = [] %}
+    {% for entry in entries %}{% if entry.id == id %}{% set found = (found.push(entry), found) %}{% endif %}{% endfor %}
+    {% if not found.length %}<span hidden data-proof-error="unknown-id" data-review-id="{{ id | escape }}"></span>{% endif %}
+    {% for entry in found %}{% set selected = (selected.push(entry), selected) %}{% endfor %}
+  {% endfor %}
+{% elif tag %}
+  {% for entry in entries %}{% if tag in entry.tags %}{% set selected = (selected.push(entry), selected) %}{% endif %}{% endfor %}
+{% endif %}
+{% set eligible = [] %}
+{% for entry in selected %}
+  {% if entry.verifiedVerbatim == true and (entry.source == "Google review" or (entry.source == "Letter" and entry.cleared == true)) and not entry.placementExcluded and (not limit or eligible.length < limit) %}
+    {% set eligible = (eligible.push(entry), eligible) %}
+  {% endif %}
+{% endfor %}
+{% for source in ["Google review", "Letter"] %}
+  {% set group = [] %}{% for entry in eligible %}{% if entry.source == source %}{% set group = (group.push(entry), group) %}{% endif %}{% endfor %}
+  {% if group.length %}
+  <section class="stack-v" aria-label="{{ 'Selected Google reviews' if source == 'Google review' else 'Letters' }}">
+    <{{ headingTag }}{% if not headingLevel %} data-review-heading="auto"{% endif %}>{{ 'Selected Google reviews' if source == 'Google review' else 'Letters' }}</{{ headingTag }}>
+    <div class="review-grid">{% for review in group %}{% include "partials/review.njk" %}{% endfor %}</div>
+    {% if source == "Google review" %}<p><a href="{{ proof.googleProfile.sourceUrl | escape }}">See all reviews on Google</a></p>{% endif %}
+  </section>
+  {% endif %}
+{% endfor %}
+{% endmacro %}

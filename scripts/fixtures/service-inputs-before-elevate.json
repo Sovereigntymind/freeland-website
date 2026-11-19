@@ -1,0 +1,434 @@
+{
+  "ai-automation": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "AI Automation and AI Agents for DTC Brands | Freeland",
+      "description": "AI agents and business automation for founder-led DTC brands, with clear inputs, human review and useful reporting.",
+      "serviceName": "AI agents and automation",
+      "serviceSlug": "ai-automation",
+      "lead": "Give repeat work a reliable system.",
+      "steps": [
+        {
+          "title": "Map the work",
+          "text": "Find the repeated steps in lead handling, reporting and operations. Define the inputs, permissions and result before building."
+        },
+        {
+          "title": "Connect the systems",
+          "text": "Build workflows and agents around the tools the business uses. Keep approval steps where a mistake could affect a customer or a live account."
+        },
+        {
+          "title": "Watch the exceptions",
+          "text": "Log what ran, surface failures and make the next action clear. A system needs maintenance and review after it is switched on."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Where should we use AI first?",
+          "a": "Start with a repeated task whose inputs and result are clear. The roadmap helps decide whether it needs AI or a simpler automation."
+        },
+        {
+          "q": "Will everything run without review?",
+          "a": "No. The review steps depend on the task, the data and what a mistake could change."
+        },
+        {
+          "q": "How do you price an automation project?",
+          "a": "We scope it after the roadmap, based on the workflow, integrations and ongoing support."
+        }
+      ],
+      "proofSlug": "redd-remedies",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "AI agents and automation",
+          "url": "/services/ai-automation/"
+        }
+      ]
+    },
+    "body": "\n<p>A useful automation has a defined job, a way to check its work and a person who owns the exceptions. We start with the process before choosing tools.</p>\n"
+  },
+  "email-marketing-automation": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Email Marketing Automation for DTC Brands | Freeland",
+      "description": "Retention and email systems for DTC brands, connecting lifecycle messages, customer behavior and store results.",
+      "serviceName": "Email marketing automation and retention",
+      "serviceSlug": "email-marketing-automation",
+      "lead": "Keep the conversation going after the first order.",
+      "steps": [
+        {
+          "title": "Review the customer journey",
+          "text": "Look at signup, welcome, abandoned checkout, post-purchase and returning-customer paths. Check consent, suppression and overlapping messages."
+        },
+        {
+          "title": "Make each message useful",
+          "text": "Connect flows and campaigns to what a customer did and what they need next. Keep the offer, timing and destination aligned."
+        },
+        {
+          "title": "Measure with context",
+          "text": "Read attributed revenue alongside order data, deliverability and customer behavior. An email platform claim alone does not establish incremental sales."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can you work with our existing email setup?",
+          "a": "Yes. We review the current platform, flows and data before deciding what to change."
+        },
+        {
+          "q": "Is this only about sending more campaigns?",
+          "a": "No. The work may start with missing flows, message overlap, data quality or the experience after purchase."
+        },
+        {
+          "q": "What will retention work cost?",
+          "a": "The scope follows the roadmap and depends on the flows, campaigns and technical work needed."
+        }
+      ],
+      "proofSlug": "mara-labs",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Retention and email",
+          "url": "/services/email-marketing-automation/"
+        }
+      ]
+    },
+    "body": "\n<p>The first purchase is the start of a customer relationship. We review the messages and timing around it to find where useful follow-up is missing.</p>\n"
+  },
+  "google-ads-management": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Google Ads Management for DTC Brands | Freeland",
+      "description": "Google Ads management for DTC brands, with search intent, product feeds and store results considered together.",
+      "serviceName": "Google Ads management",
+      "serviceSlug": "google-ads-management",
+      "lead": "Meet buyers who are already looking.",
+      "steps": [
+        {
+          "title": "Check what brings customers",
+          "text": "Review search terms, branded and nonbranded traffic, conversion setup and the products receiving budget."
+        },
+        {
+          "title": "Match the campaign to the store",
+          "text": "Organize search and shopping work around the catalog, buying intent and landing pages. Check product information before treating a feed issue as an ad issue."
+        },
+        {
+          "title": "Make the next decision clear",
+          "text": "Explain what changed, what the data can support and which test comes next. Keep budget decisions tied to business results."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can you review an existing Google Ads account?",
+          "a": "Yes. We can start with the current account and identify what needs to be kept, repaired or tested."
+        },
+        {
+          "q": "Do you work on product feeds?",
+          "a": "Product information and feed issues are part of the review when shopping campaigns depend on them."
+        },
+        {
+          "q": "How is the work priced?",
+          "a": "We scope the work after the roadmap, based on the account and the problems to solve."
+        }
+      ],
+      "proofSlug": "redd-remedies",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Google ads",
+          "url": "/services/google-ads-management/"
+        }
+      ]
+    },
+    "body": "\n<p>A search click carries a question. Your campaign, product page and offer should answer the same one. We review that path before recommending more spend.</p>\n"
+  },
+  "influencer-affiliate": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Creator and Affiliate Programs for DTC Brands | Freeland",
+      "description": "Creator and affiliate program systems for founder-led DTC brands, including onboarding, links, follow-up and performance tracking.",
+      "serviceName": "Creator and affiliate programs",
+      "serviceSlug": "influencer-affiliate",
+      "lead": "Build a program you can track and maintain.",
+      "steps": [
+        {
+          "title": "Define the program",
+          "text": "Set the partner fit, product story, approved claims and terms before outreach. Identify who owns each approval."
+        },
+        {
+          "title": "Organize the work",
+          "text": "Create a process for onboarding, links, codes, assets and follow-up. Keep partners and internal teams working from the same information."
+        },
+        {
+          "title": "Review the results",
+          "text": "Connect partner activity to tracked orders where the data allows. Explain attribution gaps and distinguish content delivery from sales performance."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do you guarantee creator sales?",
+          "a": "No. Results depend on the offer, audience, execution and measurement. We define the test and review what the evidence shows."
+        },
+        {
+          "q": "Can you improve a program we already have?",
+          "a": "Yes. We can review its onboarding, tracking and follow-up process before proposing changes."
+        },
+        {
+          "q": "How is a program scoped?",
+          "a": "The roadmap identifies the setup and support needed. Commercial terms are agreed separately before the work starts."
+        }
+      ],
+      "proofSlug": "redd-remedies",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Creator and affiliate programs",
+          "url": "/services/influencer-affiliate/"
+        }
+      ]
+    },
+    "body": "\n<p>A creator program needs more than a list of names. It needs a clear offer, a repeatable way to work with partners and a useful record of what happens.</p>\n"
+  },
+  "meta-ads": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Meta Ads Management for DTC Brands | Freeland",
+      "description": "Meta ads for founder-led DTC brands, connecting campaign decisions to acquisition costs, landing pages and repeat purchases.",
+      "serviceName": "Meta ads management",
+      "serviceSlug": "meta-ads",
+      "lead": "Give every ad a clear job.",
+      "steps": [
+        {
+          "title": "Find the constraint",
+          "text": "Review account structure, customer acquisition costs and the route from ad to checkout. Separate a campaign problem from an offer or page problem."
+        },
+        {
+          "title": "Build a useful testing plan",
+          "text": "Set up campaigns around clear hypotheses. Compare messages and audiences with agreed spending limits and enough context to interpret results."
+        },
+        {
+          "title": "Read beyond the platform",
+          "text": "Review platform results alongside store sales and customer data. A reported return on ad spend is one input, not a profit statement."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do we need a bigger ad budget?",
+          "a": "We start with the data you have. The roadmap may call for changes to the offer, page or measurement before more spending."
+        },
+        {
+          "q": "Do you handle the landing page too?",
+          "a": "Landing pages and conversion work can be part of the plan when the path after the ad needs attention."
+        },
+        {
+          "q": "What does the work cost?",
+          "a": "The scope comes after the roadmap, based on the work your numbers need."
+        }
+      ],
+      "proofSlug": "mara-labs",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Meta ads",
+          "url": "/services/meta-ads/"
+        }
+      ]
+    },
+    "body": "\n<p>More spend only helps when the offer, creative and store can turn attention into customers. We look at those pieces together before deciding what to change.</p>\n"
+  },
+  "seo": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "SEO and AEO Services for DTC Brands | Freeland",
+      "description": "Search engine and answer engine optimization for DTC brands, built around useful content, technical foundations and clear product information.",
+      "serviceName": "SEO and AEO",
+      "serviceSlug": "seo",
+      "lead": "Answer the questions buyers bring to search.",
+      "steps": [
+        {
+          "title": "Check the foundations",
+          "text": "Review indexing, page structure, internal links and structured data. Make sure important product and category pages can be found."
+        },
+        {
+          "title": "Write useful answers",
+          "text": "Connect buyer questions to clear page content. Use accurate product information and relevant proof, with claims reviewed before publication."
+        },
+        {
+          "title": "Track discovery and action",
+          "text": "Review search visibility alongside visits and useful store actions. Treat AI answer visibility as something to observe, not a placement we can promise."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is AEO?",
+          "a": "Answer engine optimization is the work of making accurate, useful information easier for answer systems to interpret and cite."
+        },
+        {
+          "q": "Can you guarantee rankings or AI citations?",
+          "a": "No. We can improve the content and technical foundations, but search engines and answer systems decide what they show."
+        },
+        {
+          "q": "Do you sell a fixed SEO package?",
+          "a": "The scope comes after the roadmap and reflects the site, content and technical work needed."
+        }
+      ],
+      "proofSlug": "redd-remedies",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "SEO and AEO",
+          "url": "/services/seo/"
+        }
+      ]
+    },
+    "body": "\n<p>Your pages should be easy for people to understand and for search systems to read. We work on the technical and content gaps that get in the way.</p>\n"
+  },
+  "social-media-management": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Social Media Management for DTC Brands | Freeland",
+      "description": "Organic social systems for DTC brands, with planning, approvals, publishing and reporting connected in one process.",
+      "serviceName": "Social media management",
+      "serviceSlug": "social-media-management",
+      "lead": "Give useful content a repeatable path to publication.",
+      "steps": [
+        {
+          "title": "Set the working plan",
+          "text": "Define the audience, topics, approved claims and available material. Match the publishing plan to what the team can support."
+        },
+        {
+          "title": "Connect review and publishing",
+          "text": "Make briefs, feedback and approvals easy to follow. Build a repeatable schedule with a clear owner for each step."
+        },
+        {
+          "title": "Learn from the response",
+          "text": "Review reach, engagement and useful site actions together. Feed the findings into the next plan without treating every interaction as a sale."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is this a standalone creative studio service?",
+          "a": "The focus is the publishing and operating system. Creative needs are assessed as part of the broader plan and available material."
+        },
+        {
+          "q": "Can we keep reviewing posts before they go out?",
+          "a": "Yes. The approval process is agreed before publishing and should reflect the brand and its claims requirements."
+        },
+        {
+          "q": "What does social support cost?",
+          "a": "We scope the work after the roadmap, based on the channels, material, workflow and support needed."
+        }
+      ],
+      "proofSlug": "mara-labs",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Organic social systems",
+          "url": "/services/social-media-management/"
+        }
+      ]
+    },
+    "body": "\n<p>Consistent publishing depends on more than ideas. We help organize the work from approved source material to posts, review and reporting.</p>\n"
+  },
+  "website-design": {
+    "front": {
+      "layout": "layouts/service.njk",
+      "title": "Landing Page Design and CRO for DTC Brands | Freeland",
+      "description": "Landing pages and conversion rate optimization for founder-led DTC brands, from the ad promise to the product page and checkout.",
+      "serviceName": "Landing page design and CRO",
+      "serviceSlug": "website-design",
+      "lead": "Make the next step easier to take.",
+      "steps": [
+        {
+          "title": "Understand the buying path",
+          "text": "Review the ad promise, mobile page, product details and checkout route. Check whether key events tell you what customers actually do."
+        },
+        {
+          "title": "Build around one decision",
+          "text": "Give the page a clear offer, useful proof, direct answers and a next step. Keep content readable and usable on a phone."
+        },
+        {
+          "title": "Test the change",
+          "text": "Agree on the measure before launch. Compare outcomes with enough context to avoid confusing a promotion or traffic shift with a page improvement."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do we need a full website rebuild?",
+          "a": "Not always. A focused page or checkout-path improvement may be the better starting point."
+        },
+        {
+          "q": "What does CRO mean?",
+          "a": "Conversion rate optimization means finding and testing changes that help more visitors complete a useful action, such as buying."
+        },
+        {
+          "q": "Can you quote the project now?",
+          "a": "We scope the work after the roadmap so the quote reflects the pages and problems that need attention."
+        }
+      ],
+      "proofSlug": "mara-labs",
+      "breadcrumbs": [
+        {
+          "name": "Home",
+          "url": "/"
+        },
+        {
+          "name": "Services",
+          "url": "/services/"
+        },
+        {
+          "name": "Landing pages and CRO",
+          "url": "/services/website-design/"
+        }
+      ]
+    },
+    "body": "\n<p>The page should help a buyer understand the offer, trust the business and take the next step. We focus the work on the points where that decision gets difficult.</p>\n"
+  }
+}

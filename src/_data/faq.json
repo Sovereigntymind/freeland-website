@@ -1,0 +1,94 @@
+{
+  "home": [
+    {
+      "q": "What does it cost?",
+      "a": "The roadmap is free, and you keep it whether or not you hire us. Work after that is quoted for your brand, from what your numbers need."
+    },
+    {
+      "q": "Is this just AI hype?",
+      "a": "No. A person reads your numbers and makes the calls. The system does the repeat work, like daily ad checks and switching banners when a sale starts, so routine work does not wait on a busy team."
+    },
+    {
+      "q": "We already have an agency. Is the roadmap still useful?",
+      "a": "Yes. The roadmap is a second opinion you keep. You can use it to check what your current team is doing."
+    },
+    {
+      "q": "Who is this for?",
+      "a": "Founder-led DTC brands that already sell online and want more revenue from the traffic and customers they have."
+    }
+  ],
+  "roadmap": [
+    {
+      "q": "What do I get in the Growth Roadmap?",
+      "a": "A plain-English read of your ads, store, offer, retention and tracking, with the leaks in order and where to start. Kevin starts from your public store and ads plus your five answers. A deeper read of your accounts needs view access, agreed on the call. He walks you through it on a 30-minute call, and you keep it."
+    },
+    {
+      "q": "What do you need from me?",
+      "a": "Your store address and five answers. If you want the deeper read, view-only access to your ad accounts and store reports, agreed on the call. Changes wait for your say-so."
+    },
+    {
+      "q": "Is there a catch?",
+      "a": "No. Kevin walks you through your roadmap on the 30-minute call, and you keep it whether or not you hire us. Then you decide whether you want us to do the work or to do it yourself. If you want us to, the work is scoped for your brand."
+    },
+    {
+      "q": "What does it cost to work together?",
+      "a": "Work after the roadmap is quoted for your brand, from what your numbers need. The roadmap itself is free. There are no packages to pick from."
+    }
+  ],
+  "general": [
+    {
+      "q": "What does it cost?",
+      "a": "The roadmap is free. Work after that is quoted for your brand, from what your numbers need. There are no packages to pick from, and you keep the roadmap whether or not you hire us."
+    },
+    {
+      "q": "Who is this for?",
+      "a": "Founder-led DTC brands that already sell online and want more revenue from the traffic and customers they have. It is not for pre-launch ideas or for brands looking for the cheapest vendor."
+    },
+    {
+      "q": "Is this just AI hype?",
+      "a": "No. A person reads your numbers and makes the calls. The system does the repeat work, like daily ad checks and switching banners when a sale starts, so routine work does not wait on a busy team."
+    },
+    {
+      "q": "We already have an agency. Is the roadmap still useful?",
+      "a": "Yes. The roadmap is a second opinion you keep. You can use it to check what your current team is doing."
+    },
+    {
+      "q": "What access do you need?",
+      "a": "Your store address and five answers to start. If you want the deeper read, view-only access to your ad accounts and store reports, agreed on the call. Changes wait for your say-so."
+    },
+    {
+      "q": "How fast do I see the roadmap?",
+      "a": "On your 30-minute call with Kevin. You apply with five answers and pick a time, and on the call he walks you through your roadmap. How soon depends on the time you choose. Then you decide whether we do the work or you do it yourself, and you keep the roadmap either way."
+    },
+    {
+      "q": "What happens after the roadmap?",
+      "a": "You decide. After Kevin walks you through your roadmap on the call, you choose whether you want us to do the work or to do it yourself. You keep the roadmap either way. If you want us to do it, the work is scoped for your brand: ads, landing pages, retention and automation, on one plan."
+    },
+    {
+      "q": "Do you require long-term contracts?",
+      "a": "Terms are set per brand when the work is scoped after the roadmap. You stay because the work is paying off."
+    },
+    {
+      "q": "Which platforms do you cover?",
+      "a": "Paid ads on Meta, Google, Bing and TikTok. Beyond ads: landing pages and checkout, offer and subscription setup, retention and email, creator and affiliate programs, tracking, and AI phone agents."
+    },
+    {
+      "q": "Where is Freeland based, and who will I work with?",
+      "a": "Freeland is remote and works with brands across the United States. You work with Kevin Freeland directly, not an account manager."
+    }
+  ],
+  "supplements": [
+    {
+      "q": "How do you handle ad claims review?",
+      "a": "Each brand gets a list of what it can and cannot say, built with you. Ad copy and page copy are checked against that list before they run. Rejected phrases are recorded in the brand rules and checked in later drafts. Final approval of any product claim stays with you and your own advisors."
+    },
+    {
+      "q": "How do you handle subscriptions and repeat orders?",
+      "a": "We build the page and the follow-up around the repeat order. We pre-select subscribe-and-save where the brand agrees, with one-time one tap away. Retention flows keep subscribers hearing from you after the first order, and ads are judged on what a subscriber is worth over time, not only on the first sale."
+    },
+    {
+      "q": "How do you run sale weeks?",
+      "a": "The sale is set up once with its start and end dates. Then the banner, product pages, landing pages and ads are scheduled to change together, and each change is checked after it goes live. Anything the schedule cannot switch on its own goes on a checklist a person works through."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+---
+layout: layouts/site.njk
+title: Client Results and Reviews | Freeland Marketing
+description: "Client results, Google reviews and letters for Freeland Marketing, plus the DTC brands we run systems for today: Mara Labs and Redd Remedies."
+pageType: CollectionPage
+breadcrumbs:
+  - {name: Home, url: /}
+  - {name: Results, url: /results/}
+---
+{% from "partials/reviews.njk" import reviews %}
+<section class="page-top section-tight"><div class="wrap stack-v"><h1>Results need context.</h1><p class="lede">This page shows what clients say about working with Kevin, the two supplement brands we run systems for today, and past results. Each result says what was measured and who reported it.</p></div></section>
+<section class="section rule-top">
+<div class="wrap stack-v">
+<h2 id="client-reviews">What clients say</h2>{{ reviews(proof, ids=["google-sasha-gooray", "google-robert-s", "google-danielle-silva", "google-brody-guy", "google-jakim-hartford", "google-crowded-market-report", "google-palm-coast-farmers-market", "google-joshua-archer", "google-gary-scarano", "google-the-underdog-report", "google-miesha-davis", "google-irishprince247", "letter-joe-miller", "letter-tokyo-japanese-steakhouse", "letter-debbie-mauro", "letter-sasha-gooray"]) }}</div>
+</section>
+
+{% set published = [] %}{% for c in proof.cases %}{% if c.published %}{% set published = (published.push(c), published) %}{% endif %}{% endfor %}
+{% if published.length %}
+<section class="section-tight rule-top"><div class="wrap grid-2">{% for c in published %}<a class="link-card panel stack-v" href="/results/{{ c.slug }}/"><h2>{{ c.title }}</h2><p>{{ c.summary }}</p></a>{% endfor %}</div></section>
+
+{% endif %}
+<section class="section-tight rule-top"><div class="wrap stack-v">
+<h2>Brands we run systems for</h2>
+<div class="grid-2">
+<div class="prose"><h3>Mara Labs</h3><p>Supplement brand. We run their website, organic social, paid ads on Meta, Google and TikTok, and retention flows.</p></div>
+<div class="prose"><h3>Redd Remedies</h3><p>Supplement brand. We run their landing pages, paid ads on Meta, Google and Bing, date-gated sales across the site and ads, and creator programs.</p></div>
+</div>
+<p><a href="/for/supplement-brands/">How we work with supplement brands</a></p></div></section>
+<section class="section-tight surface"><div class="wrap stack-v"><h2>Kevin's track record</h2><p class="lede">Past client work outside DTC, from before and alongside the DTC focus. Each card says what the work was, what was measured and who reported it.</p>{% include "partials/track-record.njk" %}</div></section>
+<section class="cta-band section-tight"><div class="wrap stack-v"><h2>Start with your own numbers.</h2><p class="lede">Get a clear next step for your brand.</p><a class="button button-primary" href="/growth-roadmap/" data-cta="results_roadmap">Get your Growth Roadmap</a></div></section>

@@ -1,0 +1,58 @@
+---
+layout: layouts/site.njk
+permalink: /book/
+noindex: true
+title: "Book Your Growth Roadmap Call | Freeland"
+description: "Already applied, or referred by name? Pick a time for a 30-minute call with Kevin Freeland. He walks your roadmap or the numbers you bring."
+pageScripts: ["/js/apply.js"]
+breadcrumbs:
+  - { name: "Home", url: "/" }
+  - { name: "Book a call", url: "/book/" }
+schema: []
+---
+{% from "partials/reviews.njk" import reviews %}
+<section class="page-top section-tight" aria-labelledby="book-title">
+  <div class="wrap page-head">
+    <h1 id="book-title">Pick a time with Kevin.</h1>
+    <p class="lede">This page is for people who already applied for a Growth Roadmap, or who were sent here by name.</p>
+    <div class="book-action-proof">
+    <div class="stack-v" data-booking-action>
+    {%- if funnel.bookingUrl %}
+    <div class="actions">
+      <a class="button button-primary" href="{{ funnel.bookingUrl }}" target="_blank" rel="noopener" data-cta="booking_open_book_page" data-booking-source="book_page">Pick a time</a>
+    </div>
+    <p class="helper">Opens Kevin's calendar in a new tab.</p>
+    <p class="helper">Calendar not working? Email <a href="mailto:{{ site.email }}" data-cta="book_email">{{ site.email }}</a> with two times that work for you, and Kevin will confirm one by email.</p>
+    {%- else %}
+    <p class="lede" style="margin-top:28px;color:var(--text)">Email <a href="mailto:{{ site.email }}" data-cta="book_email">{{ site.email }}</a> with two times that work for you, and Kevin will confirm one by email.</p>
+    {%- endif %}
+    </div>
+    <div data-booking-proof>{{ reviews(proof, ids=["google-brody-guy"], headingLevel=2) }}</div>
+    </div>
+    <p class="helper book-first" id="first-title">No application yet? <a href="/growth-roadmap/" data-cta="book_roadmap">Start with the roadmap application</a>. It is five answers, and Kevin reads them before you talk.</p>
+  </div>
+</section>
+
+<section class="section rule-top" aria-labelledby="call-title">
+  <div class="wrap split">
+    <h2 id="call-title" class="split-head">What the call is</h2>
+    <dl class="rows">
+      <div>
+        <dt>30 minutes</dt>
+        <dd>One call, with Kevin. Not a sales rep and not an account manager.</dd>
+      </div>
+      <div>
+        <dt>Google Meet or phone</dt>
+        <dd>Your booking confirmation has the Google Meet link. Prefer a phone call? Put your number in the notes when you pick a time.</dd>
+      </div>
+      <div>
+        <dt>Your roadmap, or your numbers</dt>
+        <dd>Kevin walks you through your roadmap. Then you decide whether you want us to do the work or to do it yourself, and you keep the roadmap either way. If you were referred and have not applied, bring the numbers you have and he reads those.</dd>
+      </div>
+      <div>
+        <dt>No pitch deck</dt>
+        <dd>The time goes to your brand: where the money is leaking and what to fix first.</dd>
+      </div>
+    </dl>
+  </div>
+</section>

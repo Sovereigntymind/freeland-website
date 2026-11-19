@@ -1,0 +1,114 @@
+---
+layout: layouts/site.njk
+permalink: /partners/
+title: "White-Label Growth Systems for Agencies | Freeland"
+description: "Freeland's systems run under your agency's name: daily ad checks, price-checked landing pages, date-gated sales, AI phone agents and plain-English reporting."
+pageScripts: ["/js/apply.js"]
+breadcrumbs:
+  - { name: "Home", url: "/" }
+  - { name: "Agency partners", url: "/partners/" }
+schema: []
+---
+<section class="page-top section-tight" aria-labelledby="partners-title">
+  <div class="wrap page-head">
+    <h1 id="partners-title">Our systems, under your name.</h1>
+    <p class="lede">For agencies that want the daily work done for their clients without building the machine. Your clients see your brand. We run what is behind it.</p>
+    <div class="actions"><a class="button button-secondary" href="#partner-apply" data-cta="partners_hero_apply">Apply to partner</a></div>
+  </div>
+</section>
+
+<section class="section rule-top" aria-labelledby="runs-title">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2 id="runs-title">What runs under your name</h2>
+      <p>The same systems we run for our own clients.</p>
+    </div>
+    <ul class="rows">
+      <li>
+        <h3>Daily ad checks</h3>
+        <p>Meta, Google, Bing and TikTok read ad by ad, every day. Waste cut the same day, winners raised before they stall.</p>
+      </li>
+      <li>
+        <h3>Landing pages price-checked against checkout</h3>
+        <p>Offer pages built and checked against the real cart before any ad money is spent.</p>
+      </li>
+      <li>
+        <h3>Date-gated sales</h3>
+        <p>Every banner, page and ad changes on the hour a sale starts and the hour it ends.</p>
+      </li>
+      <li>
+        <h3>AI phone agents</h3>
+        <p>Voice agents that answer the phone around the clock.</p>
+      </li>
+      <li>
+        <h3>Plain-English reporting</h3>
+        <p>A weekly read your client can follow: what moved, why, and the next three moves.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section rule-top surface" id="partner-apply" aria-labelledby="partner-apply-title">
+  <div class="wrap apply">
+    <div class="apply-copy">
+      <h2 id="partner-apply-title">Apply to partner</h2>
+      <p>Kevin reviews every partner application and replies by email.</p>
+      <p>Tell us about your agency and the work you would hand off. Terms are worked out per agency once we know the fit.</p>
+    </div>
+    <form id="partner-form" class="form-grid" method="post" data-apply-form data-form-type="partner" data-endpoint="{{ funnel.applyEndpoint }}" data-hcaptcha-sitekey="{{ funnel.hcaptchaSitekey or '' }}">
+      <div class="field">
+        <label for="pt-name">Agency name</label>
+        <input id="pt-name" name="agency_name" type="text" autocomplete="organization" maxlength="120" aria-describedby="pt-name-error" required>
+        <p class="field-error" id="pt-name-error" data-error-for="agency_name" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="pt-site">Agency website</label>
+        <input id="pt-site" name="agency_website" type="text" inputmode="url" autocomplete="url" autocapitalize="none" spellcheck="false" maxlength="300" placeholder="youragency.com" aria-describedby="pt-site-error" required>
+        <p class="field-error" id="pt-site-error" data-error-for="agency_website" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="pt-clients">Number of clients</label>
+        <select id="pt-clients" name="client_count" aria-describedby="pt-clients-error" required>
+          <option value="">Choose a range</option>
+          <option value="1-5">1 to 5</option>
+          <option value="6-20">6 to 20</option>
+          <option value="21-50">21 to 50</option>
+          <option value="50+">More than 50</option>
+        </select>
+        <p class="field-error" id="pt-clients-error" data-error-for="client_count" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="pt-email">Work email</label>
+        <input id="pt-email" name="email" type="email" autocomplete="email" spellcheck="false" maxlength="254" placeholder="you@youragency.com" aria-describedby="pt-email-error" required>
+        <p class="field-error" id="pt-email-error" data-error-for="email" aria-live="polite"></p>
+      </div>
+      <div class="field field-wide">
+        <label for="pt-services">Services you offer</label>
+        <textarea id="pt-services" name="services" maxlength="500" aria-describedby="pt-services-error pt-services-hint" required></textarea>
+        <p class="field-hint" id="pt-services-hint">A few words is enough. For example: paid social, email, web builds.</p>
+        <p class="field-error" id="pt-services-error" data-error-for="services" aria-live="polite"></p>
+      </div>
+      <div class="hp" aria-hidden="true">
+        <label for="pt-hp">Company URL (leave this empty)</label>
+        <input id="pt-hp" name="hp_company_url" type="text" tabindex="-1" autocomplete="off">
+      </div>
+      <div id="hcaptcha-slot" class="field-wide"></div>
+      <div class="form-actions">
+        <button type="submit" class="button button-primary" disabled>Send partner application</button>
+        <p class="helper">Kevin reviews every partner application.</p>
+      </div>
+      <noscript><p class="noscript-note field-wide">This form needs JavaScript. Email <a href="mailto:{{ site.email }}">{{ site.email }}</a> instead and Kevin will reply.</p></noscript>
+      <div class="form-status" data-form-status tabindex="-1" hidden></div>
+    </form>
+  </div>
+</section>
+
+<section class="section-tight rule-top" aria-labelledby="brand-title">
+  <div class="wrap split">
+    <h2 id="brand-title" class="split-head">Run a brand, not an agency?</h2>
+    <div class="body-copy">
+      <p class="lede">Then the front door is the Growth Roadmap: a free read of your ads, store, offer, retention and tracking.</p>
+      <div class="actions"><a class="button button-primary" href="/growth-roadmap/" data-cta="partners_roadmap">Get your Growth Roadmap</a></div>
+    </div>
+  </div>
+</section>

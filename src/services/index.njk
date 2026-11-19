@@ -1,234 +1,63 @@
-{% extends "base.njk" %}
+---
+{
+  "layout": "layouts/site.njk",
+  "title": "DTC Marketing Services: Ads, CRO, Email and AI | Freeland",
+  "description": "Paid media, landing pages, retention and automation for founder-led DTC brands. Start with a Growth Roadmap and choose the work that matters.",
+  "pageType": "CollectionPage",
+  "breadcrumbs": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Services",
+      "url": "/services/"
+    }
+  ]
+}
+---
+<section class="page-top section-tight"><div class="wrap stack-v"><h1>The work follows the problem.</h1><p class="lede">Your next move might be an ad test, a better page or a follow-up that never got built. We start with the numbers, then connect the work.</p></div></section>
+<section class="section rule-top">
+<div class="wrap stack-v">
+<h2>Start with the problem</h2>
+<ul class="rows">
+<li>
+<h3>Ads cost more every month.</h3>
+<p>We read the account against store sales. Daily checks flag ads that look like waste and ads worth more testing, and budget moves follow the evidence and what we agreed with you.</p>
+<p><a href="/services/meta-ads/">Meta ads</a> / <a href="/services/google-ads-management/">Google ads</a> / <a href="/results/">See the track record</a></p>
+</li>
+<li>
+<h3>Traffic, but few orders.</h3>
+<p>The page is matched to the ad and price-checked against checkout, so a buyer who clicks sees the same offer and price the ad promised.</p>
+<p><a href="/services/website-design/">Landing pages and CRO</a></p>
+</li>
+<li>
+<h3>Buyers who never reorder.</h3>
+<p>Flows after the first order follow up with buyers, judged on repeat orders in your store.</p>
+<p><a href="/services/email-marketing-automation/">Retention and email</a></p>
+</li>
+<li>
+<h3>Your team is buried in repeat work.</h3>
+<p>Daily checks, scheduled sale changes and phone agents run on a system, with a person on the exceptions.</p>
+<p><a href="/services/ai-automation/">AI agents and automation</a></p>
+</li>
+<li>
+<h3>Buyers search and cannot find you.</h3>
+<p>Technical fixes and clear answers that search engines and AI assistants can read.</p>
+<p><a href="/services/seo/">SEO and AEO</a></p>
+</li>
+</ul>
+</div>
+</section>
 
-{% block head %}
-  <title>Marketing Services & AI Automation | Freeland Marketing</title>
-  <meta name="description" content="Full-service digital marketing and AI automation for businesses of every size. Social media, paid ads, SEO, website design, CRM, workflow automation, and more. Headquartered in Palm Coast, FL — serving all 50 states." />
-  <meta name="keywords" content="marketing services, digital marketing agency, social media management, Google Ads management, SEO services, AI automation, CRM automation, website design, marketing agency nationwide" />
-  <meta name="author" content="Kevin Freeland" />
-  <link rel="canonical" href="https://freelandme.com/services/" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://freelandme.com/services/" />
-  <meta property="og:title" content="Marketing Services & AI Automation | Freeland Marketing" />
-  <meta property="og:description" content="Social media, paid ads, SEO, AI automation, CRM, website design, and more for businesses of every size. Serving all 50 states." />
-  <meta property="og:image" content="https://freelandme.com/images/og-share.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="624" />
-  <meta property="og:image:alt" content="Freeland Marketing Services and AI Automation" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:site_name" content="Freeland Marketing &amp; Entertainment" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Marketing Services & AI Automation | Freeland Marketing" />
-  <meta name="twitter:description" content="Social media, paid ads, SEO, AI automation & web design for businesses of every size nationwide." />
-  <meta name="twitter:image" content="https://freelandme.com/images/og-share.jpg" />
-  <meta name="twitter:image:alt" content="Freeland Marketing Services and AI Automation" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://freelandme.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://freelandme.com/services/" }
-    ]
-  }
-  </script>
-{% endblock %}
-
-{% block content %}
-
-  <section class="post-header">
-    <div class="post-header-inner">
-      <a href="/" class="post-breadcrumb">&larr; Back to Home</a>
-      <span class="blog-category">Services</span>
-      <h1>Marketing Services &amp; AI Automation</h1>
-      <p style="color:#ccc;margin-top:0.75rem;font-size:1.05rem;">Everything your business needs to get found, generate leads, and grow revenue — under one roof. Serving businesses of every size nationwide from our headquarters in Palm Coast, FL.</p>
-    </div>
-  </section>
-
-  <div class="post-body" style="max-width:900px;margin:3rem auto;padding:0 1.5rem;">
-
-    <h2 style="font-size:1.5rem;margin-bottom:1.5rem;">Marketing Services</h2>
-
-    <div class="cards" style="margin-top:1rem;">
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🧠</div>
-        <h3 style="font-size:1.2rem;">AI Consulting</h3>
-        <p>Strategic AI advisory for businesses ready to integrate artificial intelligence. From identifying use cases to building a roadmap — we guide the entire process.</p>
-        <a href="/services/ai-consulting/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">📱</div>
-        <h3 style="font-size:1.2rem;">Social Media Management</h3>
-        <p>Done-for-you content creation, scheduling, community management, and reporting across Instagram, Facebook, and TikTok.</p>
-        <a href="/services/social-media-management/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🎯</div>
-        <h3 style="font-size:1.2rem;">Meta Ads (Facebook &amp; Instagram)</h3>
-        <p>Precision-targeted Facebook and Instagram campaigns that reach your ideal audience and generate leads on demand.</p>
-        <a href="/services/meta-ads/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">💰</div>
-        <h3 style="font-size:1.2rem;">Google Ads Management</h3>
-        <p>High-intent paid search campaigns that put your business at the top of Google when customers are ready to buy.</p>
-        <a href="/services/google-ads-management/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🔍</div>
-        <h3 style="font-size:1.2rem;">SEO Services</h3>
-        <p>Local SEO, Google Business Profile optimization, and content strategy that builds organic traffic that compounds over time.</p>
-        <a href="/services/seo/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">📍</div>
-        <h3 style="font-size:1.2rem;">Google Business Profile</h3>
-        <p>Get found in Google Maps and the local 3-pack. Full GBP setup, optimization, and ongoing management.</p>
-        <a href="/services/google-business-profile/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🌐</div>
-        <h3 style="font-size:1.2rem;">Website Design</h3>
-        <p>Fast, mobile-friendly, conversion-focused websites built for businesses of every size — with SEO built in from day one.</p>
-        <a href="/services/website-design/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🎨</div>
-        <h3 style="font-size:1.2rem;">Creative &amp; Graphic Design</h3>
-        <p>Scroll-stopping thumbnails, graphics, and visual content built using professional tools including Canva and Flux LoRA.</p>
-        <a href="/services/creative-graphic-design/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🛒</div>
-        <h3 style="font-size:1.2rem;">E-commerce &amp; Affiliate Marketing</h3>
-        <p>Build and grow your online store with affiliate programs that generate passive, recurring revenue around the clock.</p>
-        <a href="/services/ecommerce-affiliate/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🤝</div>
-        <h3 style="font-size:1.2rem;">Influencer &amp; Affiliate Programs</h3>
-        <p>Connect with creators and brand partners who amplify your message to audiences that are already primed to buy.</p>
-        <a href="/services/influencer-affiliate/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-    </div>
-
-    <h2 style="font-size:1.5rem;margin-top:3rem;margin-bottom:1.5rem;">AI Automation &amp; Workflow Design</h2>
-
-    <div class="cards" style="margin-top:1rem;">
-
-      <article class="card" style="border:1px solid rgba(191,10,48,0.4);background:linear-gradient(135deg,rgba(191,10,48,0.08),rgba(191,10,48,0.02));">
-        <div class="card-icon" aria-hidden="true">🏗️</div>
-        <h3 style="font-size:1.2rem;">Done-for-You AI Implementation</h3>
-        <p>Full-scale AI and automation built, deployed, and managed for your business. From single workflows to complete operational transformation.</p>
-        <a href="/services/done-for-you-ai/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card" style="border:1px solid rgba(0,123,255,0.3);background:linear-gradient(135deg,rgba(0,123,255,0.06),rgba(0,123,255,0.01));">
-        <div class="card-icon" aria-hidden="true">🚨</div>
-        <h3 style="font-size:1.2rem;">24/7 AI Lead Capture</h3>
-        <p>Stop losing leads after hours. AI chatbot, phone answering, and SMS follow-up that captures and books appointments around the clock.</p>
-        <a href="/services/ai-lead-capture/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🤖</div>
-        <h3 style="font-size:1.2rem;">AI Automation</h3>
-        <p>Email sequences, booking systems, social scheduling, and lead nurturing that run 24/7 without extra staff.</p>
-        <a href="/services/ai-automation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">⚙️</div>
-        <h3 style="font-size:1.2rem;">Custom AI Workflow Design</h3>
-        <p>End-to-end AI workflows tailored to your business operations — integrating tools, automating decisions, and eliminating bottlenecks.</p>
-        <a href="/services/ai-workflow-design/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">✍️</div>
-        <h3 style="font-size:1.2rem;">AI Content Creation Workflows</h3>
-        <p>AI-driven pipelines that produce high-quality, on-brand content at scale — captions, blogs, ads, and more.</p>
-        <a href="/services/ai-content-creation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🔗</div>
-        <h3 style="font-size:1.2rem;">CRM Automation</h3>
-        <p>Automated lead follow-up, pipeline management, and nurturing sequences that convert more leads without manual effort.</p>
-        <a href="/services/crm-automation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">📞</div>
-        <h3 style="font-size:1.2rem;">Call-Center Booking Automation</h3>
-        <p>AI-powered booking systems that handle appointments and inquiries 24/7 — no staff needed, no leads missed.</p>
-        <a href="/services/call-center-booking-automation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">✉️</div>
-        <h3 style="font-size:1.2rem;">Email Marketing Automation</h3>
-        <p>Smart sequences, segmentation, and customer journeys that nurture leads into paying customers on autopilot.</p>
-        <a href="/services/email-marketing-automation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">📅</div>
-        <h3 style="font-size:1.2rem;">Social Media Scheduling &amp; Workflows</h3>
-        <p>Automated content calendars and posting workflows that keep your brand active and consistent — without the daily grind.</p>
-        <a href="/services/social-media-scheduling/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🔗</div>
-        <h3 style="font-size:1.2rem;">Affiliate &amp; Referral Automation</h3>
-        <p>Set up and automate your entire referral program so your network grows and generates revenue while you sleep.</p>
-        <a href="/services/affiliate-referral-automation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">💡</div>
-        <h3 style="font-size:1.2rem;">Lead Nurturing Sequences</h3>
-        <p>Multi-step automated follow-up flows that warm cold leads and convert them into customers over time — without manual effort.</p>
-        <a href="/services/lead-nurturing/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">🖼️</div>
-        <h3 style="font-size:1.2rem;">Thumbnail &amp; Graphic Generation</h3>
-        <p>Automated visual content pipelines using Canva, Nano Banana, and Flux LoRA for scroll-stopping graphics at scale.</p>
-        <a href="/services/thumbnail-graphic-generation/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-      <article class="card">
-        <div class="card-icon" aria-hidden="true">📊</div>
-        <h3 style="font-size:1.2rem;">Automated Reporting &amp; Performance Tracking</h3>
-        <p>Real-time dashboards and scheduled reports so you always know what's working, what's not, and where to invest next.</p>
-        <a href="/services/automated-reporting/" class="card-link">Learn More &rarr;</a>
-      </article>
-
-    </div>
-
-    <div class="post-cta-box" style="margin-top:3rem;">
-      <h3>Not Sure Which Service You Need?</h3>
-      <p>Book a free 30-minute strategy call. We will audit your current marketing and recommend exactly which services will drive the most growth for your business.</p>
-      <a href="/#contact" class="btn-primary btn-large">Get My Free Strategy Call &rarr;</a>
-    </div>
-
-  </div>
-
-{% endblock %}
+<section class="section-tight rule-top"><div class="wrap grid-2">
+<a class="link-card panel stack-v" href="/services/meta-ads/"><h2>Meta ads</h2><p>Facebook and Instagram ads, judged on store sales.</p></a>
+<a class="link-card panel stack-v" href="/services/google-ads-management/"><h2>Google ads</h2><p>Search and Shopping for buyers already looking.</p></a>
+<a class="link-card panel stack-v" href="/services/website-design/"><h2>Landing pages and CRO</h2><p>Pages matched to the ad and price-checked against checkout.</p></a>
+<a class="link-card panel stack-v" href="/services/ai-automation/"><h2>AI agents and automation</h2><p>Phone agents and daily checks that run the repeat work.</p></a>
+<a class="link-card panel stack-v" href="/services/email-marketing-automation/"><h2>Retention and email</h2><p>Flows that follow up after the first order, judged on repeat orders.</p></a>
+<a class="link-card panel stack-v" href="/services/influencer-affiliate/"><h2>Creator and affiliate programs</h2><p>One code or link per creator, tracked to sales.</p></a>
+<a class="link-card panel stack-v" href="/services/seo/"><h2>SEO and AEO</h2><p>Clear answers search engines and AI assistants can read.</p></a>
+<a class="link-card panel stack-v" href="/services/social-media-management/"><h2>Organic social systems</h2><p>A content plan, your approval, then scheduled posts.</p></a>
+</div></section>
+<section class="cta-band section-tight"><div class="wrap stack-v"><h2>Find the right starting point.</h2><p class="lede">The Growth Roadmap puts the priorities in order. You keep it either way.</p><a class="button button-primary" href="/growth-roadmap/" data-cta="services_roadmap">Get your Growth Roadmap</a><p><a href="/results/">See our track record</a></p></div></section>
